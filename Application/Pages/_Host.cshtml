@@ -1,36 +1,79 @@
 ﻿@page "/"
+
 @namespace Application.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
 @{
-    Layout = null;
+	Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Application</title>
-    <base href="~/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/site.css" rel="stylesheet" />
+	<base href="~/" />
+	<title>Application</title>
+
+	<meta name="description" content="">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+	<!-- Google Font: Lato -->
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&subset=latin,latin-ext,cyrillic,cyrillic-ext'
+		  rel='stylesheet'
+		  type='text/css'>
+
+	<!-- FontAwesome -->
+	<script src="https://kit.fontawesome.com/7bb826d7d6.js"
+			crossorigin="anonymous"></script>
+
+	<!-- Nivo Lightbox-->
+	<link rel="stylesheet" href="/plugins/nivo-lightbox/nivo-lightbox.css" />
+	<link rel="stylesheet" href="/plugins/nivo-lightbox/themes/default/default.css" />
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="/css/main.css">
+
+	<!-- Themes -->
+	<link rel="stylesheet" href="/css/themes.dark.css">
+
+	<!-- Custom CSS -->
+	<!--<link rel="stylesheet" href="assets/css/custom.css">-->
+	<!-- jQuery -->
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.4.min.js"></script>
+
+	<!-- dense.js (Retina plugin) -->
+	<script src="/js/dense.js"></script>
+
+	<!-- Nivo Lightbox -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/nivo-lightbox/1.3.1/nivo-lightbox.min.js"
+			integrity="sha256-2rVFjzPHoxfrgKV3Lo3fz8ns/A+uOrOy3pkTzlN0Vss="
+			crossorigin="anonymous"></script>
+
+	<!-- ScrollReveal -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollReveal.js/4.0.6/scrollreveal.min.js"
+			integrity="sha256-onCpUqsUoWJKldHUDgXUZzA3KX/xBsTP6xn4/fw7eN8="
+			crossorigin="anonymous"></script>
+
+	<!-- Main JS -->
+	<script src="/js/main.js"></script>
 </head>
 <body>
-    <app>
-        <component type="typeof(App)" render-mode="ServerPrerendered" />
-    </app>
+	<app>
+		<component type="typeof(App)" render-mode="ServerPrerendered" />
+	</app>
 
-    <div id="blazor-error-ui">
-        <environment include="Staging,Production">
-            An error has occurred. This application may no longer respond until reloaded.
-        </environment>
-        <environment include="Development">
-            An unhandled exception has occurred. See browser dev tools for details.
-        </environment>
-        <a href="" class="reload">Reload</a>
-        <a class="dismiss">🗙</a>
-    </div>
+	<div id="blazor-error-ui">
+		<environment include="Staging,Production">
+			An error has occurred. This application may no longer respond until reloaded.
+		</environment>
+		<environment include="Development">
+			An unhandled exception has occurred. See browser dev tools for details.
+		</environment>
+		<a href="" class="reload">Reload</a>
+		<a class="dismiss">🗙</a>
+	</div>
 
-    <script src="_framework/blazor.server.js"></script>
+	<script src="_framework/blazor.server.js"></script>
 </body>
 </html>

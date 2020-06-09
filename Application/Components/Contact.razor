@@ -1,0 +1,12 @@
+﻿<div class="o-grid__col-md-3  o-grid__col-sm-6">
+	<div class="a-header  o-content">
+		<div class="o-content__body">
+			@ChildContent
+		</div>
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public RenderFragment ChildContent { get; set; } = null!;
+}

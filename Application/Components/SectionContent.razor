@@ -1,0 +1,13 @@
+﻿<div class="o-section__content  t-section__content @AdditionalClasses">
+
+	@ChildContent
+
+</div>
+
+@code {
+	[Parameter]
+	public RenderFragment? ChildContent { get; set; }
+
+	[Parameter]
+	public string? AdditionalClasses { get; set; }
+}

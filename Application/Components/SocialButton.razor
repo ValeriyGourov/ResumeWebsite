@@ -1,0 +1,18 @@
+﻿<li class="@ItemClass">
+	<a href="@Uri"
+	   target="_blank"
+	   class="c-social-button  t-social-button">
+		<span class="fab  fa-lg  @FontClass" />
+	</a>
+</li>
+
+@code {
+	[Parameter]
+	public Uri Uri { get; set; } = null!;
+
+	[Parameter]
+	public string FontClass { get; set; } = null!;
+
+	[CascadingParameter]
+	public string ItemClass { get; set; } = string.Empty;
+}

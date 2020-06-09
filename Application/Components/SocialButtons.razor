@@ -1,0 +1,18 @@
+﻿<CascadingValue Value="ItemClass">
+	<ul class="c-social-buttons @AdditionalListClasses">
+		<SocialButton Uri="@(new Uri("https://www.facebook.com/RuvenThemes/"))"
+					  FontClass="fa-facebook-f" />
+		<SocialButton Uri="@(new Uri("https://dribbble.com/"))"
+					  FontClass="fa-dribbble" />
+		<SocialButton Uri="@(new Uri("https://twitter.com/_Ruven"))"
+					  FontClass="fa-twitter" />
+	</ul>
+</CascadingValue>
+
+@code {
+	[Parameter]
+	public string? AdditionalListClasses { get; set; }
+
+	[Parameter]
+	public string ItemClass { get; set; } = string.Empty;
+}

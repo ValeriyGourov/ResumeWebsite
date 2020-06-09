@@ -1,0 +1,37 @@
+﻿<div class="o-grid__col-xl-4  o-grid__col-sm-6">
+	<div class="o-content">
+		<a href="@Uri"
+		   target="_blank"
+		   class="t-link-container">
+			<div class="o-media  o-media--block">
+				<div class="o-media__figure">
+					<div class="c-profile__icon">
+						<i class="fab  fa-lg  @FontClass"></i>
+					</div>
+				</div>
+				<div class="o-media__body  o-content__body">
+					<h3 class="t-link-container__item">
+						@Title
+					</h3>
+					<p>
+						@Description
+					</p>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+@code {
+	[Parameter]
+	public Uri Uri { get; set; } = null!;
+
+	[Parameter]
+	public string FontClass { get; set; } = null!;
+
+	[Parameter]
+	public string Title { get; set; } = null!;
+
+	[Parameter]
+	public string Description { get; set; } = null!;
+}
