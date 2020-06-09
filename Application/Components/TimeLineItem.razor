@@ -1,0 +1,48 @@
+﻿<div class="c-timeline__item">
+	<div class="c-timeline__point  t-timeline__point  t-primary-bg"></div>
+	<div class="o-content">
+		<div class="o-grid">
+			<div class="o-grid__col-md-5">
+				<div class="c-work__timeframe">
+					@StartYear &ndash; @(EndYear != DateTime.UtcNow.Year ? EndYear.ToString() : "Present")
+				</div>
+				<h3 class="c-work__heading">
+					@Institution
+				</h3>
+				<h4 class="c-work__title">
+					@Position
+				</h4>
+				<div class="c-work__location">
+					@Location
+				</div>
+			</div>
+			<div class="o-grid__col-md-7">
+				<p>
+					@Description
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+@code {
+	// TODO: Создать отдельный компонент-контейнер для элементов и выводить их, отсортироанные по конечному году и начальному году.
+
+	[Parameter]
+	public int StartYear { get; set; }
+
+	[Parameter]
+	public int EndYear { get; set; } = DateTime.UtcNow.Year;
+
+	[Parameter]
+	public string Institution { get; set; } = null!;
+
+	[Parameter]
+	public string Position { get; set; } = null!;
+
+	[Parameter]
+	public string Location { get; set; } = null!;
+
+	[Parameter]
+	public string Description { get; set; } = null!;
+}

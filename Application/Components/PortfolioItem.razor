@@ -1,0 +1,33 @@
+﻿<div class="o-grid__col-sm-6">
+	<a class="c-image-overlay  t-image-overlay  js-lightbox"
+	   href="@FullImageUri"
+	   data-lightbox-hidpi=""
+	   title="@Title"
+	   data-lightbox-gallery="portfolio">
+		<img src="@ThumbImageUri"
+			 alt="">
+		<div class="c-image-overlay__content">
+			<h3>
+				@Title
+			</h3>
+			<hr class="c-image-overlay__deco-line  t-image-overlay__deco-line" />
+			<p>
+				@Description
+			</p>
+		</div>
+	</a>
+</div>
+
+@code {
+	[Parameter]
+	public Uri FullImageUri { get; set; } = null!;
+
+	[Parameter]
+	public Uri ThumbImageUri { get; set; } = null!;
+
+	[Parameter]
+	public string Title { get; set; } = null!;
+
+	[Parameter]
+	public string Description { get; set; } = null!;
+}

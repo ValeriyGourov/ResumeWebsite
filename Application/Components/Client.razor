@@ -1,0 +1,15 @@
+﻿<li>
+	<a href="@Uri"
+	   target="_blank">
+		<img src="@Logo"
+			 alt="">
+	</a>
+</li>
+
+@code {
+	[Parameter]
+	public Uri Uri { get; set; } = null!;
+
+	[Parameter]
+	public Uri Logo { get; set; } = null!;
+}
