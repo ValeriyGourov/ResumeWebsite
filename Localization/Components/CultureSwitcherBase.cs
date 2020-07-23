@@ -13,6 +13,9 @@ using Microsoft.Extensions.Options;
 
 namespace Localization.Components
 {
+	/// <summary>
+	/// Базовый класс компонента для переключения культуры приложения.
+	/// </summary>
 	public abstract class CultureSwitcherBase : ComponentBase, IDisposable
 	{
 		/// <summary>
