@@ -1,0 +1,8 @@
+﻿@inherits Localization.Components.CultureSwitcherBase
+
+<a href="javascript:"
+   title="@Localizer["SwitchLanguage"]"
+   @onclick="@ChangeCulture"
+   @onclick:preventDefault>
+	<span class="fas fa-lg fa-language" /> @NewCulture.NativeName
+</a>

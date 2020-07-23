@@ -1,4 +1,13 @@
 ﻿@page "/"
+
+@inherits LocalizedComponentBase
+
+@inject IStringLocalizer<Index> Localizer
+
+<div class="culture-switcher">
+	<CultureSwitcher />
+</div>
+
 <!-- ################################ -->
 <!-- ############ HEADER ############ -->
 <!-- ################################ -->
@@ -12,7 +21,7 @@
 					<div class="a-header  c-avatar">
 						<img class="c-avatar__img"
 							 src="images/header/avatar.jpg"
-							 alt="Avatar">
+							 alt="@Localizer["AvatarAlt"]">
 					</div>
 				</div>
 
@@ -74,8 +83,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Intro"
-					   Description="What I am all about." />
+		<SectionHeader Title="@Localizer["IntroTitle"]"
+					   Description="@Localizer["IntroDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -106,8 +115,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Expertise"
-					   Description="Batman would be jealous." />
+		<SectionHeader Title="@Localizer["ExpertiseTitle"]"
+					   Description="@Localizer["ExpertiseDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -147,8 +156,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Skills"
-					   Description="Progress bars, anyone?" />
+		<SectionHeader Title="@Localizer["SkillsTitle"]"
+					   Description="@Localizer["SkillsDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -186,8 +195,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Experience"
-					   Description="Yes. I've been around." />
+		<SectionHeader Title="@Localizer["ExperienceTitle"]"
+					   Description="@Localizer["ExperienceDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -226,8 +235,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Education"
-					   Description="Lazy isn't in my vocabulary." />
+		<SectionHeader Title="@Localizer["EducationTitle"]"
+					   Description="@Localizer["EducationDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -270,8 +279,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Profiles"
-					   Description="Busy as usual." />
+		<SectionHeader Title="@Localizer["ProfilesTitle"]"
+					   Description="@Localizer["ProfilesDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -317,8 +326,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Awards"
-					   Description="Happy times!" />
+		<SectionHeader Title="@Localizer["AwardsTitle"]"
+					   Description="@Localizer["AwardsDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -346,8 +355,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Portfolio"
-					   Description="Here it gets interesting." />
+		<SectionHeader Title="@Localizer["PortfolioTitle"]"
+					   Description="@Localizer["PortfolioDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -393,8 +402,8 @@
 <ResumeSection>
 
 	<HeaderFragment>
-		<SectionHeader Title="Clients"
-					   Description="Happy people." />
+		<SectionHeader Title="@Localizer["ClientsTitle"]"
+					   Description="@Localizer["ClientsDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>
@@ -402,7 +411,8 @@
 
 			<ul class="c-clients  o-content">
 				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/bbc.png", UriKind.Relative))" />
+						Logo="@(new Uri("images/clients/bbc.png", UriKind.Relative))"
+						Name="Test client" />
 				<Client Uri="@(new Uri("http://example.com"))"
 						Logo="@(new Uri("images/clients/disney.png", UriKind.Relative))" />
 				<Client Uri="@(new Uri("http://example.com"))"
@@ -430,8 +440,8 @@
 <ResumeSection AdditionalClasses="o-section--footer">
 
 	<HeaderFragment>
-		<SectionHeader Title="Contact"
-					   Description="Call me, maybe." />
+		<SectionHeader Title="@Localizer["ContactTitle"]"
+					   Description="@Localizer["ContactDescription"]" />
 	</HeaderFragment>
 
 	<ContentFragment>

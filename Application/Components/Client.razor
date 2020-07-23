@@ -2,14 +2,27 @@
 	<a href="@Uri"
 	   target="_blank">
 		<img src="@Logo"
-			 alt="">
+			 alt="@Name"
+			 title="@Name">
 	</a>
 </li>
 
 @code {
+	/// <summary>
+	/// Название клиента.
+	/// </summary>
+	[Parameter]
+	public string? Name { get; set; }
+
+	/// <summary>
+	/// Адрес веб-сайта клиента.
+	/// </summary>
 	[Parameter]
 	public Uri Uri { get; set; } = null!;
 
+	/// <summary>
+	/// Адрес картинки логотипа клиента.
+	/// </summary>
 	[Parameter]
 	public Uri Logo { get; set; } = null!;
 }
