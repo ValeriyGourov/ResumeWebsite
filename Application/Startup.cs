@@ -1,3 +1,8 @@
+
+using System.Globalization;
+
+using Localization.Configuration;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,6 +24,8 @@ namespace Application
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
+			ConfigureServicesLocalization(services);
+
 			services.AddRazorPages();
 			services.AddServerSideBlazor();
 		}
@@ -26,6 +33,8 @@ namespace Application
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
+			app.UseSessionLocalization();
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
@@ -47,6 +56,21 @@ namespace Application
 				endpoints.MapBlazorHub();
 				endpoints.MapFallbackToPage("/_Host");
 			});
+		}
+
+		/// <summary>
+		/// Настройка служб локализации.
+		/// </summary>
+		/// <param name="services">Коллекция служб приложения.</param>
+		private void ConfigureServicesLocalization(IServiceCollection services)
+		{
+			CultureInfo defaultCulture = new CultureInfo("en");
+			CultureInfo[] supportedCultures = new[]
+			{
+				defaultCulture,
+				new CultureInfo("ru")
+			};
+			services.AddSessionLocalization(supportedCultures, defaultCulture, "Resources");
 		}
 	}
 }

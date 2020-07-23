@@ -5,7 +5,7 @@
 	   title="@Title"
 	   data-lightbox-gallery="portfolio">
 		<img src="@ThumbImageUri"
-			 alt="">
+			 alt="@Title">
 		<div class="c-image-overlay__content">
 			<h3>
 				@Title
@@ -19,15 +19,27 @@
 </div>
 
 @code {
+	/// <summary>
+	/// Адрес полноразмерной картинки.
+	/// </summary>
 	[Parameter]
 	public Uri FullImageUri { get; set; } = null!;
 
+	/// <summary>
+	/// Адрес картинки для предпросмотра.
+	/// </summary>
 	[Parameter]
 	public Uri ThumbImageUri { get; set; } = null!;
 
+	/// <summary>
+	/// Заголовок работы.
+	/// </summary>
 	[Parameter]
 	public string Title { get; set; } = null!;
 
+	/// <summary>
+	/// Описание работы.
+	/// </summary>
 	[Parameter]
 	public string Description { get; set; } = null!;
 }

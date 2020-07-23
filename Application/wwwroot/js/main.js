@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('html').addClass('js-enabled');
 
     setup_nivo_lightbox();
-    setup_dense();
+    //setup_dense();
 
     $(window).load(function() {
         $(".js-preloader").fadeOut(800, function() {
