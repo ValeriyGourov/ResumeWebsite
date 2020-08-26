@@ -261,7 +261,7 @@
     methods.devicePixelRatio = function () {
         var pixelRatio = 1;
 
-        if ($.type(window.devicePixelRatio) !== 'undefined') {
+        if (typeof window.devicePixelRatio !== 'undefined') {
             pixelRatio = window.devicePixelRatio;
         }
         else if ($.type(window.matchMedia) !== 'undefined') {
@@ -327,7 +327,7 @@
      */
 
     $.fn.dense = function (method, options) {
-        if ($.type(method) !== 'string' || $.type(methods[method]) !== 'function') {
+        if (typeof method !== 'string' || typeof methods[method] !== 'function') {
             options = method;
             method = 'init';
         }

@@ -8,7 +8,7 @@ $(document).ready(function() {
     setup_nivo_lightbox();
     //setup_dense();
 
-    $(window).load(function() {
+    $(window).on("load", function() {
         $(".js-preloader").fadeOut(800, function() {
             $(".js-main-container").fadeIn(800);
 
@@ -21,8 +21,7 @@ $(document).ready(function() {
 
 
 
-function setup_progress_bar_animation()
-{
+function setup_progress_bar_animation() {
     var $animation_elements = $("[class*='a-']");
     var $window = $(window);
 
@@ -60,9 +59,8 @@ function setup_progress_bar_animation()
 
 
 
-function setup_dense()
-{
-    if($.isFunction($.fn.dense)) {
+function setup_dense() {
+    if ($.isFunction($.fn.dense)) {
 
         $('img').dense({
             'glue': '@'
@@ -73,9 +71,8 @@ function setup_dense()
 
 
 
-function setup_scrollreveal()
-{
-    if(typeof ScrollReveal !== 'undefined' && $.isFunction(ScrollReveal)) {
+function setup_scrollreveal() {
+    if (typeof ScrollReveal !== 'undefined' && typeof ScrollReveal === "function") {
 
         window.sr = ScrollReveal();
 
@@ -93,7 +90,7 @@ function setup_scrollreveal()
         var footer_config = $.extend(false, default_config, {
             duration: 1500,
             distance: 0,
-            viewOffset: {top: 0, right: 0, bottom: 100, left: 0}
+            viewOffset: { top: 0, right: 0, bottom: 100, left: 0 }
         });
 
         var default_delay = 175;
@@ -107,9 +104,8 @@ function setup_scrollreveal()
 
 
 
-function setup_nivo_lightbox()
-{
-    if($.isFunction($.fn.nivoLightbox))
+function setup_nivo_lightbox() {
+    if (typeof $.fn.nivoLightbox === "function")
     {
         var $selector = $('.js-lightbox');
 
@@ -121,7 +117,7 @@ function setup_nivo_lightbox()
         });
 
         // On click, add titles back, so lightbox can display them
-        $selector.click(function() {
+        $selector.on('click', function() {
             $selector.each(function() {
                 var title = $(this).attr('data-title');
                 $(this).attr('title', title);
@@ -133,13 +129,13 @@ function setup_nivo_lightbox()
             theme: 'default',                             // The lightbox theme to use
             keyboardNav: true,                            // Enable/Disable keyboard navigation (left/right/escape)
             clickOverlayToClose: true,                    // If false clicking the "close" button will be the only way to close the lightbox
-            onInit: function(){},                         // Callback when lightbox has loaded
-            beforeShowLightbox: function(){},             // Callback before the lightbox is shown
-            afterShowLightbox: function(lightbox){},      // Callback after the lightbox is shown
-            beforeHideLightbox: function(){},             // Callback before the lightbox is hidden
+            onInit: function() { },                         // Callback when lightbox has loaded
+            beforeShowLightbox: function() { },             // Callback before the lightbox is shown
+            afterShowLightbox: function (lightbox) { },      // Callback after the lightbox is shown
+            beforeHideLightbox: function() { },             // Callback before the lightbox is hidden
             //afterHideLightbox: function(){},              // Callback after the lightbox is hidden
-            onPrev: function(element){},                  // Callback when the lightbox gallery goes to previous item
-            onNext: function(element){},                  // Callback when the lightbox gallery goes to next item
+            onPrev: function (element) { },                  // Callback when the lightbox gallery goes to previous item
+            onNext: function (element) { },                  // Callback when the lightbox gallery goes to next item
             afterHideLightbox: function() {
                 // Remove title to prevent tooltip from showing
                 $selector.attr('title', '');
