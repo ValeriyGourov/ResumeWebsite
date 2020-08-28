@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization", "Localizatio
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{794C642D-2B3F-46D1-9D98-FA8B51D79B8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Localization.Tests", "Localization.Tests\Localization.Tests.csproj", "{6D48D2E1-9B51-4448-9E2D-BA14240EE988}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization.Tests", "Localization.Tests\Localization.Tests.csproj", "{6D48D2E1-9B51-4448-9E2D-BA14240EE988}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestInfrastructure", "TestInfrastructure\TestInfrastructure.csproj", "{105903A8-E44F-4AB4-88D2-1AB2EFFC43B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestInfrastructure", "TestInfrastructure\TestInfrastructure.csproj", "{105903A8-E44F-4AB4-88D2-1AB2EFFC43B3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

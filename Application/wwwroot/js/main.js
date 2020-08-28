@@ -1,25 +1,20 @@
 
-
-
 $(document).ready(function() {
 
     $('html').addClass('js-enabled');
 
     setup_nivo_lightbox();
     //setup_dense();
-
-    $(window).on("load", function() {
-        $(".js-preloader").fadeOut(800, function() {
-            $(".js-main-container").fadeIn(800);
-
-            setup_scrollreveal();
-            setup_progress_bar_animation();
-        });
-    });
-
 });
 
+function showMainContainer() {
+    $(".js-preloader").fadeOut(800, function() {
+        $(".js-main-container").fadeIn(800);
 
+        setup_scrollreveal();
+        setup_progress_bar_animation();
+    });
+}
 
 function setup_progress_bar_animation() {
     var $animation_elements = $("[class*='a-']");

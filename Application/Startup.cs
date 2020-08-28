@@ -1,5 +1,6 @@
-
 using System.Globalization;
+
+using Application.Infrastructure;
 
 using Localization.Configuration;
 
@@ -25,6 +26,8 @@ namespace Application
 		public void ConfigureServices(IServiceCollection services)
 		{
 			ConfigureServicesLocalization(services);
+
+			services.AddScoped<MainJavaScriptWrapper>();
 
 			services.AddRazorPages();
 			services.AddServerSideBlazor();
