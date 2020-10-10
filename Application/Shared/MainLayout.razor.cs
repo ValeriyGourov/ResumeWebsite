@@ -13,14 +13,14 @@ namespace Application.Shared
 		/// </summary>
 		[Inject] private MainJavaScriptWrapper JSWrapper { get; set; } = null!;
 
-		protected override Task OnAfterRenderAsync(bool firstRender)
+		protected override async Task OnAfterRenderAsync(bool firstRender)
 		{
 			if (firstRender)
 			{
-				JSWrapper.ShowMainContainer();
+				await JSWrapper.ShowMainContainer();
 			}
 
-			return base.OnAfterRenderAsync(firstRender);
+			await base.OnAfterRenderAsync(firstRender);
 		}
 	}
 }

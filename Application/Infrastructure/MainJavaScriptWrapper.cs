@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using Microsoft.JSInterop;
 
@@ -19,6 +20,6 @@ namespace Application.Infrastructure
 		/// <summary>
 		/// Показывает главный контейнер приложения и скрывает вращатель.
 		/// </summary>
-		public void ShowMainContainer() => _jsRuntime.InvokeVoidAsync("showMainContainer");
+		public ValueTask ShowMainContainer() => _jsRuntime.InvokeVoidAsync("showMainContainer");
 	}
 }
