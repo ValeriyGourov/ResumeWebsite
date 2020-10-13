@@ -28,8 +28,4 @@
     <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="CodeCoverage\TestResults\" />
-  </ItemGroup>
-
 </Project>
