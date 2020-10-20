@@ -1,7 +1,7 @@
 ﻿#Coverlet: https://github.com/coverlet-coverage/coverlet/blob/master/Documentation/VSTestIntegration.md
 #ReportGenerator: https://danielpalme.github.io/ReportGenerator/usage.html
 
-$CodeCoverageFolderPath = "Localization.Tests\CodeCoverage"
+$CodeCoverageFolderPath = "TestInfrastructure\CodeCoverage"
 $AnalyzeFolderPath = $CodeCoverageFolderPath + "\TestResults"
 $ReportFolderPath = $CodeCoverageFolderPath + "\CoverageReport"
 

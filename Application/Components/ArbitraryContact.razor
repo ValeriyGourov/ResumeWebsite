@@ -1,0 +1,12 @@
+﻿<Contact>
+	<h4>@Title</h4>
+	<p>@Description</p>
+</Contact>
+
+@code {
+	[Parameter]
+	public string Title { get; set; } = string.Empty;
+
+	[Parameter]
+	public string Description { get; set; } = string.Empty;
+}

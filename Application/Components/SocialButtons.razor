@@ -1,11 +1,14 @@
-﻿<CascadingValue Value="ItemClass">
+﻿@using SocialButtonModel = Application.Data.Models.SocialButton
+
+<CascadingValue Value="ItemClass">
 	<ul class="@AdditionalListClasses c-social-buttons">
-		<SocialButton Uri="@(new Uri("https://www.facebook.com/RuvenThemes/"))"
-					  FontClass="fa-facebook-f" />
-		<SocialButton Uri="@(new Uri("https://dribbble.com/"))"
-					  FontClass="fa-dribbble" />
-		<SocialButton Uri="@(new Uri("https://twitter.com/_Ruven"))"
-					  FontClass="fa-twitter" />
+
+		@foreach (SocialButtonModel button in Items)
+		{
+			<SocialButton Uri="@button.Uri"
+						  FontClass="@button.FontClass" />
+		}
+
 	</ul>
 </CascadingValue>
 
@@ -15,4 +18,7 @@
 
 	[Parameter]
 	public string ItemClass { get; set; } = string.Empty;
+
+	[Parameter]
+	public IEnumerable<SocialButtonModel> Items { get; set; } = Array.Empty<SocialButtonModel>();
 }

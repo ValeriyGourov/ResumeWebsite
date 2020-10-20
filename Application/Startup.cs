@@ -1,5 +1,6 @@
 using System.Globalization;
 
+using Application.Data;
 using Application.Infrastructure;
 
 using Localization.Configuration;
@@ -23,7 +24,7 @@ namespace Application
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
-		public void ConfigureServices(IServiceCollection services)
+		public static void ConfigureServices(IServiceCollection services)
 		{
 			ConfigureServicesLocalization(services);
 
@@ -31,10 +32,12 @@ namespace Application
 
 			services.AddRazorPages();
 			services.AddServerSideBlazor();
+
+			services.AddResumeData<Startup>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public static void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			app.UseSessionLocalization();
 
@@ -65,7 +68,7 @@ namespace Application
 		/// Настройка служб локализации.
 		/// </summary>
 		/// <param name="services">Коллекция служб приложения.</param>
-		private void ConfigureServicesLocalization(IServiceCollection services)
+		private static void ConfigureServicesLocalization(IServiceCollection services)
 		{
 			CultureInfo defaultCulture = new CultureInfo("en");
 			CultureInfo[] supportedCultures = new[]

@@ -7,6 +7,7 @@
 	{
 		public const string MethodName = "Имя метода";
 		public const string EventName = "Имя события";
+		public const string PropertyName = "Имя свойства";
 		public const string IndexerSignature = "Сигнатура индексатора";
 		public const string Constructor = "Конструктор";
 	}
