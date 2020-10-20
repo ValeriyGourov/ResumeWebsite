@@ -1,8 +1,11 @@
 ﻿@page "/"
 
+@using Application.Data.Models
+
 @inherits LocalizedComponentBase
 
 @inject IStringLocalizer<Index> Localizer
+@inject ResumeData ResumeData
 
 <div class="culture-switcher">
 	<CultureSwitcher />
@@ -42,16 +45,16 @@
 							<h1 class="c-brand__title  t-title">
 								<span class="c-brand__sizer">
 									<span class="a-header  c-brand__first-word  t-title__first-word">
-										Desmond
+										@ResumeData.Name
 									</span>
 									<span class="a-header  c-brand__second-word  t-title__second-word">
-										Rambowski
+										@ResumeData.Surname
 									</span>
 								</span>
 							</h1>
 							<h2 class="a-header  c-brand__sub-title  t-sub-title">
 								<span class="c-brand__sizer">
-									Web Developer &amp; Front-end Expert
+									@ResumeData.Title
 								</span>
 							</h2>
 						</div>
@@ -59,7 +62,8 @@
 					</div>
 
 					<SocialButtons AdditionalListClasses="c-header__social-buttons"
-								   ItemClass="a-header" />
+								   ItemClass="a-header"
+								   Items="ResumeData.SocialButtons" />
 
 				</div>
 
@@ -67,7 +71,7 @@
 
 					<hr class="a-header  c-header__contact-divider" />
 
-					<Contacts />
+					<Contacts Items="ResumeData.Contacts" />
 				</div>
 
 			</div>
@@ -77,362 +81,304 @@
 
 </ResumeSection>
 
-<!-- ################################ -->
-<!-- ############ INTRO ############# -->
-<!-- ################################ -->
-<ResumeSection>
+@if (ResumeData.Intro != null)
+{
+	<!-- ################################ -->
+	<!-- ############ INTRO ############# -->
+	<!-- ################################ -->
+	<ResumeSection>
 
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["IntroTitle"]"
-					   Description="@Localizer["IntroDescription"]" />
-	</HeaderFragment>
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["IntroTitle"]"
+						   Description="@Localizer["IntroDescription"]" />
+		</HeaderFragment>
 
-	<ContentFragment>
-		<SectionContent>
+		<ContentFragment>
+			<SectionContent>
 
-			<div class="o-content">
-				<div class="c-intro">
-					<div class="o-content__body">
-						<p>
-							Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aaliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed
-							<a href="#" target="_blank">pretium</a>, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti. Nulla vitae mauris non felis mollis faucibus.
-						</p>
-						<p>
-							Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna. Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis.
-						</p>
+				<div class="o-content">
+					<div class="c-intro">
+						<div class="o-content__body">
+							<p>
+								@ResumeData.Intro
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
 
-		</SectionContent>
-	</ContentFragment>
+			</SectionContent>
+		</ContentFragment>
 
-</ResumeSection>
+	</ResumeSection>
+}
 
-<!-- ################################ -->
-<!-- ########## EXPERTISE ########### -->
-<!-- ################################ -->
-<ResumeSection>
+@if (ResumeData.Expertise?.Any() == true)
+{
+	<!-- ################################ -->
+	<!-- ########## EXPERTISE ########### -->
+	<!-- ################################ -->
+	<ResumeSection>
 
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["ExpertiseTitle"]"
-					   Description="@Localizer["ExpertiseDescription"]" />
-	</HeaderFragment>
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["ExpertiseTitle"]"
+						   Description="@Localizer["ExpertiseDescription"]" />
+		</HeaderFragment>
 
-	<ContentFragment>
-		<SectionContent>
+		<ContentFragment>
+			<SectionContent>
 
-			<div class="o-grid">
+				<div class="o-grid">
 
-				<Expertise Number="1"
-						   Title="Advanced CSS"
-						   Description="Cras ornare tristique elit lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id." />
-				<Expertise Number="2"
-						   Title="Front-end Design"
-						   Description="Sed adipiscing ornare risus. Morbi est est, blandit sit amet, sagittis vel, euismod vel, velit. Pellentesque egestas sem. Suspendisse commodo ullamcorper magna. Ut aliquam sollicitudin leo." />
-				<Expertise Number="3"
-						   Title="Ruby on Rails"
-						   Description="Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Vivamus vestibulum nulla cras ornare tristique elit nec ante." />
-				<Expertise Number="4"
-						   Title="Object-oriented PHP"
-						   Description="Morbi in sem quis dui placerat ornare. Ut aliquam sollicitudin leo. Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu. Cras ante. Vivamus vestibulum nulla nec ante." />
-				<Expertise Number="5"
-						   Title="WordPress"
-						   Description="Phasellus ultrices nulla quis nibh. Fusce lobortis lorem. Quisque a lectus. Donec consectetuer ligula vulputate sem tristique cursus. Nam nulla quam, gravida non, sodales sit amet, nisi." />
-				<Expertise Number="6"
-						   Title="JavaScript / jQuery"
-						   Description="Cras ornare tristique elit lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id." />
-
-			</div>
-
-		</SectionContent>
-	</ContentFragment>
-
-</ResumeSection>
-
-<!-- ################################ -->
-<!-- ############ SKILLS ############ -->
-<!-- ################################ -->
-<ResumeSection>
-
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["SkillsTitle"]"
-					   Description="@Localizer["SkillsDescription"]" />
-	</HeaderFragment>
-
-	<ContentFragment>
-		<SectionContent>
-
-			<div class="o-grid">
-
-				<Skill Title="Photoshop"
-					   Percent="80" />
-				<Skill Title="Illustrator"
-					   Percent="75" />
-				<Skill Title="Git"
-					   Percent="70" />
-				<Skill Title="After Effects"
-					   Percent="65" />
-				<Skill Title="Sketch"
-					   Percent="90" />
-				<Skill Title="CSS3 Animation"
-					   Percent="50" />
-				<Skill Title="PageSpeed Insights"
-					   Percent="85" />
-				<Skill Title="SEO"
-					   Percent="95" />
-
-			</div>
-
-		</SectionContent>
-	</ContentFragment>
-
-</ResumeSection>
-
-<!-- ################################ -->
-<!-- ########## EXPERIENCE ########## -->
-<!-- ################################ -->
-<ResumeSection>
-
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["ExperienceTitle"]"
-					   Description="@Localizer["ExperienceDescription"]" />
-	</HeaderFragment>
-
-	<ContentFragment>
-		<SectionContent AdditionalClasses="u-pb-0">
-
-			<div class="a-experience-timeline  c-timeline  t-border-color">
-
-				<TimeLineItem StartYear="2015"
-							  Institution="Unicorn Incubator Inc."
-							  Position="Senior Interface Designer"
-							  Location="Portland, OR"
-							  Description="Consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aaliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis. Ut justo. Suspendisse potenti." />
-				<TimeLineItem StartYear="2013"
-							  EndYear="2015"
-							  Institution="California Design Bureau"
-							  Position="Creative Director"
-							  Location="Cupertino, CA"
-							  Description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aaliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis." />
-				<TimeLineItem StartYear="2010"
-							  EndYear="2013"
-							  Institution="Dreamland Creative"
-							  Position="Front-end Designer"
-							  Location="New York, NY"
-							  Description="Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Phasellus hendrerit. Pellentesque aaliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh." />
-
-			</div>
-
-		</SectionContent>
-	</ContentFragment>
-
-</ResumeSection>
-
-<!-- ################################ -->
-<!-- ########### EDUCATION ########## -->
-<!-- ################################ -->
-<ResumeSection>
-
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["EducationTitle"]"
-					   Description="@Localizer["EducationDescription"]" />
-	</HeaderFragment>
-
-	<ContentFragment>
-		<SectionContent AdditionalClasses="u-pt-0">
-
-			<div class="o-content">
-				<div class="a-education-timeline  c-timeline  t-border-color  o-section__full-top-space">
-					<div class="c-timeline__end  t-border-color"></div>
-
-					<TimeLineItem StartYear="2008"
-								  EndYear="2010"
-								  Institution="Webster Tech University"
-								  Position="Master of Computer Science"
-								  Location="Miami, FL"
-								  Description="Consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aaliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh." />
-					<TimeLineItem StartYear="2003"
-								  EndYear="2008"
-								  Institution="Ninsei University"
-								  Position="Bachelor of Computer Science"
-								  Location="Tokyo, Japan"
-								  Description="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aaliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero." />
-					<TimeLineItem StartYear="2000"
-								  EndYear="2003"
-								  Institution="Academy of Fine Arts"
-								  Position="Master of Arts"
-								  Location="Berlin, Germany"
-								  Description="Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Phasellus hendrerit. Pellentesque aaliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales." />
+					@{
+						int number = 0;
+					}
+					@foreach (TitleElement expertise in ResumeData.Expertise)
+					{
+						number++;
+						<Expertise Number="@number"
+								   Title="@expertise.Title"
+								   Description="@expertise?.Description" />
+					}
 
 				</div>
-			</div>
 
-		</SectionContent>
-	</ContentFragment>
+			</SectionContent>
+		</ContentFragment>
 
-</ResumeSection>
+	</ResumeSection>
+}
 
-<!-- ################################ -->
-<!-- ########### PROFILES ########### -->
-<!-- ################################ -->
-<ResumeSection>
+@if (ResumeData.Skills?.Any() == true)
+{
+	<!-- ################################ -->
+	<!-- ############ SKILLS ############ -->
+	<!-- ################################ -->
+	<ResumeSection>
 
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["ProfilesTitle"]"
-					   Description="@Localizer["ProfilesDescription"]" />
-	</HeaderFragment>
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["SkillsTitle"]"
+						   Description="@Localizer["SkillsDescription"]" />
+		</HeaderFragment>
 
-	<ContentFragment>
-		<SectionContent>
+		<ContentFragment>
+			<SectionContent>
 
-			<div class="o-grid">
+				<div class="o-grid">
 
-				<Profile Uri="@(new Uri("http://themeforest.net/user/ruventhemes/portfolio"))"
-						 FontClass="fa-envira"
-						 Title="Themeforest"
-						 Description="An overview of the themes and templates that I sell." />
-				<Profile Uri="@(new Uri("https://github.com/hatra-e/"))"
-						 FontClass="fa-github-alt"
-						 Title="GitHub"
-						 Description="All my open source projects for you analyze." />
-				<Profile Uri="@(new Uri("http://wordpress.com"))"
-						 FontClass="fa-medium"
-						 Title="Medium"
-						 Description="Yes. I'm also a blogger and here you find my writings." />
-				<Profile Uri="@(new Uri("https://dribbble.com"))"
-						 FontClass="fa-dribbble"
-						 Title="Dribbble"
-						 Description="Whenever a design is finalized, it lands right here." />
-				<Profile Uri="@(new Uri("https://www.flickr.com"))"
-						 FontClass="fa-flickr"
-						 Title="Flickr"
-						 Description="A selection of photos I shot throughout the years." />
-				<Profile Uri="@(new Uri("http://www.deviantart.com"))"
-						 FontClass="fa-deviantart"
-						 Title="DeviantArt"
-						 Description="A place for my sketches and drawings." />
+					@foreach (SkillItem skill in ResumeData.Skills)
+					{
+						<Skill Title="@skill.Title"
+							   Percent="@skill.Percent" />
+					}
 
-			</div>
+				</div>
 
-		</SectionContent>
-	</ContentFragment>
+			</SectionContent>
+		</ContentFragment>
 
-</ResumeSection>
+	</ResumeSection>
+}
 
-<!-- ################################ -->
-<!-- ############ AWARDS ############ -->
-<!-- ################################ -->
-<ResumeSection>
+@if (ResumeData.Experience?.Any() == true)
+{
+	<!-- ################################ -->
+	<!-- ########## EXPERIENCE ########## -->
+	<!-- ################################ -->
+	<ResumeSection>
 
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["AwardsTitle"]"
-					   Description="@Localizer["AwardsDescription"]" />
-	</HeaderFragment>
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["ExperienceTitle"]"
+						   Description="@Localizer["ExperienceDescription"]" />
+		</HeaderFragment>
 
-	<ContentFragment>
-		<SectionContent>
+		<ContentFragment>
+			<SectionContent AdditionalClasses="u-pb-0">
 
-			<div class="o-grid">
+				<div class="a-experience-timeline  c-timeline  t-border-color">
 
-				<Award Title="Unicorn Developer Award 2016"
-					   Description="Lorem ipsum dolor sit amet, justo eget porttitor mauris sit amet felis. Neque id cursus faucibus." />
-				<Award Title="Website of the Year Award 2015"
-					   Description="Praesent dapibus dolor sit amet, justo eget porttitor mauris sit amet. Neque id cursus faucibus." />
-				<Award Title="1st Place at CSShacker Conference"
-					   Description="Lorem ipsum dolor sit amet, justo eget porttitor mauris sit amet felis. Neque id cursus faucibus." />
+					@foreach (Data.Models.MonthYearTimeLineItem timeLineItem in ResumeData.Experience)
+					{
+						<MonthYearTimeLineItem StartDate="@timeLineItem.StartDate"
+											   EndDate="@timeLineItem.EndDate"
+											   Institution="@timeLineItem.Institution"
+											   Position="@timeLineItem.Position"
+											   Location="@timeLineItem.Location"
+											   Description="@timeLineItem.Description" />
+					}
 
-			</div>
+				</div>
 
-		</SectionContent>
-	</ContentFragment>
+			</SectionContent>
+		</ContentFragment>
 
-</ResumeSection>
+	</ResumeSection>
+}
 
-<!-- ################################ -->
-<!-- ########### PORTFOLIO ########## -->
-<!-- ################################ -->
-<ResumeSection>
+@if (ResumeData.Education?.Any() == true)
+{
+	<!-- ################################ -->
+	<!-- ########### EDUCATION ########## -->
+	<!-- ################################ -->
+	<ResumeSection>
 
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["PortfolioTitle"]"
-					   Description="@Localizer["PortfolioDescription"]" />
-	</HeaderFragment>
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["EducationTitle"]"
+						   Description="@Localizer["EducationDescription"]" />
+		</HeaderFragment>
 
-	<ContentFragment>
-		<SectionContent AdditionalClasses="o-section__full-bottom-space">
+		<ContentFragment>
+			<SectionContent AdditionalClasses="u-pt-0">
 
-			<div class="o-grid  o-grid--gallery">
+				<div class="o-content">
+					<div class="a-education-timeline  c-timeline  t-border-color  o-section__full-top-space">
+						<div class="c-timeline__end  t-border-color"></div>
 
-				<PortfolioItem Title="Musée du Louvre"
-							   Description="Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-							   FullImageUri="@(new Uri("images/portfolio/1_full.jpg", UriKind.Relative))"
-							   ThumbImageUri="@(new Uri("images/portfolio/1_thumb.jpg", UriKind.Relative))" />
-				<PortfolioItem Title="Tunnel Effect"
-							   Description="Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-							   FullImageUri="@(new Uri("images/portfolio/2_full.jpg", UriKind.Relative))"
-							   ThumbImageUri="@(new Uri("images/portfolio/2_thumb.jpg", UriKind.Relative))" />
-				<PortfolioItem Title="New York, New York"
-							   Description="Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-							   FullImageUri="@(new Uri("images/portfolio/3_full.jpg", UriKind.Relative))"
-							   ThumbImageUri="@(new Uri("images/portfolio/3_thumb.jpg", UriKind.Relative))" />
-				<PortfolioItem Title="Sky High"
-							   Description="Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-							   FullImageUri="@(new Uri("images/portfolio/4_full.jpg", UriKind.Relative))"
-							   ThumbImageUri="@(new Uri("images/portfolio/4_thumb.jpg", UriKind.Relative))" />
-				<PortfolioItem Title="The Eiffel Tower"
-							   Description="Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-							   FullImageUri="@(new Uri("images/portfolio/5_full.jpg", UriKind.Relative))"
-							   ThumbImageUri="@(new Uri("images/portfolio/5_thumb.jpg", UriKind.Relative))" />
-				<PortfolioItem Title="Reaching the Clouds"
-							   Description="Fusce lacinia arcu et nulla. Nulla vitae mauris non felis mollis faucibus. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-							   FullImageUri="@(new Uri("images/portfolio/6_full.jpg", UriKind.Relative))"
-							   ThumbImageUri="@(new Uri("images/portfolio/6_thumb.jpg", UriKind.Relative))" />
+						@foreach (Data.Models.YearTimeLineItem timeLineItem in ResumeData.Education)
+						{
+							<YearTimeLineItem StartYear="@timeLineItem.StartYear"
+											  EndYear="timeLineItem.EndYear"
+											  Institution="@timeLineItem.Institution"
+											  Position="@timeLineItem.Position"
+											  Location="@timeLineItem.Location"
+											  Description="@timeLineItem.Description" />
+						}
 
-			</div>
+					</div>
+				</div>
 
-		</SectionContent>
-	</ContentFragment>
+			</SectionContent>
+		</ContentFragment>
 
-</ResumeSection>
+	</ResumeSection>
+}
 
-<!-- ################################ -->
-<!-- ############ CLIENTS ########### -->
-<!-- ################################ -->
-<ResumeSection>
+@if (ResumeData.Profiles?.Any() == true)
+{
+	<!-- ################################ -->
+	<!-- ########### PROFILES ########### -->
+	<!-- ################################ -->
+	<ResumeSection>
 
-	<HeaderFragment>
-		<SectionHeader Title="@Localizer["ClientsTitle"]"
-					   Description="@Localizer["ClientsDescription"]" />
-	</HeaderFragment>
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["ProfilesTitle"]"
+						   Description="@Localizer["ProfilesDescription"]" />
+		</HeaderFragment>
 
-	<ContentFragment>
-		<SectionContent>
+		<ContentFragment>
+			<SectionContent>
 
-			<ul class="c-clients  o-content">
-				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/bbc.png", UriKind.Relative))"
-						Name="Test client" />
-				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/disney.png", UriKind.Relative))" />
-				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/github.png", UriKind.Relative))" />
-				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/google.png", UriKind.Relative))" />
-				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/html5.png", UriKind.Relative))" />
-				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/kickstarter.png", UriKind.Relative))" />
-				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/youtube.png", UriKind.Relative))" />
-				<Client Uri="@(new Uri("http://example.com"))"
-						Logo="@(new Uri("images/clients/vimeo.png", UriKind.Relative))" />
-			</ul>
+				<div class="o-grid">
 
-		</SectionContent>
-	</ContentFragment>
+					@foreach (ProfileItem profile in ResumeData.Profiles)
+					{
+						<Profile Uri="@profile.Uri"
+								 FontClass="@profile.FontClass"
+								 Title="@profile.Title"
+								 Description="@profile.Description" />
+					}
 
-</ResumeSection>
+				</div>
+
+			</SectionContent>
+		</ContentFragment>
+
+	</ResumeSection>
+}
+
+@if (ResumeData.Awards?.Any() == true)
+{
+	<!-- ################################ -->
+	<!-- ############ AWARDS ############ -->
+	<!-- ################################ -->
+	<ResumeSection>
+
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["AwardsTitle"]"
+						   Description="@Localizer["AwardsDescription"]" />
+		</HeaderFragment>
+
+		<ContentFragment>
+			<SectionContent>
+
+				<div class="o-grid">
+
+					@foreach (TitleElement award in ResumeData.Awards)
+					{
+						<Award Title="@award.Title"
+							   Description="@award.Description" />
+					}
+
+				</div>
+
+			</SectionContent>
+		</ContentFragment>
+
+	</ResumeSection>
+}
+
+@if (ResumeData.Portfolio?.Any() == true)
+{
+	<!-- ################################ -->
+	<!-- ########### PORTFOLIO ########## -->
+	<!-- ################################ -->
+	<ResumeSection>
+
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["PortfolioTitle"]"
+						   Description="@Localizer["PortfolioDescription"]" />
+		</HeaderFragment>
+
+		<ContentFragment>
+			<SectionContent AdditionalClasses="o-section__full-bottom-space">
+
+				<div class="o-grid  o-grid--gallery">
+
+					@foreach (Data.Models.PortfolioItem portfolioItem in ResumeData.Portfolio)
+					{
+						<PortfolioItem Title="@portfolioItem.Title"
+									   Description="@portfolioItem.Description"
+									   FullImageUri="@portfolioItem.FullImageUri"
+									   ThumbImageUri="@portfolioItem.ThumbImageUri" />
+					}
+
+				</div>
+
+			</SectionContent>
+		</ContentFragment>
+
+	</ResumeSection>
+}
+
+@if (ResumeData.Clients?.Any() == true)
+{<!-- ################################ -->
+	<!-- ############ CLIENTS ########### -->
+	<!-- ################################ -->
+	<ResumeSection>
+
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["ClientsTitle"]"
+						   Description="@Localizer["ClientsDescription"]" />
+		</HeaderFragment>
+
+		<ContentFragment>
+			<SectionContent>
+
+				<ul class="c-clients  o-content">
+
+					@foreach (ClientItem client in ResumeData.Clients)
+					{
+						<Client Uri="@client.Uri"
+								Logo="@client.Logo"
+								Name="@client.Name" />
+					}
+
+				</ul>
+
+			</SectionContent>
+		</ContentFragment>
+
+	</ResumeSection>
+}
 
 <!-- ################################ -->
 <!-- ############ FOOTER ############ -->
@@ -448,7 +394,7 @@
 		<SectionContent>
 
 			<div class="c-footer__contact">
-				<Contacts />
+				<Contacts Items="ResumeData.Contacts" />
 			</div>
 
 			<hr class="c-footer__contact-divider" />
@@ -462,10 +408,10 @@
 								<h1 class="c-brand__title  t-title">
 									<span class="c-brand__sizer  c-brand__sizer--sm">
 										<span class="a-footer  c-brand__first-word  t-title__first-word">
-											Desmond
+											@ResumeData.Name
 										</span>
 										<span class="a-footer  c-brand__second-word  t-title__second-word">
-											Rambowski
+											@ResumeData.Surname
 										</span>
 									</span>
 								</h1>
@@ -475,7 +421,8 @@
 					</div>
 
 					<SocialButtons AdditionalListClasses="c-footer__social-buttons o-content__body"
-								   ItemClass="a-footer" />
+								   ItemClass="a-footer"
+								   Items="ResumeData.SocialButtons" />
 
 				</div>
 			</div>

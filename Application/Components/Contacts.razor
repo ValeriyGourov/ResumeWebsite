@@ -1,18 +1,25 @@
-﻿<div class="o-grid">
+﻿@using Application.Data.Models
 
-	<ArbitraryContact Title="Location"
-					  Description="Portland, OR" />
+<div class="o-grid">
 
-	<HyperlinkContact Title="Phone"
-					  Description="534.456.886"
-					  Hyperlink="tel:534.456.886" />
-
-	<HyperlinkContact Title="Web"
-					  Description="ruventhemes.com"
-					  Hyperlink="https://ruventhemes.com" />
-
-	<HyperlinkContact Title="Email"
-					  Description="hello@example.com"
-					  Hyperlink="mailto:hello@example.com" />
+	@foreach (ContactItem contact in Items)
+	{
+		if (string.IsNullOrWhiteSpace(contact.Hyperlink))
+		{
+			<ArbitraryContact Title="@contact.Title"
+							  Description="@contact.Description" />
+		}
+		else
+		{
+			<HyperlinkContact Title="@contact.Title"
+							  Description="@contact.Description"
+							  Hyperlink="@contact.Hyperlink" />
+		}
+	}
 
 </div>
+
+@code {
+	[Parameter]
+	public IEnumerable<ContactItem> Items { get; set; } = Array.Empty<ContactItem>();
+}

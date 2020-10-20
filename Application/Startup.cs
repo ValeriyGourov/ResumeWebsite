@@ -1,5 +1,6 @@
 using System.Globalization;
 
+using Application.Data;
 using Application.Infrastructure;
 
 using Localization.Configuration;
@@ -31,6 +32,8 @@ namespace Application
 
 			services.AddRazorPages();
 			services.AddServerSideBlazor();
+
+			services.AddResumeData<Startup>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
