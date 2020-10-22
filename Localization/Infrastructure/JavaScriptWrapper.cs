@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using Microsoft.Extensions.Localization;
 using Microsoft.JSInterop;
@@ -27,7 +28,7 @@ namespace Localization.Infrastructure
 		/// <param name="name">Имя куки-файла.</param>
 		/// <param name="value">Значение куки-файла.</param>
 		/// <param name="expirationDays">Срок жизни куки-файла, исчисляемый в днях.</param>
-		public void CreateCookie(string name, string value, int expirationDays)
+		public ValueTask CreateCookie(string name, string value, int expirationDays)
 		{
 			if (string.IsNullOrWhiteSpace(name))
 			{
@@ -38,7 +39,7 @@ namespace Localization.Infrastructure
 				throw new ArgumentException(_localizer["Значение строки данных не может быть пустым."], nameof(value));
 			}
 
-			_jsRuntime.InvokeVoidAsync("localization.CreateCookie", name, value, expirationDays);
+			return _jsRuntime.InvokeVoidAsync("localization.CreateCookie", name, value, expirationDays);
 		}
 	}
 }
