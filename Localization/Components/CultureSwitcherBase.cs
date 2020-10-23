@@ -66,14 +66,20 @@ namespace Localization.Components
 		/// <summary>
 		/// Обработчик события изменения выбранной культуры приложения. Выполняет запись куки-файла культуры в системе пользователя для использования при следующем запуске приложения.
 		/// </summary>
-		private void CultureChanged()
+#pragma warning disable AsyncFixer01 // Unnecessary async/await usage
+#pragma warning disable AsyncFixer03 // Fire & forget async void methods
+		private async void CultureChanged()
 		{
 			string cookieName = CookieRequestCultureProvider.DefaultCookieName;
 			string cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(CultureChanger.CurrentUICulture));
 			Logger.LogInformation(Localizer["Запись куки-файла '{cookieName}' со значением '{cookieValue}'."], cookieName, cookieValue);
 
-			JSWrapper.CreateCookie(cookieName, cookieValue, _userCultureCookieExpirationDays);
+			await JSWrapper
+				.CreateCookie(cookieName, cookieValue, _userCultureCookieExpirationDays)
+				.ConfigureAwait(false);
 		}
+#pragma warning restore AsyncFixer03 // Fire & forget async void methods
+#pragma warning restore AsyncFixer01 // Unnecessary async/await usage
 
 		/// <summary>
 		/// Устанавливает новые культуры приложения.

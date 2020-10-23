@@ -344,26 +344,6 @@
 				"En": "Faculty of mechanical engineering. Specialist.",
 				"Ru": "Механико-машиностроительный факультет. Специалист."
 			}
-		},
-		{
-			"StartYear": 2005,
-			"EndYear": 2007,
-			"Institution": {
-				"En": "Krivoy Rog Technical University",
-				"Ru": "Криворожский технический университет"
-			},
-			"Position": {
-				"En": "Mining Equipment",
-				"Ru": "Горное оборудование"
-			},
-			"Location": {
-				"En": "Krivoy Rog, Ukraine",
-				"Ru": "Кривой рог, Украина"
-			},
-			"Description": {
-				"En": "Faculty of mechanical engineering. Specialist.",
-				"Ru": "Механико-машиностроительный факультет. Специалист."
-			}
 		}
 	],
 	"Profiles": [

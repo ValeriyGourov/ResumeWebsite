@@ -11,8 +11,6 @@
 <html lang="en">
 <head>
 	<base href="~/" />
-	<!-- TODO: Задать правильный заголовок. -->
-	<title>Application</title>
 
 	<meta name="description"
 		  content="">
@@ -23,26 +21,33 @@
 		  content="ie=edge">
 
 	@*https://docs.microsoft.com/ru-ru/aspnet/core/security/blazor/content-security-policy?view=aspnetcore-3.1*@
+	@* TODO: Желательно избавиться от политики 'unsafe-eval'. Пока что без неё блокируется выполнение пакета Toolbelt.Blazor.HeadElement *@
 	<meta http-equiv="Content-Security-Policy"
 		  content="
-		  base-uri 'self';
-		  block-all-mixed-content;
-		  default-src 'self';
-		  img-src data: https:;
-		  object-src 'none';
-		  script-src https://*.fontawesome.com/
-					 https://ajax.aspnetcdn.com/
-					 https://cdnjs.cloudflare.com
-					 'self'
-					 'sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=';
-		  style-src https://fonts.googleapis.com/
-					https://fonts.gstatic.com/
-					'self'
-					'unsafe-inline';
-		  font-src https://fonts.gstatic.com/
-				   data:
-				   'self';
-		  upgrade-insecure-requests;">
+		base-uri 'self';
+		block-all-mixed-content;
+		default-src 'self';
+		img-src
+			data:
+			https:;
+		object-src 'none';
+		script-src
+			https://*.fontawesome.com/
+			https://ajax.aspnetcdn.com/
+			https://cdnjs.cloudflare.com
+			'self'
+			'unsafe-eval'
+			'sha256-34WLX60Tw3aG6hylk0plKbZZFXCuepeQ6Hu7OqRf8PI=';
+		style-src
+			https://fonts.googleapis.com/
+			https://fonts.gstatic.com/
+			'self'
+			'unsafe-inline';
+		font-src
+			https://fonts.gstatic.com/
+			data:
+			'self';
+		upgrade-insecure-requests;">
 
 	<!-- Google Font: Roboto -->
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,700,700italic,900,900italic&subset=latin,latin-ext,cyrillic,cyrillic-ext'
