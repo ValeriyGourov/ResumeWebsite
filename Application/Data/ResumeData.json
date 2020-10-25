@@ -245,30 +245,11 @@
 	],
 	"Experience": [
 		{
-			"StartDate": "2012-08-01",
+			"StartDate": "2017-12-01",
+			"EndDate": "2018-12-01",
 			"Institution": {
-				"En": "Individual entrepreneur Gourov Valeriy Igorevich",
-				"Ru": "ФЛП Гуров Валерий Игоревич"
-			},
-			"Position": {
-				"En": "Owner, Developer",
-				"Ru": "Собственник, программист"
-			},
-			"Location": {
-				"En": "Ukraine",
-				"Ru": "Украина"
-			},
-			"Description": {
-				"En": "Development in C#/.NET/ASP.NET. Development and support of the accounting system on the basis of the platform \"1C:Enterprise 8\" for management accounting of the enterprise.",
-				"Ru": "Разработка на C#/.NET/ASP.NET. Разработка и сопровождение учётной системы на базе платформы \"1С:Предприятие 8\" для ведения управленческого учёта предприятия."
-			}
-		},
-		{
-			"StartDate": "2019-08-01",
-			"EndDate": "2019-11-01",
-			"Institution": {
-				"En": "Visartech",
-				"Ru": "Visartech"
+				"En": "TQM systems",
+				"Ru": "TQM systems"
 			},
 			"Position": {
 				"En": "C# developer",
@@ -279,8 +260,8 @@
 				"Ru": "Киев"
 			},
 			"Description": {
-				"En": "Server-side development of  service for processing calls to mobile phones. NDA. The system uses these technologies and services:<ul><li>ASP.NET Core, hosted in Azure App Service</li><li>SQL Server DB, hosted in Azure</li><li>Azure Key Vault to store application secrets</li><li>Twilio for the primary management of inbound phone calls and outbound calls</li><li>SignalR and Azure SignalR Service to communicate with the mobile application</li></ul>",
-				"Ru": "Разработка серверной части службы для обработки звонков на мобильные телефоны. NDA. Система использует такие технологии и службы:<ul><li>ASP.NET Core, размещено в Azure App Service</li><li>SQL Server DB, размещено в Azure</li><li>Azure Key Vault для хранения секретов приложения</li><li>Twilio для первичного управления входящими звонками и совершения исходящих звонков</li><li>SignalR и Azure SignalR Service для взаимодействия с мобильным приложением</li></ul>"
+				"En": "Participation in the development of the new functional of the integration platform, allowing to exchange data between heterogeneous third-party systems. Interaction with the platform is based on the Web API. I participated in the development of exchange modules with \"1C:Enterprise 8\" (several different configurations), “Nova Poshta”, “Prom.ua”, as well as modules for the logistics company and the main site of the system. The unification implemented by me allows you to add new entities to the module with minimal time, and the extensibility features added in certain places allow you to add or redefine the behavior of the basic functionality.",
+				"Ru": "Участие в разработке нового функционала интеграционной платформы, позволяющей обмениваться данными между разнородными сторонними системами. Взаимодействие с платформой реализовано на базе Web API. Я принимал участие в разработке модулей обмена с \"1С:Предприятие 8\" (несколько различных конфигураций), “Новой почтой”, “Prom.ua”, а также модули для логистической компании и основного сайта системы. Реализованная мной унификация позволяет добавлять в модуль новые сущности с минимальными затратами времени, а добавленные в определённых местах возможности расширения позволяют дополнить или переопределить поведение базового функционала."
 			}
 		},
 		{
@@ -304,11 +285,11 @@
 			}
 		},
 		{
-			"StartDate": "2017-12-01",
-			"EndDate": "2018-12-01",
+			"StartDate": "2019-08-01",
+			"EndDate": "2019-11-01",
 			"Institution": {
-				"En": "TQM systems",
-				"Ru": "TQM systems"
+				"En": "Visartech",
+				"Ru": "Visartech"
 			},
 			"Position": {
 				"En": "C# developer",
@@ -319,8 +300,45 @@
 				"Ru": "Киев"
 			},
 			"Description": {
-				"En": "Participation in the development of the new functional of the integration platform, allowing to exchange data between heterogeneous third-party systems. Interaction with the platform is based on the Web API. I participated in the development of exchange modules with \"1C:Enterprise 8\" (several different configurations), “Nova Poshta”, “Prom.ua”, as well as modules for the logistics company and the main site of the system. The unification implemented by me allows you to add new entities to the module with minimal time, and the extensibility features added in certain places allow you to add or redefine the behavior of the basic functionality.",
-				"Ru": "Участие в разработке нового функционала интеграционной платформы, позволяющей обмениваться данными между разнородными сторонними системами. Взаимодействие с платформой реализовано на базе Web API. Я принимал участие в разработке модулей обмена с \"1С:Предприятие 8\" (несколько различных конфигураций), “Новой почтой”, “Prom.ua”, а также модули для логистической компании и основного сайта системы. Реализованная мной унификация позволяет добавлять в модуль новые сущности с минимальными затратами времени, а добавленные в определённых местах возможности расширения позволяют дополнить или переопределить поведение базового функционала."
+				"En": "Server-side development of  service for processing calls to mobile phones. NDA. The system uses these technologies and services:<ul><li>ASP.NET Core, hosted in Azure App Service</li><li>SQL Server DB, hosted in Azure</li><li>Azure Key Vault to store application secrets</li><li>Twilio for the primary management of inbound phone calls and outbound calls</li><li>SignalR and Azure SignalR Service to communicate with the mobile application</li></ul>",
+				"Ru": "Разработка серверной части службы для обработки звонков на мобильные телефоны. NDA. Система использует такие технологии и службы:<ul><li>ASP.NET Core, размещено в Azure App Service</li><li>SQL Server DB, размещено в Azure</li><li>Azure Key Vault для хранения секретов приложения</li><li>Twilio для первичного управления входящими звонками и совершения исходящих звонков</li><li>SignalR и Azure SignalR Service для взаимодействия с мобильным приложением</li></ul>"
+			}
+		},
+		{
+			"StartDate": "2012-08-01",
+			"Institution": {
+				"En": "Individual entrepreneur Gourov Valeriy Igorevich",
+				"Ru": "ФЛП Гуров Валерий Игоревич"
+			},
+			"Position": {
+				"En": "Owner, Developer",
+				"Ru": "Собственник, программист"
+			},
+			"Location": {
+				"En": "Ukraine",
+				"Ru": "Украина"
+			},
+			"Description": {
+				"En": "Development in C#/.NET/ASP.NET. Development and support of the accounting system on the basis of the platform \"1C:Enterprise 8\" for management accounting of the enterprise.",
+				"Ru": "Разработка на C#/.NET/ASP.NET. Разработка и сопровождение учётной системы на базе платформы \"1С:Предприятие 8\" для ведения управленческого учёта предприятия."
+			}
+		},
+		{
+			"StartDate": "2020-07-20",
+			"Institution": {
+				"En": "Fozzy Group",
+				"Ru": "Fozzy Group"
+			},
+			"Position": {
+				"En": "C# developer",
+				"Ru": "Разработчик C#"
+			},
+			"Location": {
+				"En": "Kiev",
+				"Ru": "Киев"			},
+			"Description": {
+				"En": "Development and support of internal and external software.",
+				"Ru": "Разработка и поддержка внутреннего и внешнего ПО."
 			}
 		}
 	],
@@ -426,6 +444,14 @@
 			},
 			"Uri": "https://amt.company/",
 			"Logo": "images/clients/AutoMobile Technologies.png"
+		},
+		{
+			"Name": {
+				"En": "Fozzy Group",
+				"Ru": "Fozzy Group"
+			},
+			"Uri": "https://www.fozzy.ua/",
+			"Logo": "images/clients/Fozzy Group.png"
 		}
 	]
 }
