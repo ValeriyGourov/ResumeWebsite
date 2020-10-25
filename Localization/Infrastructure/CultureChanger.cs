@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading.Tasks;
 
 namespace Localization.Infrastructure
 {
@@ -21,7 +22,7 @@ namespace Localization.Infrastructure
 		/// <summary>
 		/// Оповещает об изменении культуры приложения.
 		/// </summary>
-		public event Action? CultureChanged;
+		public event Func<Task>? CultureChanged;
 
 		/// <summary>
 		/// Инициирует изменение культуры приложения.

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Threading.Tasks;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -168,7 +169,12 @@ namespace Localization.Infrastructure.Tests
 			CultureInfo uiCulture = new CultureInfo("es-MX");
 
 			bool invoked = false;
-			void CultureChanger_CultureChanged() => invoked = true;
+			Task CultureChanger_CultureChanged()
+			{
+				invoked = true;
+				return Task.CompletedTask;
+			}
+
 			cultureChanger.CultureChanged += CultureChanger_CultureChanged;
 
 			// Act.

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using Localization.Infrastructure;
 
@@ -29,7 +30,11 @@ namespace Localization.Components
 		/// <summary>
 		/// Обработчик события изменения выбранной культуры приложения. Уведомляет компонент о том, что его состояние изменилось с цель использовать ресурсы локализации для выбранной культуры.
 		/// </summary>
-		private void CultureChanged() => StateHasChanged();
+		private Task CultureChanged()
+		{
+			StateHasChanged();
+			return Task.CompletedTask;
+		}
 
 		protected virtual void Dispose(bool disposing)
 		{
