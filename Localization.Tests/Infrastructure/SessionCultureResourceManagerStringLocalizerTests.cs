@@ -266,13 +266,13 @@ namespace Localization.Infrastructure.Tests
 
 		#region Вспомогательные методы
 
-		private SessionCultureResourceManagerStringLocalizer GetLocalizer()
+		private static SessionCultureResourceManagerStringLocalizer GetLocalizer()
 		{
 			ResourceManager resourceManager = Mock.Of<ResourceManager>();
 			return GetLocalizer(resourceManager);
 		}
 
-		private SessionCultureResourceManagerStringLocalizer GetLocalizer(
+		private static SessionCultureResourceManagerStringLocalizer GetLocalizer(
 			string name,
 			CultureInfo culture,
 			string? localizedString)
@@ -282,14 +282,14 @@ namespace Localization.Infrastructure.Tests
 			return GetLocalizer(resourceManager);
 		}
 
-		private SessionCultureResourceManagerStringLocalizer GetLocalizer(
+		private static SessionCultureResourceManagerStringLocalizer GetLocalizer(
 			ResourceManager resourceManager)
 		{
 			ILogger logger = Mock.Of<ILogger>();
 			return new SessionCultureResourceManagerStringLocalizer(resourceManager, logger);
 		}
 
-		private void ChangeCulture(CultureInfo culture)
+		private static void ChangeCulture(CultureInfo culture)
 		{
 			CultureChanger cultureChanger = new CultureChanger();
 			cultureChanger.ChangeCulture(culture, culture);

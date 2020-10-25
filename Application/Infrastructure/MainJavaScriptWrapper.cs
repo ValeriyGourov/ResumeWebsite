@@ -5,6 +5,7 @@ using Microsoft.JSInterop;
 
 namespace Application.Infrastructure
 {
+#pragma warning disable CA1812 // Avoid uninstantiated internal classes.
 	/// <summary>
 	/// Обёртка для вызова функций JavaScript файла main.js.
 	/// </summary>
@@ -22,4 +23,5 @@ namespace Application.Infrastructure
 		/// </summary>
 		public ValueTask ShowMainContainer() => _jsRuntime.InvokeVoidAsync("showMainContainer");
 	}
+#pragma warning restore CA1812 // Avoid uninstantiated internal classes.
 }

@@ -23,7 +23,7 @@ namespace Localization.Infrastructure
 		/// <summary>
 		/// Диспетчер ресурсов.
 		/// </summary>
-		private ResourceManager _resourceManager;
+		private readonly ResourceManager _resourceManager;
 
 		/// <summary>
 		/// Регистратор событий.

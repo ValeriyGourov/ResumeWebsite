@@ -31,10 +31,10 @@ namespace Application.Shared
 		{
 			if (firstRender)
 			{
-				await JSWrapper.ShowMainContainer();
+				await JSWrapper.ShowMainContainer().ConfigureAwait(true);
 			}
 
-			await base.OnAfterRenderAsync(firstRender);
+			await base.OnAfterRenderAsync(firstRender).ConfigureAwait(true);
 		}
 	}
 }
