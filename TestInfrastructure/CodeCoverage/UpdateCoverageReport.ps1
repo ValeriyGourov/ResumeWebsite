@@ -5,7 +5,7 @@ $CodeCoverageFolderPath = "TestInfrastructure\CodeCoverage"
 $AnalyzeFolderPath = $CodeCoverageFolderPath + "\TestResults"
 $ReportFolderPath = $CodeCoverageFolderPath + "\CoverageReport"
 
-$ReportGeneratorVersion = "4.7.1"
+$ReportGeneratorVersion = "4.8.1"
 $ReportGeneratorPath = "$env:USERPROFILE\.nuget\packages\reportgenerator\$ReportGeneratorVersion\tools\netcoreapp3.0\ReportGenerator.dll"
 
 if (Test-Path $AnalyzeFolderPath)
@@ -20,5 +20,3 @@ if (Test-Path $ReportFolderPath)
 dotnet test --collect:"XPlat Code Coverage" --results-directory:$AnalyzeFolderPath
 
 dotnet $ReportGeneratorPath -reports:$AnalyzeFolderPath\*\coverage.cobertura.xml -targetdir:$ReportFolderPath -reporttypes:HtmlInline_AzurePipelines_Dark
-
-Start-Process -FilePath "$ReportFolderPath\index.html"
