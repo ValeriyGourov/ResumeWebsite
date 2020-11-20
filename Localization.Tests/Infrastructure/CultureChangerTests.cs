@@ -19,7 +19,9 @@ namespace Localization.Infrastructure.Tests
 			CultureChanger cultureChanger = new CultureChanger();
 
 			// Act.
+#pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
 			void act() => cultureChanger.ChangeCulture(null, CultureInfo.CurrentUICulture);
+#pragma warning restore CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
 
 			// Assert.
 			Assert.ThrowsException<ArgumentNullException>(act);
@@ -33,7 +35,9 @@ namespace Localization.Infrastructure.Tests
 			CultureChanger cultureChanger = new CultureChanger();
 
 			// Act.
+#pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
 			void act() => cultureChanger.ChangeCulture(CultureInfo.CurrentCulture, null);
+#pragma warning restore CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
 
 			// Assert.
 			Assert.ThrowsException<ArgumentNullException>(act);

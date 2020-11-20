@@ -3,12 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Resources;
-using System.Runtime.CompilerServices;
 
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-
-[assembly: InternalsVisibleTo("Localization.Tests")]
 
 namespace Localization.Infrastructure
 {
@@ -23,7 +20,7 @@ namespace Localization.Infrastructure
 		/// <summary>
 		/// Диспетчер ресурсов.
 		/// </summary>
-		private ResourceManager _resourceManager;
+		private readonly ResourceManager _resourceManager;
 
 		/// <summary>
 		/// Регистратор событий.
