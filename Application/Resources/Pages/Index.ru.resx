@@ -130,54 +130,54 @@
     <value>Компетенция</value>
   </data>
   <data name="ExpertiseDescription" xml:space="preserve">
-    <value>Бэтмен бы завидовал.</value>
+    <value>Задачи, которые я могу выполнять.</value>
   </data>
   <data name="SkillsTitle" xml:space="preserve">
     <value>Навыки</value>
   </data>
   <data name="SkillsDescription" xml:space="preserve">
-    <value>Прогресс-бары, кто-нибудь?</value>
+    <value>Личная оценка уровня моих навыков.</value>
   </data>
   <data name="AwardsTitle" xml:space="preserve">
     <value>Награды</value>
   </data>
   <data name="AwardsDescription" xml:space="preserve">
-    <value>Счастливые времена!</value>
+    <value>Профессиональные достижения.</value>
   </data>
   <data name="ClientsTitle" xml:space="preserve">
     <value>Клиенты</value>
   </data>
   <data name="ClientsDescription" xml:space="preserve">
-    <value>Счастливые люди.</value>
+    <value>Заказчики моих услуг.</value>
   </data>
   <data name="ContactTitle" xml:space="preserve">
     <value>Контакты</value>
   </data>
   <data name="ContactDescription" xml:space="preserve">
-    <value>Позвони мне, может быть.</value>
+    <value>Так со мной можно связаться.</value>
   </data>
   <data name="EducationTitle" xml:space="preserve">
     <value>Образование</value>
   </data>
   <data name="EducationDescription" xml:space="preserve">
-    <value>"Ленивый" не в моем словаре.</value>
+    <value>Оконченные учебные заведения.</value>
   </data>
   <data name="ExperienceTitle" xml:space="preserve">
     <value>Опыт работы</value>
   </data>
   <data name="ExperienceDescription" xml:space="preserve">
-    <value>Да, я был везде.</value>
+    <value>Работа с компаниями.</value>
   </data>
   <data name="PortfolioTitle" xml:space="preserve">
     <value>Портфолио</value>
   </data>
   <data name="PortfolioDescription" xml:space="preserve">
-    <value>Здесь это становится интересным.</value>
+    <value>Список моих работ.</value>
   </data>
   <data name="ProfilesTitle" xml:space="preserve">
     <value>Профили</value>
   </data>
   <data name="ProfilesDescription" xml:space="preserve">
-    <value>Занят, как обычно.</value>
+    <value>Ссылки на профессиональные ресурсы.</value>
   </data>
 </root>

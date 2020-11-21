@@ -130,52 +130,52 @@
     <value>Expertise</value>
   </data>
   <data name="ExpertiseDescription" xml:space="preserve">
-    <value>Batman would be jealous.</value>
+    <value>Tasks that I can do.</value>
   </data>
   <data name="SkillsTitle" xml:space="preserve">
     <value>Skills</value>
   </data>
   <data name="SkillsDescription" xml:space="preserve">
-    <value>Progress bars, anyone?</value>
+    <value>Personal assessment of my skill level.</value>
   </data>
   <data name="AwardsDescription" xml:space="preserve">
-    <value>Happy times!</value>
+    <value>Professional achievements.</value>
   </data>
   <data name="AwardsTitle" xml:space="preserve">
     <value>Awards</value>
   </data>
   <data name="ClientsDescription" xml:space="preserve">
-    <value>Happy people.</value>
+    <value>Customers of my services.</value>
   </data>
   <data name="ClientsTitle" xml:space="preserve">
     <value>Clients</value>
   </data>
   <data name="ContactDescription" xml:space="preserve">
-    <value>Call me, maybe.</value>
+    <value>So you can contact me.</value>
   </data>
   <data name="ContactTitle" xml:space="preserve">
     <value>Contact</value>
   </data>
   <data name="EducationDescription" xml:space="preserve">
-    <value>Lazy isn't in my vocabulary.</value>
+    <value>Graduated educational institutions.</value>
   </data>
   <data name="EducationTitle" xml:space="preserve">
     <value>Education</value>
   </data>
   <data name="ExperienceDescription" xml:space="preserve">
-    <value>Yes. I've been around.</value>
+    <value>Working with companies.</value>
   </data>
   <data name="ExperienceTitle" xml:space="preserve">
     <value>Experience</value>
   </data>
   <data name="PortfolioDescription" xml:space="preserve">
-    <value>Here it gets interesting.</value>
+    <value>List of my works.</value>
   </data>
   <data name="PortfolioTitle" xml:space="preserve">
     <value>Portfolio</value>
   </data>
   <data name="ProfilesDescription" xml:space="preserve">
-    <value>Busy as usual.</value>
+    <value>Links to professional resources.</value>
   </data>
   <data name="ProfilesTitle" xml:space="preserve">
     <value>Profiles</value>
