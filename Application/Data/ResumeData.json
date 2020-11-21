@@ -63,8 +63,8 @@
 		}
 	],
 	"Intro": {
-		"En": "I have been professionally engaged in software development since 2000. Currently, I specialize in the Microsoft technology stack and C# language. A perfectionist (but controlled), constantly learning new technologies and methodologies. I like to bring the task to its logical conclusion; I hate the dirty code in the final product.",
-		"Ru": "Профессионально занимаюсь разработкой программного обеспечения с 2000 г. На текущий момент специализируюсь на стеке технологий Microsoft и языке C#. Перфекционист (но контролируемо), перманентно изучаю новые для себя технологии и методологии. Люблю доводить задачу до логического завершения, терпеть не могу грязный код в финальном продукте."
+		"En": "I have been professionally engaged in software development since 2000. Currently, I specialize in the Microsoft technology stack and C# language. Constantly learning new technologies and methodologies. I like to bring the task to its logical conclusion. I am a supporter of clean, nice, neat and easily maintainable code.",
+		"Ru": "Профессионально занимаюсь разработкой программного обеспечения с 2000 г. На текущий момент специализируюсь на стеке технологий Microsoft и языке C#. Постоянно изучаю новые технологии и методологии. Люблю доводить задачу до логического завершения. Являюсь сторонником чистого, красивого, аккуратного и легко поддерживаемого кода."
 	},
 	"Expertise": [
 		{
