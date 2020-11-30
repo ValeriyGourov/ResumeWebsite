@@ -1,10 +1,9 @@
 ﻿using System;
 
-using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Localization.Configuration
+namespace Microsoft.AspNetCore.Builder
 {
 	public static class ApplicationBuilderExtensions
 	{

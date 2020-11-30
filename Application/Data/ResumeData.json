@@ -393,15 +393,15 @@
 	"Portfolio": [
 		{
 			"Title": {
-				"En": "Test title",
-				"Ru": "Тестовый заголовок"
+				"En": "Resume website",
+				"Ru": "Сайт-резюме"
 			},
 			"Description": {
-				"En": "Test description.",
-				"Ru": "Тестовое описание."
+				"En": "A resume site to present of information about me. Yoa are currently on this site.",
+				"Ru": "Сайт-резюме для представления информации обо мне. Вы сейчас находитесь на этом сайте."
 			},
-			"FullImageUri": "images/portfolio/1_full.jpg",
-			"ThumbImageUri": "images/portfolio/1_thumb.jpg"
+			"Uri": "https://github.com/ValeriyGourov/ResumeWebsite",
+			"ImageUri": "images/portfolio/ResumeWebsite.png"
 		}
 	],
 	"Clients": [

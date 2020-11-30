@@ -9,15 +9,15 @@ namespace Application.Data.Models
 	public sealed class PortfolioItem : TitleElement
 	{
 		/// <summary>
-		/// Адрес полноразмерной картинки.
+		/// Адрес работы.
 		/// </summary>
 		[Required]
-		public Uri FullImageUri { get; set; } = null!;
+		public Uri Uri { get; set; } = null!;
 
 		/// <summary>
 		/// Адрес картинки для предпросмотра.
 		/// </summary>
 		[Required]
-		public Uri ThumbImageUri { get; set; } = null!;
+		public Uri ImageUri { get; set; } = null!;
 	}
 }
