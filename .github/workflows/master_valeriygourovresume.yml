@@ -1,3 +1,36 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@ValeriyGourov 
+ValeriyGourov
+/
+ResumeWebsite
+1
+00
+Code
+Pull requests
+Actions
+Projects
+1
+Wiki
+Security
+Insights
+Settings
+Merge pull request #12 from ValeriyGourov/env/ПереходНаNET5
+master @ValeriyGourov  ab06a7b
+Build and deploy ASP.Net Core app to Azure Web App - valeriygourovresume
+on: push
+ 1
+ build-and-deploy
+Build and deploy ASP.Net Core app to Azure Web App - valeriygourovresume
+This run
+Workflow file
+.github/workflows/master_valeriygourovresume.yml
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
@@ -15,10 +48,10 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Set up .NET
+    - name: Set up .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.100'
+        dotnet-version: '3.1.102'
 
     - name: Build with dotnet
       run: dotnet build --configuration Release
@@ -33,3 +66,4 @@ jobs:
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_eae5998034e344898a1aa008c6868181 }}
         package: ${{env.DOTNET_ROOT}}/myapp 
+
