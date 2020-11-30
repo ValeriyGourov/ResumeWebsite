@@ -6,7 +6,6 @@
 
 @inject IStringLocalizer<Index> Localizer
 @inject ResumeData ResumeData
-
 <!-- ################################ -->
 <!-- ############ HEADER ############ -->
 <!-- ################################ -->
@@ -333,8 +332,8 @@
 					{
 						<PortfolioItem Title="@portfolioItem.Title"
 									   Description="@portfolioItem.Description"
-									   FullImageUri="@portfolioItem.FullImageUri"
-									   ThumbImageUri="@portfolioItem.ThumbImageUri" />
+									   Uri="@portfolioItem.Uri"
+									   ImageUri="@portfolioItem.ImageUri" />
 					}
 
 				</div>

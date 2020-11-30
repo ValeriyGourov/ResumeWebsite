@@ -1,10 +1,9 @@
 ﻿<div class="o-grid__col-sm-6">
-	<a class="c-image-overlay  t-image-overlay  js-lightbox"
-	   href="@FullImageUri"
-	   data-lightbox-hidpi=""
+	<a class="c-image-overlay  t-image-overlay"
+	   href="@Uri"
 	   title="@Title"
-	   data-lightbox-gallery="portfolio">
-		<img src="@ThumbImageUri"
+	   target="_blank">
+		<img src="@ImageUri"
 			 alt="@Title">
 		<div class="c-image-overlay__content">
 			<h3>
@@ -20,16 +19,16 @@
 
 @code {
 	/// <summary>
-	/// Адрес полноразмерной картинки.
+	/// Адрес работы.
 	/// </summary>
 	[Parameter]
-	public Uri FullImageUri { get; set; } = null!;
+	public Uri Uri { get; set; } = null!;
 
 	/// <summary>
-	/// Адрес картинки для предпросмотра. Размер картинки: 450 х 300 пикселей.
+	/// Адрес картинки для предпросмотра.
 	/// </summary>
 	[Parameter]
-	public Uri ThumbImageUri { get; set; } = null!;
+	public Uri ImageUri { get; set; } = null!;
 
 	/// <summary>
 	/// Заголовок работы.
