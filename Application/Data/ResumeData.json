@@ -378,18 +378,7 @@
 			"FontClass": "fab fa-github"
 		}
 	],
-	"Awards": [
-		{
-			"Title": {
-				"En": "Test title",
-				"Ru": "Тестовый заголовок"
-			},
-			"Description": {
-				"En": "Test description.",
-				"Ru": "Тестовое описание."
-			}
-		}
-	],
+	"Awards": [	],
 	"Portfolio": [
 		{
 			"Title": {
