@@ -402,6 +402,18 @@
 			},
 			"Uri": "https://github.com/ValeriyGourov/ResumeWebsite",
 			"ImageUri": "images/portfolio/ResumeWebsite.png"
+		},
+		{
+			"Title": {
+				"En": "Telegram-bot translator",
+				"Ru": "Telegram-бот переводчик"
+			},
+			"Description": {
+				"En": "An example of the simplest Telegram bot that translates a word or phrase from Russian into English.",
+				"Ru": "Пример простейшего бота для Telegram, который переводит слово или фразу с русского на английский язык."
+			},
+			"Uri": "https://github.com/ValeriyGourov/SimSmsOrgTest",
+			"ImageUri": "images/portfolio/SimSmsOrgTest.png"
 		}
 	],
 	"Clients": [
