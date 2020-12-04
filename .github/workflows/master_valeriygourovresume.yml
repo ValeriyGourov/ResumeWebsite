@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Ðàçâåðòûâàíèå âåá-ïðèëîæåíèÿ ASP.NET Core â Azure Web App - ValeriyGourovResume
+name: Развертывание веб-приложения ASP.NET в Azure Web App - ValeriyGourovResume
 
 on:
   push:
@@ -13,8 +13,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: ./myapp
   AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AzureAppService_PublishProfile_eae5998034e344898a1aa008c6868181 }}
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 3.1.x
-  #PROJECT_PATH: BlazorApp6
+  DOTNET_CORE_VERSION: 5.0.x
 
 jobs:
   build-and-deploy:
@@ -23,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
 
-    - name: Setup .NET Core SDK ${{ env.DOTNET_CORE_VERSION }}
+    - name: Setup .NET SDK ${{ env.DOTNET_CORE_VERSION }}
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
