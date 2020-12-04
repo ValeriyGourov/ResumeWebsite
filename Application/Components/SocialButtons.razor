@@ -1,4 +1,6 @@
-﻿@using SocialButtonModel = Application.Data.Models.SocialButton
+﻿@* Набор кнопок, ссылающихся на профили социальных сетей. *@
+
+@using SocialButtonModel = Application.Data.Models.SocialButton
 
 <CascadingValue Value="ItemClass">
 	<ul class="@AdditionalListClasses c-social-buttons">
@@ -13,12 +15,21 @@
 </CascadingValue>
 
 @code {
+	/// <summary>
+	/// Дополнительные классы CSS, описывающие список кнопок .
+	/// </summary>
 	[Parameter]
 	public string? AdditionalListClasses { get; set; }
 
+	/// <summary>
+	/// Класс CSS, описывающий конкретную кнопку.
+	/// </summary>
 	[Parameter]
 	public string ItemClass { get; set; } = string.Empty;
 
+	/// <summary>
+	/// Набор кнопок.
+	/// </summary>
 	[Parameter]
 	public IEnumerable<SocialButtonModel> Items { get; set; } = Array.Empty<SocialButtonModel>();
 }

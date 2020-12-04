@@ -1,12 +1,20 @@
-﻿<Contact>
+﻿@* Произвольный контакт, не имеющий связанного действия. *@
+
+<Contact>
 	<h4>@Title</h4>
 	<p>@Description</p>
 </Contact>
 
 @code {
+	/// <summary>
+	/// Название контакта.
+	/// </summary>
 	[Parameter]
 	public string Title { get; set; } = string.Empty;
 
+	/// <summary>
+	/// Детальное описание контакта.
+	/// </summary>
 	[Parameter]
 	public string Description { get; set; } = string.Empty;
 }

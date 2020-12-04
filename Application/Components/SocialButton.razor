@@ -1,4 +1,6 @@
-﻿<li class="@ItemClass">
+﻿@* Кнопка, ссылающаяся на профиль социальной сети. *@
+
+<li class="@ItemClass">
 	<a href="@Uri"
 	   target="_blank"
 	   class="c-social-button  t-social-button">
@@ -7,12 +9,21 @@
 </li>
 
 @code {
+	/// <summary>
+	/// Ссылка на профиль социальной сети.
+	/// </summary>
 	[Parameter]
 	public Uri Uri { get; set; } = null!;
 
+	/// <summary>
+	/// Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".
+	/// </summary>
 	[Parameter]
 	public string FontClass { get; set; } = null!;
 
+	/// <summary>
+	/// Класс CSS, описывающий конкретную кнопку.
+	/// </summary>
 	[CascadingParameter]
 	public string ItemClass { get; set; } = string.Empty;
 }

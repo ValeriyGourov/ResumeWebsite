@@ -1,4 +1,6 @@
-﻿<div class="o-grid__col-sm-6">
+﻿@* Элемент портфолио выполненных работ. *@
+
+<div class="o-grid__col-sm-6">
 	<a class="c-image-overlay  t-image-overlay"
 	   href="@Uri"
 	   title="@Title"
@@ -31,13 +33,13 @@
 	public Uri ImageUri { get; set; } = null!;
 
 	/// <summary>
-	/// Заголовок работы.
+	/// Название работы.
 	/// </summary>
 	[Parameter]
 	public string Title { get; set; } = null!;
 
 	/// <summary>
-	/// Описание работы.
+	/// Детальное описание работы.
 	/// </summary>
 	[Parameter]
 	public string Description { get; set; } = null!;

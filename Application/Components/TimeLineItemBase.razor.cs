@@ -3,6 +3,9 @@ using Microsoft.Extensions.Localization;
 
 namespace Application.Components
 {
+	/// <summary>
+	/// Базовый класс для событий на временной линии.
+	/// </summary>
 	public abstract partial class TimeLineItemBase
 	{
 		private string? _endPeriod;
