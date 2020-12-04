@@ -1,36 +1,55 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - valeriygourovresume
+name: Развертывание веб-приложения ASP.NET Core в Azure Web App - ValeriyGourovResume
 
 on:
   push:
     branches:
       - master
 
+env:
+  AZURE_WEBAPP_NAME: ValeriyGourovResume
+  AZURE_WEBAPP_PACKAGE_PATH: ${{env.DOTNET_ROOT}}/myapp
+  AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AzureAppService_PublishProfile_eae5998034e344898a1aa008c6868181 }}
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 3.1.x
+  #PROJECT_PATH: BlazorApp6
+
 jobs:
   build-and-deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@master
 
-    - name: Set up .NET Core
+    - name: Setup .NET Core SDK ${{ env.DOTNET_CORE_VERSION }}
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '3.1.102'
+        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
 
-    - name: Build with dotnet
-      run: dotnet build --configuration Release
+    - name: Restore packages
+      run: dotnet restore
 
-    - name: dotnet publish
-      run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+    - name: Build app
+      run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore
+
+    - name: Test app
+      run: dotnet test --no-build
+
+    - name: Publish app for deploy
+      run: dotnet publish -c ${{ env.CONFIGURATION }} --no-build -o ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
     - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v1
+      uses: azure/webapps-deploy@v2
       with:
-        app-name: 'valeriygourovresume'
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_eae5998034e344898a1aa008c6868181 }}
-        package: ${{env.DOTNET_ROOT}}/myapp 
+        publish-profile: ${{ env.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: webapp
+        path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
