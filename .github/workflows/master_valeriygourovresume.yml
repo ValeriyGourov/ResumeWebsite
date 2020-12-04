@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Развертывание веб-приложения ASP.NET Core в Azure Web App - ValeriyGourovResume
+name: ГђГ Г§ГўГҐГ°ГІГ»ГўГ Г­ГЁГҐ ГўГҐГЎ-ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї ASP.NET Core Гў Azure Web App - ValeriyGourovResume
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 env:
   AZURE_WEBAPP_NAME: ValeriyGourovResume
-  AZURE_WEBAPP_PACKAGE_PATH: ${{env.DOTNET_ROOT}}/myapp
+  AZURE_WEBAPP_PACKAGE_PATH: ./myapp
   AZURE_WEBAPP_PUBLISH_PROFILE: ${{ secrets.AzureAppService_PublishProfile_eae5998034e344898a1aa008c6868181 }}
   CONFIGURATION: Release
   DOTNET_CORE_VERSION: 3.1.x
