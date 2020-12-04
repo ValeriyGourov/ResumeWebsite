@@ -1,4 +1,6 @@
-﻿<header class="o-section__header  t-section__header">
+﻿@* Заголовок отдельной секции резюме. *@
+
+<header class="o-section__header  t-section__header">
 	<div class="o-content">
 
 		<h2 class="o-section__heading">
@@ -12,9 +14,15 @@
 </header>
 
 @code{
+	/// <summary>
+	/// Заголовок секции.
+	/// </summary>
 	[Parameter]
 	public string Title { get; set; } = null!;
 
+	/// <summary>
+	/// Дополнительное описание секции.
+	/// </summary>
 	[Parameter]
 	public string Description { get; set; } = null!;
 }

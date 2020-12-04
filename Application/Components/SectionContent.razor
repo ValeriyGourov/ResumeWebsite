@@ -1,13 +1,21 @@
-﻿<div class="o-section__content @AdditionalClasses t-section__content">
+﻿@* Содержимое отдельной секции резюме. *@
+
+<div class="o-section__content @AdditionalClasses t-section__content">
 
 	@ChildContent
 
 </div>
 
 @code {
+	/// <summary>
+	/// Содержимое секции.
+	/// </summary>
 	[Parameter]
 	public RenderFragment? ChildContent { get; set; }
 
+	/// <summary>
+	/// Дополнительные классы CSS для оформления содержимого.
+	/// </summary>
 	[Parameter]
 	public string? AdditionalClasses { get; set; }
 }

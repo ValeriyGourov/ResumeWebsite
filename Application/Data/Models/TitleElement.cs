@@ -16,7 +16,7 @@ namespace Application.Data.Models
 		public DataString Title { get; set; } = null!;
 
 		/// <summary>
-		/// Описание.
+		/// Детальное описание.
 		/// </summary>
 		[Required, ValidateComplexType]
 		public DataString Description { get; set; } = null!;

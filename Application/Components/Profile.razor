@@ -1,4 +1,6 @@
-﻿<div class="o-grid__col-xl-4  o-grid__col-sm-6">
+﻿@* Профессиональный профиль. *@
+
+<div class="o-grid__col-xl-4  o-grid__col-sm-6">
 	<div class="o-content">
 		<a href="@Uri"
 		   target="_blank"
@@ -23,15 +25,27 @@
 </div>
 
 @code {
+	/// <summary>
+	/// Ссылка на профиль.
+	/// </summary>
 	[Parameter]
 	public Uri Uri { get; set; } = null!;
 
+	/// <summary>
+	/// Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".
+	/// </summary>
 	[Parameter]
 	public string FontClass { get; set; } = null!;
 
+	/// <summary>
+	/// Название профиля.
+	/// </summary>
 	[Parameter]
 	public string Title { get; set; } = null!;
 
+	/// <summary>
+	/// детальное описание профиля.
+	/// </summary>
 	[Parameter]
 	public string Description { get; set; } = null!;
 }

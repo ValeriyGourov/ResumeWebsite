@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Components;
 
 namespace Application.Components
 {
+	/// <summary>
+	/// Событие на временной линии с периодом в виде месяца и года.
+	/// </summary>
 	public class MonthYearTimeLineItem : TimeLineItemBase
 	{
 		/// <summary>

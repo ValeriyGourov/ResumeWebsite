@@ -16,7 +16,7 @@ namespace Application.Data.Models
 		public DataString Title { get; set; } = null!;
 
 		/// <summary>
-		/// Формальное значение навыка, выраженное в процентах.
+		/// Степень владения навыком, выраженная в процентах от 0 до 100.
 		/// </summary>
 		[Range(1, 100)]
 		public byte Percent { get; set; }

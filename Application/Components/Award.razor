@@ -1,4 +1,6 @@
-﻿<div class="o-grid__col-md-4  o-grid__col-sm-6">
+﻿@* Полученная награда. *@
+
+<div class="o-grid__col-md-4  o-grid__col-sm-6">
 	<div class="o-content">
 		<hr class="c-deco-line  t-primary-color-line" />
 		<div class="o-content__body">
@@ -11,9 +13,15 @@
 </div>
 
 @code {
+	/// <summary>
+	/// Название награды.
+	/// </summary>
 	[Parameter]
 	public string Title { get; set; } = null!;
 
+	/// <summary>
+	/// Детальное описание награды.
+	/// </summary>
 	[Parameter]
 	public string Description { get; set; } = null!;
 }

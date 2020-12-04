@@ -1,4 +1,6 @@
-﻿<Contact>
+﻿@* Произвольный контакт со связанным действием в виде гиперссылки. *@
+
+<Contact>
 	<a href="@Hyperlink"
 	   target="_blank"
 	   class="t-link-container">
@@ -12,12 +14,21 @@
 </Contact>
 
 @code {
+	/// <summary>
+	/// Название контакта.
+	/// </summary>
 	[Parameter]
 	public string Title { get; set; } = string.Empty;
 
+	/// <summary>
+	/// Детальное описание контакта.
+	/// </summary>
 	[Parameter]
 	public string Description { get; set; } = string.Empty;
 
+	/// <summary>
+	/// Гиперссылка контакта. Поддерживается любой тип специализированных ссылок, таких как "mailto:", "tel:" и т.п.
+	/// </summary>
 	[Parameter]
 	public string Hyperlink { get; set; } = string.Empty;
 }

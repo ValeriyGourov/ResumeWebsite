@@ -1,4 +1,6 @@
-﻿<div class="o-grid__col-md-3  o-grid__col-sm-6">
+﻿@* Контейнер для элемента контактной информации любого типа. *@
+
+<div class="o-grid__col-md-3  o-grid__col-sm-6">
 	<div class="a-header  o-content">
 		<div class="o-content__body">
 			@ChildContent
@@ -7,6 +9,9 @@
 </div>
 
 @code {
+	/// <summary>
+	/// Дочернее содержимое, представляющее конкретную контактную информацию.
+	/// </summary>
 	[Parameter]
 	public RenderFragment ChildContent { get; set; } = null!;
 }

@@ -1,4 +1,6 @@
-﻿<section class="o-section  t-section @AdditionalClasses">
+﻿@* Контейнер для представления отдельной секции резюме. *@
+
+<section class="o-section  t-section @AdditionalClasses">
 
 	<div class="o-section__header-bg  t-section__header"></div>
 	<div class="o-section__content-bg  t-section__content"></div>
@@ -17,12 +19,21 @@
 </section>
 
 @code {
+	/// <summary>
+	/// Заголовок секции.
+	/// </summary>
 	[Parameter]
 	public RenderFragment HeaderFragment { get; set; } = null!;
 
+	/// <summary>
+	/// Содержимое секции.
+	/// </summary>
 	[Parameter]
 	public RenderFragment ContentFragment { get; set; } = null!;
 
+	/// <summary>
+	/// Дополнительные классы CSS для оформления секции.
+	/// </summary>
 	[Parameter]
 	public string? AdditionalClasses { get; set; }
 }

@@ -4,10 +4,16 @@ using Microsoft.AspNetCore.Components;
 
 namespace Application.Components
 {
+	/// <summary>
+	/// Навык, измеренный в процентах.
+	/// </summary>
 	public partial class Skill
 	{
 		private byte _percent;
 
+		/// <summary>
+		/// Степень владения навыком, выраженная в процентах от 0 до 100.
+		/// </summary>
 		[Parameter]
 		public byte Percent
 		{
@@ -22,6 +28,9 @@ namespace Application.Components
 			}
 		}
 
+		/// <summary>
+		/// Название навыка.
+		/// </summary>
 		[Parameter]
 		public string Title { get; set; } = null!;
 	}

@@ -1,4 +1,6 @@
-﻿<div class="o-grid__col-sm-6">
+﻿@* Описание отдельной компетенции. *@
+
+<div class="o-grid__col-sm-6">
 	<div class="o-media  o-media--block  o-content">
 		<div class="o-media__figure">
 			<div class="c-number  t-primary-color">
@@ -15,12 +17,21 @@
 </div>
 
 @code {
+	/// <summary>
+	/// Номер компетенции в списке.
+	/// </summary>
 	[Parameter]
 	public int Number { get; set; }
 
+	/// <summary>
+	/// Название компетенции.
+	/// </summary>
 	[Parameter]
 	public string Title { get; set; } = null!;
 
+	/// <summary>
+	/// Детальное описание компетенции.
+	/// </summary>
 	[Parameter]
 	public string Description { get; set; } = null!;
 }
