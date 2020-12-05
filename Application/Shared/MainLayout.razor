@@ -2,20 +2,18 @@
 
 @using Toolbelt.Blazor.HeadElement
 
-@*<Title>@Title</Title>*@
+<Title>@Title</Title>
 
-<div class="page">
-	<div class="c-preloader  js-preloader">
-		<div class="c-preloader__spinner  t-preloader__spinner"></div>
+<div class="c-preloader  js-preloader">
+	<div class="c-preloader__spinner  t-preloader__spinner"></div>
+</div>
+
+<div class="c-main-container  js-main-container">
+
+	<div class="culture-switcher">
+		<CultureSwitcher />
 	</div>
 
-	<div class="c-main-container  js-main-container">
+	@Body
 
-		<div class="culture-switcher">
-			<CultureSwitcher />
-		</div>
-
-		@Body
-
-	</div>
 </div>
