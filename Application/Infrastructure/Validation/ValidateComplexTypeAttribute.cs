@@ -13,7 +13,7 @@ namespace Application.Infrastructure.Validation
 		/// <inheritdoc/>
 		/// <remarks>При неуспешной проверке возвращает экземпляр класса <see cref="ComplexTypeValidationResult"/>, включающего результаты рекурсивной проверки свойств проверяемого объекта.</remarks>
 		/// <exception cref="ArgumentNullException">Не указан контекст проверки.</exception>
-		protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+		protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
 		{
 			if (value is null)
 			{

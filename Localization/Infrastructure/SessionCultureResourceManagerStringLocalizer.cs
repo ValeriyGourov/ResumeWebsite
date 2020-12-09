@@ -84,7 +84,7 @@ namespace Localization.Infrastructure
 		/// <inheritdoc/>
 		public IEnumerable<LocalizedString> GetAllStrings(bool includeParentCultures)
 		{
-			ResourceSet resources = _resourceManager.GetResourceSet(
+			using ResourceSet? resources = _resourceManager.GetResourceSet(
 				CultureChanger.CurrentUICulture,
 				true,
 				includeParentCultures);
@@ -93,7 +93,7 @@ namespace Localization.Infrastructure
 			{
 				foreach (DictionaryEntry item in resources)
 				{
-					string? name = item.Key as string;
+					string name = (item.Key as string)!;
 					string? value = item.Value as string;
 
 					yield return new LocalizedString(
@@ -107,9 +107,6 @@ namespace Localization.Infrastructure
 				yield break;
 			}
 		}
-
-		[Obsolete("Этот метод устарел и не делает ничего. Вместо этого используйте '" + nameof(CultureChanger.CurrentCulture) + "' и '" + nameof(CultureChanger.CurrentUICulture) + "' для '" + nameof(CultureChanger) + "'.")]
-		public IStringLocalizer WithCulture(CultureInfo culture) => this;
 
 		/// <summary>
 		/// Выполняет попытку безопасного получения локализованной строки.
