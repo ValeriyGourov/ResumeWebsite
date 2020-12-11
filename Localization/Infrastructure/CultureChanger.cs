@@ -30,7 +30,7 @@ namespace Localization.Infrastructure
 		/// <param name="cultureName">Предварительно определенное имя культуры.</param>
 		public void ChangeCulture(string cultureName)
 		{
-			CultureInfo culture = new CultureInfo(cultureName);
+			CultureInfo culture = new(cultureName);
 			ChangeCulture(culture, culture);
 		}
 

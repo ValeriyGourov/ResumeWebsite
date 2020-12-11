@@ -16,7 +16,7 @@ namespace Localization.Infrastructure.Tests
 		public void ThrowsArgumentNullExceptionIfCultureIsNull()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
+			CultureChanger cultureChanger = new();
 
 			// Act.
 #pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
@@ -32,7 +32,7 @@ namespace Localization.Infrastructure.Tests
 		public void ThrowsArgumentNullExceptionIfUiCultureIsNull()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
+			CultureChanger cultureChanger = new();
 
 			// Act.
 #pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
@@ -48,9 +48,9 @@ namespace Localization.Infrastructure.Tests
 		public void PropertyCurrentCultureMustBeEqualsParameterCulture()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
-			CultureInfo culture = new CultureInfo("en-US");
-			CultureInfo uiCulture = new CultureInfo("es-MX");
+			CultureChanger cultureChanger = new();
+			CultureInfo culture = new("en-US");
+			CultureInfo uiCulture = new("es-MX");
 
 			// Act.
 			cultureChanger.ChangeCulture(culture, uiCulture);
@@ -64,9 +64,9 @@ namespace Localization.Infrastructure.Tests
 		public void PropertyCurrentUICultureMustBeEqualsParameterUiCulture()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
-			CultureInfo culture = new CultureInfo("en-US");
-			CultureInfo uiCulture = new CultureInfo("es-MX");
+			CultureChanger cultureChanger = new();
+			CultureInfo culture = new("en-US");
+			CultureInfo uiCulture = new("es-MX");
 
 			// Act.
 			cultureChanger.ChangeCulture(culture, uiCulture);
@@ -80,9 +80,9 @@ namespace Localization.Infrastructure.Tests
 		public void CultureInfoCurrentCultureMustBeEqualsParameterCulture()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
-			CultureInfo culture = new CultureInfo("en-US");
-			CultureInfo uiCulture = new CultureInfo("es-MX");
+			CultureChanger cultureChanger = new();
+			CultureInfo culture = new("en-US");
+			CultureInfo uiCulture = new("es-MX");
 
 			// Act.
 			cultureChanger.ChangeCulture(culture, uiCulture);
@@ -96,9 +96,9 @@ namespace Localization.Infrastructure.Tests
 		public void CultureInfoCurrentUICultureMustBeEqualsParameterUiCulture()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
-			CultureInfo culture = new CultureInfo("en-US");
-			CultureInfo uiCulture = new CultureInfo("es-MX");
+			CultureChanger cultureChanger = new();
+			CultureInfo culture = new("en-US");
+			CultureInfo uiCulture = new("es-MX");
 
 			// Act.
 			cultureChanger.ChangeCulture(culture, uiCulture);
@@ -112,9 +112,9 @@ namespace Localization.Infrastructure.Tests
 		public void PropertiesCurrentCultureMustBeSetByStringCultureName()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
+			CultureChanger cultureChanger = new();
 			string cultureName = "es-MX";
-			CultureInfo culture = new CultureInfo(cultureName);
+			CultureInfo culture = new(cultureName);
 
 			// Act.
 			cultureChanger.ChangeCulture(cultureName);
@@ -129,8 +129,8 @@ namespace Localization.Infrastructure.Tests
 		public void PropertiesCurrentCultureMustBeSetByOneParameterCulture()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
-			CultureInfo culture = new CultureInfo("es-MX");
+			CultureChanger cultureChanger = new();
+			CultureInfo culture = new("es-MX");
 
 			// Act.
 #pragma warning disable CA1304 // Укажите CultureInfo
@@ -147,11 +147,11 @@ namespace Localization.Infrastructure.Tests
 		public void PropertiesCurrentCultureMustBeSetByStringCultureNames()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
+			CultureChanger cultureChanger = new();
 			string cultureName = "en-US";
 			string cultureUiName = "es-MX";
-			CultureInfo culture = new CultureInfo(cultureName);
-			CultureInfo uiCulture = new CultureInfo(cultureUiName);
+			CultureInfo culture = new(cultureName);
+			CultureInfo uiCulture = new(cultureUiName);
 
 			// Act.
 			cultureChanger.ChangeCulture(cultureName, cultureUiName);
@@ -167,10 +167,10 @@ namespace Localization.Infrastructure.Tests
 		public void EventMustBeInvokedWhenCultureChanged()
 		{
 			// Arrange.
-			CultureChanger cultureChanger = new CultureChanger();
+			CultureChanger cultureChanger = new();
 
-			CultureInfo culture = new CultureInfo("en-US");
-			CultureInfo uiCulture = new CultureInfo("es-MX");
+			CultureInfo culture = new("en-US");
+			CultureInfo uiCulture = new("es-MX");
 
 			bool invoked = false;
 			Task CultureChanger_CultureChanged()
