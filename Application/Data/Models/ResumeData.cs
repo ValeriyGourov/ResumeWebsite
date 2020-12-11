@@ -59,7 +59,6 @@ namespace Application.Data.Models
 		[ValidateComplexType]
 		public IEnumerable<SkillItem>? Skills { get; set; }
 
-#pragma warning disable CA2227 // Свойства коллекций должны быть доступны только для чтения
 		/// <summary>
 		/// Перечень опыта работы.
 		/// </summary>
@@ -71,7 +70,6 @@ namespace Application.Data.Models
 		/// </summary>
 		[ValidateComplexType]
 		public SortedSet<YearTimeLineItem>? Education { get; set; }
-#pragma warning restore CA2227 // Свойства коллекций должны быть доступны только для чтения
 
 		/// <summary>
 		/// Профессиональные профили.
