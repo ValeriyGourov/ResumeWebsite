@@ -230,7 +230,7 @@ namespace Application.Infrastructure.Validation.Tests
 
 		private sealed class ValidateComplexTypeAttributeTest : ValidateComplexTypeAttribute
 		{
-			public new ValidationResult IsValid(object value, ValidationContext validationContext) => base.IsValid(value, validationContext);
+			public new ValidationResult? IsValid(object value, ValidationContext validationContext) => base.IsValid(value, validationContext);
 		}
 	}
 }
