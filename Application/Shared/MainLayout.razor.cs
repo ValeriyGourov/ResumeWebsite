@@ -18,18 +18,20 @@ namespace Application.Shared
 		/// </summary>
 		[Inject] private MainJavaScriptWrapper JSWrapper { get; set; } = null!;
 
+		/// <summary>
+		/// Данные для отображения в резюме.
+		/// </summary>
 		[Inject] private ResumeData ResumeData { get; set; } = null!;
 
+		/// <summary>
+		/// Локализатор строк компонента.
+		/// </summary>
 		[Inject] private IStringLocalizer<MainLayout> Localizer { get; set; } = null!;
 
+		/// <summary>
+		/// Инструмент для изменения данных заголовка страницы.
+		/// </summary>
 		[Inject] private IHeadElementHelper HeadElementHelper { get; set; } = null!;
-
-		//private string Title =>
-		//	string.Format(
-		//		CultureInfo.CurrentCulture,
-		//		Localizer["SiteTitle"],
-		//		ResumeData.Name,
-		//		ResumeData.Surname);
 
 		protected override async Task OnAfterRenderAsync(bool firstRender)
 		{

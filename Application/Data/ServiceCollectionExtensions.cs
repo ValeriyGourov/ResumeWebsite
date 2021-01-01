@@ -37,7 +37,17 @@ namespace Application.Data
 				IgnoreNullValues = true,
 				ReadCommentHandling = JsonCommentHandling.Skip
 			};
-			ResumeData resumeData = JsonSerializer.Deserialize<ResumeData>(json, serializerOptions);
+
+			using ServiceProvider serviceProvider = services.BuildServiceProvider();
+			ILogger logger = serviceProvider.GetRequiredService<ILogger<T>>();
+
+			ResumeData? resumeData = JsonSerializer.Deserialize<ResumeData>(json, serializerOptions);
+			if (resumeData is null)
+			{
+				const string errorMessage = "Не удалось прочитать данные резюме.";
+				logger.LogCritical(errorMessage);
+				throw new ApplicationException(errorMessage);
+			}
 
 			List<ValidationResult> validationResults = new List<ValidationResult>();
 			ValidationContext validationContext = new ValidationContext(resumeData);
@@ -48,10 +58,6 @@ namespace Application.Data
 			}
 			else
 			{
-				ILogger logger = services
-					.BuildServiceProvider()
-					.GetRequiredService<ILogger<T>>();
-
 				const string errorMessage = "В файле данных указаны некорректные данные.";
 
 				StringBuilder stringBuilder = new StringBuilder(errorMessage);

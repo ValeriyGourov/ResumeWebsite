@@ -27,7 +27,7 @@ namespace Localization.Infrastructure.Tests
 			void act()
 			{
 #pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-				using SessionCultureResourceManagerStringLocalizer localizer = new SessionCultureResourceManagerStringLocalizer(resourceManager, logger);
+				using SessionCultureResourceManagerStringLocalizer localizer = new(resourceManager, logger);
 #pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
 			};
 
@@ -64,7 +64,7 @@ namespace Localization.Infrastructure.Tests
 		{
 			// Arrange.
 			const string name = "TestString";
-			CultureInfo culture = new CultureInfo("es-MX");
+			CultureInfo culture = new("es-MX");
 			const string localizedString = "Test string";
 
 			ChangeCulture(culture);
@@ -83,7 +83,7 @@ namespace Localization.Infrastructure.Tests
 		{
 			// Arrange.
 			const string name = "TestString";
-			CultureInfo culture = new CultureInfo("es-MX");
+			CultureInfo culture = new("es-MX");
 			const string? localizedString = null;
 
 			ChangeCulture(culture);
@@ -102,8 +102,8 @@ namespace Localization.Infrastructure.Tests
 		{
 			// Arrange.
 			const string name = "TestString";
-			CultureInfo existingCulture = new CultureInfo("es-MX");
-			CultureInfo nonExistentCulture = new CultureInfo("ru-RU");
+			CultureInfo existingCulture = new("es-MX");
+			CultureInfo nonExistentCulture = new("ru-RU");
 			const string localizedString = "Test string";
 
 			Mock<ResourceManager> resourceManagerMock = new Mock<ResourceManager>();
@@ -159,7 +159,7 @@ namespace Localization.Infrastructure.Tests
 		{
 			// Arrange.
 			const string name = "TestString";
-			CultureInfo culture = new CultureInfo("es-MX");
+			CultureInfo culture = new("es-MX");
 			const string localizedString = "Test string {0}";
 			const int param = 0;
 			const string expected = "Test string 0";
@@ -180,7 +180,7 @@ namespace Localization.Infrastructure.Tests
 		{
 			// Arrange.
 			const string name = "TestString {0}";
-			CultureInfo culture = new CultureInfo("es-MX");
+			CultureInfo culture = new("es-MX");
 			const string? localizedString = null;
 			const int param = 0;
 			const string expected = "TestString 0";
@@ -291,7 +291,7 @@ namespace Localization.Infrastructure.Tests
 
 		private static void ChangeCulture(CultureInfo culture)
 		{
-			CultureChanger cultureChanger = new CultureChanger();
+			CultureChanger cultureChanger = new();
 			cultureChanger.ChangeCulture(culture, culture);
 		}
 

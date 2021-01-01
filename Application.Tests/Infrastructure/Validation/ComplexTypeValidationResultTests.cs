@@ -24,7 +24,7 @@ namespace Application.Infrastructure.Validation.Tests
 			void act()
 			{
 #pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-				ComplexTypeValidationResult validationResult = new ComplexTypeValidationResult(errorMessage, validationResults);
+				ComplexTypeValidationResult validationResult = new(errorMessage, validationResults);
 #pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
 			};
 
@@ -45,7 +45,7 @@ namespace Application.Infrastructure.Validation.Tests
 			};
 
 			// Act.
-			ComplexTypeValidationResult validationResult = new ComplexTypeValidationResult(errorMessage, validationResults);
+			ComplexTypeValidationResult validationResult = new(errorMessage, validationResults);
 
 
 			// Assert.

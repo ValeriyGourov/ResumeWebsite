@@ -17,7 +17,7 @@ namespace Application.Infrastructure.Validation.Tests
 		public void ValidationReturnSuccessIfValueIsNull()
 		{
 			// Arrange.
-			Person value = new Person
+			Person value = new()
 			{
 				MainAddress = new Address
 				{
@@ -29,7 +29,7 @@ namespace Application.Infrastructure.Validation.Tests
 			};
 
 			// Act.
-			List<ValidationResult> validationResults = new List<ValidationResult>();
+			List<ValidationResult> validationResults = new();
 			bool result = TryValidateObject(value, validationResults);
 
 			// Assert.
@@ -41,9 +41,9 @@ namespace Application.Infrastructure.Validation.Tests
 		public void ValidationThrowsArgumentNullExceptionIfValidationContextIsNull()
 		{
 			// Arrange.
-			Person value = new Person();
+			Person value = new();
 			ValidationContext? validationContext = null;
-			ValidateComplexTypeAttributeTest validateComplexTypeAttribute = new ValidateComplexTypeAttributeTest();
+			ValidateComplexTypeAttributeTest validateComplexTypeAttribute = new();
 
 			// Act.
 			void act()
@@ -62,7 +62,7 @@ namespace Application.Infrastructure.Validation.Tests
 		public void CollectionValidationFaledForSomeItems()
 		{
 			// Arrange.
-			Person value = new Person
+			Person value = new()
 			{
 				Name = "Josh",
 				MainAddress = new Address
@@ -90,7 +90,7 @@ namespace Application.Infrastructure.Validation.Tests
 			const int address3ValidationResultsExpectedCount = 2;
 
 			// Act.
-			List<ValidationResult> validationResults = new List<ValidationResult>();
+			List<ValidationResult> validationResults = new();
 			bool result = TryValidateObject(value, validationResults);
 
 			ComplexTypeValidationResult? additionalAddressesLevel = validationResults[0] as ComplexTypeValidationResult;
@@ -117,7 +117,7 @@ namespace Application.Infrastructure.Validation.Tests
 		public void ObjectValidationFailedForInvalidProperties()
 		{
 			// Arrange.
-			Person value = new Person
+			Person value = new()
 			{
 				Name = "Josh",
 				MainAddress = new Address() // Здесь должно быть две ошибки проверки: Street1, City.
@@ -127,7 +127,7 @@ namespace Application.Infrastructure.Validation.Tests
 			const int mainAddressValidationResultsExpectedCount = 2;
 
 			// Act.
-			List<ValidationResult> validationResults = new List<ValidationResult>();
+			List<ValidationResult> validationResults = new();
 			bool result = TryValidateObject(value, validationResults);
 
 			ComplexTypeValidationResult? mainAddressLevel = validationResults[0] as ComplexTypeValidationResult;
@@ -148,7 +148,7 @@ namespace Application.Infrastructure.Validation.Tests
 		public void ValidationSuccessfulForValidData()
 		{
 			// Arrange.
-			Person value = new Person
+			Person value = new()
 			{
 				Name = "Josh",
 				MainAddress = new Address
@@ -180,7 +180,7 @@ namespace Application.Infrastructure.Validation.Tests
 			const int validationResultsExpectedCount = 0;
 
 			// Act.
-			List<ValidationResult> validationResults = new List<ValidationResult>();
+			List<ValidationResult> validationResults = new();
 			bool result = TryValidateObject(value, validationResults);
 
 			// Assert.
@@ -190,7 +190,7 @@ namespace Application.Infrastructure.Validation.Tests
 
 		private static bool TryValidateObject(object value, List<ValidationResult> validationResults)
 		{
-			ValidationContext validationContext = new ValidationContext(value);
+			ValidationContext validationContext = new(value);
 			return Validator.TryValidateObject(value, validationContext, validationResults, true);
 		}
 
@@ -230,7 +230,7 @@ namespace Application.Infrastructure.Validation.Tests
 
 		private sealed class ValidateComplexTypeAttributeTest : ValidateComplexTypeAttribute
 		{
-			public new ValidationResult IsValid(object value, ValidationContext validationContext) => base.IsValid(value, validationContext);
+			public new ValidationResult? IsValid(object value, ValidationContext validationContext) => base.IsValid(value, validationContext);
 		}
 	}
 }
