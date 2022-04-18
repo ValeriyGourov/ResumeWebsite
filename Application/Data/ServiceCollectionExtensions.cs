@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json;
 
 using Application.Data.Models;
 using Application.Infrastructure.Validation;
-
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace Application.Data
 {
@@ -26,10 +20,9 @@ namespace Application.Data
 		/// <summary>
 		/// Добавляет объект с данными резюме в коллекцию служб.
 		/// </summary>
-		/// <typeparam name="T">Тип стартового класса, из которого выполняется вызов метода.</typeparam>
 		/// <param name="services">Коллекция служб.</param>
 		/// <returns>Коллекция служб, которая может быть использована для дальнейшей настройки конфигурации.</returns>
-		public static IServiceCollection AddResumeData<T>(this IServiceCollection services)
+		public static IServiceCollection AddResumeData(this IServiceCollection services)
 		{
 			string json = File.ReadAllText(_resumeDataPath);
 			JsonSerializerOptions serializerOptions = new JsonSerializerOptions
@@ -38,14 +31,10 @@ namespace Application.Data
 				ReadCommentHandling = JsonCommentHandling.Skip
 			};
 
-			using ServiceProvider serviceProvider = services.BuildServiceProvider();
-			ILogger logger = serviceProvider.GetRequiredService<ILogger<T>>();
-
 			ResumeData? resumeData = JsonSerializer.Deserialize<ResumeData>(json, serializerOptions);
 			if (resumeData is null)
 			{
 				const string errorMessage = "Не удалось прочитать данные резюме.";
-				logger.LogCritical(errorMessage);
 				throw new ApplicationException(errorMessage);
 			}
 
@@ -63,9 +52,8 @@ namespace Application.Data
 				StringBuilder stringBuilder = new StringBuilder(errorMessage);
 				stringBuilder.AppendLine();
 				BuildErrorDetails(stringBuilder, validationResults);
-				logger.LogCritical(stringBuilder.ToString());
 
-				throw new ApplicationException(errorMessage);
+				throw new ApplicationException(stringBuilder.ToString());
 			}
 
 			return services;
