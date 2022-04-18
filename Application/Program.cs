@@ -17,7 +17,6 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddHeadElementHelper();
 
 builder.Services.AddResumeData();
-//builder.Services.AddResumeData<Startup>();
 
 WebApplication app = builder.Build();
 
@@ -48,7 +47,7 @@ app.Run();
 /// <param name="services">Коллекция служб.</param>
 static void ConfigureServicesLocalization(IServiceCollection services)
 {
-	CultureInfo defaultCulture = new CultureInfo("en");
+	CultureInfo defaultCulture = new("en");
 	CultureInfo[] supportedCultures = new[]
 	{
 		defaultCulture,

@@ -1,23 +1,21 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.Data.Models
+namespace Application.Data.Models;
+
+/// <summary>
+/// Модель для представления данных раздела "Портфолио".
+/// </summary>
+public sealed class PortfolioItem : TitleElement
 {
 	/// <summary>
-	/// Модель для представления данных раздела "Портфолио".
+	/// Адрес работы.
 	/// </summary>
-	public sealed class PortfolioItem : TitleElement
-	{
-		/// <summary>
-		/// Адрес работы.
-		/// </summary>
-		[Required]
-		public Uri Uri { get; set; } = null!;
+	[Required]
+	public Uri Uri { get; set; } = null!;
 
-		/// <summary>
-		/// Адрес картинки для предпросмотра.
-		/// </summary>
-		[Required]
-		public Uri ImageUri { get; set; } = null!;
-	}
+	/// <summary>
+	/// Адрес картинки для предварительного просмотра.
+	/// </summary>
+	[Required]
+	public Uri ImageUri { get; set; } = null!;
 }

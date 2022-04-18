@@ -3,43 +3,42 @@ using System.Globalization;
 
 using Localization.Infrastructure;
 
-namespace Application.Data.Models
+namespace Application.Data.Models;
+
+/// <summary>
+/// Представляет строковое значение на различных языках.
+/// </summary>
+public sealed class DataString
 {
+	private static readonly CultureInfo _ruCultureInfo = CultureInfo.GetCultureInfo("ru");
+
 	/// <summary>
-	/// Представляет строковое значение на различных языках.
+	/// Текст значения на английском языке.
 	/// </summary>
-	public sealed class DataString
+	[Required]
+	public string En { get; set; } = null!;
+
+	/// <summary>
+	/// Текст значения на русском языке.
+	/// </summary>
+	[Required]
+	public string Ru { get; set; } = null!;
+
+	/// <inheritdoc/>
+	public override string ToString()
 	{
-		private static readonly CultureInfo _ruCultureInfo = CultureInfo.GetCultureInfo("ru");
-
-		/// <summary>
-		/// Текст значения на английском языке.
-		/// </summary>
-		[Required]
-		public string En { get; set; } = null!;
-
-		/// <summary>
-		/// Текст значения на русском языке.
-		/// </summary>
-		[Required]
-		public string Ru { get; set; } = null!;
-
-		/// <inheritdoc/>
-		public override string ToString()
+		if (CultureChanger.CurrentUICulture.LCID == _ruCultureInfo.LCID)
 		{
-			if (CultureChanger.CurrentUICulture.LCID == _ruCultureInfo.LCID)
-			{
-				return Ru;
-			}
-			else
-			{
-				return En;
-			}
+			return Ru;
 		}
-
-		public static implicit operator string(DataString? dataString) =>
-			dataString is null
-				? string.Empty
-				: dataString.ToString();
+		else
+		{
+			return En;
+		}
 	}
+
+	public static implicit operator string(DataString? dataString) =>
+		dataString is null
+			? string.Empty
+			: dataString.ToString();
 }

@@ -1,55 +1,50 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using TestInfrastructure;
 
-namespace Application.Infrastructure.Validation.Tests
+namespace Application.Infrastructure.Validation.Tests;
+
+[TestClass]
+public class ComplexTypeValidationResultTests
 {
-	[TestClass]
-	public class ComplexTypeValidationResultTests
+	[TestMethod]
+	[TestProperty(TestProperties.Constructor, null)]
+	public void ThrowsArgumentNullExceptionInConstructorIfValidationResultsIsNull()
 	{
-		[TestMethod]
-		[TestProperty(TestProperties.Constructor, null)]
-		public void ThrowsArgumentNullExceptionInConstructorIfValidationResultsIsNull()
-		{
-			// Arrange.
-			string errorMessage = "Test";
-			IEnumerable<ValidationResult>? validationResults = null;
+		// Arrange.
+		const string errorMessage = "Test";
+		IEnumerable<ValidationResult>? validationResults = null;
 
-			// Act.
-			void act()
-			{
+		// Act.
+		void act()
+		{
 #pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-				ComplexTypeValidationResult validationResult = new(errorMessage, validationResults);
+			_ = new ComplexTypeValidationResult(errorMessage, validationResults);
 #pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-			};
-
-			// Assert.
-			Assert.ThrowsException<ArgumentNullException>(act);
 		}
 
-		[TestMethod]
-		[TestProperty(TestProperties.PropertyName, nameof(ComplexTypeValidationResult.ValidationResults))]
-		public void ValidationResultsMustBeFiledAfterCreation()
+		// Assert.
+		Assert.ThrowsException<ArgumentNullException>(act);
+	}
+
+	[TestMethod]
+	[TestProperty(TestProperties.PropertyName, nameof(ComplexTypeValidationResult.ValidationResults))]
+	public void ValidationResultsMustBeFiledAfterCreation()
+	{
+		// Arrange.
+		const string errorMessage = "Test";
+		IEnumerable<ValidationResult> validationResults = new List<ValidationResult>
 		{
-			// Arrange.
-			string errorMessage = "Test";
-			IEnumerable<ValidationResult> validationResults = new List<ValidationResult>
-			{
-				new ValidationResult("Test 1"),
-				new ValidationResult("Test 2")
-			};
+			new ValidationResult("Test 1"),
+			new ValidationResult("Test 2")
+		};
 
-			// Act.
-			ComplexTypeValidationResult validationResult = new(errorMessage, validationResults);
+		// Act.
+		ComplexTypeValidationResult validationResult = new(errorMessage, validationResults);
 
-
-			// Assert.
-			CollectionAssert.AreEquivalent(validationResults.ToArray(), validationResult.ValidationResults.ToArray());
-		}
+		// Assert.
+		CollectionAssert.AreEquivalent(validationResults.ToArray(), validationResult.ValidationResults.ToArray());
 	}
 }

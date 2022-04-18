@@ -2,23 +2,22 @@
 
 using Application.Infrastructure.Validation;
 
-namespace Application.Data.Models
+namespace Application.Data.Models;
+
+/// <summary>
+/// Элемент данных, содержащий название и описание.
+/// </summary>
+public class TitleElement
 {
 	/// <summary>
-	/// Элемент данных, содержащий название и описание.
+	/// Название.
 	/// </summary>
-	public class TitleElement
-	{
-		/// <summary>
-		/// Название.
-		/// </summary>
-		[Required, ValidateComplexType]
-		public DataString Title { get; set; } = null!;
+	[Required, ValidateComplexType]
+	public DataString Title { get; set; } = null!;
 
-		/// <summary>
-		/// Детальное описание.
-		/// </summary>
-		[Required, ValidateComplexType]
-		public DataString Description { get; set; } = null!;
-	}
+	/// <summary>
+	/// Детальное описание.
+	/// </summary>
+	[Required, ValidateComplexType]
+	public DataString Description { get; set; } = null!;
 }
