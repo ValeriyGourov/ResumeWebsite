@@ -1,34 +1,34 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Application.Data.Models;
 
 /// <summary>
 /// Событие на временной линии с периодом в виде месяца и года.
 /// </summary>
-public sealed class MonthYearTimeLineItem : TimeLineItemBase
+/// <param name="Institution"><inheritdoc cref="TimeLineItemBase" path="/param[@name='Institution']"/></param>
+/// <param name="Position"><inheritdoc cref="TimeLineItemBase" path="/param[@name='Position']"/></param>
+/// <param name="Location"><inheritdoc cref="TimeLineItemBase" path="/param[@name='Location']"/></param>
+/// <param name="Description"><inheritdoc cref="TimeLineItemBase" path="/param[@name='Description']"/></param>
+/// <param name="StartDate"><inheritdoc cref="StartDate" path="/summary"/></param>
+/// <param name="EndDate"><inheritdoc cref="EndDate" path="/summary"/></param>
+public sealed record MonthYearTimeLineItem(
+	DataString Institution,
+	DataString Position,
+	DataString Location,
+	DataString Description,
+	DateTimeOffset StartDate,
+	DateTimeOffset? EndDate)
+	: TimeLineItemBase(Institution, Position, Location, Description)
 {
-	private DateTimeOffset _startDate;
-	private DateTimeOffset? _endDate;
-
 	/// <summary>
 	/// Дата начала события. При присваивании значения дата преобразуется к началу месяца.
 	/// </summary>
-	[Required]
-	public DateTimeOffset StartDate
-	{
-		get => _startDate;
-		set => _startDate = MonthBeginning(value);
-	}
+	public DateTimeOffset StartDate { get; init; } = MonthBeginning(StartDate);
 
 	/// <summary>
 	/// Дата окончания события. Если не указана, то событие считается активным. При присваивании значения дата преобразуется к началу месяца.
 	/// </summary>
-	public DateTimeOffset? EndDate
-	{
-		get => _endDate;
-		set => _endDate = value.HasValue ? MonthBeginning(value.Value) : value;
-	}
+	public DateTimeOffset? EndDate { get; init; } = EndDate.HasValue ? MonthBeginning(EndDate.Value) : EndDate;
 
 	public override int CompareTo([AllowNull] TimeLineItemBase other)
 	{

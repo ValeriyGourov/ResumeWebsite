@@ -6,7 +6,7 @@ namespace Application.Infrastructure.Validation;
 /// <summary>
 /// Атрибут рекурсивной проверки сложных типов.
 /// </summary>
-[AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter, AllowMultiple = false)]
 public class ValidateComplexTypeAttribute : ValidationAttribute
 {
 	/// <inheritdoc/>

@@ -335,7 +335,8 @@
 			},
 			"Location": {
 				"En": "Kiev",
-				"Ru": "Киев"			},
+				"Ru": "Киев"
+			},
 			"Description": {
 				"En": "Development and support of internal and external software.",
 				"Ru": "Разработка и поддержка внутреннего и внешнего ПО."
@@ -378,7 +379,7 @@
 			"FontClass": "fab fa-github"
 		}
 	],
-	"Awards": [	],
+	"Awards": [],
 	"Portfolio": [
 		{
 			"Title": {

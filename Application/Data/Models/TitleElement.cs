@@ -7,17 +7,8 @@ namespace Application.Data.Models;
 /// <summary>
 /// Элемент данных, содержащий название и описание.
 /// </summary>
-public class TitleElement
-{
-	/// <summary>
-	/// Название.
-	/// </summary>
-	[Required, ValidateComplexType]
-	public DataString Title { get; set; } = null!;
-
-	/// <summary>
-	/// Детальное описание.
-	/// </summary>
-	[Required, ValidateComplexType]
-	public DataString Description { get; set; } = null!;
-}
+/// <param name="Title">Название.</param>
+/// <param name="Description">Детальное описание.</param>
+public record TitleElement(
+	[property: Required, ValidateComplexType] DataString Title,
+	[property: Required, ValidateComplexType] DataString Description);
