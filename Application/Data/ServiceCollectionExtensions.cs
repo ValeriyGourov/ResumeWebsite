@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 using Application.Data.Models;
 using Application.Infrastructure.Validation;
 
-using Microsoft.Toolkit.Diagnostics;
+using CommunityToolkit.Diagnostics;
 
 namespace Application.Data;
 
@@ -48,14 +48,14 @@ public static class ServiceCollectionExtensions
 
 		if (Validator.TryValidateObject(resumeData, validationContext, validationResults, true))
 		{
-			services.AddSingleton(resumeData);
+			_ = services.AddSingleton(resumeData);
 		}
 		else
 		{
 			const string errorMessage = "В файле данных указаны некорректные данные.";
 
 			StringBuilder stringBuilder = new(errorMessage);
-			stringBuilder.AppendLine();
+			_ = stringBuilder.AppendLine();
 			BuildErrorDetails(stringBuilder, validationResults);
 
 			throw new ApplicationException(stringBuilder.ToString());
@@ -77,7 +77,7 @@ public static class ServiceCollectionExtensions
 	{
 		foreach (ValidationResult? error in validationResults)
 		{
-			stringBuilder
+			_ = stringBuilder
 				.Append('\t', indentLevel)
 				.AppendLine(error.ErrorMessage);
 
