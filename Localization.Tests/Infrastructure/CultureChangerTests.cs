@@ -131,9 +131,7 @@ public class CultureChangerTests
 		CultureInfo culture = new("es-MX");
 
 		// Act.
-#pragma warning disable CA1304 // Укажите CultureInfo
 		cultureChanger.ChangeCulture(culture);
-#pragma warning restore CA1304 // Укажите CultureInfo
 
 		// Assert.
 		Assert.AreEqual(culture, CultureChanger.CurrentCulture);

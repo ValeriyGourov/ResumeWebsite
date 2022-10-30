@@ -1,11 +1,11 @@
 ﻿using System.Globalization;
 
 using Localization.Infrastructure;
+using Localization.Infrastructure.JavaScriptModules;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Localization;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
@@ -14,14 +14,12 @@ namespace Localization.Components;
 /// <summary>
 /// Базовый класс компонента для переключения культуры приложения.
 /// </summary>
-public abstract class CultureSwitcherBase : ComponentBase, IDisposable
+public abstract class CultureSwitcherBase : ComponentBase, IAsyncDisposable
 {
 	/// <summary>
 	/// Срок хранения куки-файла с культурой, исчисляемый в днях.
 	/// </summary>
 	private const int _userCultureCookieExpirationDays = 180;
-
-	private bool _disposedValue;
 
 	/// <summary>
 	/// Преобразователь культуры, предоставляющий сведения о используемой культуре приложения.
@@ -34,17 +32,12 @@ public abstract class CultureSwitcherBase : ComponentBase, IDisposable
 	[Inject] protected IOptions<RequestLocalizationOptions> RequestLocalizationOptions { get; set; } = null!;
 
 	/// <summary>
-	/// Обёртка для вызова функций JavaScript.
+	/// Модуль-обёртка для вызова функций JavaScript.
 	/// </summary>
-	[Inject] private JavaScriptWrapper JSWrapper { get; set; } = null!;
+	[Inject] private LocalizationJavaScriptModule JSModule { get; set; } = null!;
 
 	/// <summary>
-	/// Локализатор строк.
-	/// </summary>
-	[Inject] private IStringLocalizer<CultureSwitcherBase> Localizer { get; set; } = null!;
-
-	/// <summary>
-	/// Регистратор событий.
+	/// Средство ведения журнала.
 	/// </summary>
 	[Inject] protected ILogger<CultureSwitcherBase> Logger { get; set; } = null!;
 
@@ -64,18 +57,18 @@ public abstract class CultureSwitcherBase : ComponentBase, IDisposable
 	/// <summary>
 	/// Обработчик события изменения выбранной культуры приложения. Выполняет запись куки-файла культуры в системе пользователя для использования при следующем запуске приложения.
 	/// </summary>
-	private Task CultureChanged()
+	private async Task CultureChanged()
 	{
 		string cookieName = CookieRequestCultureProvider.DefaultCookieName;
 		string cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(CultureChanger.CurrentUICulture));
-		Logger.LogInformation(Localizer["Запись куки-файла '{cookieName}' со значением '{cookieValue}'."], cookieName, cookieValue);
 
-		return InvokeAsync(async () =>
-		{
-			await JSWrapper
-				.CreateCookie(cookieName, cookieValue, _userCultureCookieExpirationDays)
-				.ConfigureAwait(true);
-		});
+		Logger.LogInformation(
+			"Запись куки-файла '{CookieName}' со значением '{CookieValue}'.",
+			cookieName,
+			cookieValue);
+		await JSModule
+			.CreateCookie(cookieName, cookieValue, _userCultureCookieExpirationDays)
+			.ConfigureAwait(true);
 	}
 
 	/// <summary>
@@ -91,28 +84,26 @@ public abstract class CultureSwitcherBase : ComponentBase, IDisposable
 	/// <param name="culture">Объект, представляющий язык и региональные параметры, используемые текущим приложением. Это же значение используется для пользовательского интерфейса.</param>
 	protected virtual void ChangeCulture(CultureInfo culture) => CultureChanger.ChangeCulture(culture, culture);
 
-	protected virtual void Dispose(bool disposing)
+	public async ValueTask DisposeAsync()
 	{
-		if (!_disposedValue)
-		{
-			if (disposing)
-			{
-				// Здесь необходимо освободить управляемое состояние (управляемые объекты).
-
-				CultureChanger.CultureChanged -= CultureChanged;
-			}
-
-			// Здесь необходимо освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить метод завершения.
-			// Здесь необходимо установить значение NULL для больших полей.
-			_disposedValue = true;
-		}
+		await DisposeAsyncCore().ConfigureAwait(false);
+		GC.SuppressFinalize(this);
 	}
 
-	/// <inheritdoc/>
-	public void Dispose()
+	/// <summary>
+	/// Асинхронно выполняет освобождение ресурсов.
+	/// </summary>
+	protected virtual async ValueTask DisposeAsyncCore()
 	{
-		// Не изменяйте этот код. Разместите код очистки в методе "Dispose(bool disposing)".
-		Dispose(disposing: true);
-		GC.SuppressFinalize(this);
+		CultureChanger.CultureChanged -= CultureChanged;
+
+		if (JSModule is not null)
+		{
+			await JSModule
+				.DisposeAsync()
+				.ConfigureAwait(false);
+		}
+
+		JSModule = null!;
 	}
 }

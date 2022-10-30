@@ -29,7 +29,7 @@ public abstract class LocalizedComponentBase : ComponentBase, IDisposable
 	/// </summary>
 	private Task CultureChanged()
 	{
-		StateHasChanged();
+		InvokeAsync(() => StateHasChanged());
 		return Task.CompletedTask;
 	}
 

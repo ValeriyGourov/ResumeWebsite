@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 
 using Localization.Infrastructure;
+using Localization.Infrastructure.JavaScriptModules;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Localization;
@@ -24,10 +25,7 @@ public static class ServiceCollectionExtensions
 		CultureInfo defaultCulture,
 		string? resourcesPath = null)
 	{
-		if (services is null)
-		{
-			throw new ArgumentNullException(nameof(services));
-		}
+		ArgumentNullException.ThrowIfNull(services);
 
 		services.AddLocalization(options =>
 		{
@@ -45,7 +43,7 @@ public static class ServiceCollectionExtensions
 		});
 
 		services
-			.AddScoped<JavaScriptWrapper>()
+			.AddScoped<LocalizationJavaScriptModule>()
 			.AddSingleton<CultureChanger>()
 			.AddSingleton<IStringLocalizerFactory, SessionCultureResourceManagerStringLocalizerFactory>();
 
