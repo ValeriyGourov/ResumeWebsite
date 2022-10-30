@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
 
 using Application.Data.Models;
-using Application.Infrastructure;
+using Application.Infrastructure.JavaScriptModules.Shared;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
@@ -10,12 +10,12 @@ using Toolbelt.Blazor.HeadElement;
 
 namespace Application.Shared;
 
-public partial class MainLayout
+/// <summary>
+/// Основная разметка страниц приложения.
+/// </summary>
+public partial class MainLayout : IAsyncDisposable
 {
-	/// <summary>
-	/// Обёртка для вызова функций JavaScript.
-	/// </summary>
-	[Inject] private MainJavaScriptWrapper JSWrapper { get; set; } = null!;
+	[Inject] private MainLayoutJavaScriptModule JSModule { get; set; } = null!;
 
 	/// <summary>
 	/// Данные для отображения в резюме.
@@ -36,7 +36,7 @@ public partial class MainLayout
 	{
 		if (firstRender)
 		{
-			await JSWrapper.ShowMainContainer().ConfigureAwait(true);
+			await JSModule.ShowMainContainer().ConfigureAwait(true);
 		}
 
 		string? titleTemplate = Localizer["SiteTitle"];
@@ -51,5 +51,22 @@ public partial class MainLayout
 		}
 
 		await base.OnAfterRenderAsync(firstRender).ConfigureAwait(true);
+	}
+
+	public async ValueTask DisposeAsync()
+	{
+		await DisposeAsyncCore().ConfigureAwait(false);
+		GC.SuppressFinalize(this);
+	}
+
+	protected virtual async ValueTask DisposeAsyncCore()
+	{
+		if (JSModule is not null)
+		{
+			await JSModule
+				.DisposeAsync()
+				.ConfigureAwait(false);
+		}
+		JSModule = null!;
 	}
 }

@@ -1,7 +1,7 @@
 using System.Globalization;
 
 using Application.Data;
-using Application.Infrastructure;
+using Application.Infrastructure.JavaScriptModules.Shared;
 
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
@@ -9,7 +9,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 ConfigureServicesLocalization(builder.Services);
 
-builder.Services.AddScoped<MainJavaScriptWrapper>();
+builder.Services.AddScoped<MainLayoutJavaScriptModule>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -41,10 +41,6 @@ app.MapFallbackToPage("/_Host");
 
 app.Run();
 
-/// <summary>
-/// Настройка служб локализации.
-/// </summary>
-/// <param name="services">Коллекция служб.</param>
 static void ConfigureServicesLocalization(IServiceCollection services)
 {
 	CultureInfo defaultCulture = new("en");
