@@ -1,18 +1,22 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<Nullable>enable</Nullable>
-		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="6.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.*" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="6.*" />
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.*" />
+		<PackageReference Include="System.Globalization" Version="4.*" />
+	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="5.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.1" />
-		<PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Localization" Version="5.0.1" />
-		<PackageReference Include="System.Globalization" Version="4.3.0" />
+	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,20 +1,53 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using System.Globalization;
 
-namespace Application
+using Application.Data;
+using Application.Infrastructure.JavaScriptModules.Shared;
+
+using Toolbelt.Blazor.Extensions.DependencyInjection;
+
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+ConfigureServicesLocalization(builder.Services);
+
+builder.Services.AddScoped<MainLayoutJavaScriptModule>();
+
+// Add services to the container.
+builder.Services.AddRazorPages();
+builder.Services.AddServerSideBlazor();
+builder.Services.AddHeadElementHelper();
+
+builder.Services.AddResumeData();
+
+WebApplication app = builder.Build();
+
+app.UseSessionLocalization();
+
+// Configure the HTTP request pipeline.
+if (!app.Environment.IsDevelopment())
 {
-	public static class Program
-	{
-		public static void Main(string[] args)
-		{
-			CreateHostBuilder(args).Build().Run();
-		}
+	app.UseExceptionHandler("/Error");
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
+}
 
-		public static IHostBuilder CreateHostBuilder(string[] args) =>
-			Host.CreateDefaultBuilder(args)
-				.ConfigureWebHostDefaults(webBuilder =>
-				{
-					webBuilder.UseStartup<Startup>();
-				});
-	}
+app.UseHttpsRedirection();
+
+app.UseStaticFiles();
+
+app.UseRouting();
+
+app.MapBlazorHub();
+app.MapFallbackToPage("/_Host");
+
+app.Run();
+
+static void ConfigureServicesLocalization(IServiceCollection services)
+{
+	CultureInfo defaultCulture = new("en");
+	CultureInfo[] supportedCultures = new[]
+	{
+		defaultCulture,
+		new CultureInfo("ru")
+	};
+	services.AddSessionLocalization(supportedCultures, defaultCulture, "Resources");
 }

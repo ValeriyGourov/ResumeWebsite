@@ -56,10 +56,10 @@
 				"Ru": "Электронная почта"
 			},
 			"Description": {
-				"En": "ValeriyGourov@live.ru",
-				"Ru": "ValeriyGourov@live.ru"
+				"En": "Valeriy.Gourov@outlook.com",
+				"Ru": "Valeriy.Gourov@outlook.com"
 			},
-			"Hyperlink": "mailto:ValeriyGourov@live.ru"
+			"Hyperlink": "mailto:Valeriy.Gourov@outlook.com"
 		}
 	],
 	"Intro": {
@@ -114,49 +114,49 @@
 				"En": "C#",
 				"Ru": "C#"
 			},
-			"Percent": 80
+			"Percent": 85
 		},
 		{
 			"Title": {
 				"En": ".NET (Core)",
 				"Ru": ".NET (Core)"
 			},
-			"Percent": 80
+			"Percent": 85
 		},
 		{
 			"Title": {
 				"En": "Entity Framework (Core)",
 				"Ru": "Entity Framework (Core)"
 			},
-			"Percent": 80
+			"Percent": 85
 		},
 		{
 			"Title": {
 				"En": "ASP.NET (Core)",
 				"Ru": "ASP.NET (Core)"
 			},
-			"Percent": 75
+			"Percent": 85
 		},
 		{
 			"Title": {
 				"En": "Web API",
 				"Ru": "Web API"
 			},
-			"Percent": 75
+			"Percent": 85
 		},
 		{
 			"Title": {
 				"En": "Microsoft SQL Server",
 				"Ru": "Microsoft SQL Server"
 			},
-			"Percent": 50
+			"Percent": 60
 		},
 		{
 			"Title": {
 				"En": "LINQ",
 				"Ru": "LINQ"
 			},
-			"Percent": 80
+			"Percent": 85
 		},
 		{
 			"Title": {
@@ -205,7 +205,7 @@
 				"En": "RabbitMQ",
 				"Ru": "RabbitMQ"
 			},
-			"Percent": 30
+			"Percent": 35
 		},
 		{
 			"Title": {
@@ -240,7 +240,14 @@
 				"En": "gRPC",
 				"Ru": "gRPC"
 			},
-			"Percent": 25
+			"Percent": 50
+		},
+		{
+			"Title": {
+				"En": "Microservices",
+				"Ru": "Микрослужбы"
+			},
+			"Percent": 70
 		}
 	],
 	"Experience": [
@@ -335,7 +342,8 @@
 			},
 			"Location": {
 				"En": "Kiev",
-				"Ru": "Киев"			},
+				"Ru": "Киев"
+			},
 			"Description": {
 				"En": "Development and support of internal and external software.",
 				"Ru": "Разработка и поддержка внутреннего и внешнего ПО."
@@ -378,7 +386,7 @@
 			"FontClass": "fab fa-github"
 		}
 	],
-	"Awards": [	],
+	"Awards": [],
 	"Portfolio": [
 		{
 			"Title": {

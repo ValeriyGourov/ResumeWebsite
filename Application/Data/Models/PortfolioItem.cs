@@ -1,23 +1,17 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.Data.Models
-{
-	/// <summary>
-	/// Модель для представления данных раздела "Портфолио".
-	/// </summary>
-	public sealed class PortfolioItem : TitleElement
-	{
-		/// <summary>
-		/// Адрес работы.
-		/// </summary>
-		[Required]
-		public Uri Uri { get; set; } = null!;
+namespace Application.Data.Models;
 
-		/// <summary>
-		/// Адрес картинки для предпросмотра.
-		/// </summary>
-		[Required]
-		public Uri ImageUri { get; set; } = null!;
-	}
-}
+/// <summary>
+/// Модель для представления данных раздела "Портфолио".
+/// </summary>
+/// <param name="Title"><inheritdoc cref="TitleElement" path="/param[@name='Title']"/></param>
+/// <param name="Description"><inheritdoc cref="TitleElement" path="/param[@name='Description']"/></param>
+/// <param name="Uri">Адрес работы.</param>
+/// <param name="ImageUri">Адрес картинки для предварительного просмотра.</param>
+public sealed record PortfolioItem(
+	DataString Title,
+	DataString Description,
+	[property: Required] Uri Uri,
+	[property: Required] Uri ImageUri)
+	: TitleElement(Title, Description);

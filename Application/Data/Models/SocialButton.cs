@@ -1,23 +1,12 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace Application.Data.Models
-{
-	/// <summary>
-	/// Описание кнопки, ссылающейся на профиль социальной сети.
-	/// </summary>
-	public sealed class SocialButton
-	{
-		/// <summary>
-		/// Ссылка на профиль социальной сети.
-		/// </summary>
-		[Required]
-		public Uri Uri { get; set; } = null!;
+namespace Application.Data.Models;
 
-		/// <summary>
-		/// Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".
-		/// </summary>
-		[Required]
-		public string FontClass { get; set; } = null!;
-	}
-}
+/// <summary>
+/// Описание кнопки, ссылающейся на профиль социальной сети.
+/// </summary>
+/// <param name="Uri">Ссылка на профиль социальной сети.</param>
+/// <param name="FontClass">Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".</param>
+public sealed record SocialButton(
+	[property: Required] Uri Uri,
+	[property: Required] string FontClass);

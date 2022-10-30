@@ -5,8 +5,8 @@ $CodeCoverageFolderPath = "TestInfrastructure\CodeCoverage"
 $AnalyzeFolderPath = $CodeCoverageFolderPath + "\TestResults"
 $ReportFolderPath = $CodeCoverageFolderPath + "\CoverageReport"
 
-$ReportGeneratorVersion = "4.8.1"
-$ReportGeneratorPath = "$env:USERPROFILE\.nuget\packages\reportgenerator\$ReportGeneratorVersion\tools\netcoreapp3.0\ReportGenerator.dll"
+$ReportGeneratorVersion = "5.1.4"
+$ReportGeneratorPath = "$env:USERPROFILE\.nuget\packages\reportgenerator\$ReportGeneratorVersion\tools\net6.0\ReportGenerator.dll"
 
 if (Test-Path $AnalyzeFolderPath)
 {
