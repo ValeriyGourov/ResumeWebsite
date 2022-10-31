@@ -31,7 +31,7 @@ jobs:
       with:
         push: true
         tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_5ceac5b08a7242579530c2b40fcc28e0 }}/valeriygourov/resume-website:${{ github.sha }}
-        file: ./Dockerfile
+        file: ./Application/Dockerfile
 
   deploy:
     runs-on: ubuntu-latest
