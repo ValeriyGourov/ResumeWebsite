@@ -1,27 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-	  <TargetFramework>net6.0</TargetFramework>
-	  <Nullable>enable</Nullable>
-	  <ImplicitUsings>enable</ImplicitUsings>
-	  <NeutralLanguage>en</NeutralLanguage>
-	  <VersionPrefix>1.2.0</VersionPrefix>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<NeutralLanguage>en</NeutralLanguage>
+		<VersionPrefix>1.2.0</VersionPrefix>
+		<UserSecretsId>6191e2ef-fc22-47bb-961b-bde409245f17</UserSecretsId>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
 
-  <ItemGroup>
-	<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.*" />
-	<PackageReference Include="Toolbelt.Blazor.HeadElement" Version="7.*" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.*" />
+		<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+		<PackageReference Include="Toolbelt.Blazor.HeadElement" Version="7.*" />
+	</ItemGroup>
 
-  <ItemGroup>
-	<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-	<ProjectReference Include="..\Localization\Localization.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+		<ProjectReference Include="..\Localization\Localization.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-	<EmbeddedResource Update="Resources\Pages\Index.resx">
-	  <Generator></Generator>
-	</EmbeddedResource>
-  </ItemGroup>
+	<ItemGroup>
+		<EmbeddedResource Update="Resources\Pages\Index.resx">
+			<Generator></Generator>
+		</EmbeddedResource>
+	</ItemGroup>
 
 </Project>
