@@ -67,6 +67,7 @@ public partial class MainLayout : IAsyncDisposable
 				.DisposeAsync()
 				.ConfigureAwait(false);
 		}
+
 		JSModule = null!;
 	}
 }

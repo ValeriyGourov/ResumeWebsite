@@ -48,7 +48,7 @@ public class CultureChanger
 	/// <summary>
 	/// Инициирует изменение культуры приложения.
 	/// </summary>
-	/// <param name="culture">Получает или задает объект, который представляет язык и региональные параметры, используемые приложением.</param>
+	/// <param name="culture">Получает или задаёт объект, который представляет язык и региональные параметры, используемые приложением.</param>
 	/// <param name="uiCulture">Язык и региональные параметры, используемые диспетчером ресурсов для поиска ресурсов, связанных с языком и региональными параметрами, во время выполнения.</param>
 	public void ChangeCulture(CultureInfo culture, CultureInfo uiCulture)
 	{
@@ -56,6 +56,7 @@ public class CultureChanger
 		{
 			throw new ArgumentNullException(nameof(culture));
 		}
+
 		if (uiCulture is null)
 		{
 			throw new ArgumentNullException(nameof(uiCulture));

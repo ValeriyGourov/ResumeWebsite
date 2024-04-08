@@ -18,8 +18,8 @@ public sealed record DataString(
 
 	public override string ToString() => CultureChanger.CurrentUICulture.LCID == _ruCultureInfo.LCID ? Ru : En;
 
-	public static implicit operator string(DataString? dataString) =>
-		dataString is null
+	public static implicit operator string(DataString? dataString)
+		=> dataString is null
 			? string.Empty
 			: dataString.ToString();
 }
