@@ -22,6 +22,7 @@ public partial class Skill
 			{
 				throw new ArgumentOutOfRangeException(nameof(value), value, "Значение процентов должно быть в диапазоне от 0 до 100.");
 			}
+
 			_percent = value;
 		}
 	}
