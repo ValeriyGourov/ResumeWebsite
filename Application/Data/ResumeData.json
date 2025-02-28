@@ -118,22 +118,22 @@
 		},
 		{
 			"Title": {
-				"En": ".NET (Core)",
-				"Ru": ".NET (Core)"
+				"En": ".NET",
+				"Ru": ".NET"
 			},
 			"Percent": 85
 		},
 		{
 			"Title": {
-				"En": "Entity Framework (Core)",
-				"Ru": "Entity Framework (Core)"
+				"En": "Entity Framework Core",
+				"Ru": "Entity Framework Core"
 			},
 			"Percent": 85
 		},
 		{
 			"Title": {
-				"En": "ASP.NET (Core)",
-				"Ru": "ASP.NET (Core)"
+				"En": "ASP.NET Core",
+				"Ru": "ASP.NET Core"
 			},
 			"Percent": 85
 		},
@@ -164,6 +164,13 @@
 				"Ru": "Azure"
 			},
 			"Percent": 40
+		},
+		{
+			"Title": {
+				"En": "AWS",
+				"Ru": "AWS"
+			},
+			"Percent": 30
 		},
 		{
 			"Title": {
@@ -230,6 +237,13 @@
 		},
 		{
 			"Title": {
+				"En": "PostgreSQL",
+				"Ru": "PostgreSQL"
+			},
+			"Percent": 30
+		},
+		{
+			"Title": {
 				"En": "HTML / CSS",
 				"Ru": "HTML / CSS"
 			},
@@ -263,8 +277,8 @@
 				"Ru": "Разработчик C#"
 			},
 			"Location": {
-				"En": "Kiev",
-				"Ru": "Киев"
+				"En": "Ukraine",
+				"Ru": "Украина"
 			},
 			"Description": {
 				"En": "Participation in the development of the new functional of the integration platform, allowing to exchange data between heterogeneous third-party systems. Interaction with the platform is based on the Web API. I participated in the development of exchange modules with \"1C:Enterprise 8\" (several different configurations), “Nova Poshta”, “Prom.ua”, as well as modules for the logistics company and the main site of the system. The unification implemented by me allows you to add new entities to the module with minimal time, and the extensibility features added in certain places allow you to add or redefine the behavior of the basic functionality.",
@@ -303,12 +317,32 @@
 				"Ru": "Разработчик C#"
 			},
 			"Location": {
-				"En": "Kiev",
-				"Ru": "Киев"
+				"En": "Ukraine",
+				"Ru": "Украина"
 			},
 			"Description": {
 				"En": "Server-side development of  service for processing calls to mobile phones. NDA. The system uses these technologies and services:<ul><li>ASP.NET Core, hosted in Azure App Service</li><li>SQL Server DB, hosted in Azure</li><li>Azure Key Vault to store application secrets</li><li>Twilio for the primary management of inbound phone calls and outbound calls</li><li>SignalR and Azure SignalR Service to communicate with the mobile application</li></ul>",
 				"Ru": "Разработка серверной части службы для обработки звонков на мобильные телефоны. NDA. Система использует такие технологии и службы:<ul><li>ASP.NET Core, размещено в Azure App Service</li><li>SQL Server DB, размещено в Azure</li><li>Azure Key Vault для хранения секретов приложения</li><li>Twilio для первичного управления входящими звонками и совершения исходящих звонков</li><li>SignalR и Azure SignalR Service для взаимодействия с мобильным приложением</li></ul>"
+			}
+		},
+		{
+			"StartDate": "2020-07-20",
+			"EndDate": "2025-02-07",
+			"Institution": {
+				"En": "TemaBit",
+				"Ru": "TemaBit"
+			},
+			"Position": {
+				"En": "C# developer",
+				"Ru": "Разработчик C#"
+			},
+			"Location": {
+				"En": "Ukraine",
+				"Ru": "Украина"
+			},
+			"Description": {
+				"En": "Development and support of back-end and front-end software implemented on C# and ASP.NET Core:<ul><li>Implementation of a system for collecting information from external sources, processing and storing the collected information. Transfer of the legacy project to AWS.</li><li>Implementation of a job management system for drivers based on ASP.NET Core and Telegram.</li><li>Implementation of the server part of the mobile application for courier delivery based on ASP.NET Core.</li></ul>",
+				"Ru": "Разработка и поддержка внутреннего и внешнего ПО, реализованного на базе C# и ASP.NET Core:<ul><li>Реализация системы сбора информации из внешних источников, обработка и хранение собранной информации. Перенос унаследованного проекта в AWS.</li><li>Реализация системы управления заданиями для водителей на базе ASP.NET Core и Telegram.</li><li>Реализация серверной части мобильного приложения для курьерской доставки на базе ASP.NET Core.</li></ul>"
 			}
 		},
 		{
@@ -326,27 +360,8 @@
 				"Ru": "Украина"
 			},
 			"Description": {
-				"En": "Development in C#/.NET/ASP.NET. Development and support of the accounting system on the basis of the platform \"1C:Enterprise 8\" for management accounting of the enterprise.",
-				"Ru": "Разработка на C#/.NET/ASP.NET. Разработка и сопровождение учётной системы на базе платформы \"1С:Предприятие 8\" для ведения управленческого учёта предприятия."
-			}
-		},
-		{
-			"StartDate": "2020-07-20",
-			"Institution": {
-				"En": "Fozzy Group",
-				"Ru": "Fozzy Group"
-			},
-			"Position": {
-				"En": "C# developer",
-				"Ru": "Разработчик C#"
-			},
-			"Location": {
-				"En": "Kiev",
-				"Ru": "Киев"
-			},
-			"Description": {
-				"En": "Development and support of internal and external software.",
-				"Ru": "Разработка и поддержка внутреннего и внешнего ПО."
+				"En": "Development in C#/.NET/ASP.NET Core of industrial level applications. Cloud technologies.",
+				"Ru": "Разработка на C#/.NET/ASP.NET Core приложений промышленного уровня. Облачные технологии."
 			}
 		}
 	],
@@ -456,11 +471,11 @@
 		},
 		{
 			"Name": {
-				"En": "Fozzy Group",
-				"Ru": "Fozzy Group"
+				"En": "TemaBit",
+				"Ru": "TemaBit"
 			},
-			"Uri": "https://www.fozzy.ua/",
-			"Logo": "images/clients/Fozzy Group.png"
+			"Uri": "https://temabit.com/",
+			"Logo": "images/clients/TemaBit.svg"
 		}
 	]
 }
