@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Resources;
 
@@ -17,7 +18,7 @@ namespace Localization.Infrastructure;
 /// Локализованные строки возвращаются в зависимости от культуры, указанной в свойстве
 /// <see cref="CultureChanger.CurrentUICulture"/>.
 /// </remarks>
-internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, IDisposable
+internal partial class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, IDisposable
 {
 	/// <summary>
 	/// Диспетчер ресурсов.
@@ -122,7 +123,7 @@ internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, 
 
 		while (culture != culture.Parent)
 		{
-			void ResourcesNotFound(SystemException exception) => _logger.LogDebug(exception, "Ресурсы не найдены.");
+			void ResourcesNotFound(SystemException exception) => LogDebugResourcesNotFound(exception);
 
 			try
 			{
@@ -173,4 +174,14 @@ internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, 
 		Dispose(disposing: true);
 		GC.SuppressFinalize(this);
 	}
+
+	#region Методы журналирования
+
+	[ExcludeFromCodeCoverage]
+	[LoggerMessage(
+		Level = LogLevel.Debug,
+		Message = "Ресурсы не найдены.")]
+	private partial void LogDebugResourcesNotFound(SystemException exception);
+
+	#endregion
 }

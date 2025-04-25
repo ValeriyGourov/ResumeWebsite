@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 using Localization.Infrastructure;
 using Localization.Infrastructure.JavaScriptModules;
@@ -14,7 +15,7 @@ namespace Localization.Components;
 /// <summary>
 /// Базовый класс компонента для переключения культуры приложения.
 /// </summary>
-public abstract class CultureSwitcherBase : ComponentBase, IAsyncDisposable
+public abstract partial class CultureSwitcherBase : ComponentBase, IAsyncDisposable
 {
 	/// <summary>
 	/// Срок хранения куки-файла с культурой, исчисляемый в днях.
@@ -62,10 +63,7 @@ public abstract class CultureSwitcherBase : ComponentBase, IAsyncDisposable
 		string cookieName = CookieRequestCultureProvider.DefaultCookieName;
 		string cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(CultureChanger.CurrentUICulture));
 
-		Logger.LogInformation(
-			"Запись куки-файла '{CookieName}' со значением '{CookieValue}'.",
-			cookieName,
-			cookieValue);
+		LogInformationCreatingCookie(cookieName, cookieValue);
 		await JSModule
 			.CreateCookie(cookieName, cookieValue, _userCultureCookieExpirationDays)
 			.ConfigureAwait(true);
@@ -107,4 +105,14 @@ public abstract class CultureSwitcherBase : ComponentBase, IAsyncDisposable
 
 		JSModule = null!;
 	}
+
+	#region Методы журналирования
+
+	[ExcludeFromCodeCoverage]
+	[LoggerMessage(
+		Level = LogLevel.Information,
+		Message = "Запись куки-файла '{CookieName}' со значением '{CookieValue}'.")]
+	private partial void LogInformationCreatingCookie(string cookieName, string cookieValue);
+
+	#endregion
 }

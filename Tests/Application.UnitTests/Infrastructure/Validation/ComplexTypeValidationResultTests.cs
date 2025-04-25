@@ -12,7 +12,7 @@ namespace Application.UnitTests.Infrastructure.Validation;
 public class ComplexTypeValidationResultTests
 {
 	[TestMethod]
-	[TestProperty(TestProperties.Constructor, null)]
+	[TestProperty(TestProperties.Constructor, "")]
 	public void ThrowsArgumentNullExceptionInConstructorIfValidationResultsIsNull()
 	{
 		// Arrange.

@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Components" Version="6.*" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components" Version="9.*" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.*" />
 		<PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.*" />
-		<PackageReference Include="Microsoft.Extensions.Localization" Version="6.*" />
+		<PackageReference Include="Microsoft.Extensions.Localization" Version="9.*" />
 		<PackageReference Include="System.Globalization" Version="4.*" />
 	</ItemGroup>
 

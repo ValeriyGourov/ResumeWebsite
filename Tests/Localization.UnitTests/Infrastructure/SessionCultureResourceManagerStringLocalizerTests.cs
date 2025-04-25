@@ -17,7 +17,7 @@ namespace Localization.UnitTests.Infrastructure;
 public class SessionCultureResourceManagerStringLocalizerTests
 {
 	[TestMethod]
-	[TestProperty(TestProperties.Constructor, null)]
+	[TestProperty(TestProperties.Constructor, "")]
 	public void ThrowsArgumentNullExceptionInConstructorIfLoggerIsNull()
 	{
 		// Arrange.

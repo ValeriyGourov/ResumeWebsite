@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 using CommunityToolkit.Diagnostics;
@@ -11,7 +12,7 @@ namespace Infrastructure;
 /// <summary>
 /// Базовый класс для классов-обёрток вызова функций JavaScript.
 /// </summary>
-public abstract class JavaScriptModuleBase : IAsyncDisposable
+public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 {
 	/// <inheritdoc cref="IJSRuntime"/>
 	private readonly IJSRuntime _jsRuntime;
@@ -35,7 +36,8 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 	protected string ScriptPath { get; }
 
 	/// <summary>
-	/// Конструктор на основании экземпляра среды выполнения JavaScript и пути к файлу JavaScript-модуля.
+	/// Конструктор на основании экземпляра среды выполнения JavaScript и пути к файлу
+	/// JavaScript-модуля.
 	/// </summary>
 	/// <param name="logger"><inheritdoc cref="Logger" path="/summary"/></param>
 	/// <param name="jsRuntime"><inheritdoc cref="IJSRuntime" path="/summary"/></param>
@@ -84,7 +86,7 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 		object?[]? args = null,
 		CancellationToken cancellationToken = default)
 	{
-		Logger.LogDebug("Данные: {Identifier}, {@Args}", identifier, args);
+		LogDebugData(identifier, args);
 
 		IJSObjectReference jsObjectReference = await GetJSObjectReferenceAsync(cancellationToken).ConfigureAwait(true);
 		await jsObjectReference
@@ -103,7 +105,7 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 		CancellationToken cancellationToken = default,
 		[CallerMemberName] string methodName = "")
 	{
-		Logger.LogDebug("Данные: {@Args}", args ?? Array.Empty<object?[]>());
+		LogDebugData(args);
 
 		return InvokeVoidAsync(ConvertMethodName(methodName), args, cancellationToken);
 	}
@@ -121,7 +123,7 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 		object?[]? args = null,
 		CancellationToken cancellationToken = default)
 	{
-		Logger.LogDebug("Данные: {Identifier}, {@Args}", identifier, args);
+		LogDebugData(identifier, args);
 
 		IJSObjectReference jsObjectReference = await GetJSObjectReferenceAsync(cancellationToken).ConfigureAwait(true);
 		return await jsObjectReference
@@ -130,19 +132,36 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 	}
 
 	/// <summary>
-	/// Вызывает метод JavaScript-модуля с заданным набором параметров и возвращает значение указанного типа. Идентификатор JavaScript-метода должен совпадать с именем метода модуля-обёртки, при этом применяется преобразование в camelCase.
+	/// Вызывает метод JavaScript-модуля с заданным набором параметров и возвращает значение
+	/// указанного типа. Идентификатор JavaScript-метода должен совпадать с именем метода
+	/// модуля-обёртки, при этом применяется преобразование в camelCase.
 	/// </summary>
 	/// <typeparam name="TValue">Тип возвращаемого значения.</typeparam>
-	/// <param name="args"><inheritdoc cref="InvokeAsync(string, object?[], CancellationToken)" path="/param[@name='args']"/></param>
-	/// <param name="cancellationToken"><inheritdoc cref="InvokeAsync(string, object?[], CancellationToken)" path="/param[@name='cancellationToken']"/></param>
-	/// <param name="methodName">Имя метода модуля-обёртки. Всегда определяется автоматически и не должно указываться в явном виде.</param>
-	/// <returns><inheritdoc cref="InvokeAsync(string, object?[], CancellationToken)" path="/returns"/></returns>
+	/// <param name="args">
+	/// <inheritdoc
+	///		cref="InvokeAsync(string, object?[], CancellationToken)"
+	///		path="/param[@name='args']"/>
+	///	</param>
+	/// <param name="cancellationToken">
+	/// <inheritdoc
+	///		cref="InvokeAsync(string, object?[], CancellationToken)"
+	///		path="/param[@name='cancellationToken']"/>
+	/// </param>
+	/// <param name="methodName">
+	/// Имя метода модуля-обёртки. Всегда определяется автоматически и не должно указываться
+	/// в явном виде.
+	/// </param>
+	/// <returns>
+	/// <inheritdoc
+	///		cref="InvokeAsync(string, object?[], CancellationToken)"
+	///		path="/returns"/>
+	/// </returns>
 	protected ValueTask<TValue> InvokeAsync<TValue>(
 		object?[]? args = null,
 		CancellationToken cancellationToken = default,
 		[CallerMemberName] string methodName = "")
 	{
-		Logger.LogDebug("Данные: {@Args}", args ?? Array.Empty<object?[]>());
+		LogDebugData(args);
 
 		return InvokeAsync<TValue>(ConvertMethodName(methodName), args, cancellationToken);
 	}
@@ -178,13 +197,32 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 			{
 				// В данном случае игнорируем это исключение.
 
-				Logger.LogWarning(
-					exception,
-					"При освобождении ресурсов возникла ошибка: {ExceptionMessage}",
-					exception.Message);
+				LogWarningResourceDesposingError(exception);
 			}
 		}
 
 		_jsObjectReference = null!;
 	}
+
+	#region Методы журналирования
+
+	[ExcludeFromCodeCoverage]
+	[LoggerMessage(
+		Level = LogLevel.Debug,
+		Message = "Данные: {Identifier}, {@Args}")]
+	private partial void LogDebugData(string identifier, object?[]? args);
+
+	[ExcludeFromCodeCoverage]
+	[LoggerMessage(
+		Level = LogLevel.Debug,
+		Message = "Данные: {@Args}")]
+	private partial void LogDebugData(object?[]? args);
+
+	[ExcludeFromCodeCoverage]
+	[LoggerMessage(
+		Level = LogLevel.Warning,
+		Message = "Ошибка освобождения ресурсов.")]
+	private partial void LogWarningResourceDesposingError(JSDisconnectedException exception);
+
+	#endregion
 }

@@ -4,6 +4,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.*" />
+		<PackageReference Include="Microsoft.Extensions.Telemetry.Abstractions" Version="9.*" />
 	</ItemGroup>
 
 	<ItemGroup>
