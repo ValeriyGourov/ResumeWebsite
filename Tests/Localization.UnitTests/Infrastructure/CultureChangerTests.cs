@@ -2,13 +2,9 @@
 
 using Localization.Infrastructure;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using TestInfrastructure;
-
 namespace Localization.UnitTests.Infrastructure;
 
-[TestClass]
+[TestClass, DoNotParallelize]
 public class CultureChangerTests
 {
 	[TestMethod]
@@ -133,7 +129,9 @@ public class CultureChangerTests
 		CultureInfo culture = new("es-MX");
 
 		// Act.
+#pragma warning disable CA1304
 		cultureChanger.ChangeCulture(culture);
+#pragma warning restore CA1304
 
 		// Assert.
 		Assert.AreEqual(culture, CultureChanger.CurrentCulture);

@@ -1,8 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-	<PropertyGroup>
-		<IsPackable>false</IsPackable>
-	</PropertyGroup>
+﻿<Project Sdk="MSTest.Sdk">
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Options" Version="9.*" />

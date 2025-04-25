@@ -3,8 +3,6 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 
-using TestInfrastructure;
-
 namespace Infrastructure.UnitTests;
 
 [TestClass]

@@ -2,10 +2,6 @@
 
 using Application.Infrastructure.Validation;
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-using TestInfrastructure;
-
 namespace Application.UnitTests.Infrastructure.Validation;
 
 [TestClass]

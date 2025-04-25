@@ -5,15 +5,12 @@ using Localization.Infrastructure;
 
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using Moq;
 
-using TestInfrastructure;
-
 namespace Localization.UnitTests.Infrastructure;
 
-[TestClass]
+[TestClass, DoNotParallelize]
 public class SessionCultureResourceManagerStringLocalizerTests
 {
 	[TestMethod]
