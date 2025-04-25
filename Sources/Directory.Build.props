@@ -1,0 +1,14 @@
+﻿<Project>
+
+	<Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<InternalsVisibleTo Include="$(AssemblyName).UnitTests" />
+		<InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
+	</ItemGroup>
+
+</Project>

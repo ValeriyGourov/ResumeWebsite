@@ -6,10 +6,16 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Sources\Application\Application.csproj", "{9640EB04-276E-4A8E-86A7-5B58B66470CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sources", "Sources", "{B437033F-D257-4172-8A9E-EB6BF19BC557}"
+	ProjectSection(SolutionItems) = preProject
+		Sources\Directory.Build.props = Sources\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization", "Sources\Localization\Localization.csproj", "{47ABC75D-0AB7-484B-A4C6-307AD1A8CA23}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{794C642D-2B3F-46D1-9D98-FA8B51D79B8A}"
+	ProjectSection(SolutionItems) = preProject
+		Tests\Directory.Build.props = Tests\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization.Tests", "Tests\Localization.Tests\Localization.Tests.csproj", "{6D48D2E1-9B51-4448-9E2D-BA14240EE988}"
 EndProject
@@ -27,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
 		CodeCoverage.runsettings = CodeCoverage.runsettings
+		Directory.Build.props = Directory.Build.props
 		SpellCheckerExclusion.dic = SpellCheckerExclusion.dic
 	EndProjectSection
 EndProject

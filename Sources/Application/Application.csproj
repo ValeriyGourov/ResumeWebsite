@@ -1,27 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-	  <TargetFramework>net6.0</TargetFramework>
-	  <Nullable>enable</Nullable>
-	  <ImplicitUsings>enable</ImplicitUsings>
 	  <NeutralLanguage>en</NeutralLanguage>
 	  <VersionPrefix>1.2.0</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
-	<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.*" />
-	<PackageReference Include="Toolbelt.Blazor.HeadElement" Version="7.*" />
+	  <PackageReference Include="Toolbelt.Blazor.HeadElement" Version="7.*" />
   </ItemGroup>
 
   <ItemGroup>
-	<ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
-	<ProjectReference Include="..\Localization\Localization.csproj" />
+	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
+	  <ProjectReference Include="..\Localization\Localization.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-	<EmbeddedResource Update="Resources\Pages\Index.resx">
-	  <Generator></Generator>
-	</EmbeddedResource>
+	  <EmbeddedResource Update="Resources\Pages\Index.resx">
+		  <Generator></Generator>
+	  </EmbeddedResource>
   </ItemGroup>
 
 </Project>
