@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿#pragma warning disable CA1515
+
+using System.Globalization;
 using System.Resources;
 
 using Localization.Infrastructure;
@@ -22,15 +24,15 @@ public class SessionCultureResourceManagerStringLocalizerTests
 		ILogger? logger = null;
 
 		// Act.
-		void act()
+#pragma warning disable CS8604
+		Action act = () =>
 		{
-#pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
 			using SessionCultureResourceManagerStringLocalizer localizer = new(resourceManager, logger);
-#pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-		}
+		};
+#pragma warning restore CS8604
 
 		// Assert.
-		Assert.ThrowsException<ArgumentNullException>(act);
+		act.Should().ThrowExactly<ArgumentNullException>();
 	}
 
 	#region this[string name]
@@ -45,15 +47,12 @@ public class SessionCultureResourceManagerStringLocalizerTests
 		using SessionCultureResourceManagerStringLocalizer localizer = GetLocalizer();
 
 		// Act.
-		void act()
-		{
-#pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
-			_ = localizer[name];
-#pragma warning restore CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
-		}
+#pragma warning disable CS8625
+		Action act = () => _ = localizer[name];
+#pragma warning restore CS8625
 
 		// Assert.
-		Assert.ThrowsException<ArgumentNullException>(act);
+		act.Should().ThrowExactly<ArgumentNullException>();
 	}
 
 	[TestMethod]
@@ -72,7 +71,7 @@ public class SessionCultureResourceManagerStringLocalizerTests
 		LocalizedString actual = localizer[name];
 
 		// Assert.
-		Assert.AreEqual(localizedString, actual.Value);
+		actual.Value.Should().Be(localizedString);
 	}
 
 	[TestMethod]
@@ -91,7 +90,7 @@ public class SessionCultureResourceManagerStringLocalizerTests
 		LocalizedString actual = localizer[name];
 
 		// Assert.
-		Assert.AreEqual(name, actual.Value);
+		actual.Value.Should().Be(name);
 	}
 
 	[TestMethod]
@@ -121,8 +120,8 @@ public class SessionCultureResourceManagerStringLocalizerTests
 		LocalizedString LocalizedStringForNonExistingCulture = localizer[name];
 
 		// Assert.
-		Assert.AreEqual(name, LocalizedStringForNonExistentCulture.Value);
-		Assert.AreEqual(localizedString, LocalizedStringForNonExistingCulture.Value);
+		LocalizedStringForNonExistentCulture.Value.Should().Be(name);
+		LocalizedStringForNonExistingCulture.Value.Should().Be(localizedString);
 	}
 
 	#endregion this[string name]
@@ -140,15 +139,12 @@ public class SessionCultureResourceManagerStringLocalizerTests
 		using SessionCultureResourceManagerStringLocalizer localizer = GetLocalizer();
 
 		// Act.
-		void act()
-		{
-#pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
-			_ = localizer[name, param];
-#pragma warning restore CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
-		}
+#pragma warning disable CS8625
+		Action act = () => _ = localizer[name, param];
+#pragma warning restore CS8625
 
 		// Assert.
-		Assert.ThrowsException<ArgumentNullException>(act);
+		act.Should().ThrowExactly<ArgumentNullException>();
 	}
 
 	[TestMethod]
@@ -169,7 +165,7 @@ public class SessionCultureResourceManagerStringLocalizerTests
 		LocalizedString actual = localizer[name, param];
 
 		// Assert.
-		Assert.AreEqual(expected, actual.Value);
+		actual.Value.Should().Be(expected);
 	}
 
 	[TestMethod]
@@ -190,7 +186,7 @@ public class SessionCultureResourceManagerStringLocalizerTests
 		LocalizedString actual = localizer[name, param];
 
 		// Assert.
-		Assert.AreEqual(expected, actual.Value);
+		actual.Value.Should().Be(expected);
 	}
 
 	#endregion this[string name, params object[] arguments]

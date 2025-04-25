@@ -1,1 +1,5 @@
-﻿global using TestInfrastructure;
+﻿global using System.ComponentModel.DataAnnotations;
+
+global using FluentAssertions;
+
+global using TestInfrastructure;

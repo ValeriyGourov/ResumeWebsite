@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#pragma warning disable CA1515
 
 using Application.Infrastructure.Validation;
 
@@ -16,15 +16,13 @@ public class ComplexTypeValidationResultTests
 		IEnumerable<ValidationResult>? validationResults = null;
 
 		// Act.
-		void act()
-		{
-#pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-			_ = new ComplexTypeValidationResult(errorMessage, validationResults);
-#pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-		}
+#pragma warning disable CS8604
+		Action act = () => _ = new ComplexTypeValidationResult(errorMessage, validationResults);
+#pragma warning restore CS8604
 
 		// Assert.
-		Assert.ThrowsException<ArgumentNullException>(act);
+		act.Should().ThrowExactly<ArgumentNullException>()
+			.WithParameterName(nameof(validationResults));
 	}
 
 	[TestMethod]
@@ -33,16 +31,16 @@ public class ComplexTypeValidationResultTests
 	{
 		// Arrange.
 		const string errorMessage = "Test";
-		IEnumerable<ValidationResult> validationResults = new List<ValidationResult>
-		{
+		IEnumerable<ValidationResult> validationResults =
+		[
 			new("Test 1"),
 			new("Test 2")
-		};
+		];
 
 		// Act.
 		ComplexTypeValidationResult validationResult = new(errorMessage, validationResults);
 
 		// Assert.
-		CollectionAssert.AreEquivalent(validationResults.ToArray(), validationResult.ValidationResults.ToArray());
+		validationResult.ValidationResults.Should().BeEquivalentTo(validationResults);
 	}
 }

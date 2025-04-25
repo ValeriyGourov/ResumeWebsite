@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿#pragma warning disable CA1515
+
+using System.Globalization;
 
 using Localization.Infrastructure;
 
@@ -15,12 +17,12 @@ public class CultureChangerTests
 		CultureChanger cultureChanger = new();
 
 		// Act.
-#pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
-		void act() => cultureChanger.ChangeCulture(null, CultureInfo.CurrentUICulture);
-#pragma warning restore CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
+#pragma warning disable CS8625
+		Action act = () => cultureChanger.ChangeCulture(null, CultureInfo.CurrentUICulture);
+#pragma warning restore CS8625
 
 		// Assert.
-		Assert.ThrowsException<ArgumentNullException>(act);
+		act.Should().ThrowExactly<ArgumentNullException>();
 	}
 
 	[TestMethod]
@@ -31,12 +33,12 @@ public class CultureChangerTests
 		CultureChanger cultureChanger = new();
 
 		// Act.
-#pragma warning disable CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
-		void act() => cultureChanger.ChangeCulture(CultureInfo.CurrentCulture, null);
-#pragma warning restore CS8625 // Литерал, равный NULL, не может быть преобразован в ссылочный тип, не допускающий значение NULL.
+#pragma warning disable CS8625
+		Action act = () => cultureChanger.ChangeCulture(CultureInfo.CurrentCulture, null);
+#pragma warning restore CS8625
 
 		// Assert.
-		Assert.ThrowsException<ArgumentNullException>(act);
+		act.Should().ThrowExactly<ArgumentNullException>();
 	}
 
 	[TestMethod]
@@ -52,7 +54,7 @@ public class CultureChangerTests
 		cultureChanger.ChangeCulture(culture, uiCulture);
 
 		// Assert.
-		Assert.AreEqual(culture, CultureChanger.CurrentCulture);
+		CultureChanger.CurrentCulture.Should().Be(culture);
 	}
 
 	[TestMethod]
@@ -68,7 +70,7 @@ public class CultureChangerTests
 		cultureChanger.ChangeCulture(culture, uiCulture);
 
 		// Assert.
-		Assert.AreEqual(uiCulture, CultureChanger.CurrentUICulture);
+		CultureChanger.CurrentUICulture.Should().Be(uiCulture);
 	}
 
 	[TestMethod]
@@ -84,7 +86,7 @@ public class CultureChangerTests
 		cultureChanger.ChangeCulture(culture, uiCulture);
 
 		// Assert.
-		Assert.AreEqual(culture, CultureInfo.CurrentCulture);
+		CultureInfo.CurrentCulture.Should().Be(culture);
 	}
 
 	[TestMethod]
@@ -100,7 +102,7 @@ public class CultureChangerTests
 		cultureChanger.ChangeCulture(culture, uiCulture);
 
 		// Assert.
-		Assert.AreEqual(uiCulture, CultureInfo.CurrentUICulture);
+		CultureInfo.CurrentUICulture.Should().Be(uiCulture);
 	}
 
 	[TestMethod]
@@ -116,8 +118,8 @@ public class CultureChangerTests
 		cultureChanger.ChangeCulture(cultureName);
 
 		// Assert.
-		Assert.AreEqual(culture, CultureChanger.CurrentCulture);
-		Assert.AreEqual(culture, CultureChanger.CurrentUICulture);
+		CultureChanger.CurrentCulture.Should().Be(culture);
+		CultureChanger.CurrentUICulture.Should().Be(culture);
 	}
 
 	[TestMethod]
@@ -134,8 +136,8 @@ public class CultureChangerTests
 #pragma warning restore CA1304
 
 		// Assert.
-		Assert.AreEqual(culture, CultureChanger.CurrentCulture);
-		Assert.AreEqual(culture, CultureChanger.CurrentUICulture);
+		CultureChanger.CurrentCulture.Should().Be(culture);
+		CultureChanger.CurrentUICulture.Should().Be(culture);
 	}
 
 	[TestMethod]
@@ -153,8 +155,8 @@ public class CultureChangerTests
 		cultureChanger.ChangeCulture(cultureName, cultureUiName);
 
 		// Assert.
-		Assert.AreEqual(culture, CultureChanger.CurrentCulture);
-		Assert.AreEqual(uiCulture, CultureChanger.CurrentUICulture);
+		CultureChanger.CurrentCulture.Should().Be(culture);
+		CultureChanger.CurrentUICulture.Should().Be(uiCulture);
 	}
 
 	[TestMethod]
@@ -181,6 +183,8 @@ public class CultureChangerTests
 		cultureChanger.ChangeCulture(culture, uiCulture);
 
 		// Assert.
-		Assert.IsTrue(invoked, "Событие '{0}' не вызвано.", nameof(CultureChanger.CultureChanged));
+		invoked.Should().BeTrue(
+			"Событие '{0}' не вызвано.",
+			nameof(CultureChanger.CultureChanged));
 	}
 }

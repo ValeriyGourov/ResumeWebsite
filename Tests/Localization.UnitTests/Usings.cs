@@ -1,1 +1,3 @@
-﻿global using TestInfrastructure;
+﻿global using FluentAssertions;
+
+global using TestInfrastructure;

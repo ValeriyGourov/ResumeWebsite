@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#pragma warning disable CA1515
 
 using Application.Infrastructure.Validation;
 
@@ -24,11 +24,11 @@ public class ValidateComplexTypeAttributeTests
 		};
 
 		// Act.
-		List<ValidationResult> validationResults = new();
+		List<ValidationResult> validationResults = [];
 		bool result = TryValidateObject(value, validationResults);
 
 		// Assert.
-		Assert.IsTrue(result);
+		result.Should().BeTrue();
 	}
 
 	[TestMethod]
@@ -41,15 +41,13 @@ public class ValidateComplexTypeAttributeTests
 		TestValidateComplexTypeAttribute validateComplexTypeAttribute = new();
 
 		// Act.
-		void act()
-		{
-#pragma warning disable CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-			_ = validateComplexTypeAttribute.IsValid(value, validationContext);
-#pragma warning restore CS8604 // Возможно, аргумент-ссылка, допускающий значение NULL.
-		}
+#pragma warning disable CS8604
+		Action act = () => _ = validateComplexTypeAttribute.IsValid(value, validationContext);
+#pragma warning restore CS8604
 
 		// Assert.
-		Assert.ThrowsException<ArgumentNullException>(act);
+		act.Should().ThrowExactly<ArgumentNullException>()
+			.WithParameterName(nameof(validationContext));
 	}
 
 	[TestMethod]
@@ -66,18 +64,17 @@ public class ValidateComplexTypeAttributeTests
 				City = "Awesome Town",
 				Zip = null
 			},
-#pragma warning disable CS8619 // Допустимость значения NULL для ссылочных типов в значении не соответствует целевому типу.
-			AdditionalAddresses = new[]	// Здесь одна ошибка, так как один элемент коллекции содержит ошибки.
-			{
+			// Здесь одна ошибка, так как один элемент коллекции содержит ошибки.
+			AdditionalAddresses =
+			[
 				new Address
 				{
 					Street1 = "Street 1",
 					City = "City 1"
 				},
-				null,	// Это значение должно быть просто пропущено при проверке.
+				null!,	// Это значение должно быть просто пропущено при проверке.
 				new Address()	// Здесь должно быть две ошибки проверки: Street1, City.
-			}
-#pragma warning restore CS8619 // Допустимость значения NULL для ссылочных типов в значении не соответствует целевому типу.
+			]
 		};
 
 		const int validationResultsExpectedCount = 1;
@@ -85,7 +82,7 @@ public class ValidateComplexTypeAttributeTests
 		const int address3ValidationResultsExpectedCount = 2;
 
 		// Act.
-		List<ValidationResult> validationResults = new();
+		List<ValidationResult> validationResults = [];
 		bool result = TryValidateObject(value, validationResults);
 
 		ComplexTypeValidationResult? additionalAddressesLevel = validationResults[0] as ComplexTypeValidationResult;
@@ -94,17 +91,18 @@ public class ValidateComplexTypeAttributeTests
 		ValidationResult[]? address3Results = address3Level?.ValidationResults.ToArray();
 
 		// Assert.
-		Assert.IsFalse(result);
-		Assert.AreEqual(validationResultsExpectedCount, validationResults.Count);
-		Assert.AreEqual(
+		result.Should().BeFalse();
+		validationResults.Should()
+			.HaveCount(validationResultsExpectedCount)
+			.And.AllBeOfType<ComplexTypeValidationResult>();
+
+		additionalAddressesResults.Should().HaveCount(
 			additionalAddressesValidationResultsExpectedCount,
-			additionalAddressesResults?.Length,
 			$"Здесь должна быть ошибка проверки свойства: {nameof(Person.AdditionalAddresses)}.");
-		Assert.AreEqual(
+
+		address3Results.Should().HaveCount(
 			address3ValidationResultsExpectedCount,
-			address3Results?.Length,
 			$"Здесь должны быть ошибки проверки свойств: {nameof(Address.Street1)}, {nameof(Address.City)}.");
-		CollectionAssert.AllItemsAreInstancesOfType(validationResults, typeof(ComplexTypeValidationResult));
 	}
 
 	[TestMethod]
@@ -122,20 +120,21 @@ public class ValidateComplexTypeAttributeTests
 		const int mainAddressValidationResultsExpectedCount = 2;
 
 		// Act.
-		List<ValidationResult> validationResults = new();
+		List<ValidationResult> validationResults = [];
 		bool result = TryValidateObject(value, validationResults);
 
 		ComplexTypeValidationResult? mainAddressLevel = validationResults[0] as ComplexTypeValidationResult;
 		ValidationResult[]? mainAddressResults = mainAddressLevel?.ValidationResults.ToArray();
 
 		// Assert.
-		Assert.IsFalse(result);
-		Assert.AreEqual(validationResultsExpectedCount, validationResults.Count);
-		Assert.AreEqual(
+		result.Should().BeFalse();
+		validationResults.Should()
+			.HaveCount(validationResultsExpectedCount)
+			.And.AllBeOfType<ComplexTypeValidationResult>();
+
+		mainAddressResults.Should().HaveCount(
 			mainAddressValidationResultsExpectedCount,
-			mainAddressResults?.Length,
 			$"Здесь должны быть ошибки проверки свойств: {nameof(Address.Street1)}, {nameof(Address.City)}.");
-		CollectionAssert.AllItemsAreInstancesOfType(validationResults, typeof(ComplexTypeValidationResult));
 	}
 
 	[TestMethod]
@@ -157,8 +156,8 @@ public class ValidateComplexTypeAttributeTests
 					SubCode = "SubCode"
 				}
 			},
-			AdditionalAddresses = new[]
-			{
+			AdditionalAddresses =
+			[
 				new Address
 				{
 					Street1 = "Street 1",
@@ -169,18 +168,18 @@ public class ValidateComplexTypeAttributeTests
 					Street1 = "Street 2",
 					City = "City 2"
 				}
-			}
+			]
 		};
 
 		const int validationResultsExpectedCount = 0;
 
 		// Act.
-		List<ValidationResult> validationResults = new();
+		List<ValidationResult> validationResults = [];
 		bool result = TryValidateObject(value, validationResults);
 
 		// Assert.
-		Assert.IsTrue(result);
-		Assert.AreEqual(validationResultsExpectedCount, validationResults.Count);
+		result.Should().BeTrue();
+		validationResults.Should().HaveCount(validationResultsExpectedCount);
 	}
 
 	private static bool TryValidateObject(object value, List<ValidationResult> validationResults)

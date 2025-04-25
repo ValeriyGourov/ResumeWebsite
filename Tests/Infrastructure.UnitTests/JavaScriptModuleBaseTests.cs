@@ -1,4 +1,4 @@
-﻿#pragma warning disable VSTHRD200
+﻿#pragma warning disable VSTHRD200, CA1515
 
 using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
@@ -288,16 +288,13 @@ public class JavaScriptModuleBaseTests
 	/// <summary>
 	/// Тестовый класс, унаследованный от <see cref="JavaScriptModuleBase"/>.
 	/// </summary>
-	internal sealed class TestJavaScriptModule : JavaScriptModuleBase
+	/// <inheritdoc/>
+	internal sealed class TestJavaScriptModule(
+		ILogger<TestJavaScriptModule> logger,
+		IJSRuntime jsRuntime,
+		string scriptPath)
+		: JavaScriptModuleBase(logger, jsRuntime, scriptPath)
 	{
-		/// <inheritdoc/>
-		public TestJavaScriptModule(
-			ILogger<TestJavaScriptModule> logger,
-			IJSRuntime jsRuntime,
-			string scriptPath)
-			: base(logger, jsRuntime, scriptPath)
-		{ }
-
 		/// <summary>
 		/// Метод-обёртка для тестирования <see cref="JavaScriptModuleBase.InvokeVoidAsync(object?[]?, CancellationToken, string)"/>.
 		/// </summary>
@@ -309,7 +306,7 @@ public class JavaScriptModuleBaseTests
 			string arg2,
 			CancellationToken cancellationToken = default)
 			=> InvokeVoidAsync(
-				new object[] { arg1, arg2 },
+				[arg1, arg2],
 				cancellationToken);
 
 		/// <summary>
@@ -326,7 +323,7 @@ public class JavaScriptModuleBaseTests
 			CancellationToken cancellationToken = default)
 			=> InvokeVoidAsync(
 				identifier,
-				new object[] { arg1, arg2 },
+				[arg1, arg2],
 				cancellationToken);
 
 		/// <summary>
@@ -341,7 +338,7 @@ public class JavaScriptModuleBaseTests
 			string arg2,
 			CancellationToken cancellationToken)
 			=> InvokeAsync<int>(
-				new object[] { arg1, arg2 },
+				[arg1, arg2],
 				cancellationToken);
 
 		/// <summary>
@@ -359,7 +356,7 @@ public class JavaScriptModuleBaseTests
 			CancellationToken cancellationToken)
 			=> InvokeAsync<int>(
 				identifier,
-				new object[] { arg1, arg2 },
+				[arg1, arg2],
 				cancellationToken);
 	}
 }
