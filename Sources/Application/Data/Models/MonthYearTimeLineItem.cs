@@ -1,14 +1,24 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿#pragma warning disable CA1515
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace Application.Data.Models;
 
 /// <summary>
 /// Событие на временной линии с периодом в виде месяца и года.
 /// </summary>
-/// <param name="Institution"><inheritdoc cref="TimeLineItemBase" path="/param[@name='Institution']"/></param>
-/// <param name="Position"><inheritdoc cref="TimeLineItemBase" path="/param[@name='Position']"/></param>
-/// <param name="Location"><inheritdoc cref="TimeLineItemBase" path="/param[@name='Location']"/></param>
-/// <param name="Description"><inheritdoc cref="TimeLineItemBase" path="/param[@name='Description']"/></param>
+/// <param name="Institution">
+/// <inheritdoc cref="TimeLineItemBase" path="/param[@name='Institution']"/>
+/// </param>
+/// <param name="Position">
+/// <inheritdoc cref="TimeLineItemBase" path="/param[@name='Position']"/>
+/// </param>
+/// <param name="Location">
+/// <inheritdoc cref="TimeLineItemBase" path="/param[@name='Location']"/>
+/// </param>
+/// <param name="Description">
+/// <inheritdoc cref="TimeLineItemBase" path="/param[@name='Description']"/>
+/// </param>
 /// <param name="StartDate"><inheritdoc cref="StartDate" path="/summary"/></param>
 /// <param name="EndDate"><inheritdoc cref="EndDate" path="/summary"/></param>
 public sealed record MonthYearTimeLineItem(
@@ -30,6 +40,7 @@ public sealed record MonthYearTimeLineItem(
 	/// </summary>
 	public DateTimeOffset? EndDate { get; init; } = EndDate.HasValue ? MonthBeginning(EndDate.Value) : EndDate;
 
+	/// <inheritdoc/>
 	public override int CompareTo([AllowNull] TimeLineItemBase other)
 	{
 		if (other is not MonthYearTimeLineItem typedOther)
@@ -55,5 +66,6 @@ public sealed record MonthYearTimeLineItem(
 	/// </summary>
 	/// <param name="dateTime">Исходная дата.</param>
 	/// <returns>Дата первого числа месяца.</returns>
-	private static DateTimeOffset MonthBeginning(DateTimeOffset dateTime) => new(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0, TimeSpan.Zero);
+	private static DateTimeOffset MonthBeginning(DateTimeOffset dateTime)
+		=> new(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0, TimeSpan.Zero);
 }

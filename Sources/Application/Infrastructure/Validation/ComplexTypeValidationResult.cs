@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Application.Infrastructure.Validation;
 
 /// <summary>
 /// Представляет контейнер для результатов запроса на рекурсивную проверку сложных типов.
 /// </summary>
-public class ComplexTypeValidationResult : ValidationResult
+internal sealed class ComplexTypeValidationResult : ValidationResult
 {
 	/// <summary>
 	/// Результаты запросов на проверку вложенных объектов.

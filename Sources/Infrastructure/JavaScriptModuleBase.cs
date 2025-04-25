@@ -13,33 +13,39 @@ namespace Infrastructure;
 /// </summary>
 public abstract class JavaScriptModuleBase : IAsyncDisposable
 {
-	/// <summary>
-	/// Средство ведения журнала.
-	/// </summary>
-	protected readonly ILogger _logger;
-
 	/// <inheritdoc cref="IJSRuntime"/>
 	private readonly IJSRuntime _jsRuntime;
 
 	/// <inheritdoc cref="IJSObjectReference"/>
 	/// <remarks>
-	/// Не должен использоваться в явном виде. Вместо этого необходимо использовать метод <see cref="GetJSObjectReference(CancellationToken)"/>.
+	/// Не должен использоваться в явном виде. Вместо этого необходимо использовать метод
+	/// <see cref="GetJSObjectReferenceAsync(CancellationToken)"/>.
 	/// </remarks>
 	private IJSObjectReference? _jsObjectReference;
 
 	/// <summary>
-	/// Пусть к файлу JavaScript-модуля относительно папки wwwroot в формате "./{SCRIPT PATH AND FILENAME (.js)}".
+	/// Средство ведения журнала.
 	/// </summary>
-	protected string _scriptPath;
+	protected ILogger Logger { get; }
+
+	/// <summary>
+	/// Пусть к файлу JavaScript-модуля относительно папки wwwroot в формате
+	/// "./{SCRIPT PATH AND FILENAME (.js)}".
+	/// </summary>
+	protected string ScriptPath { get; }
 
 	/// <summary>
 	/// Конструктор на основании экземпляра среды выполнения JavaScript и пути к файлу JavaScript-модуля.
 	/// </summary>
-	/// <param name="logger"><inheritdoc cref="_logger" path="/summary"/></param>
+	/// <param name="logger"><inheritdoc cref="Logger" path="/summary"/></param>
 	/// <param name="jsRuntime"><inheritdoc cref="IJSRuntime" path="/summary"/></param>
-	/// <param name="scriptPath"><inheritdoc cref="_scriptPath" path="/summary"/></param>
-	/// <exception cref="ArgumentException">Не указано значение обязательного параметра.</exception>
-	/// <exception cref="ArgumentNullException">Не указано значение обязательного параметра.</exception>
+	/// <param name="scriptPath"><inheritdoc cref="ScriptPath" path="/summary"/></param>
+	/// <exception cref="ArgumentException">
+	/// Не указано значение обязательного параметра.
+	/// </exception>
+	/// <exception cref="ArgumentNullException">
+	/// Не указано значение обязательного параметра.
+	/// </exception>
 	protected JavaScriptModuleBase(
 		ILogger<JavaScriptModuleBase> logger,
 		IJSRuntime jsRuntime,
@@ -49,19 +55,23 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 		Guard.IsNotNull(jsRuntime);
 		Guard.IsNotNullOrWhiteSpace(scriptPath);
 
-		_logger = logger;
+		Logger = logger;
 		_jsRuntime = jsRuntime;
-		_scriptPath = scriptPath;
+		ScriptPath = scriptPath;
 	}
 
 	/// <summary>
-	/// Возвращает (при необходимости создаёт) ссылку на объект JavaScript, используемый для вызова методов в JavaScript-модуле.
+	/// Возвращает (при необходимости создаёт) ссылку на объект JavaScript, используемый для
+	/// вызова методов в JavaScript-модуле.
 	/// </summary>
-	/// <param name="cancellationToken">Токен отмены для сигнализации об отмене операции.</param>
+	/// <param name="cancellationToken">
+	/// Токен отмены для сигнализации об отмене операции.
+	/// </param>
 	/// <returns>Ссылка на объект JavaScript.</returns>
-	protected async ValueTask<IJSObjectReference> GetJSObjectReference(CancellationToken cancellationToken = default) => _jsObjectReference ??= await _jsRuntime
-		.InvokeAsync<IJSObjectReference>("import", cancellationToken, _scriptPath)
-		.ConfigureAwait(true);
+	protected async ValueTask<IJSObjectReference> GetJSObjectReferenceAsync(CancellationToken cancellationToken = default)
+		=> _jsObjectReference ??= await _jsRuntime
+			.InvokeAsync<IJSObjectReference>("import", cancellationToken, ScriptPath)
+			.ConfigureAwait(true);
 
 	/// <summary>
 	/// Вызывает метод JavaScript-модуля по его идентификатору и с заданным набором параметров.
@@ -74,9 +84,9 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 		object?[]? args = null,
 		CancellationToken cancellationToken = default)
 	{
-		_logger.LogDebug("Данные: {Identifier}, {@Args}", identifier, args);
+		Logger.LogDebug("Данные: {Identifier}, {@Args}", identifier, args);
 
-		IJSObjectReference jsObjectReference = await GetJSObjectReference(cancellationToken).ConfigureAwait(true);
+		IJSObjectReference jsObjectReference = await GetJSObjectReferenceAsync(cancellationToken).ConfigureAwait(true);
 		await jsObjectReference
 			.InvokeVoidAsync(identifier, cancellationToken, args)
 			.ConfigureAwait(true);
@@ -93,7 +103,7 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 		CancellationToken cancellationToken = default,
 		[CallerMemberName] string methodName = "")
 	{
-		_logger.LogDebug("Данные: {@Args}", args ?? Array.Empty<object?[]>());
+		Logger.LogDebug("Данные: {@Args}", args ?? Array.Empty<object?[]>());
 
 		return InvokeVoidAsync(ConvertMethodName(methodName), args, cancellationToken);
 	}
@@ -111,9 +121,9 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 		object?[]? args = null,
 		CancellationToken cancellationToken = default)
 	{
-		_logger.LogDebug("Данные: {Identifier}, {@Args}", identifier, args);
+		Logger.LogDebug("Данные: {Identifier}, {@Args}", identifier, args);
 
-		IJSObjectReference jsObjectReference = await GetJSObjectReference(cancellationToken).ConfigureAwait(true);
+		IJSObjectReference jsObjectReference = await GetJSObjectReferenceAsync(cancellationToken).ConfigureAwait(true);
 		return await jsObjectReference
 			.InvokeAsync<TValue>(identifier, cancellationToken, args)
 			.ConfigureAwait(true);
@@ -132,7 +142,7 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 		CancellationToken cancellationToken = default,
 		[CallerMemberName] string methodName = "")
 	{
-		_logger.LogDebug("Данные: {@Args}", args ?? Array.Empty<object?[]>());
+		Logger.LogDebug("Данные: {@Args}", args ?? Array.Empty<object?[]>());
 
 		return InvokeAsync<TValue>(ConvertMethodName(methodName), args, cancellationToken);
 	}
@@ -144,6 +154,7 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 	/// <returns>Имя метода, преобразованное в camelCase.</returns>
 	private static string ConvertMethodName(string methodName) => JsonNamingPolicy.CamelCase.ConvertName(methodName);
 
+	/// <inheritdoc/>
 	public async ValueTask DisposeAsync()
 	{
 		await DisposeAsyncCore().ConfigureAwait(false);
@@ -167,7 +178,7 @@ public abstract class JavaScriptModuleBase : IAsyncDisposable
 			{
 				// В данном случае игнорируем это исключение.
 
-				_logger.LogWarning(
+				Logger.LogWarning(
 					exception,
 					"При освобождении ресурсов возникла ошибка: {ExceptionMessage}",
 					exception.Message);

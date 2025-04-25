@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using Application.Infrastructure.Validation;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using TestInfrastructure;
 
-namespace Application.Infrastructure.Validation.Tests;
+namespace Application.UnitTests.Infrastructure.Validation;
 
 [TestClass]
 public class ValidateComplexTypeAttributeTests
@@ -225,7 +227,9 @@ public class ValidateComplexTypeAttributeTests
 		public string? SubCode { get; set; }
 	}
 
+#pragma warning disable S3993
 	private sealed class TestValidateComplexTypeAttribute : ValidateComplexTypeAttribute
+#pragma warning restore S3993
 	{
 		public new ValidationResult? IsValid(object value, ValidationContext validationContext) => base.IsValid(value, validationContext);
 	}

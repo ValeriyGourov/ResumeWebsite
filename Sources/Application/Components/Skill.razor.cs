@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿#pragma warning disable CA1515
+
+using Microsoft.AspNetCore.Components;
 
 namespace Application.Components;
 
 /// <summary>
 /// Навык, измеренный в процентах.
 /// </summary>
-public partial class Skill
+public sealed partial class Skill
 {
 	private byte _percent;
 

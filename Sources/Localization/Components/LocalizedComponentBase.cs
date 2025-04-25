@@ -21,18 +21,15 @@ public abstract class LocalizedComponentBase : ComponentBase, IDisposable
 	{
 		base.OnInitialized();
 
-		CultureChanger.CultureChanged += CultureChanged;
+		CultureChanger.CultureChanged += CultureChangedAsync;
 	}
 
 	/// <summary>
 	/// Обработчик события изменения выбранной культуры приложения. Уведомляет компонент о том, что его состояние изменилось с цель использовать ресурсы локализации для выбранной культуры.
 	/// </summary>
-	private Task CultureChanged()
-	{
-		InvokeAsync(() => StateHasChanged());
-		return Task.CompletedTask;
-	}
+	private Task CultureChangedAsync() => InvokeAsync(() => StateHasChanged());
 
+	/// <inheritdoc cref="Dispose()"/>
 	protected virtual void Dispose(bool disposing)
 	{
 		if (!_disposedValue)
@@ -41,7 +38,7 @@ public abstract class LocalizedComponentBase : ComponentBase, IDisposable
 			{
 				// Здесь необходимо освободить управляемое состояние (управляемые объекты).
 
-				CultureChanger.CultureChanged -= CultureChanged;
+				CultureChanger.CultureChanged -= CultureChangedAsync;
 			}
 
 			// Здесь необходимо освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить метод завершения.

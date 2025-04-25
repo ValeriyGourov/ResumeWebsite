@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using Application.Infrastructure.Validation;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using TestInfrastructure;
 
-namespace Application.Infrastructure.Validation.Tests;
+namespace Application.UnitTests.Infrastructure.Validation;
 
 [TestClass]
 public class ComplexTypeValidationResultTests
@@ -37,8 +39,8 @@ public class ComplexTypeValidationResultTests
 		const string errorMessage = "Test";
 		IEnumerable<ValidationResult> validationResults = new List<ValidationResult>
 		{
-			new ValidationResult("Test 1"),
-			new ValidationResult("Test 2")
+			new("Test 1"),
+			new("Test 2")
 		};
 
 		// Act.

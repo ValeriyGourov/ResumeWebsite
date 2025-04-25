@@ -1,5 +1,9 @@
-﻿using System.Collections;
+﻿#pragma warning disable CA1813
+
+using System.Collections;
 using System.ComponentModel.DataAnnotations;
+
+using CommunityToolkit.Diagnostics;
 
 namespace Application.Infrastructure.Validation;
 
@@ -7,10 +11,14 @@ namespace Application.Infrastructure.Validation;
 /// Атрибут рекурсивной проверки сложных типов.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Parameter, AllowMultiple = false)]
-public class ValidateComplexTypeAttribute : ValidationAttribute
+internal class ValidateComplexTypeAttribute : ValidationAttribute
 {
 	/// <inheritdoc/>
-	/// <remarks>При неуспешной проверке возвращает экземпляр класса <see cref="ComplexTypeValidationResult"/>, включающего результаты рекурсивной проверки свойств проверяемого объекта.</remarks>
+	/// <remarks>
+	/// При неуспешной проверке возвращает экземпляр класса
+	/// <see cref="ComplexTypeValidationResult"/>, включающего результаты рекурсивной проверки
+	/// свойств проверяемого объекта.
+	/// </remarks>
 	/// <exception cref="ArgumentNullException">Не указан контекст проверки.</exception>
 	protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
 	{
@@ -19,10 +27,7 @@ public class ValidateComplexTypeAttribute : ValidationAttribute
 			return ValidationResult.Success;
 		}
 
-		if (validationContext is null)
-		{
-			throw new ArgumentNullException(nameof(validationContext));
-		}
+		Guard.IsNotNull(validationContext);
 
 		List<ValidationResult> validationResults = new();
 		if (value is IEnumerable collection)

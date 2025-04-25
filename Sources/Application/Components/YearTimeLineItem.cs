@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿#pragma warning disable CA1515
+
+using System.Globalization;
 
 using Microsoft.AspNetCore.Components;
 
@@ -7,7 +9,7 @@ namespace Application.Components;
 /// <summary>
 /// Событие на временной линии с периодом в виде года.
 /// </summary>
-public class YearTimeLineItem : TimeLineItemBase
+public sealed class YearTimeLineItem : TimeLineItemBase
 {
 	/// <summary>
 	/// Год начала события.
@@ -21,6 +23,7 @@ public class YearTimeLineItem : TimeLineItemBase
 	[Parameter]
 	public int? EndYear { get; set; }
 
+	/// <inheritdoc/>
 	protected override void OnParametersSet()
 	{
 		StartPeriod = StartYear.ToString(CultureInfo.CurrentCulture);

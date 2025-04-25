@@ -12,15 +12,25 @@ internal sealed class MainLayoutJavaScriptModule : JavaScriptModuleBase
 	/// <summary>
 	/// Конструктор на основании экземпляра среды выполнения JavaScript.
 	/// </summary>
-	/// <param name="logger"><inheritdoc cref="JavaScriptModuleBase.JavaScriptModuleBase(ILogger{JavaScriptModuleBase}, IJSRuntime, string)" path="/param[@name='logger']"/></param>
+	/// <param name="logger">
+	/// <inheritdoc
+	///		cref="JavaScriptModuleBase(ILogger{JavaScriptModuleBase}, IJSRuntime, string)"
+	///		path="/param[@name='logger']"/>
+	/// </param>
 	/// <param name="jsRuntime"><inheritdoc cref="IJSRuntime" path="/summary"/></param>
-	/// <exception cref="ArgumentException">Не указано значение обязательного параметра.</exception>
-	public MainLayoutJavaScriptModule(ILogger<MainLayoutJavaScriptModule> logger, IJSRuntime jsRuntime)
+	/// <exception cref="ArgumentException">
+	/// Не указано значение обязательного параметра.
+	/// </exception>
+	public MainLayoutJavaScriptModule(
+		ILogger<MainLayoutJavaScriptModule> logger,
+		IJSRuntime jsRuntime)
 		: base(logger, jsRuntime, "./Shared/MainLayout.razor.js")
 	{ }
 
 	/// <summary>
 	/// Показывает главный контейнер приложения и скрывает вращатель.
 	/// </summary>
+#pragma warning disable VSTHRD200 // Use "Async" suffix for async methods
 	public ValueTask ShowMainContainer() => InvokeVoidAsync();
+#pragma warning restore VSTHRD200 // Use "Async" suffix for async methods
 }

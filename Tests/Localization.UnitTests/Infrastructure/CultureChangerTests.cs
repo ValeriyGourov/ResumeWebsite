@@ -1,10 +1,12 @@
 ﻿using System.Globalization;
 
+using Localization.Infrastructure;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using TestInfrastructure;
 
-namespace Localization.Infrastructure.Tests;
+namespace Localization.UnitTests.Infrastructure;
 
 [TestClass]
 public class CultureChangerTests
@@ -169,13 +171,13 @@ public class CultureChangerTests
 		CultureInfo uiCulture = new("es-MX");
 
 		bool invoked = false;
-		Task CultureChanger_CultureChanged()
+		Task CultureChanger_CultureChangedAsync()
 		{
 			invoked = true;
 			return Task.CompletedTask;
 		}
 
-		cultureChanger.CultureChanged += CultureChanger_CultureChanged;
+		cultureChanger.CultureChanged += CultureChanger_CultureChangedAsync;
 
 		// Act.
 		cultureChanger.ChangeCulture(culture, uiCulture);

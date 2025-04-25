@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#pragma warning disable CA1515
+
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 
 using Localization.Infrastructure;
@@ -16,9 +18,12 @@ public sealed record DataString(
 {
 	private static readonly CultureInfo _ruCultureInfo = CultureInfo.GetCultureInfo("ru");
 
+	/// <inheritdoc/>
 	public override string ToString() => CultureChanger.CurrentUICulture.LCID == _ruCultureInfo.LCID ? Ru : En;
 
+#pragma warning disable CS1591
 	public static implicit operator string(DataString? dataString)
+#pragma warning restore CS1591
 		=> dataString is null
 			? string.Empty
 			: dataString.ToString();

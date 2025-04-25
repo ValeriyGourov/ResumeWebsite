@@ -1,11 +1,14 @@
 ﻿using System.Globalization;
 
+using CommunityToolkit.Diagnostics;
+
 namespace Localization.Infrastructure;
 
 /// <summary>
-/// Преобразователь культуры предоставляет сведения о используемой культуре приложения и оповещает об её изменении.
+/// Преобразователь культуры предоставляет сведения о используемой культуре приложения и
+/// оповещает об её изменении.
 /// </summary>
-public class CultureChanger
+public sealed class CultureChanger
 {
 	/// <summary>
 	/// Объект, представляющий язык и региональные параметры, используемые приложением.
@@ -13,7 +16,8 @@ public class CultureChanger
 	public static CultureInfo CurrentCulture { get; private set; } = CultureInfo.CurrentCulture;
 
 	/// <summary>
-	/// Язык и региональные параметры, используемые диспетчером ресурсов для поиска ресурсов, связанных с языком и региональными параметрами, во время выполнения.
+	/// Язык и региональные параметры, используемые диспетчером ресурсов для поиска ресурсов,
+	/// связанных с языком и региональными параметрами, во время выполнения.
 	/// </summary>
 	public static CultureInfo CurrentUICulture { get; private set; } = CultureInfo.CurrentUICulture;
 
@@ -35,15 +39,26 @@ public class CultureChanger
 	/// <summary>
 	/// Инициирует изменение культуры приложения.
 	/// </summary>
-	/// <param name="culture">Новая культура приложения. Используется для установки региональных стандартов и языка пользовательского интерфейса.</param>
+	/// <param name="culture">
+	/// Новая культура приложения. Используется для установки региональных стандартов и языка
+	/// пользовательского интерфейса.
+	/// </param>
 	public void ChangeCulture(CultureInfo culture) => ChangeCulture(culture, culture);
 
 	/// <summary>
 	/// Инициирует изменение культуры приложения.
 	/// </summary>
-	/// <param name="cultureName">Предварительно определенное имя культуры, которая представляет язык и региональные параметры, используемые приложением.</param>
-	/// <param name="uiCultureName">Предварительно определенное имя культуры, которая представляет язык и региональные параметры, используемые диспетчером ресурсов для поиска ресурсов, связанных с языком и региональными параметрами, во время выполнения.</param>
-	public void ChangeCulture(string cultureName, string uiCultureName) => ChangeCulture(new CultureInfo(cultureName), new CultureInfo(uiCultureName));
+	/// <param name="cultureName">
+	/// Предварительно определенное имя культуры, которая представляет язык и региональные
+	/// параметры, используемые приложением.
+	/// </param>
+	/// <param name="uiCultureName">
+	/// Предварительно определенное имя культуры, которая представляет язык и региональные
+	/// параметры, используемые диспетчером ресурсов для поиска ресурсов, связанных с языком и
+	/// региональными параметрами, во время выполнения.
+	/// </param>
+	public void ChangeCulture(string cultureName, string uiCultureName)
+		=> ChangeCulture(new CultureInfo(cultureName), new CultureInfo(uiCultureName));
 
 	/// <summary>
 	/// Инициирует изменение культуры приложения.
@@ -52,15 +67,8 @@ public class CultureChanger
 	/// <param name="uiCulture">Язык и региональные параметры, используемые диспетчером ресурсов для поиска ресурсов, связанных с языком и региональными параметрами, во время выполнения.</param>
 	public void ChangeCulture(CultureInfo culture, CultureInfo uiCulture)
 	{
-		if (culture is null)
-		{
-			throw new ArgumentNullException(nameof(culture));
-		}
-
-		if (uiCulture is null)
-		{
-			throw new ArgumentNullException(nameof(uiCulture));
-		}
+		Guard.IsNotNull(culture);
+		Guard.IsNotNull(uiCulture);
 
 		CurrentCulture = culture;
 		CurrentUICulture = uiCulture;

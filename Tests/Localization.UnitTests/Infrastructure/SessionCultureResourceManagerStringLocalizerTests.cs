@@ -1,6 +1,8 @@
 ﻿using System.Globalization;
 using System.Resources;
 
+using Localization.Infrastructure;
+
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,7 +11,7 @@ using Moq;
 
 using TestInfrastructure;
 
-namespace Localization.Infrastructure.Tests;
+namespace Localization.UnitTests.Infrastructure;
 
 [TestClass]
 public class SessionCultureResourceManagerStringLocalizerTests

@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿#pragma warning disable CA1515
+
+using System.Globalization;
 
 using Application.Data.Models;
 using Application.Infrastructure.JavaScriptModules.Shared;
@@ -13,7 +15,7 @@ namespace Application.Shared;
 /// <summary>
 /// Основная разметка страниц приложения.
 /// </summary>
-public partial class MainLayout : IAsyncDisposable
+public sealed partial class MainLayout : IAsyncDisposable
 {
 	[Inject] private MainLayoutJavaScriptModule JSModule { get; set; } = null!;
 
@@ -32,6 +34,7 @@ public partial class MainLayout : IAsyncDisposable
 	/// </summary>
 	[Inject] private IHeadElementHelper HeadElementHelper { get; set; } = null!;
 
+	/// <inheritdoc/>
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		if (firstRender)
@@ -47,19 +50,23 @@ public partial class MainLayout : IAsyncDisposable
 				titleTemplate,
 				ResumeData.Name,
 				ResumeData.Surname);
-			await HeadElementHelper.SetTitleAsync(title);
+			await HeadElementHelper
+				.SetTitleAsync(title)
+				.ConfigureAwait(false);
 		}
 
 		await base.OnAfterRenderAsync(firstRender).ConfigureAwait(true);
 	}
 
+	/// <inheritdoc/>
 	public async ValueTask DisposeAsync()
 	{
 		await DisposeAsyncCore().ConfigureAwait(false);
 		GC.SuppressFinalize(this);
 	}
 
-	protected virtual async ValueTask DisposeAsyncCore()
+	/// <inheritdoc/>
+	private async ValueTask DisposeAsyncCore()
 	{
 		if (JSModule is not null)
 		{

@@ -2,16 +2,20 @@
 using System.Globalization;
 using System.Resources;
 
+using CommunityToolkit.Diagnostics;
+
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging;
 
 namespace Localization.Infrastructure;
 
 /// <summary>
-/// Сервис, предоставляющий локализованные строки в рамках одной сессии без перезагрузки приложения или обновления страницы.
+/// Сервис, предоставляющий локализованные строки в рамках одной сессии без перезагрузки
+/// приложения или обновления страницы.
 /// </summary>
 /// <remarks>
-/// Локализованные строки возвращаются в зависимости от культуры, указанной в свойстве <see cref="CultureChanger.CurrentUICulture"/>.
+/// Локализованные строки возвращаются в зависимости от культуры, указанной в свойстве
+/// <see cref="CultureChanger.CurrentUICulture"/>.
 /// </remarks>
 internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, IDisposable
 {
@@ -45,10 +49,7 @@ internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, 
 	{
 		get
 		{
-			if (name is null)
-			{
-				throw new ArgumentNullException(nameof(name));
-			}
+			Guard.IsNotNull(name);
 
 			string? value = GetStringSafely(name);
 
@@ -64,10 +65,7 @@ internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, 
 	{
 		get
 		{
-			if (name is null)
-			{
-				throw new ArgumentNullException(nameof(name));
-			}
+			Guard.IsNotNull(name);
 
 			string? format = GetStringSafely(name);
 			string? value = string.Format(CultureChanger.CurrentUICulture, format ?? name, arguments);
@@ -87,7 +85,7 @@ internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, 
 			true,
 			includeParentCultures);
 
-		if (resources != null)
+		if (resources is not null)
 		{
 			foreach (DictionaryEntry item in resources)
 			{
@@ -110,16 +108,14 @@ internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, 
 	/// Выполняет попытку безопасного получения локализованной строки.
 	/// </summary>
 	/// <remarks>
-	/// Если требуемой культуры невозможно найти файлы ресурсов, в качестве локализованной строки будет возвращено значение <see cref="null"/>.
+	/// Если требуемой культуры невозможно найти файлы ресурсов, в качестве локализованной
+	/// строки будет возвращено значение <see langword="null"/>.
 	/// </remarks>
-	/// <param name="name"></param>
+	/// <param name="name">Имя ресурса строки.</param>
 	/// <returns>Локализованная строка.</returns>
 	protected virtual string? GetStringSafely(string name)
 	{
-		if (name is null)
-		{
-			throw new ArgumentNullException(nameof(name));
-		}
+		Guard.IsNotNull(name);
 
 		CultureInfo culture = CultureChanger.CurrentUICulture;
 		string? value = null;
@@ -163,7 +159,8 @@ internal class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, 
 				_resourceManager?.ReleaseAllResources();
 			}
 
-			// Здесь необходимо освободить неуправляемые ресурсы (неуправляемые объекты) и переопределить метод завершения.
+			// Здесь необходимо освободить неуправляемые ресурсы (неуправляемые объекты)
+			// и переопределить метод завершения.
 			// Здесь необходимо установить значение NULL для больших полей.
 			_disposedValue = true;
 		}

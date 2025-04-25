@@ -1,4 +1,6 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿#pragma warning disable CA1515
+
+using System.Diagnostics.CodeAnalysis;
 
 namespace Application.Data.Models;
 
@@ -20,6 +22,7 @@ public sealed record YearTimeLineItem(
 	int? EndYear)
 	: TimeLineItemBase(Institution, Position, Location, Description)
 {
+	/// <inheritdoc/>
 	public override int CompareTo([AllowNull] TimeLineItemBase other)
 	{
 		if (other is not YearTimeLineItem typedOther)

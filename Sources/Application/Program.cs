@@ -1,4 +1,4 @@
-using System.Globalization;
+﻿using System.Globalization;
 
 using Application.Data;
 using Application.Infrastructure.JavaScriptModules.Shared;
@@ -39,7 +39,7 @@ app.UseRouting();
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 
-app.Run();
+await app.RunAsync().ConfigureAwait(false);
 
 static void ConfigureServicesLocalization(IServiceCollection services)
 {

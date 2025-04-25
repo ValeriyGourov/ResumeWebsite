@@ -49,7 +49,7 @@ public abstract class CultureSwitcherBase : ComponentBase, IAsyncDisposable
 	/// <inheritdoc/>
 	protected override void OnInitialized()
 	{
-		CultureChanger.CultureChanged += CultureChanged;
+		CultureChanger.CultureChanged += CultureChangedAsync;
 
 		base.OnInitialized();
 	}
@@ -57,7 +57,7 @@ public abstract class CultureSwitcherBase : ComponentBase, IAsyncDisposable
 	/// <summary>
 	/// Обработчик события изменения выбранной культуры приложения. Выполняет запись куки-файла культуры в системе пользователя для использования при следующем запуске приложения.
 	/// </summary>
-	private async Task CultureChanged()
+	private async Task CultureChangedAsync()
 	{
 		string cookieName = CookieRequestCultureProvider.DefaultCookieName;
 		string cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(CultureChanger.CurrentUICulture));
@@ -84,6 +84,7 @@ public abstract class CultureSwitcherBase : ComponentBase, IAsyncDisposable
 	/// <param name="culture">Объект, представляющий язык и региональные параметры, используемые текущим приложением. Это же значение используется для пользовательского интерфейса.</param>
 	protected virtual void ChangeCulture(CultureInfo culture) => CultureChanger.ChangeCulture(culture, culture);
 
+	/// <inheritdoc/>
 	public async ValueTask DisposeAsync()
 	{
 		await DisposeAsyncCore().ConfigureAwait(false);
@@ -95,7 +96,7 @@ public abstract class CultureSwitcherBase : ComponentBase, IAsyncDisposable
 	/// </summary>
 	protected virtual async ValueTask DisposeAsyncCore()
 	{
-		CultureChanger.CultureChanged -= CultureChanged;
+		CultureChanger.CultureChanged -= CultureChangedAsync;
 
 		if (JSModule is not null)
 		{

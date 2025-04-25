@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿#pragma warning disable CA1515
+
+using System.Globalization;
 
 using Microsoft.AspNetCore.Components;
 
@@ -7,7 +9,7 @@ namespace Application.Components;
 /// <summary>
 /// Событие на временной линии с периодом в виде месяца и года.
 /// </summary>
-public class MonthYearTimeLineItem : TimeLineItemBase
+public sealed class MonthYearTimeLineItem : TimeLineItemBase
 {
 	/// <summary>
 	/// Дата начала события.

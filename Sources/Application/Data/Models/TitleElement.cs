@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#pragma warning disable CA1515
+
+using System.ComponentModel.DataAnnotations;
 
 using Application.Infrastructure.Validation;
 

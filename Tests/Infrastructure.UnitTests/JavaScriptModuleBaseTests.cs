@@ -1,9 +1,11 @@
-﻿using Microsoft.Extensions.Logging;
+﻿#pragma warning disable VSTHRD200
+
+using Microsoft.Extensions.Logging;
 using Microsoft.JSInterop;
 
 using TestInfrastructure;
 
-namespace Infrastructure.Tests;
+namespace Infrastructure.UnitTests;
 
 [TestClass]
 public class JavaScriptModuleBaseTests
@@ -26,6 +28,7 @@ public class JavaScriptModuleBaseTests
 
 		int expected = fixture.Create<int>();
 
+#pragma warning disable CA2007
 		await using TestJavaScriptModule module = GetMockedModuleForReturnValueMethod(
 			scriptPath,
 			identifier,
@@ -33,9 +36,12 @@ public class JavaScriptModuleBaseTests
 			arg2,
 			expected,
 			cancellationToken);
+#pragma warning restore CA2007
 
 		// Act.
-		int actual = await module.ReturnValueMethod(arg1, arg2, cancellationToken);
+		int actual = await module
+			.ReturnValueMethod(arg1, arg2, cancellationToken)
+			.ConfigureAwait(false);
 
 		// Assert.
 		_ = actual.Should().Be(expected);
@@ -57,6 +63,7 @@ public class JavaScriptModuleBaseTests
 
 		int expected = fixture.Create<int>();
 
+#pragma warning disable CA2007
 		await using TestJavaScriptModule module = GetMockedModuleForReturnValueMethod(
 			scriptPath,
 			identifier,
@@ -64,13 +71,16 @@ public class JavaScriptModuleBaseTests
 			arg2,
 			expected,
 			cancellationToken);
+#pragma warning restore CA2007
 
 		// Act.
-		int actual = await module.ReturnValueMethodWithExplicitIdentifier(
-			identifier,
-			arg1,
-			arg2,
-			cancellationToken);
+		int actual = await module
+			.ReturnValueMethodWithExplicitIdentifier(
+				identifier,
+				arg1,
+				arg2,
+				cancellationToken)
+			.ConfigureAwait(false);
 
 		// Assert.
 		_ = actual.Should().Be(expected);
@@ -96,13 +106,17 @@ public class JavaScriptModuleBaseTests
 			arg2,
 			cancellationToken);
 
+#pragma warning disable CA2007
 		await using TestJavaScriptModule module = GetMockedModule(
 			jsObjectReferenceMock.Object,
 			scriptPath,
 			cancellationToken);
+#pragma warning restore CA2007
 
 		// Act.
-		await module.VoidMethod(arg1, arg2, cancellationToken);
+		await module
+			.VoidMethod(arg1, arg2, cancellationToken)
+			.ConfigureAwait(false);
 
 		// Assert.
 		jsObjectReferenceMock.Verify();
@@ -128,13 +142,17 @@ public class JavaScriptModuleBaseTests
 			arg2,
 			cancellationToken);
 
+#pragma warning disable CA2007
 		await using TestJavaScriptModule module = GetMockedModule(
 			jsObjectReferenceMock.Object,
 			scriptPath,
 			cancellationToken);
+#pragma warning restore CA2007
 
 		// Act.
-		await module.VoidMethodWithExplicitIdentifier(identifier, arg1, arg2, cancellationToken);
+		await module
+			.VoidMethodWithExplicitIdentifier(identifier, arg1, arg2, cancellationToken)
+			.ConfigureAwait(false);
 
 		// Assert.
 		jsObjectReferenceMock.Verify();
@@ -164,8 +182,12 @@ public class JavaScriptModuleBaseTests
 			cancellationToken);
 
 		// Act.
-		_ = await module.ReturnValueMethod(arg1, arg2, cancellationToken);
-		await module.DisposeAsync();
+		_ = await module
+			.ReturnValueMethod(arg1, arg2, cancellationToken)
+			.ConfigureAwait(false);
+		await module
+			.DisposeAsync()
+			.ConfigureAwait(false);
 
 		// Assert.
 		jsObjectReferenceMock.Verify();
@@ -196,8 +218,12 @@ public class JavaScriptModuleBaseTests
 			cancellationToken);
 
 		// Act.
-		_ = await module.ReturnValueMethod(arg1, arg2, cancellationToken);
-		await module.DisposeAsync();
+		_ = await module
+			.ReturnValueMethod(arg1, arg2, cancellationToken)
+			.ConfigureAwait(false);
+		await module
+			.DisposeAsync()
+			.ConfigureAwait(false);
 
 		// Assert.
 		jsObjectReferenceMock.Verify();

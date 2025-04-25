@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿#pragma warning disable CA1515
+
+using System.Globalization;
 
 using Localization.Infrastructure;
 

@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#pragma warning disable CA1515
+
+using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
 
 using Application.Infrastructure.Validation;
@@ -19,5 +21,6 @@ public abstract record TimeLineItemBase(
 	[property: Required, ValidateComplexType] DataString Description)
 	: IComparable<TimeLineItemBase>
 {
+	/// <inheritdoc/>
 	public abstract int CompareTo([AllowNull] TimeLineItemBase other);
 }

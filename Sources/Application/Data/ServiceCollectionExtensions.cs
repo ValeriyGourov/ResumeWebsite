@@ -13,12 +13,18 @@ namespace Application.Data;
 /// <summary>
 /// Расширения <see cref="IServiceCollection"/>, подключающих данные резюме.
 /// </summary>
-public static class ServiceCollectionExtensions
+internal static class ServiceCollectionExtensions
 {
 	/// <summary>
 	/// Относительный путь к файлу с данными резюме.
 	/// </summary>
 	private const string _resumeDataPath = "Data/ResumeData.json";
+
+	private static readonly JsonSerializerOptions _serializerOptions = new()
+	{
+		DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+		ReadCommentHandling = JsonCommentHandling.Skip
+	};
 
 	/// <summary>
 	/// Добавляет объект с данными резюме в коллекцию служб.
@@ -27,16 +33,11 @@ public static class ServiceCollectionExtensions
 	/// <returns>Коллекция служб, которая может быть использована для дальнейшей настройки конфигурации.</returns>
 	public static IServiceCollection AddResumeData(this IServiceCollection services)
 	{
-		Guard.IsNotNull(services, nameof(services));
+		Guard.IsNotNull(services);
 
 		string json = File.ReadAllText(_resumeDataPath);
-		JsonSerializerOptions serializerOptions = new()
-		{
-			DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-			ReadCommentHandling = JsonCommentHandling.Skip
-		};
 
-		ResumeData? resumeData = JsonSerializer.Deserialize<ResumeData>(json, serializerOptions);
+		ResumeData? resumeData = JsonSerializer.Deserialize<ResumeData>(json, _serializerOptions);
 		if (resumeData is null)
 		{
 			const string errorMessage = "Не удалось прочитать данные резюме.";
