@@ -4,9 +4,9 @@ using System.Globalization;
 
 using Application.Data.Models;
 
+using Localization.Components;
 using Localization.Infrastructure;
 
-using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
 namespace Application.Components;
@@ -15,22 +15,23 @@ namespace Application.Components;
 /// Компонент для переключения культуры приложения. Для используемых в приложении двух культур
 /// выполняет циклическое переключение между ними.
 /// </summary>
-public sealed partial class CultureSwitcher
+/// <param name="logger">
+/// <inheritdoc
+///		cref="CultureSwitcherBase(ILogger{CultureSwitcherBase})"
+///		path="/param[@name='logger']"/>
+/// </param>
+/// <param name="resumeData">Данные для отображения в резюме.</param>
+/// <param name="localizer">Локализатор строк.</param>
+public sealed partial class CultureSwitcher(
+	ILogger<CultureSwitcher> logger,
+	ResumeData resumeData,
+	IStringLocalizer<CultureSwitcher> localizer)
+	: CultureSwitcherBase(logger)
 {
 	/// <summary>
 	/// Заголовок страницы приложения.
 	/// </summary>
 	private string? _title;
-
-	/// <summary>
-	/// Данные для отображения в резюме.
-	/// </summary>
-	[Inject] private ResumeData ResumeData { get; set; } = null!;
-
-	/// <summary>
-	/// Локализатор строк.
-	/// </summary>
-	[Inject] private IStringLocalizer<CultureSwitcher> Localizer { get; set; } = null!;
 
 	/// <summary>
 	/// Выбирает культуру из списка поддерживаемых культур, не равную текущей.
@@ -59,14 +60,10 @@ public sealed partial class CultureSwitcher
 	/// </summary>
 	private void SetTitle()
 	{
-		string? titleTemplate = Localizer["SiteTitle"];
-		if (titleTemplate is not null)
-		{
-			_title = string.Format(
-				CultureInfo.CurrentCulture,
-				titleTemplate,
-				ResumeData.Name,
-				ResumeData.Surname);
-		}
+		_title = string.Format(
+			CultureInfo.CurrentCulture,
+			localizer["SiteTitle"],
+			resumeData.Name,
+			resumeData.Surname);
 	}
 }

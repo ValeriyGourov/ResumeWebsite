@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿#pragma warning disable CA1515
+
+using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Localization;
 
 namespace Application.Components;
@@ -6,14 +8,10 @@ namespace Application.Components;
 /// <summary>
 /// Базовый класс для событий на временной линии.
 /// </summary>
-public abstract partial class TimeLineItemBase
+/// <param name="localizer">Локализатор строк.</param>
+public abstract partial class TimeLineItemBase(IStringLocalizer<TimeLineItemBase> localizer)
 {
 	private string? _endPeriod;
-
-	/// <summary>
-	/// Локализатор строк.
-	/// </summary>
-	[Inject] private IStringLocalizer<TimeLineItemBase> Localizer { get; set; } = null!;
 
 	/// <summary>
 	/// Строковое представление периода начала события.
@@ -25,7 +23,7 @@ public abstract partial class TimeLineItemBase
 	/// </summary>
 	protected string? EndPeriod
 	{
-		get => !string.IsNullOrWhiteSpace(_endPeriod) ? _endPeriod : Localizer["EndPeriodPresent"];
+		get => !string.IsNullOrWhiteSpace(_endPeriod) ? _endPeriod : localizer["EndPeriodPresent"];
 		set => _endPeriod = value;
 	}
 

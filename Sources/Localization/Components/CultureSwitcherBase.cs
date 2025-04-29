@@ -15,7 +15,11 @@ namespace Localization.Components;
 /// <summary>
 /// Базовый класс компонента для переключения культуры приложения.
 /// </summary>
-public abstract partial class CultureSwitcherBase : ComponentBase, IAsyncDisposable
+/// <param name="logger">
+/// <inheritdoc cref="Logger" path="/summary"/>
+/// </param>
+public abstract partial class CultureSwitcherBase(ILogger<CultureSwitcherBase> logger)
+	: ComponentBase, IAsyncDisposable
 {
 	/// <summary>
 	/// Срок хранения куки-файла с культурой, исчисляемый в днях.
@@ -40,7 +44,7 @@ public abstract partial class CultureSwitcherBase : ComponentBase, IAsyncDisposa
 	/// <summary>
 	/// Средство ведения журнала.
 	/// </summary>
-	[Inject] protected ILogger<CultureSwitcherBase> Logger { get; set; } = null!;
+	protected ILogger<CultureSwitcherBase> Logger { get; set; } = logger;
 
 	/// <summary>
 	/// Поддерживаемые культуры приложения.

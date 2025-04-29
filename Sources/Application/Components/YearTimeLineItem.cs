@@ -3,13 +3,20 @@
 using System.Globalization;
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.Extensions.Localization;
 
 namespace Application.Components;
 
 /// <summary>
 /// Событие на временной линии с периодом в виде года.
 /// </summary>
-public sealed class YearTimeLineItem : TimeLineItemBase
+/// <param name="localizer">
+/// <inheritdoc
+///		cref="TimeLineItemBase(IStringLocalizer{TimeLineItemBase})"
+///		path="/param[@name='localizer']"/>
+/// </param>
+public sealed class YearTimeLineItem(IStringLocalizer<TimeLineItemBase> localizer)
+	: TimeLineItemBase(localizer)
 {
 	/// <summary>
 	/// Год начала события.
