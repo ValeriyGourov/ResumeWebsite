@@ -5,28 +5,23 @@ using Microsoft.JSInterop;
 namespace Application.Infrastructure.JavaScriptModules.Shared;
 
 /// <summary>
-/// Методы, вызывающие функции JavaScript для компонента <see cref="Application.Shared.MainLayout"/>.
+/// Методы, вызывающие функции JavaScript для компонента
+/// <see cref="Components.Layout.MainLayout"/>.
 /// </summary>
-internal sealed class MainLayoutJavaScriptModule : JavaScriptModuleBase
+/// <param name="logger">
+/// <inheritdoc
+///		cref="JavaScriptModuleBase(ILogger{JavaScriptModuleBase}, IJSRuntime, string)"
+///		path="/param[@name='logger']"/>
+/// </param>
+/// <param name="jsRuntime"><inheritdoc cref="IJSRuntime" path="/summary"/></param>
+/// <exception cref="ArgumentException">
+/// Не указано значение обязательного параметра.
+/// </exception>
+internal sealed class MainLayoutJavaScriptModule(
+	ILogger<MainLayoutJavaScriptModule> logger,
+	IJSRuntime jsRuntime)
+	: JavaScriptModuleBase(logger, jsRuntime, "./Components/Layout/MainLayout.razor.js")
 {
-	/// <summary>
-	/// Конструктор на основании экземпляра среды выполнения JavaScript.
-	/// </summary>
-	/// <param name="logger">
-	/// <inheritdoc
-	///		cref="JavaScriptModuleBase(ILogger{JavaScriptModuleBase}, IJSRuntime, string)"
-	///		path="/param[@name='logger']"/>
-	/// </param>
-	/// <param name="jsRuntime"><inheritdoc cref="IJSRuntime" path="/summary"/></param>
-	/// <exception cref="ArgumentException">
-	/// Не указано значение обязательного параметра.
-	/// </exception>
-	public MainLayoutJavaScriptModule(
-		ILogger<MainLayoutJavaScriptModule> logger,
-		IJSRuntime jsRuntime)
-		: base(logger, jsRuntime, "./Shared/MainLayout.razor.js")
-	{ }
-
 	/// <summary>
 	/// Показывает главный контейнер приложения и скрывает вращатель.
 	/// </summary>
