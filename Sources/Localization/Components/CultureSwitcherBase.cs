@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.VisualStudio.Threading;
 
 namespace Localization.Components;
 
@@ -19,12 +20,17 @@ namespace Localization.Components;
 /// <inheritdoc cref="Logger" path="/summary"/>
 /// </param>
 public abstract partial class CultureSwitcherBase(ILogger<CultureSwitcherBase> logger)
-	: ComponentBase, IAsyncDisposable
+	: ComponentBase, System.IAsyncDisposable
 {
 	/// <summary>
 	/// Срок хранения куки-файла с культурой, исчисляемый в днях.
 	/// </summary>
 	private const int _userCultureCookieExpirationDays = 180;
+
+	/// <summary>
+	/// Механизм для асинхронного выполнения обработчиков событий.
+	/// </summary>
+	private readonly JoinableTaskFactory _joinableTaskFactory = new(new JoinableTaskContext());
 
 	/// <summary>
 	/// Преобразователь культуры, предоставляющий сведения о используемой культуре приложения.
@@ -54,7 +60,7 @@ public abstract partial class CultureSwitcherBase(ILogger<CultureSwitcherBase> l
 	/// <inheritdoc/>
 	protected override void OnInitialized()
 	{
-		CultureChanger.CultureChanged += CultureChangedAsync;
+		CultureChanger.CultureChanged += CultureChanged;
 
 		base.OnInitialized();
 	}
@@ -63,15 +69,18 @@ public abstract partial class CultureSwitcherBase(ILogger<CultureSwitcherBase> l
 	/// Обработчик события изменения выбранной культуры приложения. Выполняет запись куки-файла
 	/// культуры в системе пользователя для использования при следующем запуске приложения.
 	/// </summary>
-	private async Task CultureChangedAsync()
+	private void CultureChanged(object? sender, EventArgs e)
 	{
-		string cookieName = CookieRequestCultureProvider.DefaultCookieName;
-		string cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(CultureChanger.CurrentUICulture));
+		_ = _joinableTaskFactory.RunAsync(async () =>
+		{
+			string cookieName = CookieRequestCultureProvider.DefaultCookieName;
+			string cookieValue = CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(CultureChanger.CurrentUICulture));
 
-		LogInformationCreatingCookie(cookieName, cookieValue);
-		await JSModule
-			.CreateCookie(cookieName, cookieValue, _userCultureCookieExpirationDays)
-			.ConfigureAwait(true);
+			LogInformationCreatingCookie(cookieName, cookieValue);
+			await JSModule
+				.CreateCookie(cookieName, cookieValue, _userCultureCookieExpirationDays)
+				.ConfigureAwait(true);
+		});
 	}
 
 	/// <summary>
@@ -108,7 +117,7 @@ public abstract partial class CultureSwitcherBase(ILogger<CultureSwitcherBase> l
 	/// </summary>
 	protected virtual async ValueTask DisposeAsyncCore()
 	{
-		CultureChanger.CultureChanged -= CultureChangedAsync;
+		CultureChanger.CultureChanged -= CultureChanged;
 
 		if (JSModule is not null)
 		{

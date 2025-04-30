@@ -171,13 +171,7 @@ public class CultureChangerTests
 		CultureInfo uiCulture = new("es-MX");
 
 		bool invoked = false;
-		Task CultureChanger_CultureChangedAsync()
-		{
-			invoked = true;
-			return Task.CompletedTask;
-		}
-
-		cultureChanger.CultureChanged += CultureChanger_CultureChangedAsync;
+		cultureChanger.CultureChanged += (sender, e) => invoked = true;
 
 		// Act.
 		cultureChanger.ChangeCulture(culture, uiCulture);

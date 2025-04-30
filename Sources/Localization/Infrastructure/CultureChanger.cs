@@ -24,7 +24,7 @@ public sealed class CultureChanger
 	/// <summary>
 	/// Оповещает об изменении культуры приложения.
 	/// </summary>
-	public event Func<Task>? CultureChanged;
+	public event EventHandler? CultureChanged;
 
 	/// <summary>
 	/// Инициирует изменение культуры приложения.
@@ -82,6 +82,6 @@ public sealed class CultureChanger
 		CultureInfo.CurrentCulture = culture;
 		CultureInfo.CurrentUICulture = uiCulture;
 
-		CultureChanged?.Invoke();
+		CultureChanged?.Invoke(this, new());
 	}
 }

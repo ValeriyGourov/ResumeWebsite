@@ -1,6 +1,7 @@
 ﻿using Localization.Infrastructure;
 
 using Microsoft.AspNetCore.Components;
+using Microsoft.VisualStudio.Threading;
 
 namespace Localization.Components;
 
@@ -13,6 +14,11 @@ public abstract class LocalizedComponentBase : ComponentBase, IDisposable
 	private bool _disposedValue;
 
 	/// <summary>
+	/// Механизм для асинхронного выполнения обработчиков событий.
+	/// </summary>
+	private readonly JoinableTaskFactory _joinableTaskFactory = new(new JoinableTaskContext());
+
+	/// <summary>
 	/// Преобразователь культуры, предоставляющий сведения о используемой культуре приложения.
 	/// </summary>
 	[Inject] protected CultureChanger CultureChanger { get; set; } = null!;
@@ -22,7 +28,7 @@ public abstract class LocalizedComponentBase : ComponentBase, IDisposable
 	{
 		base.OnInitialized();
 
-		CultureChanger.CultureChanged += CultureChangedAsync;
+		CultureChanger.CultureChanged += CultureChanged;
 	}
 
 	/// <summary>
@@ -30,7 +36,10 @@ public abstract class LocalizedComponentBase : ComponentBase, IDisposable
 	/// что его состояние изменилось с цель использовать ресурсы локализации для выбранной
 	/// культуры.
 	/// </summary>
-	private Task CultureChangedAsync() => InvokeAsync(() => StateHasChanged());
+	private void CultureChanged(object? sender, EventArgs e)
+	{
+		_ = _joinableTaskFactory.RunAsync(() => InvokeAsync(() => StateHasChanged()));
+	}
 
 	/// <inheritdoc cref="Dispose()"/>
 	protected virtual void Dispose(bool disposing)
@@ -41,7 +50,7 @@ public abstract class LocalizedComponentBase : ComponentBase, IDisposable
 			{
 				// Здесь необходимо освободить управляемое состояние (управляемые объекты).
 
-				CultureChanger.CultureChanged -= CultureChangedAsync;
+				CultureChanger.CultureChanged -= CultureChanged;
 			}
 
 			// Здесь необходимо освободить неуправляемые ресурсы (неуправляемые объекты) и

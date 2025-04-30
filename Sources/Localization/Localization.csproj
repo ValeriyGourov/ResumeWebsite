@@ -5,6 +5,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.*" />
 		<PackageReference Include="Microsoft.AspNetCore.Localization" Version="2.*" />
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="9.*" />
+		<PackageReference Include="Microsoft.VisualStudio.Threading" Version="17.*" />
 		<PackageReference Include="System.Globalization" Version="4.*" />
 	</ItemGroup>
 
