@@ -13,27 +13,32 @@ namespace Localization.Infrastructure;
 /// Представляет фабрику, создающую экземпляры
 /// <see cref="SessionCultureResourceManagerStringLocalizer"/>.
 /// </summary>
-internal class SessionCultureResourceManagerStringLocalizerFactory : IStringLocalizerFactory
+/// <param name="localizationOptions">
+/// <inheritdoc cref="_localizationOptions" path="/summary"/>
+/// </param>
+/// <param name="loggerFactory">
+/// <inheritdoc cref="_loggerFactory" path="/summary"/>
+/// </param>
+/// <exception cref="ArgumentNullException">Не указаны параметры локализации.</exception>
+/// <exception cref="ArgumentNullException">
+/// Не указана фабрика регистраторов событий.
+/// </exception>
+internal class SessionCultureResourceManagerStringLocalizerFactory(
+	IOptions<LocalizationOptions> localizationOptions,
+	ILoggerFactory loggerFactory)
+	: IStringLocalizerFactory
 {
-	private readonly ILoggerFactory _loggerFactory;
-	private readonly IOptions<LocalizationOptions> _localizationOptions;
+	/// <summary>
+	/// Фабрика средств ведения журнала.
+	/// </summary>
+	private readonly ILoggerFactory _loggerFactory = loggerFactory
+		?? throw new ArgumentNullException(nameof(loggerFactory));
 
 	/// <summary>
-	/// Создаёт экземпляр на основе параметров локализации.
+	/// Параметры локализации приложения.
 	/// </summary>
-	/// <param name="localizationOptions">Параметры локализации приложения.</param>
-	/// <param name="loggerFactory">Фабрика регистраторов событий.</param>
-	/// <exception cref="ArgumentNullException">Не указаны параметры локализации.</exception>
-	/// <exception cref="ArgumentNullException">
-	/// Не указана фабрика регистраторов событий.
-	/// </exception>
-	public SessionCultureResourceManagerStringLocalizerFactory(
-		IOptions<LocalizationOptions> localizationOptions,
-		ILoggerFactory loggerFactory)
-	{
-		_localizationOptions = localizationOptions ?? throw new ArgumentNullException(nameof(localizationOptions));
-		_loggerFactory = loggerFactory ?? throw new ArgumentNullException(nameof(loggerFactory));
-	}
+	private readonly IOptions<LocalizationOptions> _localizationOptions = localizationOptions
+		?? throw new ArgumentNullException(nameof(localizationOptions));
 
 	/// <inheritdoc/>
 	public IStringLocalizer Create(string baseName, string location)

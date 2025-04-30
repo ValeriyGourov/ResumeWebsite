@@ -97,9 +97,20 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 	/// <summary>
 	/// Вызывает метод JavaScript-модуля с заданным набором параметров. Идентификатор JavaScript-метода должен совпадать с именем метода модуля-обёртки, при этом применяется преобразование в camelCase.
 	/// </summary>
-	/// <param name="args"><inheritdoc cref="InvokeVoidAsync(string, object?[], CancellationToken)" path="/param[@name='args']"/></param>
-	/// <param name="cancellationToken"><inheritdoc cref="InvokeVoidAsync(string, object?[], CancellationToken)" path="/param[@name='cancellationToken']"/></param>
-	/// <param name="methodName">Имя метода модуля-обёртки. Всегда определяется автоматически и не должно указываться в явном виде.</param>
+	/// <param name="args">
+	/// <inheritdoc
+	///		cref="InvokeVoidAsync(string, object?[], CancellationToken)"
+	///		path="/param[@name='args']"/>
+	///	</param>
+	/// <param name="cancellationToken">
+	/// <inheritdoc
+	///		cref="InvokeVoidAsync(string, object?[], CancellationToken)"
+	///		path="/param[@name='cancellationToken']"/>
+	/// </param>
+	/// <param name="methodName">
+	/// Имя метода модуля-обёртки. Всегда определяется автоматически и не должно указываться
+	/// в явном виде.
+	/// </param>
 	protected ValueTask InvokeVoidAsync(
 		object?[]? args = null,
 		CancellationToken cancellationToken = default,
@@ -111,7 +122,8 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 	}
 
 	/// <summary>
-	/// Вызывает метод JavaScript-модуля по его идентификатору и с заданным набором параметров, возвращает значение указанного типа.
+	/// Вызывает метод JavaScript-модуля по его идентификатору и с заданным набором параметров,
+	/// возвращает значение указанного типа.
 	/// </summary>
 	/// <typeparam name="TValue">Тип возвращаемого значения.</typeparam>
 	/// <param name="identifier">Идентификатор вызываемого метода.</param>

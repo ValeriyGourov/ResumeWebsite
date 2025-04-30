@@ -1,4 +1,4 @@
-﻿#pragma warning disable CA1515
+﻿#pragma warning disable CA1515, CA1036
 
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;

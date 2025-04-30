@@ -22,8 +22,7 @@ public static class ApplicationBuilderExtensions
 	{
 		Guard.IsNotNull(app);
 
-		IOptions<RequestLocalizationOptions>? localizationOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>()
-			?? throw new ApplicationException($"Не определены параметры {nameof(RequestLocalizationOptions)} для ПО промежуточного слоя локализации");
+		IOptions<RequestLocalizationOptions> localizationOptions = app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>();
 		app.UseRequestLocalization(localizationOptions.Value);
 
 		return app;

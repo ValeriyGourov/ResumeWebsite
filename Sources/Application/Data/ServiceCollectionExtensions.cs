@@ -30,7 +30,9 @@ internal static class ServiceCollectionExtensions
 	/// Добавляет объект с данными резюме в коллекцию служб.
 	/// </summary>
 	/// <param name="services">Коллекция служб.</param>
-	/// <returns>Коллекция служб, которая может быть использована для дальнейшей настройки конфигурации.</returns>
+	/// <returns>
+	/// Коллекция служб, которая может быть использована для дальнейшей настройки конфигурации.
+	/// </returns>
 	public static IServiceCollection AddResumeData(this IServiceCollection services)
 	{
 		Guard.IsNotNull(services);
@@ -41,10 +43,10 @@ internal static class ServiceCollectionExtensions
 		if (resumeData is null)
 		{
 			const string errorMessage = "Не удалось прочитать данные резюме.";
-			throw new ApplicationException(errorMessage);
+			throw new InvalidOperationException(errorMessage);
 		}
 
-		List<ValidationResult> validationResults = new();
+		List<ValidationResult> validationResults = [];
 		ValidationContext validationContext = new(resumeData);
 
 		if (Validator.TryValidateObject(resumeData, validationContext, validationResults, true))
@@ -59,7 +61,7 @@ internal static class ServiceCollectionExtensions
 			_ = stringBuilder.AppendLine();
 			BuildErrorDetails(stringBuilder, validationResults);
 
-			throw new ApplicationException(stringBuilder.ToString());
+			throw new ValidationException(stringBuilder.ToString());
 		}
 
 		return services;
@@ -70,7 +72,10 @@ internal static class ServiceCollectionExtensions
 	/// </summary>
 	/// <param name="stringBuilder">Построитель текста строки с ошибками.</param>
 	/// <param name="validationResults">Коллекция результатов проверки данных резюме.</param>
-	/// <param name="indentLevel">Уровень текущего вызова метода в иерархии описания ошибок. На указанное значение будет выполнен отступ добавляемого текста.</param>
+	/// <param name="indentLevel">
+	/// Уровень текущего вызова метода в иерархии описания ошибок. На указанное значение будет
+	/// выполнен отступ добавляемого текста.
+	/// </param>
 	private static void BuildErrorDetails(
 		StringBuilder stringBuilder,
 		IEnumerable<ValidationResult> validationResults,

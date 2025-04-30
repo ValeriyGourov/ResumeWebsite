@@ -29,7 +29,7 @@ internal class ValidateComplexTypeAttribute : ValidationAttribute
 
 		Guard.IsNotNull(validationContext);
 
-		List<ValidationResult> validationResults = new();
+		List<ValidationResult> validationResults = [];
 		if (value is IEnumerable collection)
 		{
 			int index = -1;
@@ -43,7 +43,7 @@ internal class ValidateComplexTypeAttribute : ValidationAttribute
 					continue;
 				}
 
-				List<ValidationResult> itemValidationResults = new();
+				List<ValidationResult> itemValidationResults = [];
 				ValidationContext itemValidationContext = ValidateValue(item, itemValidationResults);
 
 				if (itemValidationResults.Count > 0)

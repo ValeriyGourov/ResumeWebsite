@@ -42,10 +42,10 @@ public sealed record ResumeData(
 	/// <summary>
 	/// Кнопки со ссылками на профили социальных сетей.
 	/// </summary>
-	public IEnumerable<SocialButton> SocialButtons { get; init; } = SocialButtons ?? Enumerable.Empty<SocialButton>();
+	public IEnumerable<SocialButton> SocialButtons { get; init; } = SocialButtons ?? [];
 
 	/// <summary>
 	/// Контактная информация.
 	/// </summary>
-	public IEnumerable<ContactItem> Contacts { get; init; } = Contacts ?? Enumerable.Empty<ContactItem>();
+	public IEnumerable<ContactItem> Contacts { get; init; } = Contacts ?? [];
 }

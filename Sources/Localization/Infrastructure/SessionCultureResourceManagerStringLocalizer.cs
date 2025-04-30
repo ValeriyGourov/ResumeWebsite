@@ -18,32 +18,24 @@ namespace Localization.Infrastructure;
 /// Локализованные строки возвращаются в зависимости от культуры, указанной в свойстве
 /// <see cref="CultureChanger.CurrentUICulture"/>.
 /// </remarks>
-internal partial class SessionCultureResourceManagerStringLocalizer : IStringLocalizer, IDisposable
+/// <param name="resourceManager">
+/// <inheritdoc cref="_resourceManager" path="/summary"/>
+/// </param>
+/// <param name="logger">Средство ведения журнала.</param>
+/// <exception cref="ArgumentNullException">Не указан диспетчер ресурсов.</exception>
+/// <exception cref="ArgumentNullException">Не указан регистратор событий.</exception>
+internal partial class SessionCultureResourceManagerStringLocalizer(
+	ResourceManager resourceManager,
+	ILogger logger)
+	: IStringLocalizer, IDisposable
 {
-	/// <summary>
-	/// Диспетчер ресурсов.
-	/// </summary>
-	private readonly ResourceManager _resourceManager;
-
-	/// <summary>
-	/// Регистратор событий.
-	/// </summary>
-	private readonly ILogger _logger;
-
 	private bool _disposedValue;
 
 	/// <summary>
-	/// Создаёт экземпляр сервиса на основе диспетчера ресурсов.
+	/// Диспетчер ресурсов.
 	/// </summary>
-	/// <param name="resourceManager">Диспетчер ресурсов.</param>
-	/// <param name="logger">Регистратор событий.</param>
-	/// <exception cref="ArgumentNullException">Не указан диспетчер ресурсов.</exception>
-	/// <exception cref="ArgumentNullException">Не указан регистратор событий.</exception>
-	public SessionCultureResourceManagerStringLocalizer(ResourceManager resourceManager, ILogger logger)
-	{
-		_resourceManager = resourceManager ?? throw new ArgumentNullException(nameof(resourceManager));
-		_logger = logger ?? throw new ArgumentNullException(nameof(logger));
-	}
+	private readonly ResourceManager _resourceManager = resourceManager
+		?? throw new ArgumentNullException(nameof(resourceManager));
 
 	/// <inheritdoc/>
 	public LocalizedString this[string name]
