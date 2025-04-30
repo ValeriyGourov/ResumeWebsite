@@ -1,0 +1,8 @@
+﻿{
+	"sdk": {
+		"rollForward": "latestMinor"
+	},
+	"msbuild-sdks": {
+		"MSTest.Sdk": "3.8.3"
+	}
+}

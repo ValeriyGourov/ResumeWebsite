@@ -1,0 +1,13 @@
+﻿<Project Sdk="MSTest.Sdk">
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Options" Version="9.*" />
+		<PackageReference Include="ReportGenerator" Version="5.*" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Sources\Localization\Localization.csproj" />
+		<ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj" />
+	</ItemGroup>
+
+</Project>
