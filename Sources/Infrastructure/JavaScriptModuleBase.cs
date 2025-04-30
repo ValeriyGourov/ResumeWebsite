@@ -86,7 +86,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 		object?[]? args = null,
 		CancellationToken cancellationToken = default)
 	{
-		LogDebugData(identifier, args);
+		LogDebugInvokeData(new { identifier, args });
 
 		IJSObjectReference jsObjectReference = await GetJSObjectReferenceAsync(cancellationToken).ConfigureAwait(true);
 		await jsObjectReference
@@ -95,7 +95,9 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 	}
 
 	/// <summary>
-	/// Вызывает метод JavaScript-модуля с заданным набором параметров. Идентификатор JavaScript-метода должен совпадать с именем метода модуля-обёртки, при этом применяется преобразование в camelCase.
+	/// Вызывает метод JavaScript-модуля с заданным набором параметров. Идентификатор
+	/// JavaScript-метода должен совпадать с именем метода модуля-обёртки, при этом
+	/// применяется преобразование в camelCase.
 	/// </summary>
 	/// <param name="args">
 	/// <inheritdoc
@@ -116,7 +118,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 		CancellationToken cancellationToken = default,
 		[CallerMemberName] string methodName = "")
 	{
-		LogDebugData(args);
+		LogDebugInvokeData(args);
 
 		return InvokeVoidAsync(ConvertMethodName(methodName), args, cancellationToken);
 	}
@@ -135,7 +137,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 		object?[]? args = null,
 		CancellationToken cancellationToken = default)
 	{
-		LogDebugData(identifier, args);
+		LogDebugInvokeData(new { identifier, args });
 
 		IJSObjectReference jsObjectReference = await GetJSObjectReferenceAsync(cancellationToken).ConfigureAwait(true);
 		return await jsObjectReference
@@ -173,7 +175,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 		CancellationToken cancellationToken = default,
 		[CallerMemberName] string methodName = "")
 	{
-		LogDebugData(args);
+		LogDebugInvokeData(args);
 
 		return InvokeAsync<TValue>(ConvertMethodName(methodName), args, cancellationToken);
 	}
@@ -221,14 +223,10 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 	[ExcludeFromCodeCoverage]
 	[LoggerMessage(
 		Level = LogLevel.Debug,
-		Message = "Данные: {Identifier}, {@Args}")]
-	private partial void LogDebugData(string identifier, object?[]? args);
-
-	[ExcludeFromCodeCoverage]
-	[LoggerMessage(
-		Level = LogLevel.Debug,
-		Message = "Данные: {@Args}")]
-	private partial void LogDebugData(object?[]? args);
+		Message = "Данные вызова модуля: {@InvokeData}")]
+#pragma warning disable LOGGEN036
+	private partial void LogDebugInvokeData(object? invokeData);
+#pragma warning restore LOGGEN036
 
 	[ExcludeFromCodeCoverage]
 	[LoggerMessage(

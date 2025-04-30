@@ -6,35 +6,37 @@ using Application.Infrastructure.JavaScriptModules.Shared;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
+_ = builder.ConfigureLogging();
+
 ConfigureServicesLocalization(builder.Services);
 
-builder.Services.AddScoped<MainLayoutJavaScriptModule>();
+_ = builder.Services.AddScoped<MainLayoutJavaScriptModule>();
 
 // Add services to the container.
-builder.Services
+_ = builder.Services
 	.AddRazorComponents()
 	.AddInteractiveServerComponents();
 
-builder.Services.AddResumeData();
+_ = builder.Services.AddResumeData();
 
 WebApplication app = builder.Build();
 
-app.UseSessionLocalization();
+_ = app.UseSessionLocalization();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-	app.UseExceptionHandler("/Error", createScopeForErrors: true);
+	_ = app.UseExceptionHandler("/Error", createScopeForErrors: true);
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-	app.UseHsts();
+	_ = app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseAntiforgery();
+_ = app.UseHttpsRedirection();
+_ = app.UseAntiforgery();
 
-app.MapStaticAssets();
+_ = app.MapStaticAssets();
 
-app
+_ = app
 	.MapRazorComponents<App>()
 	.AddInteractiveServerRenderMode();
 

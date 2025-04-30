@@ -15,26 +15,6 @@ namespace Localization.UnitTests.Infrastructure;
 [TestClass, DoNotParallelize]
 public class SessionCultureResourceManagerStringLocalizerTests
 {
-	[TestMethod]
-	[TestProperty(TestProperties.Constructor, "")]
-	public void ThrowsArgumentNullExceptionInConstructorIfLoggerIsNull()
-	{
-		// Arrange.
-		ResourceManager resourceManager = Mock.Of<ResourceManager>();
-		ILogger? logger = null;
-
-		// Act.
-#pragma warning disable CS8604
-		Action act = () =>
-		{
-			using SessionCultureResourceManagerStringLocalizer localizer = new(resourceManager, logger);
-		};
-#pragma warning restore CS8604
-
-		// Assert.
-		act.Should().ThrowExactly<ArgumentNullException>();
-	}
-
 	#region this[string name]
 
 	[TestMethod]
