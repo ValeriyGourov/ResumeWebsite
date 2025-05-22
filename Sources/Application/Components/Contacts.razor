@@ -6,7 +6,7 @@
 
 	@foreach (ContactItem contact in Items)
 	{
-		if (string.IsNullOrWhiteSpace(contact.Hyperlink))
+		if (contact.Hyperlink is null)
 		{
 			<ArbitraryContact Title="@contact.Title"
 							  Description="@contact.Description" />

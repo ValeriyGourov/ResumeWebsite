@@ -18,5 +18,5 @@ namespace Application.Data.Models;
 public sealed record ContactItem(
 	DataString Title,
 	DataString Description,
-	string? Hyperlink)
+	Uri? Hyperlink)
 	: TitleElement(Title, Description);
