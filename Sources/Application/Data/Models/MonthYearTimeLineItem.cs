@@ -8,16 +8,16 @@ namespace Application.Data.Models;
 /// Событие на временной линии с периодом в виде месяца и года.
 /// </summary>
 /// <param name="Institution">
-/// <inheritdoc cref="TimeLineItemBase" path="/param[@name='Institution']"/>
+/// <inheritdoc cref="TimeLineItemBase{T}" path="/param[@name='Institution']"/>
 /// </param>
 /// <param name="Position">
-/// <inheritdoc cref="TimeLineItemBase" path="/param[@name='Position']"/>
+/// <inheritdoc cref="TimeLineItemBase{T}" path="/param[@name='Position']"/>
 /// </param>
 /// <param name="Location">
-/// <inheritdoc cref="TimeLineItemBase" path="/param[@name='Location']"/>
+/// <inheritdoc cref="TimeLineItemBase{T}" path="/param[@name='Location']"/>
 /// </param>
 /// <param name="Description">
-/// <inheritdoc cref="TimeLineItemBase" path="/param[@name='Description']"/>
+/// <inheritdoc cref="TimeLineItemBase{T}" path="/param[@name='Description']"/>
 /// </param>
 /// <param name="StartDate"><inheritdoc cref="StartDate" path="/summary"/></param>
 /// <param name="EndDate"><inheritdoc cref="EndDate" path="/summary"/></param>
@@ -26,36 +26,39 @@ public sealed record MonthYearTimeLineItem(
 	DataString Position,
 	DataString Location,
 	DataString Description,
-	DateTimeOffset StartDate,
-	DateTimeOffset? EndDate)
-	: TimeLineItemBase(Institution, Position, Location, Description)
+	DateOnly StartDate,
+	DateOnly? EndDate)
+	: TimeLineItemBase<MonthYearTimeLineItem>(Institution, Position, Location, Description)
 {
 	/// <summary>
 	/// Дата начала события. При присваивании значения дата преобразуется к началу месяца.
 	/// </summary>
-	public DateTimeOffset StartDate { get; init; } = MonthBeginning(StartDate);
+	public DateOnly StartDate { get; init; } = MonthBeginning(StartDate);
 
 	/// <summary>
-	/// Дата окончания события. Если не указана, то событие считается активным. При присваивании значения дата преобразуется к началу месяца.
+	/// Дата окончания события. Если не указана, то событие считается активным.
+	/// При присваивании значения дата преобразуется к началу месяца.
 	/// </summary>
-	public DateTimeOffset? EndDate { get; init; } = EndDate.HasValue ? MonthBeginning(EndDate.Value) : EndDate;
+	public DateOnly? EndDate { get; init; } = EndDate.HasValue
+		? MonthBeginning(EndDate.Value)
+		: null;
 
 	/// <inheritdoc/>
-	public override int CompareTo([AllowNull] TimeLineItemBase other)
+	public override int CompareTo(MonthYearTimeLineItem? other)
 	{
-		if (other is not MonthYearTimeLineItem typedOther)
+		if (other is null)
 		{
 			return 1;
 		}
 
-		DateTimeOffset utcNow = DateTimeOffset.UtcNow;
-		DateTimeOffset otherEndDate = typedOther.EndDate ?? utcNow;
-		DateTimeOffset endDate = EndDate ?? utcNow;
+		DateOnly now = DateOnly.FromDateTime(DateTime.UtcNow);
+		DateOnly otherEndDate = other.EndDate ?? now;
+		DateOnly endDate = EndDate ?? now;
 
 		int compareResult = otherEndDate.CompareTo(endDate);
 		if (compareResult == 0)
 		{
-			compareResult = typedOther.StartDate.CompareTo(StartDate);
+			compareResult = other.StartDate.CompareTo(StartDate);
 		}
 
 		return compareResult;
@@ -64,8 +67,8 @@ public sealed record MonthYearTimeLineItem(
 	/// <summary>
 	/// Преобразует дату к началу месяца.
 	/// </summary>
-	/// <param name="dateTime">Исходная дата.</param>
+	/// <param name="date">Исходная дата.</param>
 	/// <returns>Дата первого числа месяца.</returns>
-	private static DateTimeOffset MonthBeginning(DateTimeOffset dateTime)
-		=> new(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0, TimeSpan.Zero);
+	private static DateOnly MonthBeginning(DateOnly date)
+		=> new(date.Year, date.Month, 1);
 }
