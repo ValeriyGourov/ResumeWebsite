@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CA1515
 
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 
 namespace Application.Data.Models;
 
@@ -14,10 +14,26 @@ namespace Application.Data.Models;
 /// <inheritdoc cref="TitleElement" path="/param[@name='Description']"/>
 /// </param>
 /// <param name="Uri">Ссылка на профиль.</param>
-/// <param name="FontClass">Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".</param>
+/// <param name="FontClass">
+/// Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".
+/// </param>
 public sealed record ProfileItem(
 	DataString Title,
 	DataString Description,
-	[property: Required] Uri Uri,
-	[property: Required] string FontClass)
+	Uri Uri,
+	string FontClass)
 	: TitleElement(Title, Description);
+
+internal sealed class ProfileItemValidator : AbstractValidator<ProfileItem>
+{
+	public ProfileItemValidator()
+	{
+		Include(new TitleElementValidator());
+
+		RuleFor(item => item.Uri)
+			.NotNull();
+
+		RuleFor(item => item.FontClass)
+			.NotEmpty();
+	}
+}

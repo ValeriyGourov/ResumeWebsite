@@ -1,12 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Text.Json.Serialization;
 
 using Application.Data.Models;
-using Application.Infrastructure.Validation;
 
 using CommunityToolkit.Diagnostics;
+
+using FluentValidation;
 
 namespace Application.Data;
 
@@ -39,61 +38,12 @@ internal static class ServiceCollectionExtensions
 
 		string json = File.ReadAllText(_resumeDataPath);
 
-		ResumeData? resumeData = JsonSerializer.Deserialize<ResumeData>(json, _serializerOptions);
-		if (resumeData is null)
-		{
-			const string errorMessage = "Не удалось прочитать данные резюме.";
-			throw new InvalidOperationException(errorMessage);
-		}
+		ResumeData resumeData = JsonSerializer.Deserialize<ResumeData>(json, _serializerOptions)
+			?? throw new InvalidOperationException("Не удалось прочитать данные резюме.");
 
-		List<ValidationResult> validationResults = [];
-		ValidationContext validationContext = new(resumeData);
-
-		if (Validator.TryValidateObject(resumeData, validationContext, validationResults, true))
-		{
-			_ = services.AddSingleton(resumeData);
-		}
-		else
-		{
-			const string errorMessage = "В файле данных указаны некорректные данные.";
-
-			StringBuilder stringBuilder = new(errorMessage);
-			_ = stringBuilder.AppendLine();
-			BuildErrorDetails(stringBuilder, validationResults);
-
-			throw new ValidationException(stringBuilder.ToString());
-		}
+		new ResumeDataValidator().ValidateAndThrow(resumeData);
+		_ = services.AddSingleton(resumeData);
 
 		return services;
-	}
-
-	/// <summary>
-	/// Формирует строку с иерархическим перечислением ошибок проверки данных резюме.
-	/// </summary>
-	/// <param name="stringBuilder">Построитель текста строки с ошибками.</param>
-	/// <param name="validationResults">Коллекция результатов проверки данных резюме.</param>
-	/// <param name="indentLevel">
-	/// Уровень текущего вызова метода в иерархии описания ошибок. На указанное значение будет
-	/// выполнен отступ добавляемого текста.
-	/// </param>
-	private static void BuildErrorDetails(
-		StringBuilder stringBuilder,
-		IEnumerable<ValidationResult> validationResults,
-		int indentLevel = 0)
-	{
-		foreach (ValidationResult? error in validationResults)
-		{
-			_ = stringBuilder
-				.Append('\t', indentLevel)
-				.AppendLine(error.ErrorMessage);
-
-			if (error is ComplexTypeValidationResult complexTypeResult)
-			{
-				BuildErrorDetails(
-					stringBuilder,
-					complexTypeResult.ValidationResults,
-					indentLevel + 1);
-			}
-		}
 	}
 }

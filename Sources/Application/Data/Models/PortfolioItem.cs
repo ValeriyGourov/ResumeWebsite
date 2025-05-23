@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CA1515
 
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 
 namespace Application.Data.Models;
 
@@ -18,6 +18,20 @@ namespace Application.Data.Models;
 public sealed record PortfolioItem(
 	DataString Title,
 	DataString Description,
-	[property: Required] Uri Uri,
-	[property: Required] Uri ImageUri)
+	Uri Uri,
+	Uri ImageUri)
 	: TitleElement(Title, Description);
+
+internal sealed class PortfolioItemValidator : AbstractValidator<PortfolioItem>
+{
+	public PortfolioItemValidator()
+	{
+		Include(new TitleElementValidator());
+
+		RuleFor(item => item.Uri)
+			.NotNull();
+
+		RuleFor(item => item.ImageUri)
+			.NotNull();
+	}
+}

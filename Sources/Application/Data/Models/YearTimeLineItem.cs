@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CA1515
 
-using System.Diagnostics.CodeAnalysis;
+using FluentValidation;
 
 namespace Application.Data.Models;
 
@@ -51,5 +51,21 @@ public sealed record YearTimeLineItem(
 		}
 
 		return compareResult;
+	}
+}
+
+internal sealed class YearTimeLineItemValidator : AbstractValidator<YearTimeLineItem>
+{
+	public YearTimeLineItemValidator()
+	{
+		Include(new TimeLineItemBaseValidator<YearTimeLineItem>());
+
+		RuleFor(item => item.StartYear)
+			.GreaterThan(0);
+
+		When(
+			item => item.EndYear is not null,
+			() => RuleFor(item => item.EndYear)
+				.GreaterThanOrEqualTo(item => item.StartYear));
 	}
 }

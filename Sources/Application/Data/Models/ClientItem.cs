@@ -1,8 +1,8 @@
 ﻿#pragma warning disable CA1515
 
-using System.ComponentModel.DataAnnotations;
-
 using Application.Infrastructure.Validation;
+
+using FluentValidation;
 
 namespace Application.Data.Models;
 
@@ -12,7 +12,18 @@ namespace Application.Data.Models;
 /// <param name="Name">Название клиента.</param>
 /// <param name="Uri">Адрес веб-сайта клиента.</param>
 /// <param name="Logo">Адрес картинки логотипа клиента.</param>
-public sealed record class ClientItem(
-	[property: ValidateComplexType] DataString? Name,
-	[property: Required] Uri Uri,
-	[property: Required] Uri Logo);
+public sealed record class ClientItem(DataString Name, Uri Uri, Uri Logo);
+
+internal sealed class ClientItemValidator : AbstractValidator<ClientItem>
+{
+	public ClientItemValidator()
+	{
+		this.SetDataStringRule(item => item.Name);
+
+		RuleFor(item => item.Uri)
+			.NotNull();
+
+		RuleFor(item => item.Logo)
+			.NotNull();
+	}
+}

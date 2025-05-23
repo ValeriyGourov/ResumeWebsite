@@ -1,9 +1,8 @@
 ﻿#pragma warning disable CA1515, CA1036
 
-using System.ComponentModel.DataAnnotations;
-using System.Diagnostics.CodeAnalysis;
-
 using Application.Infrastructure.Validation;
+
+using FluentValidation;
 
 namespace Application.Data.Models;
 
@@ -26,4 +25,19 @@ public abstract record TimeLineItemBase<T>(
 	/// <inheritdoc/>
 	public abstract int CompareTo(T? other);
 }
+
+internal sealed class TimeLineItemBaseValidator<T> : AbstractValidator<TimeLineItemBase<T>>
+	where T : TimeLineItemBase<T>
+{
+	public TimeLineItemBaseValidator()
+	{
+		DataStringValidator dataStringValidator = new();
+
+		this.SetDataStringRule(
+			dataStringValidator,
+			item => item.Institution,
+			item => item.Position,
+			item => item.Location,
+			item => item.Description);
+	}
 }

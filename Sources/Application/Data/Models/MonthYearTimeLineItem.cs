@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CA1515
 
-using System.Diagnostics.CodeAnalysis;
+using FluentValidation;
 
 namespace Application.Data.Models;
 
@@ -71,4 +71,20 @@ public sealed record MonthYearTimeLineItem(
 	/// <returns>Дата первого числа месяца.</returns>
 	private static DateOnly MonthBeginning(DateOnly date)
 		=> new(date.Year, date.Month, 1);
+}
+
+internal sealed class MonthYearTimeLineItemValidator : AbstractValidator<MonthYearTimeLineItem>
+{
+	public MonthYearTimeLineItemValidator()
+	{
+		Include(new TimeLineItemBaseValidator<MonthYearTimeLineItem>());
+
+		RuleFor(item => item.StartDate)
+			.NotEmpty();
+
+		When(
+			item => item.EndDate is not null,
+			() => RuleFor(item => item.EndDate)
+				.GreaterThanOrEqualTo(item => item.StartDate));
+	}
 }
