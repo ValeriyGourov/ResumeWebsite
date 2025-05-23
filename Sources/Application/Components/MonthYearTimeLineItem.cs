@@ -22,13 +22,13 @@ public sealed class MonthYearTimeLineItem(IStringLocalizer<TimeLineItemBase> loc
 	/// Дата начала события.
 	/// </summary>
 	[Parameter]
-	public DateTimeOffset StartDate { get; set; }
+	public DateOnly StartDate { get; set; }
 
 	/// <summary>
 	/// Дата окончания события. Если не указана, то событие считается активным.
 	/// </summary>
 	[Parameter]
-	public DateTimeOffset? EndDate { get; set; }
+	public DateOnly? EndDate { get; set; }
 
 	/// <inheritdoc/>
 	protected override void OnParametersSet()

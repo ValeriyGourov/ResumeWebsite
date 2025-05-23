@@ -1,8 +1,8 @@
 ﻿#pragma warning disable CA1515
 
-using System.ComponentModel.DataAnnotations;
-
 using Application.Infrastructure.Validation;
+
+using FluentValidation;
 
 namespace Application.Data.Models;
 
@@ -24,20 +24,20 @@ namespace Application.Data.Models;
 /// <param name="Portfolio">Портфолио выполненных работ.</param>
 /// <param name="Clients">Клиенты, которым оказывались услуги.</param>
 public sealed record ResumeData(
-	[property: Required, ValidateComplexType] DataString Name,
-	[property: Required, ValidateComplexType] DataString Surname,
-	[property: Required, ValidateComplexType] DataString Title,
-	[param: ValidateComplexType] IEnumerable<SocialButton>? SocialButtons,
-	[param: ValidateComplexType] IEnumerable<ContactItem>? Contacts,
-	[property: ValidateComplexType] DataString? Intro,
-	[property: ValidateComplexType] IEnumerable<TitleElement>? Expertise,
-	[property: ValidateComplexType] IEnumerable<SkillItem>? Skills,
-	[property: ValidateComplexType] SortedSet<MonthYearTimeLineItem>? Experience,
-	[property: ValidateComplexType] SortedSet<YearTimeLineItem>? Education,
-	[property: ValidateComplexType] IEnumerable<ProfileItem>? Profiles,
-	[property: ValidateComplexType] IEnumerable<TitleElement>? Awards,
-	[property: ValidateComplexType] IEnumerable<PortfolioItem>? Portfolio,
-	[property: ValidateComplexType] IEnumerable<ClientItem>? Clients)
+	DataString Name,
+	DataString Surname,
+	DataString Title,
+	IEnumerable<SocialButton>? SocialButtons = null,
+	IEnumerable<ContactItem>? Contacts = null,
+	DataString? Intro = null,
+	IEnumerable<TitleElement>? Expertise = null,
+	IEnumerable<SkillItem>? Skills = null,
+	SortedSet<MonthYearTimeLineItem>? Experience = null,
+	SortedSet<YearTimeLineItem>? Education = null,
+	IEnumerable<ProfileItem>? Profiles = null,
+	IEnumerable<TitleElement>? Awards = null,
+	IEnumerable<PortfolioItem>? Portfolio = null,
+	IEnumerable<ClientItem>? Clients = null)
 {
 	/// <summary>
 	/// Кнопки со ссылками на профили социальных сетей.
@@ -48,4 +48,54 @@ public sealed record ResumeData(
 	/// Контактная информация.
 	/// </summary>
 	public IEnumerable<ContactItem> Contacts { get; init; } = Contacts ?? [];
+}
+
+internal sealed class ResumeDataValidator : AbstractValidator<ResumeData>
+{
+	public ResumeDataValidator()
+	{
+		DataStringValidator dataStringValidator = new();
+
+		this.SetDataStringRule(
+			dataStringValidator,
+			item => item.Name,
+			item => item.Surname,
+			item => item.Title);
+
+		RuleForEach(item => item.SocialButtons)
+			.SetValidator(new SocialButtonValidator());
+
+		RuleForEach(item => item.Contacts)
+			.SetValidator(new ContactItemValidator());
+
+		When(
+			static item => item.Intro is not null,
+			() => this.SetDataStringRule(
+				dataStringValidator,
+				item => item.Intro!));
+
+		RuleForEach(item => item.Expertise)
+			.SetValidator(new TitleElementValidator());
+
+		RuleForEach(item => item.Skills)
+			.SetValidator(new SkillItemValidator());
+
+		RuleForEach(item => item.Experience)
+			.SetValidator(new MonthYearTimeLineItemValidator());
+
+		RuleForEach(item => item.Education)
+			.SetValidator(new YearTimeLineItemValidator());
+
+		RuleForEach(item => item.Profiles)
+			.SetValidator(new ProfileItemValidator());
+
+		RuleForEach(item => item.Awards)
+			.SetValidator(new TitleElementValidator());
+
+		RuleForEach(item => item.Portfolio)
+			.SetValidator(new PortfolioItemValidator());
+
+		RuleForEach(item => item.Clients)
+			.SetValidator(new ClientItemValidator());
+	}
 }

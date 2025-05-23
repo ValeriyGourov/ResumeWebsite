@@ -15,6 +15,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{794C642D-2B3F-46D1-9D98-FA8B51D79B8A}"
 	ProjectSection(SolutionItems) = preProject
 		Tests\Directory.Build.props = Tests\Directory.Build.props
+		Tests\Test.runsettings = Tests\Test.runsettings
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Localization.UnitTests", "Tests\Localization.UnitTests\Localization.UnitTests.csproj", "{6D48D2E1-9B51-4448-9E2D-BA14240EE988}"
@@ -32,7 +33,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решен
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		CodeCoverage.runsettings = CodeCoverage.runsettings
 		Directory.Build.props = Directory.Build.props
 		global.json = global.json
 		SpellCheckerExclusion.dic = SpellCheckerExclusion.dic

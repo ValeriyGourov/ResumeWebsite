@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CA1515
 
-using System.ComponentModel.DataAnnotations;
+using FluentValidation;
 
 namespace Application.Data.Models;
 
@@ -8,7 +8,19 @@ namespace Application.Data.Models;
 /// Описание кнопки, ссылающейся на профиль социальной сети.
 /// </summary>
 /// <param name="Uri">Ссылка на профиль социальной сети.</param>
-/// <param name="FontClass">Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".</param>
-public sealed record SocialButton(
-	[property: Required] Uri Uri,
-	[property: Required] string FontClass);
+/// <param name="FontClass">
+/// Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".
+/// </param>
+public sealed record SocialButton(Uri Uri, string FontClass);
+
+internal sealed class SocialButtonValidator : AbstractValidator<SocialButton>
+{
+	public SocialButtonValidator()
+	{
+		RuleFor(item => item.Uri)
+			.NotNull();
+
+		RuleFor(item => item.FontClass)
+			.NotEmpty();
+	}
+}

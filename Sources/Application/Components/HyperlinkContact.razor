@@ -2,8 +2,8 @@
 
 <Contact>
 	<a href="@Hyperlink"
-	   target="_blank"
-	   class="t-link-container">
+	target="_blank"
+	class="t-link-container">
 		<h4>@Title</h4>
 		<p>
 			<address class="t-link-container__item--blended">
@@ -27,8 +27,9 @@
 	public string Description { get; set; } = string.Empty;
 
 	/// <summary>
-	/// Гиперссылка контакта. Поддерживается любой тип специализированных ссылок, таких как "mailto:", "tel:" и т.п.
+	/// Гиперссылка контакта. Поддерживается любой тип специализированных ссылок,
+	/// таких как "mailto:", "tel:" и т.п.
 	/// </summary>
 	[Parameter]
-	public string Hyperlink { get; set; } = string.Empty;
+	public Uri Hyperlink { get; set; } = new Uri(string.Empty, UriKind.Relative);
 }

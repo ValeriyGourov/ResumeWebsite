@@ -1,5 +1,7 @@
 ﻿#pragma warning disable CA1515
 
+using FluentValidation;
+
 namespace Application.Data.Models;
 
 /// <summary>
@@ -18,5 +20,21 @@ namespace Application.Data.Models;
 public sealed record ContactItem(
 	DataString Title,
 	DataString Description,
-	string? Hyperlink)
+	Uri? Hyperlink)
 	: TitleElement(Title, Description);
+
+internal sealed class ContactItemValidator : AbstractValidator<ContactItem>
+{
+	public ContactItemValidator()
+	{
+		Include(new TitleElementValidator());
+
+		When(item => item.Hyperlink is not null,
+			() =>
+			{
+				RuleFor(item => item.Hyperlink)
+					.Must(hyperlink => hyperlink!.IsAbsoluteUri)
+						.WithMessage("Допускаются только абсолютные гиперссылки.");
+			});
+	}
+}
