@@ -163,7 +163,7 @@
 				"En": "Azure",
 				"Ru": "Azure"
 			},
-			"Percent": 40
+			"Percent": 50
 		},
 		{
 			"Title": {
@@ -254,14 +254,21 @@
 				"En": "gRPC",
 				"Ru": "gRPC"
 			},
-			"Percent": 50
+			"Percent": 60
+		},
+		{
+			"Title": {
+				"En": "WebSocket",
+				"Ru": "WebSocket"
+			},
+			"Percent": 60
 		},
 		{
 			"Title": {
 				"En": "Microservices",
 				"Ru": "Микрослужбы"
 			},
-			"Percent": 70
+			"Percent": 80
 		}
 	],
 	"Experience": [
