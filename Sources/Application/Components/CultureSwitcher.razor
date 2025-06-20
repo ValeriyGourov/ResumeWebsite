@@ -4,9 +4,7 @@
 
 <PageTitle>@_title</PageTitle>
 
-<a href="javascript:"
-   title="@localizer["SwitchLanguage"]"
-   @onclick="@ChangeCulture"
-   @onclick:preventDefault>
+<button title="@localizer["SwitchLanguage"]"
+		@onclick="@ChangeCulture">
 	<span class="fas fa-lg fa-language" /> @NewCulture.NativeName
-</a>
+</button>
