@@ -17,9 +17,7 @@ namespace Application.UnitTests.Infrastructure.Validation;
 [TestClass]
 internal class ValidationToolsTests
 {
-	private static readonly Fixture _fixture = new();
-
-	[TestMethod("Должны быть добавлены необходимые модули проверки")]
+	[TestMethod("Для свойства должны быть добавлены необходимые модули проверки")]
 	public void SetDataStringRule1()
 	{
 		// Arrange.
@@ -29,22 +27,13 @@ internal class ValidationToolsTests
 		validator.SetDataStringRule(item => item.MyProperty1);
 
 		// Assert.
-		validator.CreateDescriptor().Rules
-			.Should()
-			.ContainSingle(rules
-				=> rules.Components.Any(static component => component.Validator is NotNullValidator<TestData, DataString>)
-				&& rules.Components.Any(static component
-					=> component.Validator is ChildValidatorAdaptorType
-					&& ((ChildValidatorAdaptorType)component.Validator).ValidatorType == typeof(DataStringValidator)));
+		validator.CheckPropertyValidators();
 	}
 
-	[TestMethod("Должен использоваться предоставленный экземпляр " + nameof(DataStringValidator))]
+	[TestMethod("Для свойства должен использоваться предоставленный экземпляр " + nameof(DataStringValidator))]
 	public void SetDataStringRule2()
 	{
 		// Arrange.
-		DataString value = _fixture.Create<DataString>();
-		ValidationContext<TestData> context = new(new TestData(value, value));
-
 		DataStringValidator dataStringValidator = new();
 		TestDataValidator validator = new();
 
@@ -54,6 +43,67 @@ internal class ValidationToolsTests
 			item => item.MyProperty1);
 
 		// Assert.
+		validator.CheckProvidedValidator(dataStringValidator);
+	}
+
+	[TestMethod("Для свойства коллекции должны быть добавлены необходимые модули проверки")]
+	public void SetDataStringRuleForEach1()
+	{
+		// Arrange.
+		TestDataValidator validator = new();
+
+		// Act.
+		validator.SetDataStringRuleForEach(item => item.MyCollection1);
+
+		// Assert.
+		validator.CheckPropertyValidators();
+	}
+
+	[TestMethod("Для свойства коллекции должен использоваться предоставленный экземпляр " + nameof(DataStringValidator))]
+	public void SetDataStringRuleForEach2()
+	{
+		// Arrange.
+		DataStringValidator dataStringValidator = new();
+		TestDataValidator validator = new();
+
+		// Act.
+		validator.SetDataStringRuleForEach(
+			dataStringValidator,
+			item => item.MyCollection1);
+
+		// Assert.
+		validator.CheckProvidedValidator(dataStringValidator);
+	}
+}
+
+file record TestData(
+	DataString MyProperty1,
+	DataString MyProperty2,
+	IEnumerable<DataString> MyCollection1);
+
+file class TestDataValidator : AbstractValidator<TestData>;
+
+static file class TestDataValidatorExtensions
+{
+	private static readonly Fixture _fixture = new();
+
+	public static void CheckPropertyValidators(this TestDataValidator validator)
+		=> validator.CreateDescriptor().Rules
+			.Should()
+			.ContainSingle(rules
+				=> rules.Components.Any(static component => component.Validator is NotNullValidator<TestData, DataString>)
+				&& rules.Components.Any(static component
+					=> component.Validator is ChildValidatorAdaptorType
+					&& ((ChildValidatorAdaptorType)component.Validator).ValidatorType == typeof(DataStringValidator)));
+
+	public static void CheckProvidedValidator(
+		this TestDataValidator validator,
+		DataStringValidator dataStringValidator)
+	{
+		DataString value = _fixture.Create<DataString>();
+		IEnumerable<DataString> collection = _fixture.CreateMany<DataString>();
+		ValidationContext<TestData> context = new(new TestData(value, value, collection));
+
 		validator.CreateDescriptor().Rules
 			.Should()
 			.ContainSingle()
@@ -64,9 +114,3 @@ internal class ValidationToolsTests
 				&& ((ChildValidatorAdaptorType)component.Validator).GetValidator(context, value) == dataStringValidator);
 	}
 }
-
-file record TestData(
-	DataString MyProperty1,
-	DataString MyProperty2);
-
-file class TestDataValidator : AbstractValidator<TestData>;

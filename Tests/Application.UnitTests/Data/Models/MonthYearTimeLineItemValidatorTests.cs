@@ -8,7 +8,8 @@ using AutoFixture;
 namespace Application.UnitTests.Data.Models;
 
 [TestClass]
-internal class MonthYearTimeLineItemValidatorTests : ModelValidatorTestsBase<MonthYearTimeLineItem, MonthYearTimeLineItemValidator>
+internal class MonthYearTimeLineItemValidatorTests
+	: ModelValidatorTestsBase<MonthYearTimeLineItem, MonthYearTimeLineItemValidator>
 {
 	protected override MonthYearTimeLineItem CreateValidModel()
 	{
@@ -19,7 +20,7 @@ internal class MonthYearTimeLineItemValidatorTests : ModelValidatorTestsBase<Mon
 			Institution: Fixture.Create<DataString>(),
 			Position: Fixture.Create<DataString>(),
 			Location: Fixture.Create<DataString>(),
-			Description: Fixture.Create<DataString>(),
+			Projects: Fixture.CreateMany<ExperienceProject>(),
 			StartDate: startDate,
 			EndDate: endDate);
 	}
@@ -31,7 +32,7 @@ internal class MonthYearTimeLineItemValidatorTests : ModelValidatorTestsBase<Mon
 				Institution: Fixture.Create<DataString>(),
 				Position: Fixture.Create<DataString>(),
 				Location: Fixture.Create<DataString>(),
-				Description: Fixture.Create<DataString>(),
+				Projects: Fixture.CreateMany<ExperienceProject>(),
 				StartDate: DateOnly.MinValue,
 				EndDate: null),
 			item => item.StartDate,
@@ -45,7 +46,7 @@ internal class MonthYearTimeLineItemValidatorTests : ModelValidatorTestsBase<Mon
 				Institution: Fixture.Create<DataString>(),
 				Position: Fixture.Create<DataString>(),
 				Location: Fixture.Create<DataString>(),
-				Description: Fixture.Create<DataString>(),
+				Projects: Fixture.CreateMany<ExperienceProject>(),
 				StartDate: startDate,
 				EndDate: endDate),
 			item => item.EndDate!,
@@ -72,7 +73,9 @@ internal class MonthYearTimeLineItemValidatorTests : ModelValidatorTestsBase<Mon
 			Institution: invalidDataString,
 			Position: invalidDataString,
 			Location: invalidDataString,
-			Description: invalidDataString,
+			Projects: [new(
+				invalidDataString,
+				[invalidDataString])],
 			StartDate: Fixture.Create<DateOnly>(),
 			EndDate: null);
 
@@ -81,7 +84,15 @@ internal class MonthYearTimeLineItemValidatorTests : ModelValidatorTestsBase<Mon
 			value,
 			(item => item.Institution.En, NotEmptyValidatorName),
 			(item => item.Position.En, NotEmptyValidatorName),
-			(item => item.Location.En, NotEmptyValidatorName),
-			(item => item.Description.En, NotEmptyValidatorName));
+			(item => item.Location.En, NotEmptyValidatorName));
+
+		ValidateWithInvalidValue(
+			value,
+			GetCollectionItemPropertyName(
+				item => item.Projects,
+				item => item.Description.En),
+			NotEmptyValidatorName);
+
+		// TODO: Добавить проверку для свойства Projects.Details[].En.
 	}
 }

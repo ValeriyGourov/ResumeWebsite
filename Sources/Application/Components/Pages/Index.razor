@@ -19,8 +19,8 @@
 				<div class="c-header__avatar">
 					<div class="a-header  c-avatar">
 						<img class="c-avatar__img"
-						 	 src="images/header/avatar.jpg"
-						 	 alt="@Localizer["AvatarAlt"]">
+							 src="images/header/avatar.jpg"
+							 alt="@Localizer["AvatarAlt"]">
 					</div>
 				</div>
 
@@ -199,7 +199,7 @@
 											   Institution="@timeLineItem.Institution"
 											   Position="@timeLineItem.Position"
 											   Location="@timeLineItem.Location"
-											   Description="@timeLineItem.Description" />
+											   Sections="@GetMonthYearTimeLineItemSections(timeLineItem)" />
 					}
 
 				</div>
@@ -428,3 +428,11 @@
 	</ContentFragment>
 
 </ResumeSection>
+
+@code
+{
+	private IEnumerable<MonthYearTimeLineItemSection> GetMonthYearTimeLineItemSections(Data.Models.MonthYearTimeLineItem timeLineItem)
+		=> timeLineItem.Projects.Select(project => new MonthYearTimeLineItemSection(
+			project.Description.ToString(),
+			project.Details?.Select(details => details.ToString())));
+}

@@ -140,7 +140,7 @@ internal class ResumeDataValidatorTests : ModelValidatorTestsBase<ResumeData, Re
 					Institution: Fixture.Create<DataString>(),
 					Position: Fixture.Create<DataString>(),
 					Location: Fixture.Create<DataString>(),
-					Description: Fixture.Create<DataString>(),
+					Projects: Fixture.CreateMany<ExperienceProject>(),
 					StartDate: DateOnly.MinValue,
 					EndDate: null)]),
 			GetCollectionItemPropertyName(

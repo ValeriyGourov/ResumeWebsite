@@ -9,45 +9,49 @@ namespace Application.Components;
 /// Базовый класс для событий на временной линии.
 /// </summary>
 /// <param name="localizer">Локализатор строк.</param>
-public abstract partial class TimeLineItemBase(IStringLocalizer<TimeLineItemBase> localizer)
+public partial class TimeLineItem(IStringLocalizer<TimeLineItem> localizer)
 {
-	private string? _endPeriod;
-
 	/// <summary>
 	/// Строковое представление периода начала события.
 	/// </summary>
-	protected string StartPeriod { get; set; } = null!;
+	[Parameter]
+	public string StartPeriod { get; set; } = null!;
 
 	/// <summary>
 	/// Строковое представление периода окончания события. Если не указана, то событие считается активным.
 	/// </summary>
-	protected string? EndPeriod
-	{
-		get => !string.IsNullOrWhiteSpace(_endPeriod) ? _endPeriod : localizer["EndPeriodPresent"];
-		set => _endPeriod = value;
-	}
+	[Parameter]
+	public string? EndPeriod { get; set; }
 
 	/// <summary>
 	/// Организация или учреждение, в котором происходило событие.
 	/// </summary>
 	[Parameter]
-	public string Institution { get; set; } = null!;
+	[EditorRequired]
+	public string Institution { get; set; }
 
 	/// <summary>
 	/// Занимаемая позиция в организации или учреждении.
 	/// </summary>
 	[Parameter]
-	public string Position { get; set; } = null!;
+	[EditorRequired]
+	public string Position { get; set; }
 
 	/// <summary>
 	/// Местоположение организации или учреждении.
 	/// </summary>
 	[Parameter]
-	public string Location { get; set; } = null!;
+	[EditorRequired]
+	public string Location { get; set; }
 
 	/// <summary>
-	/// Описание деятельности в организации или учреждении.
+	/// Содержимое элемента временной линии, которое будет отображаться внутри карточки события.
 	/// </summary>
 	[Parameter]
-	public string Description { get; set; } = null!;
+	public RenderFragment Content { get; set; } = null!;
+
+	private string GetEndPeriod()
+		=> !string.IsNullOrWhiteSpace(EndPeriod)
+			? EndPeriod
+			: localizer["EndPeriodPresent"];
 }

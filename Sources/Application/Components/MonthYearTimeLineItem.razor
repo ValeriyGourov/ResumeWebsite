@@ -1,0 +1,26 @@
+﻿@inherits TimeLineItem
+
+<TimeLineItem
+	Institution="@Institution"
+	Position="@Position"
+	Location="@Location"
+	StartPeriod="@FormatPeriod(StartDate)"
+	EndPeriod="@FormatPeriod(EndDate)">
+
+	<Content>
+		@foreach (MonthYearTimeLineItemSection itemSection in Sections)
+		{
+			<p>@itemSection.Description</p>
+			<ul>
+				@if (itemSection.Details is not null)
+				{
+					foreach (var details in itemSection.Details)
+					{
+						<li>@details</li>
+					}
+				}
+			</ul>
+		}
+	</Content>
+
+</TimeLineItem>

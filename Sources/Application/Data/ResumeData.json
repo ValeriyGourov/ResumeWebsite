@@ -8,8 +8,8 @@
 		"Ru": "Гуров"
 	},
 	"Title": {
-		"En": "C# / .NET / ASP.NET developer",
-		"Ru": "C# / .NET / ASP.NET разработчик"
+		"En": "C# | .NET | ASP.NET Core developer",
+		"Ru": "C# | .NET | ASP.NET Core разработчик"
 	},
 	"SocialButtons": [
 		{
@@ -69,8 +69,8 @@
 	"Expertise": [
 		{
 			"Title": {
-				"En": "C#/.NET",
-				"Ru": "C#/.NET"
+				"En": "C# | .NET",
+				"Ru": "C# | .NET"
 			},
 			"Description": {
 				"En": "Application development using the C# language and the .NET (Core) platform.",
@@ -79,8 +79,8 @@
 		},
 		{
 			"Title": {
-				"En": "ASP.NET (Core) / Blazor / Full-stack / Back-end",
-				"Ru": "ASP.NET (Core) / Blazor / Full-stack / Back-end"
+				"En": "ASP.NET Core | Blazor | Full-stack | Back-end",
+				"Ru": "ASP.NET Core | Blazor | Full-stack | Back-end"
 			},
 			"Description": {
 				"En": "Web-application development. It can be either a back-end or an application with user interface on Blazor or MVC.",
@@ -244,8 +244,8 @@
 		},
 		{
 			"Title": {
-				"En": "HTML / CSS",
-				"Ru": "HTML / CSS"
+				"En": "HTML, CSS",
+				"Ru": "HTML, CSS"
 			},
 			"Percent": 40
 		},
@@ -287,10 +287,14 @@
 				"En": "Ukraine",
 				"Ru": "Украина"
 			},
-			"Description": {
-				"En": "Participation in the development of the new functional of the integration platform, allowing to exchange data between heterogeneous third-party systems. Interaction with the platform is based on the Web API. I participated in the development of exchange modules with \"1C:Enterprise 8\" (several different configurations), “Nova Poshta”, “Prom.ua”, as well as modules for the logistics company and the main site of the system. The unification implemented by me allows you to add new entities to the module with minimal time, and the extensibility features added in certain places allow you to add or redefine the behavior of the basic functionality.",
-				"Ru": "Участие в разработке нового функционала интеграционной платформы, позволяющей обмениваться данными между разнородными сторонними системами. Взаимодействие с платформой реализовано на базе Web API. Я принимал участие в разработке модулей обмена с \"1С:Предприятие 8\" (несколько различных конфигураций), “Новой почтой”, “Prom.ua”, а также модули для логистической компании и основного сайта системы. Реализованная мной унификация позволяет добавлять в модуль новые сущности с минимальными затратами времени, а добавленные в определённых местах возможности расширения позволяют дополнить или переопределить поведение базового функционала."
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Participation in the development of the new functional of the integration platform, allowing to exchange data between heterogeneous third-party systems. Interaction with the platform is based on the Web API. I participated in the development of exchange modules with \"1C:Enterprise 8\" (several different configurations), “Nova Poshta”, “Prom.ua”, as well as modules for the logistics company and the main site of the system. The unification implemented by me allows you to add new entities to the module with minimal time, and the extensibility features added in certain places allow you to add or redefine the behavior of the basic functionality.",
+						"Ru": "Участие в разработке нового функционала интеграционной платформы, позволяющей обмениваться данными между разнородными сторонними системами. Взаимодействие с платформой реализовано на базе Web API. Я принимал участие в разработке модулей обмена с \"1С:Предприятие 8\" (несколько различных конфигураций), “Новой почтой”, “Prom.ua”, а также модули для логистической компании и основного сайта системы. Реализованная мной унификация позволяет добавлять в модуль новые сущности с минимальными затратами времени, а добавленные в определённых местах возможности расширения позволяют дополнить или переопределить поведение базового функционала."
+					}
+				}
+			]
 		},
 		{
 			"StartDate": "2019-02-01",
@@ -307,10 +311,32 @@
 				"En": "United Arab Emirates",
 				"Ru": "Объединённые Арабские Эмираты"
 			},
-			"Description": {
-				"En": "Maintenance and development of new functionality of the server part of the tourist site. The system uses these technologies and services:<ul><li>ASP.NET Web API</li><li>MS SQL Server</li><li>External payment systems</li><li>SendGrid</li></ul>",
-				"Ru": "Сопровождение и развитие нового функционала серверной части туристического сайта. Система использует такие технологии и службы:<ul><li>ASP.NET Web API</li><li>MS SQL Server</li><li>External payment systems</li><li>SendGrid</li></ul>"
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Maintenance and development of new functionality of the server part of the tourist site. The system uses these technologies and services:",
+						"Ru": "Сопровождение и развитие нового функционала серверной части туристического сайта. Система использует такие технологии и службы:"
+					},
+					"Details": [
+						{
+							"En": "ASP.NET Web API",
+							"Ru": "ASP.NET Web API"
+						},
+						{
+							"En": "MS SQL Server",
+							"Ru": "MS SQL Server"
+						},
+						{
+							"En": "External payment systems",
+							"Ru": "Внешние платежные системы"
+						},
+						{
+							"En": "SendGrid",
+							"Ru": "SendGrid"
+						}
+					]
+				}
+			]
 		},
 		{
 			"StartDate": "2019-08-01",
@@ -327,10 +353,36 @@
 				"En": "Ukraine",
 				"Ru": "Украина"
 			},
-			"Description": {
-				"En": "Server-side development of  service for processing calls to mobile phones. NDA. The system uses these technologies and services:<ul><li>ASP.NET Core, hosted in Azure App Service</li><li>SQL Server DB, hosted in Azure</li><li>Azure Key Vault to store application secrets</li><li>Twilio for the primary management of inbound phone calls and outbound calls</li><li>SignalR and Azure SignalR Service to communicate with the mobile application</li></ul>",
-				"Ru": "Разработка серверной части службы для обработки звонков на мобильные телефоны. NDA. Система использует такие технологии и службы:<ul><li>ASP.NET Core, размещено в Azure App Service</li><li>SQL Server DB, размещено в Azure</li><li>Azure Key Vault для хранения секретов приложения</li><li>Twilio для первичного управления входящими звонками и совершения исходящих звонков</li><li>SignalR и Azure SignalR Service для взаимодействия с мобильным приложением</li></ul>"
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Server-side development of  service for processing calls to mobile phones. NDA. The system uses these technologies and services:",
+						"Ru": "Разработка серверной части службы для обработки звонков на мобильные телефоны. NDA. Система использует такие технологии и службы:"
+					},
+					"Details": [
+						{
+							"En": "ASP.NET Core, hosted in Azure App Service",
+							"Ru": "ASP.NET Core, размещено в Azure App Service"
+						},
+						{
+							"En": "SQL Server DB, hosted in Azure",
+							"Ru": "SQL Server DB, размещено в Azure"
+						},
+						{
+							"En": "Azure Key Vault to store application secrets",
+							"Ru": "Azure Key Vault для хранения секретов приложения"
+						},
+						{
+							"En": "Twilio for the primary management of inbound phone calls and outbound calls",
+							"Ru": "Twilio для первичного управления входящими звонками и совершения исходящих звонков"
+						},
+						{
+							"En": "SignalR and Azure SignalR Service to communicate with the mobile application",
+							"Ru": "SignalR и Azure SignalR Service для взаимодействия с мобильным приложением"
+						}
+					]
+				}
+			]
 		},
 		{
 			"StartDate": "2020-07-20",
@@ -347,10 +399,28 @@
 				"En": "Ukraine",
 				"Ru": "Украина"
 			},
-			"Description": {
-				"En": "Development and support of back-end and front-end software implemented on C# and ASP.NET Core:<ul><li>Implementation of a system for collecting information from external sources, processing and storing the collected information. Transfer of the legacy project to AWS.</li><li>Implementation of a job management system for drivers based on ASP.NET Core and Telegram.</li><li>Implementation of the server part of the mobile application for courier delivery based on ASP.NET Core.</li></ul>",
-				"Ru": "Разработка и поддержка внутреннего и внешнего ПО, реализованного на базе C# и ASP.NET Core:<ul><li>Реализация системы сбора информации из внешних источников, обработка и хранение собранной информации. Перенос унаследованного проекта в AWS.</li><li>Реализация системы управления заданиями для водителей на базе ASP.NET Core и Telegram.</li><li>Реализация серверной части мобильного приложения для курьерской доставки на базе ASP.NET Core.</li></ul>"
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Development and support of back-end and front-end software implemented on C# and ASP.NET Core:",
+						"Ru": "Разработка и поддержка внутреннего и внешнего ПО, реализованного на базе C# и ASP.NET Core:"
+					},
+					"Details": [
+						{
+							"En": "Implementation of a system for collecting information from external sources, processing and storing the collected information. Transfer of the legacy project to AWS.",
+							"Ru": "Реализация системы сбора информации из внешних источников, обработка и хранение собранной информации. Перенос унаследованного проекта в AWS."
+						},
+						{
+							"En": "Implementation of a job management system for drivers based on ASP.NET Core and Telegram.",
+							"Ru": "Реализация системы управления заданиями для водителей на базе ASP.NET Core и Telegram."
+						},
+						{
+							"En": "Implementation of the server part of the mobile application for courier delivery based on ASP.NET Core.",
+							"Ru": "Реализация серверной части мобильного приложения для курьерской доставки на базе ASP.NET Core."
+						}
+					]
+				}
+			]
 		},
 		{
 			"StartDate": "2012-08-01",
@@ -366,10 +436,14 @@
 				"En": "Ukraine",
 				"Ru": "Украина"
 			},
-			"Description": {
-				"En": "Development in C#/.NET/ASP.NET Core of industrial level applications. Cloud technologies.",
-				"Ru": "Разработка на C#/.NET/ASP.NET Core приложений промышленного уровня. Облачные технологии."
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Development in C#/.NET/ASP.NET Core of industrial level applications. Cloud technologies.",
+						"Ru": "Разработка на C#/.NET/ASP.NET Core приложений промышленного уровня. Облачные технологии."
+					}
+				}
+			]
 		}
 	],
 	"Education": [
