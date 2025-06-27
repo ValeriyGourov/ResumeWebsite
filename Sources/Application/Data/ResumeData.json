@@ -63,48 +63,78 @@
 		}
 	],
 	"Intro": {
-		"En": "I have been professionally engaged in software development since 2000. Currently, I specialize in the Microsoft technology stack and C# language. Constantly learning new technologies and methodologies. I like to bring the task to its logical conclusion. I am a supporter of clean, nice, neat and easily maintainable code.",
-		"Ru": "Профессионально занимаюсь разработкой программного обеспечения с 2000 г. На текущий момент специализируюсь на стеке технологий Microsoft и языке C#. Постоянно изучаю новые технологии и методологии. Люблю доводить задачу до логического завершения. Являюсь сторонником чистого, красивого, аккуратного и легко поддерживаемого кода."
+		"En": "I have been professionally engaged in software development since 2000. At the moment I mainly specialize in Microsoft technologies and C# language. I am a perfectionist (but controlled), I am constantly learning new technologies and methodologies. I like to bring a task to its logical conclusion, I can't stand dirty code in the final product.",
+		"Ru": "Профессионально занимаюсь разработкой программного обеспечения с 2000 г. На текущий момент в основном специализируюсь на технологиях Microsoft и языке C#. Перфекционист (но контролируемо), перманентно изучаю новые для себя технологии и методологии. Люблю доводить задачу до логического завершения, терпеть не могу грязный код в финальном продукте."
 	},
 	"Expertise": [
 		{
 			"Title": {
-				"En": "C# | .NET",
-				"Ru": "C# | .NET"
+				"En": "Application design and development",
+				"Ru": "Проектирование и разработка приложений"
 			},
 			"Description": {
-				"En": "Application development using the C# language and the .NET (Core) platform.",
-				"Ru": "Разработка приложений с использованием языка C# и платформы .NET (Core)."
+				"En": "Server side of scalable C#/.NET based applications in a cloud environment (Azure/AWS). Secure and reliable RESTful APIs and distributed systems.",
+				"Ru": "Серверная часть масштабируемых приложений на базе C#/.NET в облачном окружении (Azure/AWS). Безопасные и надёжные RESTful API и распределённые системы."
 			}
 		},
 		{
 			"Title": {
-				"En": "ASP.NET Core | Blazor | Full-stack | Back-end",
-				"Ru": "ASP.NET Core | Blazor | Full-stack | Back-end"
+				"En": "High quality",
+				"Ru": "Высокое качество"
 			},
 			"Description": {
-				"En": "Web-application development. It can be either a back-end or an application with user interface on Blazor or MVC.",
-				"Ru": "Разработка веб-приложений. Это может быть как серверная часть приложения, так и приложение с пользовательским интерфейсов на Blazor или MVC."
+				"En": "Identify and implement software development best practices including CI/CD, testing and security. Creating clean, efficient and high quality code by following software development best practices.",
+				"Ru": "Определение и внедрение лучших практик разработки программного обеспечения, включая CI/CD, тестирование и безопасность. Создание чистого, эффективного и качественного кода, следуя лучшим практикам разработки программного обеспечения."
 			}
 		},
 		{
 			"Title": {
-				"En": "Integration with third-party systems",
-				"Ru": "Интеграция со сторонними системами"
+				"En": "Performance optimization",
+				"Ru": "Оптимизация производительности"
 			},
 			"Description": {
-				"En": "Integration of applications with web services (payment systems, data providers, etc.), cloud services, local applications.",
-				"Ru": "Интеграция приложений с веб-службами (платёжные системы, поставщики данных и т.п.), облачными службами, локальными приложениями."
+				"En": "Optimizing databases (SQL and NoSQL) to ensure scalability and high performance.",
+				"Ru": "Оптимизация баз данных (SQL и NoSQL) для обеспечения масштабируемости и высокой производительности."
 			}
 		},
 		{
 			"Title": {
-				"En": "Data parsing",
-				"Ru": "Разбор (парсинг) данных"
+				"En": "Technical leadership",
+				"Ru": "Техническое лидерство"
 			},
 			"Description": {
-				"En": "Parsing data from web pages, files and other sources.",
-				"Ru": "Разбор данных с веб-страниц, файлов и других источников."
+				"En": "Leading technical discussions and mentoring team members as needed.",
+				"Ru": "Ведение технических обсуждений и при необходимости наставничество членов команды."
+			}
+		},
+		{
+			"Title": {
+				"En": "Application infrastructure",
+				"Ru": "Инфраструктура приложений"
+			},
+			"Description": {
+				"En": "Facilitate adoption of DevOps practices including cloud infrastructure, deployment pipelines, and monitoring.",
+				"Ru": "Содействие внедрению практик DevOps, включая облачную инфраструктуру, конвейеры развёртывания и мониторинг."
+			}
+		},
+		{
+			"Title": {
+				"En": "Application testing",
+				"Ru": "Тестирование приложений"
+			},
+			"Description": {
+				"En": "Ensuring quality through automated testing and thorough code analysis and review.",
+				"Ru": "Обеспечение качества с помощью автоматизированного тестирования и тщательного анализа и обзора кода."
+			}
+		},
+		{
+			"Title": {
+				"En": "Project planning",
+				"Ru": "Планирование проектов"
+			},
+			"Description": {
+				"En": "Actively participate in project planning, including requirements gathering, estimation, and architectural decisions.",
+				"Ru": "Активное участие в планировании проекта, включая сбор требований, оценку и архитектурные решения."
 			}
 		}
 	],
@@ -495,18 +525,6 @@
 			},
 			"Uri": "https://github.com/ValeriyGourov/ResumeWebsite",
 			"ImageUri": "images/portfolio/ResumeWebsite.png"
-		},
-		{
-			"Title": {
-				"En": "Telegram-bot translator",
-				"Ru": "Telegram-бот переводчик"
-			},
-			"Description": {
-				"En": "An example of the simplest Telegram bot that translates a word or phrase from Russian into English.",
-				"Ru": "Пример простейшего бота для Telegram, который переводит слово или фразу с русского на английский язык."
-			},
-			"Uri": "https://github.com/ValeriyGourov/SimSmsOrgTest",
-			"ImageUri": "images/portfolio/SimSmsOrgTest.png"
 		}
 	],
 	"Clients": [
