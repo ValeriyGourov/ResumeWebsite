@@ -14,7 +14,7 @@
 	"SocialButtons": [
 		{
 			"Uri": "https://www.linkedin.com/in/valeriygourov",
-			"FontClass": "fab fa-linkedin"
+			"IconName": "linkedin"
 		}
 	],
 	"Contacts": [
@@ -509,7 +509,7 @@
 				"Ru": "Все мои проекты с открытым кодом для вашего анализа."
 			},
 			"Uri": "https://github.com/ValeriyGourov",
-			"FontClass": "fab fa-github"
+			"IconName": "github"
 		}
 	],
 	"Awards": [],

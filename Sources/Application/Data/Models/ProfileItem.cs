@@ -14,14 +14,15 @@ namespace Application.Data.Models;
 /// <inheritdoc cref="TitleElement" path="/param[@name='Description']"/>
 /// </param>
 /// <param name="Uri">Ссылка на профиль.</param>
-/// <param name="FontClass">
-/// Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".
+/// <param name="IconName">
+/// Имя файла SVG (без расширения файла), используемого для визуализации элемента.
+/// Файл должен находиться в папке "wwwroot/images/icons" приложения.
 /// </param>
 public sealed record ProfileItem(
 	DataString Title,
 	DataString Description,
 	Uri Uri,
-	string FontClass)
+	string IconName)
 	: TitleElement(Title, Description);
 
 internal sealed class ProfileItemValidator : AbstractValidator<ProfileItem>
@@ -33,7 +34,7 @@ internal sealed class ProfileItemValidator : AbstractValidator<ProfileItem>
 		RuleFor(item => item.Uri)
 			.NotNull();
 
-		RuleFor(item => item.FontClass)
+		RuleFor(item => item.IconName)
 			.NotEmpty();
 	}
 }

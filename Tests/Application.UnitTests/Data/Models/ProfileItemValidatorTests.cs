@@ -16,7 +16,7 @@ internal class ProfileItemValidatorTests : ModelValidatorTestsBase<ProfileItem, 
 				Title: Fixture.Create<DataString>(),
 				Description: Fixture.Create<DataString>(),
 				Uri: null!,
-				FontClass: Fixture.Create<string>()),
+				IconName: Fixture.Create<string>()),
 			item => item.Uri,
 			NotNullValidatorName);
 
@@ -25,8 +25,8 @@ internal class ProfileItemValidatorTests : ModelValidatorTestsBase<ProfileItem, 
 				Title: Fixture.Create<DataString>(),
 				Description: Fixture.Create<DataString>(),
 				Uri: Fixture.Create<Uri>(),
-				FontClass: null!),
-			item => item.FontClass,
+				IconName: null!),
+			item => item.IconName,
 			NotEmptyValidatorName);
 
 		yield return (
@@ -34,8 +34,8 @@ internal class ProfileItemValidatorTests : ModelValidatorTestsBase<ProfileItem, 
 				Title: Fixture.Create<DataString>(),
 				Description: Fixture.Create<DataString>(),
 				Uri: Fixture.Create<Uri>(),
-				FontClass: string.Empty),
-			item => item.FontClass,
+				IconName: string.Empty),
+			item => item.IconName,
 			NotEmptyValidatorName);
 	}
 
@@ -59,7 +59,7 @@ internal class ProfileItemValidatorTests : ModelValidatorTestsBase<ProfileItem, 
 			Title: invalidDataString,
 			Description: invalidDataString,
 			Uri: Fixture.Create<Uri>(),
-			FontClass: Fixture.Create<string>());
+			IconName: Fixture.Create<string>());
 
 		// Act/Assert.
 		ValidateWithInvalidValue(

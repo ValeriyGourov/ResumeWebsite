@@ -8,10 +8,11 @@ namespace Application.Data.Models;
 /// Описание кнопки, ссылающейся на профиль социальной сети.
 /// </summary>
 /// <param name="Uri">Ссылка на профиль социальной сети.</param>
-/// <param name="FontClass">
-/// Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".
+/// <param name="IconName">
+/// Имя файла SVG (без расширения файла), используемого для визуализации элемента.
+/// Файл должен находиться в папке "wwwroot/images/icons" приложения.
 /// </param>
-public sealed record SocialButton(Uri Uri, string FontClass);
+public sealed record SocialButton(Uri Uri, string IconName);
 
 internal sealed class SocialButtonValidator : AbstractValidator<SocialButton>
 {
@@ -20,7 +21,7 @@ internal sealed class SocialButtonValidator : AbstractValidator<SocialButton>
 		RuleFor(item => item.Uri)
 			.NotNull();
 
-		RuleFor(item => item.FontClass)
+		RuleFor(item => item.IconName)
 			.NotEmpty();
 	}
 }

@@ -2325,12 +2325,11 @@ img {
 }
 
 .c-social-button {
-	display: block;
-	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	width: 33px;
 	height: 33px;
-	font-size: .8rem !important;
-	line-height: 2.7 !important;
 	border-radius: 2px;
 	border: 2px solid;
 }
@@ -2339,10 +2338,13 @@ img {
 	.c-social-button {
 		width: 38px;
 		height: 38px;
-		font-size: 1rem !important;
-		line-height: 2.6 !important;
 		border-radius: 3px;
 	}
+}
+
+.c-social-button__icon {
+	width: 18px;
+	fill: currentColor
 }
 
 .c-social-buttons {
@@ -2430,6 +2432,12 @@ img {
 	.c-clients img {
 		max-height: 50px;
 	}
+}
+
+.c-profile__icon {
+	width: 21px;
+	height: 21px;
+	fill: currentColor;
 }
 
 .a-progress-bar {

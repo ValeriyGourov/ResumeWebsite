@@ -14,22 +14,22 @@ internal class SocialButtonValidatorTests : ModelValidatorTestsBase<SocialButton
 		yield return (
 			new SocialButton(
 				Uri: null!,
-				FontClass: Fixture.Create<string>()),
+				IconName: Fixture.Create<string>()),
 			item => item.Uri,
 			NotNullValidatorName);
 
 		yield return (
 			new SocialButton(
 				Uri: Fixture.Create<Uri>(),
-				FontClass: null!),
-			item => item.FontClass,
+				IconName: null!),
+			item => item.IconName,
 			NotEmptyValidatorName);
 
 		yield return (
 			new SocialButton(
 				Uri: Fixture.Create<Uri>(),
-				FontClass: string.Empty),
-			item => item.FontClass,
+				IconName: string.Empty),
+			item => item.IconName,
 			NotEmptyValidatorName);
 	}
 
