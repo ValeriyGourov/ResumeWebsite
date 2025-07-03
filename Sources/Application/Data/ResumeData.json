@@ -8,13 +8,13 @@
 		"Ru": "Гуров"
 	},
 	"Title": {
-		"En": "C# / .NET / ASP.NET developer",
-		"Ru": "C# / .NET / ASP.NET разработчик"
+		"En": "C# | .NET | ASP.NET Core developer",
+		"Ru": "C# | .NET | ASP.NET Core разработчик"
 	},
 	"SocialButtons": [
 		{
 			"Uri": "https://www.linkedin.com/in/valeriygourov",
-			"FontClass": "fab fa-linkedin"
+			"IconName": "linkedin"
 		}
 	],
 	"Contacts": [
@@ -63,48 +63,78 @@
 		}
 	],
 	"Intro": {
-		"En": "I have been professionally engaged in software development since 2000. Currently, I specialize in the Microsoft technology stack and C# language. Constantly learning new technologies and methodologies. I like to bring the task to its logical conclusion. I am a supporter of clean, nice, neat and easily maintainable code.",
-		"Ru": "Профессионально занимаюсь разработкой программного обеспечения с 2000 г. На текущий момент специализируюсь на стеке технологий Microsoft и языке C#. Постоянно изучаю новые технологии и методологии. Люблю доводить задачу до логического завершения. Являюсь сторонником чистого, красивого, аккуратного и легко поддерживаемого кода."
+		"En": "I have been professionally engaged in software development since 2000. At the moment I mainly specialize in Microsoft technologies and C# language. I am a perfectionist (but controlled), I am constantly learning new technologies and methodologies. I like to bring a task to its logical conclusion, I can't stand dirty code in the final product.",
+		"Ru": "Профессионально занимаюсь разработкой программного обеспечения с 2000 г. На текущий момент в основном специализируюсь на технологиях Microsoft и языке C#. Перфекционист (но контролируемо), перманентно изучаю новые для себя технологии и методологии. Люблю доводить задачу до логического завершения, терпеть не могу грязный код в финальном продукте."
 	},
 	"Expertise": [
 		{
 			"Title": {
-				"En": "C#/.NET",
-				"Ru": "C#/.NET"
+				"En": "Application design and development",
+				"Ru": "Проектирование и разработка приложений"
 			},
 			"Description": {
-				"En": "Application development using the C# language and the .NET (Core) platform.",
-				"Ru": "Разработка приложений с использованием языка C# и платформы .NET (Core)."
+				"En": "Server side of scalable C#/.NET based applications in a cloud environment (Azure/AWS). Secure and reliable RESTful APIs and distributed systems.",
+				"Ru": "Серверная часть масштабируемых приложений на базе C#/.NET в облачном окружении (Azure/AWS). Безопасные и надёжные RESTful API и распределённые системы."
 			}
 		},
 		{
 			"Title": {
-				"En": "ASP.NET (Core) / Blazor / Full-stack / Back-end",
-				"Ru": "ASP.NET (Core) / Blazor / Full-stack / Back-end"
+				"En": "High quality",
+				"Ru": "Высокое качество"
 			},
 			"Description": {
-				"En": "Web-application development. It can be either a back-end or an application with user interface on Blazor or MVC.",
-				"Ru": "Разработка веб-приложений. Это может быть как серверная часть приложения, так и приложение с пользовательским интерфейсов на Blazor или MVC."
+				"En": "Identify and implement software development best practices including CI/CD, testing and security. Creating clean, efficient and high quality code by following software development best practices.",
+				"Ru": "Определение и внедрение лучших практик разработки программного обеспечения, включая CI/CD, тестирование и безопасность. Создание чистого, эффективного и качественного кода, следуя лучшим практикам разработки программного обеспечения."
 			}
 		},
 		{
 			"Title": {
-				"En": "Integration with third-party systems",
-				"Ru": "Интеграция со сторонними системами"
+				"En": "Performance optimization",
+				"Ru": "Оптимизация производительности"
 			},
 			"Description": {
-				"En": "Integration of applications with web services (payment systems, data providers, etc.), cloud services, local applications.",
-				"Ru": "Интеграция приложений с веб-службами (платёжные системы, поставщики данных и т.п.), облачными службами, локальными приложениями."
+				"En": "Optimizing databases (SQL and NoSQL) to ensure scalability and high performance.",
+				"Ru": "Оптимизация баз данных (SQL и NoSQL) для обеспечения масштабируемости и высокой производительности."
 			}
 		},
 		{
 			"Title": {
-				"En": "Data parsing",
-				"Ru": "Разбор (парсинг) данных"
+				"En": "Technical leadership",
+				"Ru": "Техническое лидерство"
 			},
 			"Description": {
-				"En": "Parsing data from web pages, files and other sources.",
-				"Ru": "Разбор данных с веб-страниц, файлов и других источников."
+				"En": "Leading technical discussions and mentoring team members as needed.",
+				"Ru": "Ведение технических обсуждений и при необходимости наставничество членов команды."
+			}
+		},
+		{
+			"Title": {
+				"En": "Application infrastructure",
+				"Ru": "Инфраструктура приложений"
+			},
+			"Description": {
+				"En": "Facilitate adoption of DevOps practices including cloud infrastructure, deployment pipelines, and monitoring.",
+				"Ru": "Содействие внедрению практик DevOps, включая облачную инфраструктуру, конвейеры развёртывания и мониторинг."
+			}
+		},
+		{
+			"Title": {
+				"En": "Application testing",
+				"Ru": "Тестирование приложений"
+			},
+			"Description": {
+				"En": "Ensuring quality through automated testing and thorough code analysis and review.",
+				"Ru": "Обеспечение качества с помощью автоматизированного тестирования и тщательного анализа и обзора кода."
+			}
+		},
+		{
+			"Title": {
+				"En": "Project planning",
+				"Ru": "Планирование проектов"
+			},
+			"Description": {
+				"En": "Actively participate in project planning, including requirements gathering, estimation, and architectural decisions.",
+				"Ru": "Активное участие в планировании проекта, включая сбор требований, оценку и архитектурные решения."
 			}
 		}
 	],
@@ -244,8 +274,8 @@
 		},
 		{
 			"Title": {
-				"En": "HTML / CSS",
-				"Ru": "HTML / CSS"
+				"En": "HTML, CSS",
+				"Ru": "HTML, CSS"
 			},
 			"Percent": 40
 		},
@@ -287,10 +317,14 @@
 				"En": "Ukraine",
 				"Ru": "Украина"
 			},
-			"Description": {
-				"En": "Participation in the development of the new functional of the integration platform, allowing to exchange data between heterogeneous third-party systems. Interaction with the platform is based on the Web API. I participated in the development of exchange modules with \"1C:Enterprise 8\" (several different configurations), “Nova Poshta”, “Prom.ua”, as well as modules for the logistics company and the main site of the system. The unification implemented by me allows you to add new entities to the module with minimal time, and the extensibility features added in certain places allow you to add or redefine the behavior of the basic functionality.",
-				"Ru": "Участие в разработке нового функционала интеграционной платформы, позволяющей обмениваться данными между разнородными сторонними системами. Взаимодействие с платформой реализовано на базе Web API. Я принимал участие в разработке модулей обмена с \"1С:Предприятие 8\" (несколько различных конфигураций), “Новой почтой”, “Prom.ua”, а также модули для логистической компании и основного сайта системы. Реализованная мной унификация позволяет добавлять в модуль новые сущности с минимальными затратами времени, а добавленные в определённых местах возможности расширения позволяют дополнить или переопределить поведение базового функционала."
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Participation in the development of the new functional of the integration platform, allowing to exchange data between heterogeneous third-party systems. Interaction with the platform is based on the Web API. I participated in the development of exchange modules with \"1C:Enterprise 8\" (several different configurations), “Nova Poshta”, “Prom.ua”, as well as modules for the logistics company and the main site of the system. The unification implemented by me allows you to add new entities to the module with minimal time, and the extensibility features added in certain places allow you to add or redefine the behavior of the basic functionality.",
+						"Ru": "Участие в разработке нового функционала интеграционной платформы, позволяющей обмениваться данными между разнородными сторонними системами. Взаимодействие с платформой реализовано на базе Web API. Я принимал участие в разработке модулей обмена с \"1С:Предприятие 8\" (несколько различных конфигураций), “Новой почтой”, “Prom.ua”, а также модули для логистической компании и основного сайта системы. Реализованная мной унификация позволяет добавлять в модуль новые сущности с минимальными затратами времени, а добавленные в определённых местах возможности расширения позволяют дополнить или переопределить поведение базового функционала."
+					}
+				}
+			]
 		},
 		{
 			"StartDate": "2019-02-01",
@@ -307,10 +341,32 @@
 				"En": "United Arab Emirates",
 				"Ru": "Объединённые Арабские Эмираты"
 			},
-			"Description": {
-				"En": "Maintenance and development of new functionality of the server part of the tourist site. The system uses these technologies and services:<ul><li>ASP.NET Web API</li><li>MS SQL Server</li><li>External payment systems</li><li>SendGrid</li></ul>",
-				"Ru": "Сопровождение и развитие нового функционала серверной части туристического сайта. Система использует такие технологии и службы:<ul><li>ASP.NET Web API</li><li>MS SQL Server</li><li>External payment systems</li><li>SendGrid</li></ul>"
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Maintenance and development of new functionality of the server part of the tourist site. The system uses these technologies and services:",
+						"Ru": "Сопровождение и развитие нового функционала серверной части туристического сайта. Система использует такие технологии и службы:"
+					},
+					"Details": [
+						{
+							"En": "ASP.NET Web API",
+							"Ru": "ASP.NET Web API"
+						},
+						{
+							"En": "MS SQL Server",
+							"Ru": "MS SQL Server"
+						},
+						{
+							"En": "External payment systems",
+							"Ru": "Внешние платежные системы"
+						},
+						{
+							"En": "SendGrid",
+							"Ru": "SendGrid"
+						}
+					]
+				}
+			]
 		},
 		{
 			"StartDate": "2019-08-01",
@@ -327,10 +383,36 @@
 				"En": "Ukraine",
 				"Ru": "Украина"
 			},
-			"Description": {
-				"En": "Server-side development of  service for processing calls to mobile phones. NDA. The system uses these technologies and services:<ul><li>ASP.NET Core, hosted in Azure App Service</li><li>SQL Server DB, hosted in Azure</li><li>Azure Key Vault to store application secrets</li><li>Twilio for the primary management of inbound phone calls and outbound calls</li><li>SignalR and Azure SignalR Service to communicate with the mobile application</li></ul>",
-				"Ru": "Разработка серверной части службы для обработки звонков на мобильные телефоны. NDA. Система использует такие технологии и службы:<ul><li>ASP.NET Core, размещено в Azure App Service</li><li>SQL Server DB, размещено в Azure</li><li>Azure Key Vault для хранения секретов приложения</li><li>Twilio для первичного управления входящими звонками и совершения исходящих звонков</li><li>SignalR и Azure SignalR Service для взаимодействия с мобильным приложением</li></ul>"
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Server-side development of  service for processing calls to mobile phones. NDA. The system uses these technologies and services:",
+						"Ru": "Разработка серверной части службы для обработки звонков на мобильные телефоны. NDA. Система использует такие технологии и службы:"
+					},
+					"Details": [
+						{
+							"En": "ASP.NET Core, hosted in Azure App Service",
+							"Ru": "ASP.NET Core, размещено в Azure App Service"
+						},
+						{
+							"En": "SQL Server DB, hosted in Azure",
+							"Ru": "SQL Server DB, размещено в Azure"
+						},
+						{
+							"En": "Azure Key Vault to store application secrets",
+							"Ru": "Azure Key Vault для хранения секретов приложения"
+						},
+						{
+							"En": "Twilio for the primary management of inbound phone calls and outbound calls",
+							"Ru": "Twilio для первичного управления входящими звонками и совершения исходящих звонков"
+						},
+						{
+							"En": "SignalR and Azure SignalR Service to communicate with the mobile application",
+							"Ru": "SignalR и Azure SignalR Service для взаимодействия с мобильным приложением"
+						}
+					]
+				}
+			]
 		},
 		{
 			"StartDate": "2020-07-20",
@@ -347,10 +429,28 @@
 				"En": "Ukraine",
 				"Ru": "Украина"
 			},
-			"Description": {
-				"En": "Development and support of back-end and front-end software implemented on C# and ASP.NET Core:<ul><li>Implementation of a system for collecting information from external sources, processing and storing the collected information. Transfer of the legacy project to AWS.</li><li>Implementation of a job management system for drivers based on ASP.NET Core and Telegram.</li><li>Implementation of the server part of the mobile application for courier delivery based on ASP.NET Core.</li></ul>",
-				"Ru": "Разработка и поддержка внутреннего и внешнего ПО, реализованного на базе C# и ASP.NET Core:<ul><li>Реализация системы сбора информации из внешних источников, обработка и хранение собранной информации. Перенос унаследованного проекта в AWS.</li><li>Реализация системы управления заданиями для водителей на базе ASP.NET Core и Telegram.</li><li>Реализация серверной части мобильного приложения для курьерской доставки на базе ASP.NET Core.</li></ul>"
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Development and support of back-end and front-end software implemented on C# and ASP.NET Core:",
+						"Ru": "Разработка и поддержка внутреннего и внешнего ПО, реализованного на базе C# и ASP.NET Core:"
+					},
+					"Details": [
+						{
+							"En": "Implementation of a system for collecting information from external sources, processing and storing the collected information. Transfer of the legacy project to AWS.",
+							"Ru": "Реализация системы сбора информации из внешних источников, обработка и хранение собранной информации. Перенос унаследованного проекта в AWS."
+						},
+						{
+							"En": "Implementation of a job management system for drivers based on ASP.NET Core and Telegram.",
+							"Ru": "Реализация системы управления заданиями для водителей на базе ASP.NET Core и Telegram."
+						},
+						{
+							"En": "Implementation of the server part of the mobile application for courier delivery based on ASP.NET Core.",
+							"Ru": "Реализация серверной части мобильного приложения для курьерской доставки на базе ASP.NET Core."
+						}
+					]
+				}
+			]
 		},
 		{
 			"StartDate": "2012-08-01",
@@ -366,10 +466,14 @@
 				"En": "Ukraine",
 				"Ru": "Украина"
 			},
-			"Description": {
-				"En": "Development in C#/.NET/ASP.NET Core of industrial level applications. Cloud technologies.",
-				"Ru": "Разработка на C#/.NET/ASP.NET Core приложений промышленного уровня. Облачные технологии."
-			}
+			"Projects": [
+				{
+					"Description": {
+						"En": "Development in C#/.NET/ASP.NET Core of industrial level applications. Cloud technologies.",
+						"Ru": "Разработка на C#/.NET/ASP.NET Core приложений промышленного уровня. Облачные технологии."
+					}
+				}
+			]
 		}
 	],
 	"Education": [
@@ -405,7 +509,7 @@
 				"Ru": "Все мои проекты с открытым кодом для вашего анализа."
 			},
 			"Uri": "https://github.com/ValeriyGourov",
-			"FontClass": "fab fa-github"
+			"IconName": "github"
 		}
 	],
 	"Awards": [],
@@ -416,23 +520,23 @@
 				"Ru": "Сайт-резюме"
 			},
 			"Description": {
-				"En": "A resume site for presenting information about me. You are now on this site.",
-				"Ru": "Сайт-резюме для представления информации обо мне. Вы сейчас находитесь на этом сайте."
+				"En": "A resume site to present information about me. You are now on this site or are reading a resume generated by this site. Implemented using ASP.NET Core Blazor, published to Azure using GitHub Actions.",
+				"Ru": "Сайт-резюме для представления информации обо мне. Вы сейчас находитесь на этом сайте либо же читаете резюме, сформированное этим сайтом. Реализован с помощью ASP.NET Core Blazor, публикуется в Azure с помощью GitHub Actions."
 			},
 			"Uri": "https://github.com/ValeriyGourov/ResumeWebsite",
 			"ImageUri": "images/portfolio/ResumeWebsite.png"
 		},
 		{
 			"Title": {
-				"En": "Telegram-bot translator",
-				"Ru": "Telegram-бот переводчик"
+				"En": "Testing the speed of requests",
+				"Ru": "Тестирование скорости запросов"
 			},
 			"Description": {
-				"En": "An example of the simplest Telegram bot that translates a word or phrase from Russian into English.",
-				"Ru": "Пример простейшего бота для Telegram, который переводит слово или фразу с русского на английский язык."
+				"En": "Determining the relative speed of data queries under similar conditions. Different data query technologies such as REST, gRPC, WebSocket, etc. are compared. NBomber and BenchmarkDotNet are used to perform the measurements, and parts of the project are orchestrated using .NET Aspire.",
+				"Ru": "Определение отностительной скорости выполнения запросов данных в схожих условиях. Сравниваются различные технологие запроса данных, такие как REST, gRPC, WebSocket и т.п. Для выполнения замеров используются NBomber и BenchmarkDotNet, части проекта оркестрируются с помощью .NET Aspire."
 			},
-			"Uri": "https://github.com/ValeriyGourov/SimSmsOrgTest",
-			"ImageUri": "images/portfolio/SimSmsOrgTest.png"
+			"Uri": "https://github.com/ValeriyGourov/DataQuerySpeedTest",
+			"ImageUri": "images/portfolio/DataQuerySpeedTest.png"
 		}
 	],
 	"Clients": [

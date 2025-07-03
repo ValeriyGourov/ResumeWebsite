@@ -12,28 +12,33 @@ namespace Application.Components;
 /// </summary>
 /// <param name="localizer">
 /// <inheritdoc
-///		cref="TimeLineItemBase(IStringLocalizer{TimeLineItemBase})"
+///		cref="TimeLineItem(IStringLocalizer{TimeLineItem})"
 ///		path="/param[@name='localizer']"/>
 /// </param>
-public sealed class YearTimeLineItem(IStringLocalizer<TimeLineItemBase> localizer)
-	: TimeLineItemBase(localizer)
+public sealed partial class YearTimeLineItem(IStringLocalizer<TimeLineItem> localizer)
+	: TimeLineItem(localizer)
 {
 	/// <summary>
 	/// Год начала события.
 	/// </summary>
 	[Parameter]
+	[EditorRequired]
 	public int StartYear { get; set; }
 
 	/// <summary>
 	/// Год окончания события. Если не указан, то событие считается активным.
 	/// </summary>
 	[Parameter]
+	[EditorRequired]
 	public int? EndYear { get; set; }
 
-	/// <inheritdoc/>
-	protected override void OnParametersSet()
-	{
-		StartPeriod = StartYear.ToString(CultureInfo.CurrentCulture);
-		EndPeriod = EndYear?.ToString(CultureInfo.CurrentCulture);
-	}
+	/// <summary>
+	/// Описание деятельности в организации или учреждении.
+	/// </summary>
+	[Parameter]
+	[EditorRequired]
+	public string Description { get; set; } = null!;
+
+	private static string? FormatPeriod(int? year)
+		=> year?.ToString(CultureInfo.CurrentCulture);
 }

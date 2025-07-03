@@ -4,7 +4,7 @@
 		<div class="o-grid">
 			<div class="o-grid__col-md-5">
 				<div class="c-work__timeframe">
-					@StartPeriod &ndash; @EndPeriod
+					@StartPeriod &ndash; @GetEndPeriod()
 				</div>
 				<h3 class="c-work__heading">
 					@Institution
@@ -18,7 +18,7 @@
 			</div>
 			<div class="o-grid__col-md-7">
 				<p>
-					@((MarkupString)Description)
+					@Content
 				</p>
 			</div>
 		</div>

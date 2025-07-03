@@ -7,9 +7,9 @@
 		   class="t-link-container">
 			<div class="o-media  o-media--block">
 				<div class="o-media__figure">
-					<div class="c-profile__icon">
-						<i class="fab  fa-lg  @FontClass"></i>
-					</div>
+					<svg class="c-profile__icon">
+						<use href="/images/icons/@(IconName).svg"></use>
+					</svg>
 				</div>
 				<div class="o-media__body  o-content__body">
 					<h3 class="t-link-container__item">
@@ -28,24 +28,25 @@
 	/// <summary>
 	/// Ссылка на профиль.
 	/// </summary>
-	[Parameter]
-	public Uri Uri { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required Uri Uri { get; set; }
 
 	/// <summary>
-	/// Используемый для визуализации CSS-класс символа из шрифта "FontAwesome".
+	/// Имя файла SVG (без расширения файла), используемого для визуализации элемента.
+	/// Файл должен находиться в папке "wwwroot/images/icons" приложения.
 	/// </summary>
-	[Parameter]
-	public string FontClass { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string IconName { get; set; }
 
 	/// <summary>
 	/// Название профиля.
 	/// </summary>
-	[Parameter]
-	public string Title { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Title { get; set; }
 
 	/// <summary>
 	/// детальное описание профиля.
 	/// </summary>
-	[Parameter]
-	public string Description { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Description { get; set; }
 }

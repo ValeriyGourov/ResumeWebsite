@@ -1,0 +1,17 @@
+﻿.menu-item {
+	display: flex;
+	margin: 0 10px;
+	align-items: center;
+}
+
+.menu-item__icon {
+	width: 16px;
+	height: 16px;
+	fill: currentColor;
+	margin: 0 5px 0 0;
+}
+
+.menu-button {
+	display: flex;
+	align-items: center;
+}

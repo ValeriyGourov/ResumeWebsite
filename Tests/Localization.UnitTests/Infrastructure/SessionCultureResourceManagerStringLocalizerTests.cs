@@ -75,7 +75,7 @@ public class SessionCultureResourceManagerStringLocalizerTests
 
 	[TestMethod]
 	[TestProperty(TestProperties.IndexerSignature, "string")]
-	public void ShouldReturnLocalizedStringAfrerSwitchingFromNonExistentCulture()
+	public void ShouldReturnLocalizedStringAfterSwitchingFromNonExistentCulture()
 	{
 		// Arrange.
 		const string name = "TestString";

@@ -1,5 +1,7 @@
 ﻿#pragma warning disable CA1515
 
+using Application.Infrastructure.Validation;
+
 using FluentValidation;
 
 namespace Application.Data.Models;
@@ -16,9 +18,7 @@ namespace Application.Data.Models;
 /// <param name="Location">
 /// <inheritdoc cref="TimeLineItemBase{T}" path="/param[@name='Location']"/>
 /// </param>
-/// <param name="Description">
-/// <inheritdoc cref="TimeLineItemBase{T}" path="/param[@name='Description']"/>
-/// </param>
+/// <param name="Description">Описание деятельности в организации или учреждении.</param>
 /// <param name="StartYear">Год начала события.</param>
 /// <param name="EndYear">
 /// Год окончания события. Если не указан, то событие считается активным.
@@ -30,7 +30,7 @@ public sealed record YearTimeLineItem(
 	DataString Description,
 	int StartYear,
 	int? EndYear)
-	: TimeLineItemBase<YearTimeLineItem>(Institution, Position, Location, Description)
+	: TimeLineItemBase<YearTimeLineItem>(Institution, Position, Location)
 {
 	/// <inheritdoc/>
 	public override int CompareTo(YearTimeLineItem? other)
@@ -62,6 +62,8 @@ internal sealed class YearTimeLineItemValidator : AbstractValidator<YearTimeLine
 
 		RuleFor(item => item.StartYear)
 			.GreaterThan(0);
+
+		this.SetDataStringRule(item => item.Description);
 
 		When(
 			item => item.EndYear is not null,

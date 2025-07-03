@@ -13,12 +13,10 @@ namespace Application.Data.Models;
 /// <param name="Institution">Организация или учреждение, в котором происходило событие.</param>
 /// <param name="Position">Занимаемая позиция в организации или учреждении.</param>
 /// <param name="Location">Местоположение организации или учреждении.</param>
-/// <param name="Description">Описание деятельности в организации или учреждении.</param>
 public abstract record TimeLineItemBase<T>(
 	DataString Institution,
 	DataString Position,
-	DataString Location,
-	DataString Description)
+	DataString Location)
 	: IComparable<T>
 	where T : TimeLineItemBase<T>
 {
@@ -37,7 +35,6 @@ internal sealed class TimeLineItemBaseValidator<T> : AbstractValidator<TimeLineI
 			dataStringValidator,
 			item => item.Institution,
 			item => item.Position,
-			item => item.Location,
-			item => item.Description);
+			item => item.Location);
 	}
 }

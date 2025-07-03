@@ -9,7 +9,8 @@ using FluentValidation;
 namespace Application.UnitTests.Data.Models;
 
 [TestClass]
-internal class TimeLineItemBaseValidatorTests : ModelValidatorTestsBase<TestTimeLineItemBase, TestTimeLineItemBaseValidator>
+internal class TimeLineItemBaseValidatorTests
+	: ModelValidatorTestsBase<TestTimeLineItemBase, TestTimeLineItemBaseValidator>
 {
 	public static IEnumerable<(TestTimeLineItemBase, Expression<Func<TestTimeLineItemBase, object>>, string)> ValidateWithInvalidValueTestData()
 	{
@@ -17,8 +18,7 @@ internal class TimeLineItemBaseValidatorTests : ModelValidatorTestsBase<TestTime
 			new TestTimeLineItemBase(
 				Institution: null!,
 				Position: Fixture.Create<DataString>(),
-				Location: Fixture.Create<DataString>(),
-				Description: Fixture.Create<DataString>()),
+				Location: Fixture.Create<DataString>()),
 			item => item.Institution,
 			NotNullValidatorName);
 
@@ -26,8 +26,7 @@ internal class TimeLineItemBaseValidatorTests : ModelValidatorTestsBase<TestTime
 			new TestTimeLineItemBase(
 				Institution: Fixture.Create<DataString>(),
 				Position: null!,
-				Location: Fixture.Create<DataString>(),
-				Description: Fixture.Create<DataString>()),
+				Location: Fixture.Create<DataString>()),
 			item => item.Position,
 			NotNullValidatorName);
 
@@ -35,18 +34,8 @@ internal class TimeLineItemBaseValidatorTests : ModelValidatorTestsBase<TestTime
 			new TestTimeLineItemBase(
 				Institution: Fixture.Create<DataString>(),
 				Position: Fixture.Create<DataString>(),
-				Location: null!,
-				Description: Fixture.Create<DataString>()),
+				Location: null!),
 			item => item.Location,
-			NotNullValidatorName);
-
-		yield return (
-			new TestTimeLineItemBase(
-				Institution: Fixture.Create<DataString>(),
-				Position: Fixture.Create<DataString>(),
-				Location: Fixture.Create<DataString>(),
-				Description: null!),
-			item => item.Description,
 			NotNullValidatorName);
 
 		yield return (
@@ -55,8 +44,7 @@ internal class TimeLineItemBaseValidatorTests : ModelValidatorTestsBase<TestTime
 					En: null!,
 					Ru: Fixture.Create<string>()),
 				Position: Fixture.Create<DataString>(),
-				Location: Fixture.Create<DataString>(),
-				Description: Fixture.Create<DataString>()),
+				Location: Fixture.Create<DataString>()),
 			item => item.Institution.En,
 			NotEmptyValidatorName);
 
@@ -66,8 +54,7 @@ internal class TimeLineItemBaseValidatorTests : ModelValidatorTestsBase<TestTime
 				Position: new DataString(
 					En: null!,
 					Ru: Fixture.Create<string>()),
-				Location: Fixture.Create<DataString>(),
-				Description: Fixture.Create<DataString>()),
+				Location: Fixture.Create<DataString>()),
 			item => item.Position.En,
 			NotEmptyValidatorName);
 
@@ -77,20 +64,8 @@ internal class TimeLineItemBaseValidatorTests : ModelValidatorTestsBase<TestTime
 				Position: Fixture.Create<DataString>(),
 				Location: new DataString(
 					En: null!,
-					Ru: Fixture.Create<string>()),
-				Description: Fixture.Create<DataString>()),
-			item => item.Location.En,
-			NotEmptyValidatorName);
-
-		yield return (
-			new TestTimeLineItemBase(
-				Institution: Fixture.Create<DataString>(),
-				Position: Fixture.Create<DataString>(),
-				Location: Fixture.Create<DataString>(),
-				Description: new DataString(
-					En: null!,
 					Ru: Fixture.Create<string>())),
-			item => item.Description.En,
+			item => item.Location.En,
 			NotEmptyValidatorName);
 	}
 
@@ -106,9 +81,8 @@ internal class TimeLineItemBaseValidatorTests : ModelValidatorTestsBase<TestTime
 internal sealed record TestTimeLineItemBase(
 	DataString Institution,
 	DataString Position,
-	DataString Location,
-	DataString Description)
-	: TimeLineItemBase<TestTimeLineItemBase>(Institution, Position, Location, Description)
+	DataString Location)
+	: TimeLineItemBase<TestTimeLineItemBase>(Institution, Position, Location)
 {
 	public override int CompareTo(TestTimeLineItemBase? other) => throw new NotImplementedException();
 }

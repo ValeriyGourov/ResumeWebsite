@@ -76,7 +76,7 @@ internal class ResumeDataValidatorTests : ModelValidatorTestsBase<ResumeData, Re
 				Title: Fixture.Create<DataString>(),
 				SocialButtons: [new(
 					Uri: null!,
-					FontClass: Fixture.Create<string>())]),
+					IconName: Fixture.Create<string>())]),
 			GetCollectionItemPropertyName(
 				item => item.SocialButtons,
 				item => item.Uri),
@@ -140,7 +140,7 @@ internal class ResumeDataValidatorTests : ModelValidatorTestsBase<ResumeData, Re
 					Institution: Fixture.Create<DataString>(),
 					Position: Fixture.Create<DataString>(),
 					Location: Fixture.Create<DataString>(),
-					Description: Fixture.Create<DataString>(),
+					Projects: Fixture.CreateMany<ExperienceProject>(),
 					StartDate: DateOnly.MinValue,
 					EndDate: null)]),
 			GetCollectionItemPropertyName(
@@ -174,7 +174,7 @@ internal class ResumeDataValidatorTests : ModelValidatorTestsBase<ResumeData, Re
 					Title: Fixture.Create<DataString>(),
 					Description: Fixture.Create<DataString>(),
 					Uri: null!,
-					FontClass: Fixture.Create<string>())]),
+					IconName: Fixture.Create<string>())]),
 			GetCollectionItemPropertyName(
 				item => item.Profiles!,
 				item => item.Uri),
