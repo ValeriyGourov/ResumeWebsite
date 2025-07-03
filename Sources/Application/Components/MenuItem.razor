@@ -1,0 +1,29 @@
+﻿<div class="menu-item">
+
+	<button title="@Title"
+			@onclick="@OnClickHandler"
+			type="button"
+			class="menu-button">
+
+		<svg class="menu-item__icon">
+			<use href="/images/icons/@(IconName).svg"></use>
+		</svg>
+		@Text
+
+	</button>
+
+</div>
+
+@code {
+	[Parameter, EditorRequired]
+	public required string Text { get; set; }
+
+	[Parameter, EditorRequired]
+	public required string IconName { get; set; }
+
+	[Parameter, EditorRequired]
+	public required string Title { get; set; }
+
+	[Parameter, EditorRequired]
+	public required EventCallback<MouseEventArgs> OnClickHandler { get; set; }
+}

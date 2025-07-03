@@ -4,7 +4,7 @@
 
 <PageTitle>@_title</PageTitle>
 
-<button title="@localizer["SwitchLanguage"]"
-		@onclick="@ChangeCulture">
-	<span class="fas fa-lg fa-language" /> @NewCulture.NativeName
-</button>
+<MenuItem Text="@NewCulture.NativeName"
+		  IconName="language-solid"
+		  Title="@localizer["SwitchLanguage"]"
+		  OnClickHandler="ChangeCulture" />
