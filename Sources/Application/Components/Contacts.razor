@@ -25,6 +25,6 @@
 	/// <summary>
 	/// Элементы, каждый из которых представляет отдельную запись контактной информации.
 	/// </summary>
-	[Parameter]
-	public IEnumerable<ContactItem> Items { get; set; } = Enumerable.Empty<ContactItem>();
+	[Parameter, EditorRequired]
+	public required IEnumerable<ContactItem> Items { get; set; }
 }

@@ -90,36 +90,27 @@ hr,
 /* Brand Colors */
 .t-title__first-word {
 	color: #a4a5a6;
+	text-transform: lowercase;
+	font-weight: 300;
 }
 
 .t-title__second-word {
 	color: #e0a80d;
+	text-transform: uppercase;
+	font-weight: 700;
 }
 
 .t-sub-title {
 	color: #979899;
+	font-weight: 300;
+	font-size: 1.5rem;
+	margin-left: .3rem;
 }
 
 /* Brand Typography */
 .t-title {
 	font-size: 4.8rem;
 	line-height: 0.91;
-}
-
-.t-title__first-word {
-	text-transform: lowercase;
-	font-weight: 300;
-}
-
-.t-title__second-word {
-	text-transform: uppercase;
-	font-weight: 700;
-}
-
-.t-sub-title {
-	font-weight: 300;
-	font-size: 1.5rem;
-	margin-left: .3rem;
 }
 
 /* Icons */

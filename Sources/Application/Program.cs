@@ -3,6 +3,11 @@
 using Application.Components;
 using Application.Data;
 using Application.Infrastructure.JavaScriptModules.Shared;
+using Application.Services.PdfGeneration;
+
+using QuestPDF.Infrastructure;
+
+using SoloX.BlazorJsBlob;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +23,12 @@ _ = builder.Services
 	.AddInteractiveServerComponents();
 
 _ = builder.Services.AddResumeData();
+
+_ = builder.Services.AddJsBlob();
+
+_ = builder.Services
+	.AddScoped<IPdfGenerator, PdfGenerator>()
+	.AddScoped<IDocument, PdfDocument>();
 
 WebApplication app = builder.Build();
 
@@ -50,5 +61,6 @@ static void ConfigureServicesLocalization(IServiceCollection services)
 		defaultCulture,
 		new CultureInfo("ru")
 	];
-	services.AddSessionLocalization(supportedCultures, defaultCulture, "Resources");
+
+	_ = services.AddSessionLocalization(supportedCultures, defaultCulture, "Resources");
 }

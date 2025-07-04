@@ -23,24 +23,24 @@
 	/// <summary>
 	/// Адрес работы.
 	/// </summary>
-	[Parameter]
-	public Uri Uri { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required Uri Uri { get; set; }
 
 	/// <summary>
 	/// Адрес картинки для предпросмотра.
 	/// </summary>
-	[Parameter]
-	public Uri ImageUri { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required Uri ImageUri { get; set; }
 
 	/// <summary>
 	/// Название работы.
 	/// </summary>
-	[Parameter]
-	public string Title { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Title { get; set; }
 
 	/// <summary>
 	/// Детальное описание работы.
 	/// </summary>
-	[Parameter]
-	public string Description { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Description { get; set; }
 }

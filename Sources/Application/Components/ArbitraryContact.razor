@@ -9,12 +9,12 @@
 	/// <summary>
 	/// Название контакта.
 	/// </summary>
-	[Parameter]
-	public string Title { get; set; } = string.Empty;
+	[Parameter, EditorRequired]
+	public required string Title { get; set; }
 
 	/// <summary>
 	/// Детальное описание контакта.
 	/// </summary>
-	[Parameter]
-	public string Description { get; set; } = string.Empty;
+	[Parameter, EditorRequired]
+	public required string Description { get; set; }
 }

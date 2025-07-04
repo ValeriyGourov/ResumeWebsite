@@ -21,23 +21,20 @@ public sealed partial class YearTimeLineItem(IStringLocalizer<TimeLineItem> loca
 	/// <summary>
 	/// Год начала события.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
-	public int StartYear { get; set; }
+	[Parameter, EditorRequired]
+	public required int StartYear { get; set; }
 
 	/// <summary>
 	/// Год окончания события. Если не указан, то событие считается активным.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
+	[Parameter, EditorRequired]
 	public int? EndYear { get; set; }
 
 	/// <summary>
 	/// Описание деятельности в организации или учреждении.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
-	public string Description { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Description { get; set; }
 
 	private static string? FormatPeriod(int? year)
 		=> year?.ToString(CultureInfo.CurrentCulture);

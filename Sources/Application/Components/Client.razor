@@ -19,12 +19,12 @@
 	/// <summary>
 	/// Адрес веб-сайта клиента.
 	/// </summary>
-	[Parameter]
-	public Uri Uri { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required Uri Uri { get; set; }
 
 	/// <summary>
 	/// Адрес картинки логотипа клиента. Максимальная высота картинки - 50 пикселей.
 	/// </summary>
-	[Parameter]
-	public Uri Logo { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required Uri Logo { get; set; }
 }

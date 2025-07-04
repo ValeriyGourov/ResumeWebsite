@@ -6,6 +6,11 @@
  *    without disabling user zoom.
  */
 html {
+	font-size: 14px;
+	min-height: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
 	font-family: sans-serif;
 	/* 1 */
 	-ms-text-size-adjust: 100%;
@@ -18,7 +23,14 @@ html {
  * Remove default margin.
  */
 body {
+	font-size: 1rem;
+	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.75;
+	color: #333;
+	background: #fff;
 	margin: 0;
+	font-weight: 400;
+	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 /* HTML5 display definitions
@@ -83,6 +95,7 @@ template {
  */
 a {
 	background-color: transparent;
+	text-decoration: none;
 }
 
 	/**
@@ -168,7 +181,15 @@ sub {
  */
 img {
 	border: 0;
+	font-style: italic;
+	vertical-align: middle;
+	max-width: 100%;
 }
+
+	img[width],
+	img[height] {
+		max-width: none;
+	}
 
 /**
  * Correct overflow not hidden in IE 9/10/11.
@@ -191,7 +212,11 @@ figure {
  */
 hr {
 	box-sizing: content-box;
-	height: 0;
+	height: 2px;
+	color: #ccc;
+	background: #ccc;
+	font-size: 0;
+	border: 0;
 }
 
 /**
@@ -208,7 +233,7 @@ code,
 kbd,
 pre,
 samp {
-	font-family: monospace, monospace;
+	font-family: monospace;
 	font-size: 1em;
 }
 
@@ -327,9 +352,9 @@ input {
  * 2. Address `box-sizing` set to `border-box` in Safari and Chrome.
  */
 	input[type="search"] {
-		-webkit-appearance: textfield;
+		-webkit-appearance: none;
 		/* 1 */
-		box-sizing: content-box;
+		box-sizing: inherit;
 		/* 2 */
 	}
 
@@ -350,6 +375,7 @@ fieldset {
 	border: 1px solid #c0c0c0;
 	margin: 0 2px;
 	padding: 0.35em 0.625em 0.75em;
+	min-width: 0;
 }
 
 /**
@@ -357,6 +383,9 @@ fieldset {
  * 2. Remove padding so people aren't caught out if they zero out fieldsets.
  */
 legend {
+	display: block;
+	width: 100%;
+	line-height: inherit;
 	border: 0;
 	/* 1 */
 	padding: 0;
@@ -368,6 +397,7 @@ legend {
  */
 textarea {
 	overflow: auto;
+	resize: vertical;
 }
 
 /**
@@ -424,11 +454,6 @@ ul ol {
 	margin-bottom: 0;
 }
 
-img {
-	font-style: italic;
-	vertical-align: middle;
-}
-
 label {
 	display: inline-block;
 }
@@ -439,30 +464,6 @@ select,
 textarea {
 	line-height: inherit;
 	border-radius: 0;
-}
-
-textarea {
-	resize: vertical;
-}
-
-fieldset {
-	min-width: 0;
-	border: 0;
-}
-
-legend {
-	display: block;
-	width: 100%;
-	line-height: inherit;
-}
-
-input[type="search"] {
-	box-sizing: inherit;
-	-webkit-appearance: none;
-}
-
-html {
-	box-sizing: border-box;
 }
 
 *,
@@ -486,31 +487,9 @@ pre,
 	margin-bottom: 0.55rem;
 }
 
-html {
-	font-size: 14px;
-	min-height: 100%;
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-font-smoothing: antialiased;
-}
-
-body {
-	font-size: 1rem;
-	font-family: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
-	line-height: 1.75;
-	color: #333;
-	background: #fff;
-}
-
 html,
 body {
 	height: 100%;
-}
-
-body {
-	font-weight: 400;
-	-webkit-font-smoothing: subpixel-antialiased;
 }
 
 h1,
@@ -540,18 +519,6 @@ h3, .c-number {
 	text-transform: uppercase;
 }
 
-a {
-	text-decoration: none;
-}
-
-hr {
-	height: 2px;
-	color: #ccc;
-	background: #ccc;
-	font-size: 0;
-	border: 0;
-}
-
 ul,
 ol,
 dd {
@@ -564,15 +531,6 @@ ol, [dir=rtl]
 dd {
 	margin-right: 3.5rem;
 }
-
-img {
-	max-width: 100%;
-}
-
-	img[width],
-	img[height] {
-		max-width: none;
-	}
 
 .o-list-bare,
 .c-social-buttons,
