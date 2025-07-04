@@ -12,6 +12,6 @@
 	/// <summary>
 	/// Дочернее содержимое, представляющее конкретную контактную информацию.
 	/// </summary>
-	[Parameter]
-	public RenderFragment ChildContent { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required RenderFragment ChildContent { get; set; }
 }

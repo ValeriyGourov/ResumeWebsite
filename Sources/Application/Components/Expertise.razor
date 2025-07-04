@@ -20,18 +20,18 @@
 	/// <summary>
 	/// Номер компетенции в списке.
 	/// </summary>
-	[Parameter]
-	public int Number { get; set; }
+	[Parameter, EditorRequired]
+	public required int Number { get; set; }
 
 	/// <summary>
 	/// Название компетенции.
 	/// </summary>
-	[Parameter]
-	public string Title { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Title { get; set; }
 
 	/// <summary>
 	/// Детальное описание компетенции.
 	/// </summary>
-	[Parameter]
-	public string Description { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Description { get; set; }
 }

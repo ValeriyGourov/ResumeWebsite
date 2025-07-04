@@ -16,12 +16,12 @@
 	/// <summary>
 	/// Название награды.
 	/// </summary>
-	[Parameter]
-	public string Title { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Title { get; set; }
 
 	/// <summary>
 	/// Детальное описание награды.
 	/// </summary>
-	[Parameter]
-	public string Description { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required string Description { get; set; }
 }

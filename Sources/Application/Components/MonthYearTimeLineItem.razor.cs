@@ -21,23 +21,20 @@ public sealed partial class MonthYearTimeLineItem(IStringLocalizer<TimeLineItem>
 	/// <summary>
 	/// Дата начала события.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
-	public DateOnly StartDate { get; set; }
+	[Parameter, EditorRequired]
+	public required DateOnly StartDate { get; set; }
 
 	/// <summary>
 	/// Дата окончания события. Если не указана, то событие считается активным.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
+	[Parameter, EditorRequired]
 	public DateOnly? EndDate { get; set; }
 
 	/// <summary>
 	/// Отдельные секции с описанием деятельности в организации или учреждении.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
-	public IEnumerable<MonthYearTimeLineItemSection> Sections { get; set; }
+	[Parameter, EditorRequired]
+	public required IEnumerable<MonthYearTimeLineItemSection> Sections { get; set; }
 
 	private static string? FormatPeriod(DateOnly? date)
 		=> date?.ToString("Y", CultureInfo.CurrentCulture);

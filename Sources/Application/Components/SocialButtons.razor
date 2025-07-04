@@ -24,12 +24,12 @@
 	/// <summary>
 	/// Класс CSS, описывающий конкретную кнопку.
 	/// </summary>
-	[Parameter]
-	public string ItemClass { get; set; } = string.Empty;
+	[Parameter, EditorRequired]
+	public required string ItemClass { get; set; }
 
 	/// <summary>
 	/// Набор кнопок.
 	/// </summary>
-	[Parameter]
-	public IEnumerable<SocialButtonModel> Items { get; set; } = Enumerable.Empty<SocialButtonModel>();
+	[Parameter, EditorRequired]
+	public required IEnumerable<SocialButtonModel> Items { get; set; }
 }

@@ -22,14 +22,14 @@
 	/// <summary>
 	/// Заголовок секции.
 	/// </summary>
-	[Parameter]
-	public RenderFragment HeaderFragment { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required RenderFragment HeaderFragment { get; set; }
 
 	/// <summary>
 	/// Содержимое секции.
 	/// </summary>
-	[Parameter]
-	public RenderFragment ContentFragment { get; set; } = null!;
+	[Parameter, EditorRequired]
+	public required RenderFragment ContentFragment { get; set; }
 
 	/// <summary>
 	/// Дополнительные классы CSS для оформления секции.

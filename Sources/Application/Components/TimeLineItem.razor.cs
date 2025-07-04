@@ -15,7 +15,7 @@ public partial class TimeLineItem(IStringLocalizer<TimeLineItem> localizer)
 	/// Строковое представление периода начала события.
 	/// </summary>
 	[Parameter]
-	public string StartPeriod { get; set; } = null!;
+	public required string StartPeriod { get; set; }
 
 	/// <summary>
 	/// Строковое представление периода окончания события. Если не указана, то событие считается активным.
@@ -26,29 +26,26 @@ public partial class TimeLineItem(IStringLocalizer<TimeLineItem> localizer)
 	/// <summary>
 	/// Организация или учреждение, в котором происходило событие.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
-	public string Institution { get; set; }
+	[Parameter, EditorRequired]
+	public required string Institution { get; set; }
 
 	/// <summary>
 	/// Занимаемая позиция в организации или учреждении.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
-	public string Position { get; set; }
+	[Parameter, EditorRequired]
+	public required string Position { get; set; }
 
 	/// <summary>
 	/// Местоположение организации или учреждении.
 	/// </summary>
-	[Parameter]
-	[EditorRequired]
-	public string Location { get; set; }
+	[Parameter, EditorRequired]
+	public required string Location { get; set; }
 
 	/// <summary>
 	/// Содержимое элемента временной линии, которое будет отображаться внутри карточки события.
 	/// </summary>
 	[Parameter]
-	public RenderFragment Content { get; set; } = null!;
+	public required RenderFragment Content { get; set; }
 
 	private string GetEndPeriod()
 		=> !string.IsNullOrWhiteSpace(EndPeriod)
