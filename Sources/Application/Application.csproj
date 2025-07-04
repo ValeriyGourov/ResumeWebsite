@@ -7,20 +7,16 @@
 
 	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="12.*" />
+		<PackageReference Include="QuestPDF" Version="2025.5.*" />
 		<PackageReference Include="Serilog" Version="4.*" />
 		<PackageReference Include="Serilog.AspNetCore" Version="9.*" />
 		<PackageReference Include="Serilog.Exceptions" Version="8.*" />
+		<PackageReference Include="SoloX.BlazorJsBlob" Version="1.*" />
 	</ItemGroup>
 
   <ItemGroup>
 	  <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
 	  <ProjectReference Include="..\Localization\Localization.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-	  <EmbeddedResource Update="Resources\Components\Pages\Index.resx">
-		  <Generator></Generator>
-	  </EmbeddedResource>
   </ItemGroup>
 
 </Project>

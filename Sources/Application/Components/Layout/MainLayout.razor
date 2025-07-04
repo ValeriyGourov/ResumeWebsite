@@ -7,7 +7,14 @@
 <div class="c-main-container  js-main-container">
 
 	<div class="top-menu">
+
 		<CultureSwitcher />
+
+		<MenuItem Text="@localizer["PdfFileButtonText"]"
+				  IconName="file-pdf-solid"
+				  Title="@localizer["PdfFileButtonTitle"]"
+				  OnClickHandler="DownloadPdfAsync" />
+
 	</div>
 
 	@Body

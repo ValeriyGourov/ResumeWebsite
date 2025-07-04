@@ -117,10 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SiteTitle" xml:space="preserve">
-    <value>{0} {1} - Resume</value>
+  <data name="PdfFileButtonText" xml:space="preserve">
+    <value>PDF file</value>
   </data>
-  <data name="SwitchLanguage" xml:space="preserve">
-    <value>Switch language.</value>
+  <data name="PdfFileButtonTitle" xml:space="preserve">
+    <value>Download as PDF file.</value>
+  </data>
+  <data name="ResumeFileName" xml:space="preserve">
+    <value>{0} {1}. Resume.pdf</value>
   </data>
 </root>
