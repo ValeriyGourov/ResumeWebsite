@@ -522,55 +522,48 @@ internal class PdfDocument : IDocument
 
 				foreach (T timeLineItem in timeLineItems)
 				{
-					contentColumn.Item().Row(row =>
+					contentColumn.Item().Column(column =>
 					{
-						row.Spacing(10f);
+						column.Spacing(5f);
 
-						row.RelativeItem(1)
-							.Column(column =>
-							{
-								column.Spacing(5f);
+						// TODO: Вынести форматирование дат периодов в отдельный модуль и использовать его везде, где нужно форматировать даты периодов.
 
-								// TODO: Вынести форматирование дат периодов в отдельный модуль и использовать его везде, где нужно форматировать даты периодов.
+						string? FormatPeriod(Func<T, TProperty?> periodProperty)
+						{
+							TProperty? periodValue = periodProperty(timeLineItem);
 
-								string? FormatPeriod(Func<T, TProperty?> periodProperty)
-								{
-									TProperty? periodValue = periodProperty(timeLineItem);
+							// TODO: Выяснить почему не изменяется CultureInfo.CurrentCulture при изменение языка интерфейса. Соответственно неправильно форматируются даты в формируемом файле.
+							return periodValue is null
+								? null
+								: string.Format(
+									CultureInfo.CurrentCulture,
+									$"{{0:{periodFormat}}}",
+									periodValue);
+						}
 
-									// TODO: Выяснить почему не изменяется CultureInfo.CurrentCulture при изменение языка интерфейса. Соответственно неправильно форматируются даты в формируемом файле.
-									return periodValue is null
-										? null
-										: string.Format(
-											CultureInfo.CurrentCulture,
-											$"{{0:{periodFormat}}}",
-											periodValue);
-								}
+						string?
+							startDate = FormatPeriod(periodStartProperty),
+							endDate = FormatPeriod(periodEndProperty) ?? _localizerTimeLineItem["EndPeriodPresent"];
 
-								string?
-									startDate = FormatPeriod(periodStartProperty),
-									endDate = FormatPeriod(periodEndProperty) ?? _localizerTimeLineItem["EndPeriodPresent"];
+						_ = column.Item()
+							.Text(timeLineItem.Institution)
+							.Style(Theme.TextStyles.InfoBlockTitle);
 
-								_ = column.Item()
-									.Text($"{startDate} - {endDate}")
-									.Style(Theme.TextStyles.TimeLineTimeFrame);
+						_ = column.Item()
+							.Text(timeLineItem.Position)
 
-								_ = column.Item()
-									.Text(timeLineItem.Institution)
-									.Style(Theme.TextStyles.InfoBlockTitle);
+							.Style(Theme.TextStyles.TimeLinePosition);
 
-								_ = column.Item()
-									.Text(timeLineItem.Position)
+						_ = column.Item()
+							.Text($"{startDate} - {endDate}")
+							.Style(Theme.TextStyles.TimeLineTimeFrame);
 
-									.Style(Theme.TextStyles.TimeLinePosition);
+						_ = column.Item()
+							.Text(timeLineItem.Location)
 
-								_ = column.Item()
-									.Text(timeLineItem.Location)
+							.Style(Theme.TextStyles.TimeLineLocation);
 
-									.Style(Theme.TextStyles.TimeLineLocation);
-							});
-
-						row.RelativeItem(2)
-							.Column(column => contentColumnHandler(column, timeLineItem));
+						contentColumnHandler(column, timeLineItem);
 					});
 				}
 			});
