@@ -2,7 +2,6 @@
 using System.Xml;
 
 using Application.Data.Models;
-using Application.Services.PdfGeneration.Components;
 
 using Localization.Infrastructure;
 
@@ -74,12 +73,23 @@ internal class PdfDocument : IDocument
 	{
 		_ = container.Page(page =>
 		{
-			page.ContinuousSize(PageSizes.A4.Width);
-			page.MarginHorizontal(1f, Unit.Centimetre);
+			page.Size(PageSizes.A4);
+			page.Margin(1f, Unit.Centimetre);
 			page.DefaultTextStyle(Theme.TextStyles.Default);
 			page.PageColor(Theme.Colors.Background);
 
 			page.Content().Element(Content);
+
+			page.Footer()
+				.AlignCenter()
+				.Text(text =>
+				{
+					text.DefaultTextStyle(Theme.TextStyles.PageNumber);
+
+					text.CurrentPageNumber();
+					text.Span(" / ");
+					text.TotalPages();
+				});
 		});
 	}
 
@@ -244,34 +254,7 @@ internal class PdfDocument : IDocument
 			return;
 		}
 
-		static void CreateProgressBarElement(RowDescriptor row, SkillItem? skillItem) => row
-			.RelativeItem()
-			.Column(innerColumn =>
-			{
-				if (skillItem is null)
-				{
-					return;
-				}
-
-				innerColumn.Spacing(5f);
-
-				innerColumn.Item().Row(innerRow =>
-				{
-					_ = innerRow.ConstantItem(24f)
-						.Text($"{skillItem.Percent.ToString(CultureChanger.CurrentUICulture)}%")
-						.Style(Theme.TextStyles.SkillPercent);
-
-					_ = innerRow.ConstantItem(10f);
-
-					_ = innerRow.RelativeItem()
-						.Text(skillItem.Title)
-						.Style(Theme.TextStyles.SkillTitle);
-				});
-
-				innerColumn.Item().Dynamic(new SkillProgressBarComponent(skillItem.Percent));
-			});
-
-		const int columnNumber = 2;
+		const string separator = " | ";
 
 		ResumeSection(
 			container,
@@ -279,23 +262,21 @@ internal class PdfDocument : IDocument
 			"SkillsDescription",
 			contentColumn =>
 			{
-				foreach (SkillItem[] skillItems in _resumeData.Skills.Chunk(columnNumber))
+				contentColumn.Item().Text(text =>
 				{
-					contentColumn.Spacing(20f);
+					bool isFirst = true;
 
-					contentColumn.Item().Row(row =>
+					foreach (SkillItem skillItem in _resumeData.Skills)
 					{
-						row.Spacing(10f);
+						if (!isFirst)
+						{
+							text.Span(separator);
+						}
 
-						CreateProgressBarElement(row, skillItems[0]);
-
-						CreateProgressBarElement(
-							row,
-							skillItems.Length == columnNumber
-								? skillItems[1]
-								: null);
-					});
-				}
+						text.Span(skillItem.Title);
+						isFirst = false;
+					}
+				});
 			});
 	}
 
@@ -467,6 +448,7 @@ internal class PdfDocument : IDocument
 		{
 			decoration.Before()
 				.ShowEntire()
+				.ShowOnce()
 				.ExtendHorizontal()
 				.BorderHorizontal(1f)
 				.BorderColor(Theme.Colors.Border)
@@ -510,55 +492,48 @@ internal class PdfDocument : IDocument
 
 				foreach (T timeLineItem in timeLineItems)
 				{
-					contentColumn.Item().Row(row =>
+					contentColumn.Item().Column(column =>
 					{
-						row.Spacing(10f);
+						column.Spacing(5f);
 
-						row.RelativeItem(1)
-							.Column(column =>
-							{
-								column.Spacing(5f);
+						// TODO: Вынести форматирование дат периодов в отдельный модуль и использовать его везде, где нужно форматировать даты периодов.
 
-								// TODO: Вынести форматирование дат периодов в отдельный модуль и использовать его везде, где нужно форматировать даты периодов.
+						string? FormatPeriod(Func<T, TProperty?> periodProperty)
+						{
+							TProperty? periodValue = periodProperty(timeLineItem);
 
-								string? FormatPeriod(Func<T, TProperty?> periodProperty)
-								{
-									TProperty? periodValue = periodProperty(timeLineItem);
+							// TODO: Выяснить почему не изменяется CultureInfo.CurrentCulture при изменение языка интерфейса. Соответственно неправильно форматируются даты в формируемом файле.
+							return periodValue is null
+								? null
+								: string.Format(
+									CultureInfo.CurrentCulture,
+									$"{{0:{periodFormat}}}",
+									periodValue);
+						}
 
-									// TODO: Выяснить почему не изменяется CultureInfo.CurrentCulture при изменение языка интерфейса. Соответственно неправильно форматируются даты в формируемом файле.
-									return periodValue is null
-										? null
-										: string.Format(
-											CultureInfo.CurrentCulture,
-											$"{{0:{periodFormat}}}",
-											periodValue);
-								}
+						string?
+							startDate = FormatPeriod(periodStartProperty),
+							endDate = FormatPeriod(periodEndProperty) ?? _localizerTimeLineItem["EndPeriodPresent"];
 
-								string?
-									startDate = FormatPeriod(periodStartProperty),
-									endDate = FormatPeriod(periodEndProperty) ?? _localizerTimeLineItem["EndPeriodPresent"];
+						_ = column.Item()
+							.Text(timeLineItem.Institution)
+							.Style(Theme.TextStyles.InfoBlockTitle);
 
-								_ = column.Item()
-									.Text($"{startDate} - {endDate}")
-									.Style(Theme.TextStyles.TimeLineTimeFrame);
+						_ = column.Item()
+							.Text(timeLineItem.Position)
 
-								_ = column.Item()
-									.Text(timeLineItem.Institution)
-									.Style(Theme.TextStyles.InfoBlockTitle);
+							.Style(Theme.TextStyles.TimeLinePosition);
 
-								_ = column.Item()
-									.Text(timeLineItem.Position)
+						_ = column.Item()
+							.Text($"{startDate} - {endDate}")
+							.Style(Theme.TextStyles.TimeLineTimeFrame);
 
-									.Style(Theme.TextStyles.TimeLinePosition);
+						_ = column.Item()
+							.Text(timeLineItem.Location)
 
-								_ = column.Item()
-									.Text(timeLineItem.Location)
+							.Style(Theme.TextStyles.TimeLineLocation);
 
-									.Style(Theme.TextStyles.TimeLineLocation);
-							});
-
-						row.RelativeItem(2)
-							.Column(column => contentColumnHandler(column, timeLineItem));
+						contentColumnHandler(column, timeLineItem);
 					});
 				}
 			});

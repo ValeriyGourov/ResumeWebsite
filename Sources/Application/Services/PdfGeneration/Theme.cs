@@ -53,6 +53,7 @@ internal static class Theme
 	{
 		public const float ProgressBarHeight = 5f;
 		public const float DefaultFont = 12f;
+		public const float PageNumberFont = 10f;
 		public const float SectionHeaderFont = 18f;
 		public const float SectionSubHeaderFont = 8f;
 		public const float TitleFont = 36f;
@@ -67,6 +68,9 @@ internal static class Theme
 		public static readonly TextStyle Default = TextStyle.Default
 			.FontSize(Sizes.DefaultFont)
 			.FontColor(Colors.MainText);
+
+		public static readonly TextStyle PageNumber = Default
+			.FontSize(Sizes.PageNumberFont);
 
 		public static readonly TextStyle Hyperlink = Default
 			.FontColor(Colors.Hyperlink)
