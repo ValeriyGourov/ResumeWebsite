@@ -74,12 +74,23 @@ internal class PdfDocument : IDocument
 	{
 		_ = container.Page(page =>
 		{
-			page.ContinuousSize(PageSizes.A4.Width);
-			page.MarginHorizontal(1f, Unit.Centimetre);
+			page.Size(PageSizes.A4);
+			page.Margin(1f, Unit.Centimetre);
 			page.DefaultTextStyle(Theme.TextStyles.Default);
 			page.PageColor(Theme.Colors.Background);
 
 			page.Content().Element(Content);
+
+			page.Footer()
+				.AlignCenter()
+				.Text(text =>
+				{
+					text.DefaultTextStyle(Theme.TextStyles.PageNumber);
+
+					text.CurrentPageNumber();
+					text.Span(" / ");
+					text.TotalPages();
+				});
 		});
 	}
 
@@ -467,6 +478,7 @@ internal class PdfDocument : IDocument
 		{
 			decoration.Before()
 				.ShowEntire()
+				.ShowOnce()
 				.ExtendHorizontal()
 				.BorderHorizontal(1f)
 				.BorderColor(Theme.Colors.Border)
