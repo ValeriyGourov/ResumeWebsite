@@ -2,7 +2,6 @@
 using System.Xml;
 
 using Application.Data.Models;
-using Application.Services.PdfGeneration.Components;
 
 using Localization.Infrastructure;
 
@@ -255,34 +254,7 @@ internal class PdfDocument : IDocument
 			return;
 		}
 
-		static void CreateProgressBarElement(RowDescriptor row, SkillItem? skillItem) => row
-			.RelativeItem()
-			.Column(innerColumn =>
-			{
-				if (skillItem is null)
-				{
-					return;
-				}
-
-				innerColumn.Spacing(5f);
-
-				innerColumn.Item().Row(innerRow =>
-				{
-					_ = innerRow.ConstantItem(24f)
-						.Text($"{skillItem.Percent.ToString(CultureChanger.CurrentUICulture)}%")
-						.Style(Theme.TextStyles.SkillPercent);
-
-					_ = innerRow.ConstantItem(10f);
-
-					_ = innerRow.RelativeItem()
-						.Text(skillItem.Title)
-						.Style(Theme.TextStyles.SkillTitle);
-				});
-
-				innerColumn.Item().Dynamic(new SkillProgressBarComponent(skillItem.Percent));
-			});
-
-		const int columnNumber = 2;
+		const string separator = " | ";
 
 		ResumeSection(
 			container,
@@ -290,23 +262,21 @@ internal class PdfDocument : IDocument
 			"SkillsDescription",
 			contentColumn =>
 			{
-				foreach (SkillItem[] skillItems in _resumeData.Skills.Chunk(columnNumber))
+				contentColumn.Item().Text(text =>
 				{
-					contentColumn.Spacing(20f);
+					bool isFirst = true;
 
-					contentColumn.Item().Row(row =>
+					foreach (SkillItem skillItem in _resumeData.Skills)
 					{
-						row.Spacing(10f);
+						if (!isFirst)
+						{
+							text.Span(separator);
+						}
 
-						CreateProgressBarElement(row, skillItems[0]);
-
-						CreateProgressBarElement(
-							row,
-							skillItems.Length == columnNumber
-								? skillItems[1]
-								: null);
-					});
-				}
+						text.Span(skillItem.Title);
+						isFirst = false;
+					}
+				});
 			});
 	}
 
