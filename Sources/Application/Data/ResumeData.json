@@ -451,29 +451,6 @@
 					]
 				}
 			]
-		},
-		{
-			"StartDate": "2012-08-01",
-			"Institution": {
-				"En": "Individual entrepreneur Gourov Valeriy Igorevich",
-				"Ru": "ФЛП Гуров Валерий Игоревич"
-			},
-			"Position": {
-				"En": "Owner, Developer",
-				"Ru": "Собственник, программист"
-			},
-			"Location": {
-				"En": "Ukraine",
-				"Ru": "Украина"
-			},
-			"Projects": [
-				{
-					"Description": {
-						"En": "Development in C#/.NET/ASP.NET Core of industrial level applications. Cloud technologies.",
-						"Ru": "Разработка на C#/.NET/ASP.NET Core приложений промышленного уровня. Облачные технологии."
-					}
-				}
-			]
 		}
 	],
 	"Education": [
@@ -490,7 +467,7 @@
 			},
 			"Location": {
 				"En": "Krivoy Rog, Ukraine",
-				"Ru": "Кривой рог, Украина"
+				"Ru": "Кривой Рог, Украина"
 			},
 			"Description": {
 				"En": "Faculty of mechanical engineering. Specialist.",
