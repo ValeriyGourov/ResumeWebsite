@@ -102,8 +102,8 @@ internal class PdfDocument : IDocument
 				column.Spacing(20f);
 
 				column.Item().Element(Title);
-				column.Item().Element(SocialButtons);
 				column.Item().Element(Contacts);
+				column.Item().Element(SocialButtons);
 				column.Item().Element(Intro);
 				column.Item().Element(Expertise);
 				column.Item().Element(Skills);
@@ -173,14 +173,20 @@ internal class PdfDocument : IDocument
 
 	private void Contacts(IContainer container)
 	{
+		const string separator = " | ";
+
 		container.Column(column =>
 		{
-			foreach (ContactItem contact in _resumeData.Contacts)
+			bool isFirst = true;
+
+			column.Item().Text(text =>
 			{
-				column.Item().Text(text =>
+				foreach (ContactItem contact in _resumeData.Contacts)
 				{
-					_ = text.Span($"{contact.Title}: ")
-						.Bold();
+					if (!isFirst)
+					{
+						text.Span(separator);
+					}
 
 					_ = contact.Hyperlink is null
 						? text.Span(contact.Description)
@@ -188,8 +194,10 @@ internal class PdfDocument : IDocument
 							contact.Description,
 							contact.Hyperlink.AbsoluteUri)
 							.Style(Theme.TextStyles.Hyperlink);
-				});
-			}
+
+					isFirst = false;
+				}
+			});
 		});
 	}
 
