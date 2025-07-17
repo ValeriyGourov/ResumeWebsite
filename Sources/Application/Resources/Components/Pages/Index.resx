@@ -139,7 +139,7 @@
     <value>Personal assessment of my skill level.</value>
   </data>
   <data name="AwardsDescription" xml:space="preserve">
-    <value>Professional achievements.</value>
+    <value>An affirmation of my abilities.</value>
   </data>
   <data name="AwardsTitle" xml:space="preserve">
     <value>Awards</value>
@@ -179,5 +179,11 @@
   </data>
   <data name="ProfilesTitle" xml:space="preserve">
     <value>Profiles</value>
+  </data>
+  <data name="AchievementsTitle" xml:space="preserve">
+    <value>Achievements</value>
+  </data>
+  <data name="AchievementsDescription" xml:space="preserve">
+    <value>The measurable impact of my work.</value>
   </data>
 </root>

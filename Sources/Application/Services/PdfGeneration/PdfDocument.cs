@@ -105,6 +105,7 @@ internal class PdfDocument : IDocument
 				column.Item().Element(Contacts);
 				column.Item().Element(SocialButtons);
 				column.Item().Element(Intro);
+				column.Item().Element(Achievements);
 				column.Item().Element(Expertise);
 				column.Item().Element(Skills);
 				column.Item().Element(Experience);
@@ -202,6 +203,25 @@ internal class PdfDocument : IDocument
 	}
 
 	private void Intro(IContainer container) => _ = container.Text(_resumeData.Intro);
+
+	private void Achievements(IContainer container)
+	{
+		if (_resumeData.Achievements?.Any() != true)
+		{
+			return;
+		}
+
+		ResumeSection(
+			container,
+			"AchievementsTitle",
+			"AchievementsDescription",
+			contentColumn =>
+			{
+				contentColumn.Spacing(5f);
+
+				MarkedList(_resumeData.Achievements, contentColumn);
+			});
+	}
 
 	private void Expertise(IContainer container)
 	{
@@ -315,20 +335,9 @@ internal class PdfDocument : IDocument
 					{
 						column.Item().Text(project.Description);
 
-						if (project.Details?.Any() != true)
+						if (project.Details?.Any() == true)
 						{
-							continue;
-						}
-
-						foreach (DataString detail in project.Details)
-						{
-							column.Item().Row(row =>
-							{
-								row.ConstantItem(20);
-								row.AutoItem().Text("●");
-								row.ConstantItem(5);
-								row.RelativeItem().Text(detail);
-							});
+							MarkedList(project.Details, column, 20f);
 						}
 					}
 				});
@@ -584,5 +593,26 @@ internal class PdfDocument : IDocument
 		xmlWriter.Flush();
 
 		return stringWriter.ToString();
+	}
+
+	private static void MarkedList(
+		IEnumerable<DataString> items,
+		ColumnDescriptor column,
+		float? indentSize = null)
+	{
+		foreach (DataString item in items)
+		{
+			column.Item().Row(row =>
+			{
+				if (indentSize.HasValue)
+				{
+					row.ConstantItem(indentSize.Value);
+				}
+
+				row.AutoItem().Text("●");
+				row.ConstantItem(5);
+				row.RelativeItem().Text(item);
+			});
+		}
 	}
 }

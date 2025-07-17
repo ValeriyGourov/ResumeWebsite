@@ -66,6 +66,40 @@
 		"En": "Senior .NET developer with 8+ years (20+ years total) experience in building scalable and reliable systems using C#, .NET, ASP.NET Core. I specialize in software architecture, performance optimization, integrations, and implementation of security and DevOps practices. I strive to write clean, maintainable code and build high quality products. Demanding in details, but aiming for a balance between excellence and practicality.",
 		"Ru": "Старший .NET-разработчик с 8+ годами (20+ лет общего) опыта в создании масштабируемых и надежных систем с использованием C#, .NET, ASP.NET Core. Специализируюсь на архитектуре программного обеспечения, оптимизации производительности, интеграциях и внедрении практик безопасности и DevOps. Стремлюсь писать чистый, поддерживаемый код и создавать продукты высокого качества. Требователен к деталям, но стараюсь ориентироваться на баланс между совершенством и практичностью."
 	},
+	"Achievements": [
+		{
+			"En": "Optimized (without changing the solution architecture) the data reading process (Entity Framework) for the web page through getting rid of looping queries, bundling individual queries, and more efficient LINQ expressions. This reduced the page load time from 40 seconds to 2 seconds.",
+			"Ru": "Оптимизировал (без изменения архитектуры решения) процесс чтения данных (Entity Framework) для веб-страницы через избавление от запросов в цикле, объединения отдельных запросов в пакеты и более эффективные выражения LINQ. Это позволило уменьшить время загрузки страницы с 40 до 2 секунд."
+		},
+		{
+			"En": "Implemented automatic parallelization of data acquisition processes using TPL Dataflow, which increased processing speed by 2-10 times.",
+			"Ru": "Реализовал автоматическое распараллеливание процессов сбора данных с помощью TPL Dataflow, что увеличило скорость обработки в 2-10 раз."
+		},
+		{
+			"En": "Replaced inefficient stored procedures with optimized Entity Framework Core queries, speeding up data writes by 2-3x and improving data availability for end users.",
+			"Ru": "Заменил неэффективные хранимые процедуры на оптимизированные запросы Entity Framework Core, что ускорило запись данных в 2-3 раза и улучшило доступность данных для конечных пользователей."
+		},
+		{
+			"En": "Implemented logging with ELK integration, which significantly reduced incident investigation time.",
+			"Ru": "Внедрил журналирование с интеграцией ELK, что существенно сократило время расследования инцидентов."
+		},
+		{
+			"En": "Implemented distributed monolith configuration management via HashiCorp Consul, allowing for rapid changes in system behavior without downtime.",
+			"Ru": "Реализовал управление настройками распределённого монолита через HashiCorp Consul, что позволило оперативно менять поведение системы без простоев."
+		},
+		{
+			"En": "Integrated Azure Key Vault to securely store secrets without committing them to source code and repositories.",
+			"Ru": "Интегрировал Azure Key Vault для безопасного хранения секретов без их фиксирования с исходном коде и репозитории."
+		},
+		{
+			"En": "Initiated migration of legacy distributed monolith to AWS using event-driven architecture (SNS, SQS), automatic scaling of instance counts, centralized and personalized resiliense tuning and retry policy.",
+			"Ru": "Инициировал миграцию унаследованного распределённого монолита в AWS с использованием архитектуры, основанной на событиях (SNS, SQS), автоматическим масштабированием количества экземпляров, централизованной и персональной настройкой устойчивости и политики повторов."
+		},
+		{
+			"En": "Implemented code style conventions, static code analysis (both locally and in the CI/CD process), and code review, which significantly increased code quality and reduced bugs in the final product.",
+			"Ru": "Внедрил соглашения по стилю кода, статический анализ кода (ка локально, так и в процессе CI/CD), обзор кода, что существенно увеличило качество кода и уменьшило количество ошибок в конечном продукте."
+		}
+	],
 	"Expertise": [
 		{
 			"Title": {
