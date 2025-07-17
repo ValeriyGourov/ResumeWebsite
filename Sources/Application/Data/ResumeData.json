@@ -63,28 +63,28 @@
 		}
 	],
 	"Intro": {
-		"En": "I have been professionally engaged in software development since 2000. At the moment I mainly specialize in Microsoft technologies and C# language. I am a perfectionist (but controlled), I am constantly learning new technologies and methodologies. I like to bring a task to its logical conclusion, I can't stand dirty code in the final product.",
-		"Ru": "Профессионально занимаюсь разработкой программного обеспечения с 2000 г. На текущий момент в основном специализируюсь на технологиях Microsoft и языке C#. Перфекционист (но контролируемо), перманентно изучаю новые для себя технологии и методологии. Люблю доводить задачу до логического завершения, терпеть не могу грязный код в финальном продукте."
+		"En": "Senior .NET developer with 8+ years (20+ years total) experience in building scalable and reliable systems using C#, .NET, ASP.NET Core. I specialize in software architecture, performance optimization, integrations, and implementation of security and DevOps practices. I strive to write clean, maintainable code and build high quality products. Demanding in details, but aiming for a balance between excellence and practicality.",
+		"Ru": "Старший .NET-разработчик с 8+ годами (20+ лет общего) опыта в создании масштабируемых и надежных систем с использованием C#, .NET, ASP.NET Core. Специализируюсь на архитектуре программного обеспечения, оптимизации производительности, интеграциях и внедрении практик безопасности и DevOps. Стремлюсь писать чистый, поддерживаемый код и создавать продукты высокого качества. Требователен к деталям, но стараюсь ориентироваться на баланс между совершенством и практичностью."
 	},
 	"Expertise": [
 		{
 			"Title": {
-				"En": "Application design and development",
-				"Ru": "Проектирование и разработка приложений"
+				"En": "Application architecture",
+				"Ru": "Архитектура приложений"
 			},
 			"Description": {
-				"En": "Server side of scalable C#/.NET based applications in a cloud environment (Azure/AWS). Secure and reliable RESTful APIs and distributed systems.",
-				"Ru": "Серверная часть масштабируемых приложений на базе C#/.NET в облачном окружении (Azure/AWS). Безопасные и надёжные RESTful API и распределённые системы."
+				"En": "Designing architecture for scalable C#/.NET applications in a cloud environment (Azure/AWS).",
+				"Ru": "Проектирование архитектуры масштабируемых приложений C#/.NET в облачной среде (Azure/AWS)."
 			}
 		},
 		{
 			"Title": {
-				"En": "High quality",
-				"Ru": "Высокое качество"
+				"En": "Application development",
+				"Ru": "Разработка приложений"
 			},
 			"Description": {
-				"En": "Identify and implement software development best practices including CI/CD, testing and security. Creating clean, efficient and high quality code by following software development best practices.",
-				"Ru": "Определение и внедрение лучших практик разработки программного обеспечения, включая CI/CD, тестирование и безопасность. Создание чистого, эффективного и качественного кода, следуя лучшим практикам разработки программного обеспечения."
+				"En": "Development of RESTful APIs, Blazor applications, distributed systems using SignalR, gRPC, WebSockert, RabbitMQ and others.",
+				"Ru": "Разработка RESTful API, приложений Blazor, распределенных систем с использованием SignalR, gRPC, WebSockert, RabbitMQ и других."
 			}
 		},
 		{
@@ -93,8 +93,28 @@
 				"Ru": "Оптимизация производительности"
 			},
 			"Description": {
-				"En": "Optimizing databases (SQL and NoSQL) to ensure scalability and high performance.",
-				"Ru": "Оптимизация баз данных (SQL и NoSQL) для обеспечения масштабируемости и высокой производительности."
+				"En": "Optimize application code and database interactions (Entity Framework Core, SQL, NoSQL).",
+				"Ru": "Оптимизация кода приложений и взаимодействия с базами данных (Entity Framework Core, SQL, NoSQL)."
+			}
+		},
+		{
+			"Title": {
+				"En": "Infrastructure",
+				"Ru": "Инфраструктура"
+			},
+			"Description": {
+				"En": "CI/CD implementation (Docker, Azure, AWS), unit, integration and other types of testing (MSTest, xUnit), security (Azure Key Vault), application health (health checks, metrics, ELK).",
+				"Ru": "Внедрение CI/CD (Docker, Azure, AWS), модульного, интеграционного и других видов тестирования (MSTest, xUnit), безопасность (Azure Key Vault), работоспособность приложений (health checks, метрики, ELK)."
+			}
+		},
+		{
+			"Title": {
+				"En": "Integration",
+				"Ru": "Интеграция"
+			},
+			"Description": {
+				"En": "Use of external systems such as 1C, Twilio, bank payment systems, Telegram, for interaction and data exchange.",
+				"Ru": "Использование внешних систем, таких как 1С, Twilio, платежные системы банков, Telegram, для взаимодействия и обмена данными."
 			}
 		},
 		{
@@ -103,38 +123,8 @@
 				"Ru": "Техническое лидерство"
 			},
 			"Description": {
-				"En": "Leading technical discussions and mentoring team members as needed.",
-				"Ru": "Ведение технических обсуждений и при необходимости наставничество членов команды."
-			}
-		},
-		{
-			"Title": {
-				"En": "Application infrastructure",
-				"Ru": "Инфраструктура приложений"
-			},
-			"Description": {
-				"En": "Facilitate adoption of DevOps practices including cloud infrastructure, deployment pipelines, and monitoring.",
-				"Ru": "Содействие внедрению практик DevOps, включая облачную инфраструктуру, конвейеры развёртывания и мониторинг."
-			}
-		},
-		{
-			"Title": {
-				"En": "Application testing",
-				"Ru": "Тестирование приложений"
-			},
-			"Description": {
-				"En": "Ensuring quality through automated testing and thorough code analysis and review.",
-				"Ru": "Обеспечение качества с помощью автоматизированного тестирования и тщательного анализа и обзора кода."
-			}
-		},
-		{
-			"Title": {
-				"En": "Project planning",
-				"Ru": "Планирование проектов"
-			},
-			"Description": {
-				"En": "Actively participate in project planning, including requirements gathering, estimation, and architectural decisions.",
-				"Ru": "Активное участие в планировании проекта, включая сбор требований, оценку и архитектурные решения."
+				"En": "Technical leadership, mentoring other team members, code review, implementing code standards.",
+				"Ru": "Лидерство в технических вопросах, наставничество других членов команды, обзор кода (code review), внедрение стандартов кода."
 			}
 		}
 	],
@@ -155,94 +145,10 @@
 		},
 		{
 			"Title": {
-				"En": "Entity Framework Core",
-				"Ru": "Entity Framework Core"
-			},
-			"Percent": 85
-		},
-		{
-			"Title": {
 				"En": "ASP.NET Core",
 				"Ru": "ASP.NET Core"
 			},
 			"Percent": 85
-		},
-		{
-			"Title": {
-				"En": "Web API",
-				"Ru": "Web API"
-			},
-			"Percent": 85
-		},
-		{
-			"Title": {
-				"En": "Microsoft SQL Server",
-				"Ru": "Microsoft SQL Server"
-			},
-			"Percent": 60
-		},
-		{
-			"Title": {
-				"En": "LINQ",
-				"Ru": "LINQ"
-			},
-			"Percent": 85
-		},
-		{
-			"Title": {
-				"En": "Azure",
-				"Ru": "Azure"
-			},
-			"Percent": 50
-		},
-		{
-			"Title": {
-				"En": "AWS",
-				"Ru": "AWS"
-			},
-			"Percent": 30
-		},
-		{
-			"Title": {
-				"En": "Microsoft Bot Framework",
-				"Ru": "Microsoft Bot Framework"
-			},
-			"Percent": 45
-		},
-		{
-			"Title": {
-				"En": "XAML, WPF",
-				"Ru": "XAML, WPF"
-			},
-			"Percent": 35
-		},
-		{
-			"Title": {
-				"En": "Twilio",
-				"Ru": "Twilio"
-			},
-			"Percent": 60
-		},
-		{
-			"Title": {
-				"En": "SignalR",
-				"Ru": "SignalR"
-			},
-			"Percent": 60
-		},
-		{
-			"Title": {
-				"En": "Selenium WebDriver",
-				"Ru": "Selenium WebDriver"
-			},
-			"Percent": 65
-		},
-		{
-			"Title": {
-				"En": "RabbitMQ",
-				"Ru": "RabbitMQ"
-			},
-			"Percent": 35
 		},
 		{
 			"Title": {
@@ -253,31 +159,24 @@
 		},
 		{
 			"Title": {
-				"En": "MongoDB, LiteDB",
-				"Ru": "MongoDB, LiteDB"
+				"En": "Entity Framework Core",
+				"Ru": "Entity Framework Core"
 			},
-			"Percent": 50
+			"Percent": 85
 		},
 		{
 			"Title": {
-				"En": "MySQL",
-				"Ru": "MySQL"
+				"En": "LINQ",
+				"Ru": "LINQ"
 			},
-			"Percent": 30
+			"Percent": 85
 		},
 		{
 			"Title": {
-				"En": "PostgreSQL",
-				"Ru": "PostgreSQL"
+				"En": "Web API",
+				"Ru": "Web API"
 			},
-			"Percent": 30
-		},
-		{
-			"Title": {
-				"En": "HTML, CSS",
-				"Ru": "HTML, CSS"
-			},
-			"Percent": 40
+			"Percent": 85
 		},
 		{
 			"Title": {
@@ -295,10 +194,241 @@
 		},
 		{
 			"Title": {
+				"En": "SignalR",
+				"Ru": "SignalR"
+			},
+			"Percent": 60
+		},
+		{
+			"Title": {
+				"En": "Azure",
+				"Ru": "Azure"
+			},
+			"Percent": 50
+		},
+		{
+			"Title": {
+				"En": "AWS",
+				"Ru": "AWS"
+			},
+			"Percent": 30
+		},
+		{
+			"Title": {
+				"En": "Microsoft SQL Server",
+				"Ru": "Microsoft SQL Server"
+			},
+			"Percent": 60
+		},
+		{
+			"Title": {
+				"En": "PostgreSQL",
+				"Ru": "PostgreSQL"
+			},
+			"Percent": 30
+		},
+		{
+			"Title": {
+				"En": "MySQL",
+				"Ru": "MySQL"
+			},
+			"Percent": 30
+		},
+		{
+			"Title": {
+				"En": "MongoDB, LiteDB",
+				"Ru": "MongoDB, LiteDB"
+			},
+			"Percent": 50
+		},
+		{
+			"Title": {
+				"En": "RabbitMQ",
+				"Ru": "RabbitMQ"
+			},
+			"Percent": 50
+		},
+		{
+			"Title": {
+				"En": "Docker",
+				"Ru": "Docker"
+			},
+			"Percent": 60
+		},
+		{
+			"Title": {
+				"En": "GitHub Actions",
+				"Ru": "GitHub Actions"
+			},
+			"Percent": 30
+		},
+		{
+			"Title": {
+				"En": "Prometheus",
+				"Ru": "Prometheus"
+			},
+			"Percent": 30
+		},
+		{
+			"Title": {
+				"En": "Telegram API",
+				"Ru": "Telegram API"
+			},
+			"Percent": 55
+		},
+		{
+			"Title": {
+				"En": "HashiCorp Consul",
+				"Ru": "HashiCorp Consul"
+			},
+			"Percent": 50
+		},
+		{
+			"Title": {
+				"En": "Microsoft Bot Framework",
+				"Ru": "Microsoft Bot Framework"
+			},
+			"Percent": 45
+		},
+		{
+			"Title": {
+				"En": "XAML, WPF",
+				"Ru": "XAML, WPF"
+			},
+			"Percent": 35
+		},
+		{
+			"Title": {
+				"En": ".NET MAUI",
+				"Ru": ".NET MAUI"
+			},
+			"Percent": 20
+		},
+		{
+			"Title": {
+				"En": "TeamCity",
+				"Ru": "TeamCity"
+			},
+			"Percent": 40
+		},
+		{
+			"Title": {
+				"En": "Azure DevOps",
+				"Ru": "Azure DevOps"
+			},
+			"Percent": 30
+		},
+		{
+			"Title": {
+				"En": "GitLab",
+				"Ru": "GitLab"
+			},
+			"Percent": 50
+		},
+		{
+			"Title": {
+				"En": ".NET Aspire",
+				"Ru": ".NET Aspire"
+			},
+			"Percent": 65
+		},
+		{
+			"Title": {
+				"En": "MassTransit",
+				"Ru": "MassTransit"
+			},
+			"Percent": 45
+		},
+		{
+			"Title": {
+				"En": "MSTest",
+				"Ru": "MSTest"
+			},
+			"Percent": 70
+		},
+		{
+			"Title": {
+				"En": "xUnit",
+				"Ru": "xUnit"
+			},
+			"Percent": 40
+		},
+		{
+			"Title": {
+				"En": "1C",
+				"Ru": "1С"
+			},
+			"Percent": 85
+		},
+		{
+			"Title": {
+				"En": "Twilio",
+				"Ru": "Twilio"
+			},
+			"Percent": 60
+		},
+		{
+			"Title": {
+				"En": "Selenium WebDriver",
+				"Ru": "Selenium WebDriver"
+			},
+			"Percent": 55
+		},
+		{
+			"Title": {
+				"En": "Puppeteer",
+				"Ru": "Puppeteer"
+			},
+			"Percent": 60
+		},
+		{
+			"Title": {
+				"En": "HTML, CSS",
+				"Ru": "HTML, CSS"
+			},
+			"Percent": 40
+		},
+		{
+			"Title": {
 				"En": "Microservices",
 				"Ru": "Микрослужбы"
 			},
 			"Percent": 80
+		},
+		{
+			"Title": {
+				"En": "OpenTelemetry",
+				"Ru": "OpenTelemetry"
+			},
+			"Percent": 40
+		},
+		{
+			"Title": {
+				"En": "TPL Dataflow",
+				"Ru": "TPL Dataflow"
+			},
+			"Percent": 65
+		},
+		{
+			"Title": {
+				"En": "OData",
+				"Ru": "OData"
+			},
+			"Percent": 25
+		},
+		{
+			"Title": {
+				"En": "Redis",
+				"Ru": "Redis"
+			},
+			"Percent": 50
+		},
+		{
+			"Title": {
+				"En": "ElasticSearch",
+				"Ru": "ElasticSearch"
+			},
+			"Percent": 35
 		}
 	],
 	"Experience": [
@@ -320,9 +450,15 @@
 			"Projects": [
 				{
 					"Description": {
-						"En": "Participation in the development of the new functional of the integration platform, allowing to exchange data between heterogeneous third-party systems. Interaction with the platform is based on the Web API. I participated in the development of exchange modules with \"1C:Enterprise 8\" (several different configurations), “Nova Poshta”, “Prom.ua”, as well as modules for the logistics company and the main site of the system. The unification implemented by me allows you to add new entities to the module with minimal time, and the extensibility features added in certain places allow you to add or redefine the behavior of the basic functionality.",
-						"Ru": "Участие в разработке нового функционала интеграционной платформы, позволяющей обмениваться данными между разнородными сторонними системами. Взаимодействие с платформой реализовано на базе Web API. Я принимал участие в разработке модулей обмена с \"1С:Предприятие 8\" (несколько различных конфигураций), “Новой почтой”, “Prom.ua”, а также модули для логистической компании и основного сайта системы. Реализованная мной унификация позволяет добавлять в модуль новые сущности с минимальными затратами времени, а добавленные в определённых местах возможности расширения позволяют дополнить или переопределить поведение базового функционала."
-					}
+						"En": "An integration platform for data exchange:",
+						"Ru": "Интеграционная платформа для обмена данными:"
+					},
+					"Details": [
+						{
+							"En": "Developed and implemented the architecture of exchange modules (ASP.NET Core) with \"1C:Enterprise 8\" (several different configurations), \"Nova Poshta\", \"Prom.ua\", as well as modules for the logistics company and the main site of the system. This allowed us to add new entities to the module with minimal time consumption.",
+							"Ru": "Разработал и реализовал архитектуру модулей обмена (ASP.NET Core) с \"1С:Предприятие 8\" (несколько различных конфигураций), \"Новой почтой\", \"Prom.ua\", а также модулей для логистической компании и основного сайта системы. Это позволило добавлять в модуль новые сущности с минимальными затратами времени."
+						}
+					]
 				}
 			]
 		},
@@ -344,25 +480,17 @@
 			"Projects": [
 				{
 					"Description": {
-						"En": "Maintenance and development of new functionality of the server part of the tourist site. The system uses these technologies and services:",
-						"Ru": "Сопровождение и развитие нового функционала серверной части туристического сайта. Система использует такие технологии и службы:"
+						"En": "Server part of the tourist site (ASP.NET Web API):",
+						"Ru": "Серверная часть туристического сайта (ASP.NET Web API):"
 					},
 					"Details": [
 						{
-							"En": "ASP.NET Web API",
-							"Ru": "ASP.NET Web API"
+							"En": "Integrated the app with a banking system, allowing payments to be accepted on the site using that bank's mechanisms.",
+							"Ru": "Интегрировал приложение с банковской системой, что позволило принимать платежи на сайте с использованием механизмов данного банка."
 						},
 						{
-							"En": "MS SQL Server",
-							"Ru": "MS SQL Server"
-						},
-						{
-							"En": "External payment systems",
-							"Ru": "Внешние платежные системы"
-						},
-						{
-							"En": "SendGrid",
-							"Ru": "SendGrid"
+							"En": "Developed the initial version of a new mechanism for presenting the site's home page information without radical changes to the application architecture. This allowed launching the new feature as quickly as possible (with subsequent implementation of a more correct version), which significantly increased the attractiveness of the site from the end users' point of view.",
+							"Ru": "Разработал первичную версию нового механизма представления информации главной страницы сайта без радикальных изменений архитектуры приложения. Это позволило запустить новую возможность в работу максимально оперативно (с последующей реализацией более правильного варианта), что существенно повысило привлекательность сайта с точки зрения конечных пользователей."
 						}
 					]
 				}
@@ -386,29 +514,25 @@
 			"Projects": [
 				{
 					"Description": {
-						"En": "Server-side development of  service for processing calls to mobile phones. NDA. The system uses these technologies and services:",
-						"Ru": "Разработка серверной части службы для обработки звонков на мобильные телефоны. NDA. Система использует такие технологии и службы:"
+						"En": "A system for processing and filtering incoming phone calls:",
+						"Ru": "Система обработки и фильтрации входящих телефонных звонков:"
 					},
 					"Details": [
 						{
-							"En": "ASP.NET Core, hosted in Azure App Service",
-							"Ru": "ASP.NET Core, размещено в Azure App Service"
+							"En": "Designed and implemented the server-side foundation for an incoming phone call processing and filtering system based on ASP.NET Core and Azure App Services.",
+							"Ru": "Спроектировал и реализовал основу серверной части для системы обработки и фильтрации входящих телефонных звонков на базе ASP.NET Core и Azure App Services."
 						},
 						{
-							"En": "SQL Server DB, hosted in Azure",
-							"Ru": "SQL Server DB, размещено в Azure"
+							"En": "Implemented integration with Azure Key Vault to securely store application secrets.",
+							"Ru": "Реализовал интеграцию с Azure Key Vault для безопасного хранения секретов приложения."
 						},
 						{
-							"En": "Azure Key Vault to store application secrets",
-							"Ru": "Azure Key Vault для хранения секретов приложения"
+							"En": "Integrated the app with Twilio for primary management of incoming calls and making outbound calls.",
+							"Ru": "Интегрировал приложение с Twilio для первичного управления входящими звонками и совершения исходящих звонков."
 						},
 						{
-							"En": "Twilio for the primary management of inbound phone calls and outbound calls",
-							"Ru": "Twilio для первичного управления входящими звонками и совершения исходящих звонков"
-						},
-						{
-							"En": "SignalR and Azure SignalR Service to communicate with the mobile application",
-							"Ru": "SignalR и Azure SignalR Service для взаимодействия с мобильным приложением"
+							"En": "Engaged SignalR and Azure SignalR Service to interact with the mobile app.",
+							"Ru": "Задействовал SignalR и Azure SignalR Service для взаимодействия с мобильным приложением."
 						}
 					]
 				}
@@ -432,21 +556,73 @@
 			"Projects": [
 				{
 					"Description": {
-						"En": "Development and support of back-end and front-end software implemented on C# and ASP.NET Core:",
-						"Ru": "Разработка и поддержка внутреннего и внешнего ПО, реализованного на базе C# и ASP.NET Core:"
+						"En": "A job management system for drivers:",
+						"Ru": "Система управления заданиями для водителей:"
 					},
 					"Details": [
 						{
-							"En": "Implementation of a system for collecting information from external sources, processing and storing the collected information. Transfer of the legacy project to AWS.",
-							"Ru": "Реализация системы сбора информации из внешних источников, обработка и хранение собранной информации. Перенос унаследованного проекта в AWS."
+							"En": "Designed and implemented the foundation of a job management system for drivers based on ASP.NET Core and Telegram, which allowed drivers to work with jobs without creating a specialized and more difficult to implement mobile application.",
+							"Ru": "Спроектировал и реализовал основу системы управления заданиями для водителей на базе ASP.NET Core и Telegram, что позволило водителям работать с заданиями без создания специализированного и более сложного в реализации мобильного приложения."
 						},
 						{
-							"En": "Implementation of a job management system for drivers based on ASP.NET Core and Telegram.",
-							"Ru": "Реализация системы управления заданиями для водителей на базе ASP.NET Core и Telegram."
+							"En": "Implemented a basic user interface flow subsystem for interacting with the system via a Telegram chat bot.",
+							"Ru": "Реализовал базовую подсистему потока интерфейса пользователя для взаимодействия с системой через чат бота Telegram."
+						}
+					]
+				},
+				{
+					"Description": {
+						"En": "A system for collecting information from external sources:",
+						"Ru": "Система сбора информации из внешних источников:"
+					},
+					"Details": [
+						{
+							"En": "Designed a subsystem to collect data through a set of proxy servers with the ability to rotate and match them. This significantly reduced the number of failed data collection sessions, which, in turn, reduced the likelihood of users not having relevant data to analyze.",
+							"Ru": "Спроектировал подсистему сбора данных через набор прокси-серверов с возможностью их ротации и подбора подходящего. Это позволило существенно уменьшить количество неудачных сессий сбора данных, что, в свою очередь, уменьшило вероятность отсутствия у пользователей актуальных данных для анализа."
 						},
 						{
-							"En": "Implementation of the server part of the mobile application for courier delivery based on ASP.NET Core.",
-							"Ru": "Реализация серверной части мобильного приложения для курьерской доставки на базе ASP.NET Core."
+							"En": "Optimized and unified inefficient data recording in SQL Server, implemented on stored procedures, by replacing it with Entity Framework Core and more efficient processing algorithms (yes, such a paradox). This allowed to reduce the writing time by 2-3 times and increase the speed of receiving new data by end users.",
+							"Ru": "Оптимизировал и унифицировал неэффективную запись данных в SQL Server, реализованную на хранимых процедурах, путём замены на Entity Framework Core и более эффективные алгоритмы обработки (да, такой вот парадокс). Это позволило уменьшить время записи в 2-3 раза и увеличить скорость получения новых данных конечными пользователями."
+						},
+						{
+							"En": "Implemented configuration management of a distributed monolith in the Production and Test environments using HashiCorp Consul, allowing the application's behavior to be changed quickly without downtime.",
+							"Ru": "Реализовал управление настройками распределённого монолита в средах “Production” и “Test” с использованием HashiCorp Consul, что позволило оперативно менять поведение приложения без его простоя."
+						},
+						{
+							"En": "Implemented a full logging system with log events sent to ELK. This significantly reduced the time required to investigate incidents.",
+							"Ru": "Внедрил полноценную систему журналирования с отправкой событий журнала в ELK. Это позволило существенно сократить время расследования инцидентов."
+						},
+						{
+							"En": "Implemented health monitoring (health check, metrics). This increased awareness of the operational state of the application and allowed faster response to failures.",
+							"Ru": "Реализовал мониторинг состояния (проверка работоспособности (health check), метрики). Это повысило информированность об оперативном состоянии приложения и позволило быстрее реагировать на сбои."
+						}
+					]
+				},
+				{
+					"Description": {
+						"En": "New version of the system for collecting information from external sources:",
+						"Ru": "Новая версия системы сбора информации из внешних источников:"
+					},
+					"Details": [
+						{
+							"En": "Initiated the implementation of a new version of the application with migration to the cloud (AWS) and using event-driven architecture (SNS and SQS), automatically scaling the number of instances of data collection modules based on the number of jobs.",
+							"Ru": "Инициировал реализацию новой версии приложения с миграцией в облако (AWS) и использованием архитектуры, основанной на событиях (SNS и SQS), автоматическим масштабированием количества экземпляров модулей сбора данных в зависимости от количества заданий."
+						},
+						{
+							"En": "I implemented code style conventions, code analysis by syntax analyzers, code review both during local work and CI/CD process, which significantly increased the quality of the code itself and reduced the number of errors in the final product.",
+							"Ru": "Внедрил соглашения по стилю кода, анализ кода синтаксическими анализаторами, обзор кода как при локальной работе, так и в процессе CI/CD, что существенно увеличило качество самого кода и уменьшило количество ошибок в конечном продукте."
+						},
+						{
+							"En": "Implemented unit tests and integration tests, which significantly increased the reliability of the system and reduced the number of errors in production.",
+							"Ru": "Реализовал модульные и интеграционные тесты, что существенно увеличило надёжность системы и уменьшило количество ошибок в продакшене."
+						},
+						{
+							"En": "Implemented automatic parallelization of the data collection process using TPL Dataflow, which allowed to increase the processing speed by 2-10 times on the same hardware resources, depending on the data source.",
+							"Ru": "Реализовал автоматическое распараллеливание процесса сбора данных с помощью TPL Dataflow, что позволило на тех же самых аппаратных ресурсах увеличить скорость обработки в 2-10 раз в зависимости от источника данных."
+						},
+						{
+							"En": "Designed and implemented integration with external data sources on the web with support for retry logic, fault tolerance, etc. (with unified setting of the general policy and the possibility of flexible customization for a particular module), which allowed to significantly increase the stability of the collection process and the amount of collected data.",
+							"Ru": "Спроектировал и реализовал интеграцию с внешними источниками данных в интернете с поддержкой логики повторных попыток, устойчивости к сбоям и т.п. (с унифицированной настройкой общей политики и возможностью гибкой настройки для конкретного модуля), что позволило существенно повысить устойчивость процесса сбора и количество собираемых данных."
 						}
 					]
 				}
