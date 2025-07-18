@@ -123,6 +123,17 @@ internal class ResumeDataValidatorTests : ModelValidatorTestsBase<ResumeData, Re
 				Name: Fixture.Create<DataString>(),
 				Surname: Fixture.Create<DataString>(),
 				Title: Fixture.Create<DataString>(),
+				Achievements: [invalidDataString]),
+			GetCollectionItemPropertyName(
+				item => item.Achievements!,
+				item => item.En),
+			NotEmptyValidatorName);
+
+		yield return (
+			new ResumeData(
+				Name: Fixture.Create<DataString>(),
+				Surname: Fixture.Create<DataString>(),
+				Title: Fixture.Create<DataString>(),
 				Skills: [new(
 					Title: Fixture.Create<DataString>(),
 					Percent: 0)]),

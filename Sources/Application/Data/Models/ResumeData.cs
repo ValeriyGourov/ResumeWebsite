@@ -15,6 +15,7 @@ namespace Application.Data.Models;
 /// <param name="SocialButtons"><inheritdoc cref="SocialButtons" path="/summary"/></param>
 /// <param name="Contacts"><inheritdoc cref="Contacts" path="/summary"/></param>
 /// <param name="Intro">Общая информация о себе в произвольной форме.</param>
+/// <param name="Achievements">Перечень достижений.</param>
 /// <param name="Expertise">Перечень компетенций.</param>
 /// <param name="Skills">Перечень навыков.</param>
 /// <param name="Experience">Перечень опыта работы.</param>
@@ -30,6 +31,7 @@ public sealed record ResumeData(
 	IEnumerable<SocialButton>? SocialButtons = null,
 	IEnumerable<ContactItem>? Contacts = null,
 	DataString? Intro = null,
+	IEnumerable<DataString>? Achievements = null,
 	IEnumerable<TitleElement>? Expertise = null,
 	IEnumerable<SkillItem>? Skills = null,
 	SortedSet<MonthYearTimeLineItem>? Experience = null,
@@ -61,6 +63,12 @@ internal sealed class ResumeDataValidator : AbstractValidator<ResumeData>
 			item => item.Name,
 			item => item.Surname,
 			item => item.Title);
+
+		When(
+			static item => item.Achievements is not null,
+			() => this.SetDataStringRuleForEach(
+				item => item.Achievements!,
+				dataStringValidator));
 
 		RuleForEach(item => item.SocialButtons)
 			.SetValidator(new SocialButtonValidator());

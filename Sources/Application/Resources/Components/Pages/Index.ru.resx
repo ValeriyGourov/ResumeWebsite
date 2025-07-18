@@ -138,46 +138,52 @@
   <data name="SkillsDescription" xml:space="preserve">
     <value>Личная оценка уровня моих навыков.</value>
   </data>
+  <data name="AwardsDescription" xml:space="preserve">
+    <value>Подтверждение моих способностей.</value>
+  </data>
   <data name="AwardsTitle" xml:space="preserve">
     <value>Награды</value>
-  </data>
-  <data name="AwardsDescription" xml:space="preserve">
-    <value>Профессиональные достижения.</value>
-  </data>
-  <data name="ClientsTitle" xml:space="preserve">
-    <value>Клиенты</value>
   </data>
   <data name="ClientsDescription" xml:space="preserve">
     <value>Заказчики моих услуг.</value>
   </data>
-  <data name="ContactTitle" xml:space="preserve">
-    <value>Контакты</value>
+  <data name="ClientsTitle" xml:space="preserve">
+    <value>Клиенты</value>
   </data>
   <data name="ContactDescription" xml:space="preserve">
     <value>Так со мной можно связаться.</value>
   </data>
-  <data name="EducationTitle" xml:space="preserve">
-    <value>Образование</value>
+  <data name="ContactTitle" xml:space="preserve">
+    <value>Контакты</value>
   </data>
   <data name="EducationDescription" xml:space="preserve">
     <value>Оконченные учебные заведения.</value>
   </data>
-  <data name="ExperienceTitle" xml:space="preserve">
-    <value>Опыт работы</value>
+  <data name="EducationTitle" xml:space="preserve">
+    <value>Образование</value>
   </data>
   <data name="ExperienceDescription" xml:space="preserve">
     <value>Работа с компаниями.</value>
   </data>
-  <data name="PortfolioTitle" xml:space="preserve">
-    <value>Портфолио</value>
+  <data name="ExperienceTitle" xml:space="preserve">
+    <value>Опыт работы</value>
   </data>
   <data name="PortfolioDescription" xml:space="preserve">
     <value>Список моих работ.</value>
   </data>
-  <data name="ProfilesTitle" xml:space="preserve">
-    <value>Профили</value>
+  <data name="PortfolioTitle" xml:space="preserve">
+    <value>Портфолио</value>
   </data>
   <data name="ProfilesDescription" xml:space="preserve">
     <value>Ссылки на профессиональные ресурсы.</value>
+  </data>
+  <data name="ProfilesTitle" xml:space="preserve">
+    <value>Профили</value>
+  </data>
+  <data name="AchievementsTitle" xml:space="preserve">
+    <value>Достижения</value>
+  </data>
+  <data name="AchievementsDescription" xml:space="preserve">
+    <value>Измеримое влияние моей работы.</value>
   </data>
 </root>

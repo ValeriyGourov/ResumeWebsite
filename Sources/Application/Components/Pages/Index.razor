@@ -108,6 +108,36 @@
 	</ResumeSection>
 }
 
+@if (ResumeData.Achievements?.Any() == true)
+{
+	<!-- ################################ -->
+	<!-- ######### ACHIEVEMENTS ######### -->
+	<!-- ################################ -->
+
+	<ResumeSection>
+
+		<HeaderFragment>
+			<SectionHeader Title="@Localizer["AchievementsTitle"]"
+						   Description="@Localizer["AchievementsDescription"]" />
+		</HeaderFragment>
+
+		<ContentFragment>
+			<SectionContent>
+
+				<ul>
+					@foreach (DataString achievement in ResumeData.Achievements)
+					{
+						<li>@achievement</li>
+
+					}
+				</ul>
+
+			</SectionContent>
+		</ContentFragment>
+
+	</ResumeSection>
+}
+
 @if (ResumeData.Expertise?.Any() == true)
 {
 	<!-- ################################ -->
