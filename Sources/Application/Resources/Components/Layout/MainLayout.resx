@@ -123,7 +123,4 @@
   <data name="PdfFileButtonTitle" xml:space="preserve">
     <value>Download as PDF file.</value>
   </data>
-  <data name="ResumeFileName" xml:space="preserve">
-    <value>{0} {1}. Resume.pdf</value>
-  </data>
 </root>
