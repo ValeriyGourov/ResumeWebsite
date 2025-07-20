@@ -1,7 +1,5 @@
 ﻿#pragma warning disable CA1515
 
-using System.Globalization;
-
 using Application.Data.Models;
 using Application.Infrastructure.JavaScriptModules.Shared;
 using Application.Services.PdfGeneration;
@@ -77,11 +75,8 @@ public sealed partial class MainLayout(
 				.ConfigureAwait(false);
 			await using (blob)
 			{
-				string fileName = string.Format(
-					CultureInfo.CurrentCulture,
-					localizer["ResumeFileName"],
-					_resumeData.Name,
-					_resumeData.Surname);
+				string title = _resumeData.Title.ToString().Replace(" | ", ", ");
+				string fileName = $"{_resumeData.Name} {_resumeData.Surname} — {title}.pdf";
 
 				await _blobService
 					.SaveAsFileAsync(blob, fileName)
