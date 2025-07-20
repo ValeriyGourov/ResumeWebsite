@@ -75,7 +75,9 @@ public sealed partial class MainLayout(
 				.ConfigureAwait(false);
 			await using (blob)
 			{
-				string title = _resumeData.Title.ToString().Replace(" | ", ", ");
+				string title = _resumeData.Title
+					.ToString()
+					.Replace(" | ", ", ", StringComparison.InvariantCultureIgnoreCase);
 				string fileName = $"{_resumeData.Name} {_resumeData.Surname} — {title}.pdf";
 
 				await _blobService
