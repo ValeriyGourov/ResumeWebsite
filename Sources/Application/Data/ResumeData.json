@@ -88,8 +88,8 @@
 			"Ru": "Реализовал управление настройками распределённого монолита через HashiCorp Consul, что позволило оперативно менять поведение системы без простоев."
 		},
 		{
-			"En": "Integrated Azure Key Vault to securely store secrets without committing them to source code and repositories.",
-			"Ru": "Интегрировал Azure Key Vault для безопасного хранения секретов без их фиксирования с исходном коде и репозитории."
+			"En": "Integrated Azure Key Vault to securely store secrets without committing them to source code and repository.",
+			"Ru": "Интегрировал Azure Key Vault для безопасного хранения секретов без их фиксирования в исходном коде и репозитории."
 		},
 		{
 			"En": "Initiated migration of legacy distributed monolith to AWS using event-driven architecture (SNS, SQS), automatic scaling of instance counts, centralized and personalized resiliense tuning and retry policy.",
