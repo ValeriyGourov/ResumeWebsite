@@ -1,4 +1,5 @@
 ﻿using QuestPDF.Fluent;
+using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 
 namespace Application.Services.PdfGeneration;
@@ -66,6 +67,7 @@ internal static class Theme
 	internal static class TextStyles
 	{
 		public static readonly TextStyle Default = TextStyle.Default
+			.DisableFontFeature(FontFeatures.StandardLigatures)
 			.FontSize(Sizes.DefaultFont)
 			.FontColor(Colors.MainText);
 
