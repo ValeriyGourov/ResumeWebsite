@@ -95,25 +95,23 @@ internal class PdfDocument : IDocument
 
 	private void Content(IContainer container)
 	{
-		container
-			.PaddingVertical(10f)
-			.Column(column =>
-			{
-				column.Spacing(20f);
+		container.Column(column =>
+		{
+			column.Spacing(20f);
 
-				column.Item().Element(Title);
-				column.Item().Element(Contacts);
-				column.Item().Element(SocialButtons);
-				column.Item().Element(Intro);
-				column.Item().Element(Achievements);
-				column.Item().Element(Expertise);
-				column.Item().Element(Skills);
-				column.Item().Element(Experience);
-				column.Item().Element(Education);
-				column.Item().Element(Profiles);
-				// TODO: Вывести награды (Awards).
-				column.Item().Element(Portfolio);
-			});
+			column.Item().Element(Title);
+			column.Item().Element(Contacts);
+			column.Item().Element(SocialButtons);
+			column.Item().Element(Intro);
+			column.Item().Element(Achievements);
+			column.Item().Element(Expertise);
+			column.Item().Element(Skills);
+			column.Item().Element(Experience);
+			column.Item().Element(Education);
+			column.Item().Element(Profiles);
+			// TODO: Вывести награды (Awards).
+			column.Item().Element(Portfolio);
+		});
 	}
 
 	private void Title(IContainer container)
@@ -121,7 +119,6 @@ internal class PdfDocument : IDocument
 		container
 			.BorderBottom(1f)
 			.BorderColor(Theme.Colors.Border)
-			.PaddingBottom(10f)
 			.Column(column =>
 			{
 #pragma warning disable CA1308 // Нормализуйте строки до прописных букв
