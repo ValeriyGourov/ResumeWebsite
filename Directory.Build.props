@@ -34,49 +34,42 @@
 
 	<!--Пакеты NuGet, общие для всех проектов.-->
 	<ItemGroup>
-		<PackageReference Include="AsyncFixer"
-						  Version="*">
+		<PackageReference Include="AsyncFixer">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
-		<PackageReference Include="ParallelHelper"
-						  Version="*" >
+		<PackageReference Include="ParallelHelper">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
-		<PackageReference Include="Roslynator.Analyzers"
-						  Version="*">
+		<PackageReference Include="Roslynator.Analyzers">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
-		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers"
-						  Version="*">
+		<PackageReference Include="Roslynator.CodeAnalysis.Analyzers">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
-		<PackageReference Include="Roslynator.Formatting.Analyzers"
-						  Version="*">
+		<PackageReference Include="Roslynator.Formatting.Analyzers">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
-		<PackageReference Include="SecurityCodeScan.VS2019"
-						  Version="*">
+		<PackageReference Include="SecurityCodeScan.VS2019">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 
-		<!--TODO: Включить анализатор после исправления ошибки Visual Studio.-->
-<!--		<PackageReference Include="SonarAnalyzer.CSharp" Version="10.*">
+		<PackageReference Include="SonarAnalyzer.CSharp">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-		</PackageReference>-->
+		</PackageReference>
 
-		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.*">
+		<PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>

@@ -12,15 +12,15 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AutoFixture" Version="4.*" />
-		<PackageReference Include="AutoFixture.AutoMoq" Version="4.*" />
-		<PackageReference Include="FluentAssertions" Version="8.*" />
-		<PackageReference Include="FluentAssertions.Analyzers" Version="*">
+		<PackageReference Include="AutoFixture" />
+		<PackageReference Include="AutoFixture.AutoMoq" />
+		<PackageReference Include="FluentAssertions" />
+		<PackageReference Include="FluentAssertions.Analyzers">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="Moq" Version="4.*" />
-		<PackageReference Include="Moq.AutoMock" Version="3.*" />
+		<PackageReference Include="Moq" />
+		<PackageReference Include="Moq.AutoMock" />
 	</ItemGroup>
 
 	<!--Задача для установки проектам тестов общих атрибутов сборки.-->
