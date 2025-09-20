@@ -463,6 +463,13 @@
 				"Ru": "ElasticSearch"
 			},
 			"Percent": 35
+		},
+		{
+			"Title": {
+				"En": "Apache Kafka",
+				"Ru": "Apache Kafka"
+			},
+			"Percent": 30
 		}
 	],
 	"Experience": [
@@ -647,8 +654,8 @@
 							"Ru": "Внедрил соглашения по стилю кода, анализ кода синтаксическими анализаторами, обзор кода как при локальной работе, так и в процессе CI/CD, что существенно увеличило качество самого кода и уменьшило количество ошибок в конечном продукте."
 						},
 						{
-							"En": "Implemented unit tests and integration tests, which significantly increased the reliability of the system and reduced the number of errors in production.",
-							"Ru": "Реализовал модульные и интеграционные тесты, что существенно увеличило надёжность системы и уменьшило количество ошибок в продакшене."
+							"En": "Implemented unit and integration tests, which significantly increased system reliability and reduced errors in the production environment.",
+							"Ru": "Реализовал модульные и интеграционные тесты, что существенно увеличило надёжность системы и уменьшило количество ошибок в производственной среде."
 						},
 						{
 							"En": "Implemented automatic parallelization of the data collection process using TPL Dataflow, which allowed to increase the processing speed by 2-10 times on the same hardware resources, depending on the data source.",
