@@ -52,16 +52,15 @@ internal static class Theme
 
 	internal static class Sizes
 	{
-		public const float ProgressBarHeight = 5f;
-		public const float DefaultFont = 12f;
-		public const float PageNumberFont = 10f;
-		public const float SectionHeaderFont = 18f;
-		public const float SectionSubHeaderFont = 8f;
-		public const float TitleFont = 36f;
-		public const float InfoBlockTitleFont = 14f;
-		public const float TimeLineTimeFrameFont = 8f;
-		public const float TimeLinePositionFont = 10f;
-		public const float TimeLineLocationFont = 8f;
+		public const float DefaultFont = 10f;
+		public const float PageNumberFont = 8f;
+		public const float SectionHeaderFont = 16f;
+		public const float SectionSubHeaderFont = 6f;
+		public const float TitleFont = 34f;
+		public const float InfoBlockTitleFont = 12f;
+		public const float TimeLineTimeFrameFont = 6f;
+		public const float TimeLinePositionFont = 8f;
+		public const float TimeLineLocationFont = 6f;
 	}
 
 	internal static class TextStyles
