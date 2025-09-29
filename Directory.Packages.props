@@ -1,48 +1,48 @@
 ﻿<Project>
   <PropertyGroup>
-	<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
-	<CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
-	<NoWarn>$(NoWarn);NU1507</NoWarn>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <NoWarn>$(NoWarn);NU1507</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-	<PackageVersion Include="AutoFixture" Version="4.18.1" />
-	<PackageVersion Include="AutoFixture.AutoMoq" Version="4.18.1" />
-	<PackageVersion Include="CommunityToolkit.Diagnostics" Version="8.4.0" />
-	<PackageVersion Include="FluentAssertions" Version="8.6.0" />
-	<PackageVersion Include="FluentAssertions.Analyzers" Version="0.34.1" />
-	<PackageVersion Include="FluentValidation" Version="12.0.0" />
-	<PackageVersion Include="Microsoft.AspNetCore.Components" Version="9.0.9" />
-	<PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.9" />
-	<PackageVersion Include="Microsoft.AspNetCore.Localization" Version="2.3.0" />
-	<PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.9" />
-	<PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.9" />
-	<PackageVersion Include="Microsoft.Extensions.Options" Version="9.0.9" />
-	<PackageVersion Include="Microsoft.Extensions.Telemetry.Abstractions" Version="9.9.0" />
-	<PackageVersion Include="Microsoft.JSInterop" Version="9.0.9" />
-	<PackageVersion Include="Microsoft.VisualStudio.Threading" Version="17.14.15" />
-	<PackageVersion Include="Moq" Version="4.20.72" />
-	<PackageVersion Include="Moq.AutoMock" Version="3.5.0" />
-	<PackageVersion Include="QuestPDF" Version="2025.7.1" />
-	<PackageVersion Include="Serilog" Version="4.3.0" />
-	<PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
-	<PackageVersion Include="Serilog.Exceptions" Version="8.4.0" />
-	<PackageVersion Include="SoloX.BlazorJsBlob" Version="1.0.2" />
-	<PackageVersion Include="System.Globalization" Version="4.3.0" />
+    <PackageVersion Include="AutoFixture" Version="4.18.1" />
+    <PackageVersion Include="AutoFixture.AutoMoq" Version="4.18.1" />
+    <PackageVersion Include="CommunityToolkit.Diagnostics" Version="8.4.0" />
+    <PackageVersion Include="FluentAssertions" Version="8.7.0" />
+    <PackageVersion Include="FluentAssertions.Analyzers" Version="0.34.1" />
+    <PackageVersion Include="FluentValidation" Version="12.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components" Version="9.0.9" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="9.0.9" />
+    <PackageVersion Include="Microsoft.AspNetCore.Localization" Version="2.3.0" />
+    <PackageVersion Include="Microsoft.Extensions.Localization" Version="9.0.9" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.9" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="9.0.9" />
+    <PackageVersion Include="Microsoft.Extensions.Telemetry.Abstractions" Version="9.9.0" />
+    <PackageVersion Include="Microsoft.JSInterop" Version="9.0.9" />
+    <PackageVersion Include="Microsoft.VisualStudio.Threading" Version="17.14.15" />
+    <PackageVersion Include="Moq" Version="4.20.72" />
+    <PackageVersion Include="Moq.AutoMock" Version="3.5.0" />
+    <PackageVersion Include="QuestPDF" Version="2025.7.2" />
+    <PackageVersion Include="Serilog" Version="4.3.0" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="9.0.0" />
+    <PackageVersion Include="Serilog.Exceptions" Version="8.4.0" />
+    <PackageVersion Include="SoloX.BlazorJsBlob" Version="1.0.2" />
+    <PackageVersion Include="System.Globalization" Version="4.3.0" />
   </ItemGroup>
   <!--Транзитивные пакеты.-->
   <ItemGroup>
-	<PackageVersion Include="System.Net.Http" Version="4.3.4" />
-	<PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" />
+    <PackageVersion Include="System.Net.Http" Version="4.3.4" />
+    <PackageVersion Include="System.Text.RegularExpressions" Version="4.3.1" />
   </ItemGroup>
   <!--Пакеты, общие для всех проектов.-->
   <ItemGroup>
-	<GlobalPackageReference Include="AsyncFixer" Version="1.6.0" />
-	<GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15" />
-	<GlobalPackageReference Include="ParallelHelper" Version="3.6.1" />
-	<GlobalPackageReference Include="Roslynator.Analyzers" Version="4.14.0" />
-	<GlobalPackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.14.0" />
-	<GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.14.0" />
-	<GlobalPackageReference Include="SecurityCodeScan.VS2019" Version="5.6.7" />
-	<GlobalPackageReference Include="SonarAnalyzer.CSharp" Version="10.15.0.120848" />
+    <GlobalPackageReference Include="AsyncFixer" Version="1.6.0" />
+    <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15" />
+    <GlobalPackageReference Include="ParallelHelper" Version="3.6.1" />
+    <GlobalPackageReference Include="Roslynator.Analyzers" Version="4.14.0" />
+    <GlobalPackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.14.0" />
+    <GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.14.0" />
+    <GlobalPackageReference Include="SecurityCodeScan.VS2019" Version="5.6.7" />
+    <GlobalPackageReference Include="SonarAnalyzer.CSharp" Version="10.15.0.120848" />
   </ItemGroup>
 </Project>
