@@ -2,6 +2,7 @@
   <Folder Name="/Sources/">
     <File Path="Sources/Directory.Build.props" />
     <Project Path="Sources/Application/Application.csproj" />
+    <Project Path="Sources/Extensions/Extensions.csproj" Id="d8ebd3d2-9d43-460e-9515-5b614573f047" />
     <Project Path="Sources/Infrastructure/Infrastructure.csproj" />
     <Project Path="Sources/Localization/Localization.csproj" />
   </Folder>
@@ -9,6 +10,7 @@
     <File Path="Tests/Directory.Build.props" />
     <File Path="Tests/Test.runsettings" />
     <Project Path="Tests/Application.UnitTests/Application.UnitTests.csproj" />
+    <Project Path="Tests/Extensions.UnitTests/Extensions.UnitTests.csproj" Id="690495ee-7ed4-417f-a758-18650ea9ccce" />
     <Project Path="Tests/Infrastructure.UnitTests/Infrastructure.UnitTests.csproj" />
     <Project Path="Tests/Localization.UnitTests/Localization.UnitTests.csproj" />
     <Project Path="Tests/TestInfrastructure/TestInfrastructure.csproj" />

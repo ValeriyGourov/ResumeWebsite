@@ -69,7 +69,7 @@ internal class TimeLineItemBaseValidatorTests
 			NotEmptyValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		TestTimeLineItemBase value,

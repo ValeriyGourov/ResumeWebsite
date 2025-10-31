@@ -33,7 +33,7 @@ internal class SocialButtonValidatorTests : ModelValidatorTestsBase<SocialButton
 			NotEmptyValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		SocialButton value,

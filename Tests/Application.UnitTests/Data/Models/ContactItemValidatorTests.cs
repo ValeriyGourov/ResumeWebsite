@@ -20,7 +20,7 @@ internal class ContactItemValidatorTests : ModelValidatorTestsBase<ContactItem, 
 			PredicateValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		ContactItem value,
@@ -28,7 +28,7 @@ internal class ContactItemValidatorTests : ModelValidatorTestsBase<ContactItem, 
 		string expectedErrorCode)
 		=> base.ValidateWithInvalidValue(value, property, expectedErrorCode);
 
-	[TestMethod(ValidateBaseClassDisplayName)]
+	[TestMethod(DisplayName = ValidateBaseClassDisplayName)]
 	public void ValidateBaseClass()
 	{
 		// Arrange.

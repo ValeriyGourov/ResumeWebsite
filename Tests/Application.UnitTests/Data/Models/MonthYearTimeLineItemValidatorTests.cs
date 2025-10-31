@@ -53,7 +53,7 @@ internal class MonthYearTimeLineItemValidatorTests
 			GreaterThanOrEqualValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		MonthYearTimeLineItem value,
@@ -61,7 +61,7 @@ internal class MonthYearTimeLineItemValidatorTests
 		string expectedErrorCode)
 		=> base.ValidateWithInvalidValue(value, property, expectedErrorCode);
 
-	[TestMethod(ValidateBaseClassDisplayName)]
+	[TestMethod(DisplayName = ValidateBaseClassDisplayName)]
 	public void ValidateBaseClass()
 	{
 		// Arrange.

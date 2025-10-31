@@ -39,7 +39,7 @@ internal class SkillItemValidatorTests : ModelValidatorTestsBase<SkillItem, Skil
 			InclusiveBetweenValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		SkillItem value,

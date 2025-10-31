@@ -30,7 +30,7 @@ internal class PortfolioItemValidatorTests : ModelValidatorTestsBase<PortfolioIt
 			NotNullValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		PortfolioItem value,
@@ -38,7 +38,7 @@ internal class PortfolioItemValidatorTests : ModelValidatorTestsBase<PortfolioIt
 		string expectedErrorCode)
 		=> base.ValidateWithInvalidValue(value, property, expectedErrorCode);
 
-	[TestMethod(ValidateBaseClassDisplayName)]
+	[TestMethod(DisplayName = ValidateBaseClassDisplayName)]
 	public void ValidateBaseClass()
 	{
 		// Arrange.

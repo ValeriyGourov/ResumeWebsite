@@ -39,7 +39,7 @@ internal class ProfileItemValidatorTests : ModelValidatorTestsBase<ProfileItem, 
 			NotEmptyValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		ProfileItem value,
@@ -47,7 +47,7 @@ internal class ProfileItemValidatorTests : ModelValidatorTestsBase<ProfileItem, 
 		string expectedErrorCode)
 		=> base.ValidateWithInvalidValue(value, property, expectedErrorCode);
 
-	[TestMethod(ValidateBaseClassDisplayName)]
+	[TestMethod(DisplayName = ValidateBaseClassDisplayName)]
 	public void ValidateBaseClass()
 	{
 		// Arrange.
