@@ -3,6 +3,8 @@ using System.Text;
 
 using AutoFixture;
 
+using Extensions.ObjectPool;
+
 using FluentValidation;
 using FluentValidation.TestHelper;
 using FluentValidation.Validators;
@@ -102,14 +104,16 @@ internal abstract class ModelValidatorTestsBase<TModel, TValidator>
 
 	protected static string GetPropertyName<T, TProperty>(Expression<Func<T, TProperty>> property)
 	{
+		using ObjectPoolLease<StringBuilder> poolLease = StringBuilderPool.Shared.Lease();
+
 		return property.Body.NodeType switch
 		{
 			ExpressionType.MemberAccess => GetPropertyName(
 				property.Body,
-				new()),
+				poolLease.Value),
 			ExpressionType.Convert => GetPropertyName(
 				((UnaryExpression)property.Body).Operand,
-				new()),
+				poolLease.Value),
 			_ => throw new ArgumentException(
 				"Неподдерживаемый тип выражения.",
 				nameof(property))

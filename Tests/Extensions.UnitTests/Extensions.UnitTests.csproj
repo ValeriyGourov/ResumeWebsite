@@ -1,0 +1,7 @@
+﻿<Project Sdk="MSTest.Sdk">
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Sources\Extensions\Extensions.csproj" />
+	</ItemGroup>
+
+</Project>

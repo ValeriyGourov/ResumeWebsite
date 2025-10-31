@@ -2,6 +2,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\Sources\Application\Application.csproj" />
+		<ProjectReference Include="..\..\Sources\Extensions\Extensions.csproj" />
 		<ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj" />
 	</ItemGroup>
 
