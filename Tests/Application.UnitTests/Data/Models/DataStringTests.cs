@@ -20,7 +20,7 @@ internal class DataStringTests
 		("fr", static dataString => dataString.En),
 	];
 
-	[TestMethod("Преобразование в строку должно учитывать текущий язык")]
+	[TestMethod(DisplayName = "Преобразование в строку должно учитывать текущий язык")]
 	[DynamicData(nameof(ToString1TestData))]
 	public void ToString1(string cultureName, Func<DataString, string> expectedFactory)
 	{
@@ -49,7 +49,7 @@ internal class DataStringTests
 		yield return (value, value.Ru);
 	}
 
-	[TestMethod("Неявное преобразование в строку должно учитывать значение null")]
+	[TestMethod(DisplayName = "Неявное преобразование в строку должно учитывать значение null")]
 	[DynamicData(nameof(OperatorString1TestData))]
 	public void OperatorString1(DataString? value, string? expected)
 	{

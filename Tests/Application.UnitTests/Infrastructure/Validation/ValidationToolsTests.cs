@@ -17,7 +17,7 @@ namespace Application.UnitTests.Infrastructure.Validation;
 [TestClass]
 internal class ValidationToolsTests
 {
-	[TestMethod("Для свойства должны быть добавлены необходимые модули проверки")]
+	[TestMethod(DisplayName = "Для свойства должны быть добавлены необходимые модули проверки")]
 	public void SetDataStringRule1()
 	{
 		// Arrange.
@@ -30,7 +30,7 @@ internal class ValidationToolsTests
 		validator.CheckPropertyValidators();
 	}
 
-	[TestMethod("Для свойства должен использоваться предоставленный экземпляр " + nameof(DataStringValidator))]
+	[TestMethod(DisplayName = "Для свойства должен использоваться предоставленный экземпляр " + nameof(DataStringValidator))]
 	public void SetDataStringRule2()
 	{
 		// Arrange.
@@ -46,7 +46,7 @@ internal class ValidationToolsTests
 		validator.CheckProvidedValidator(dataStringValidator);
 	}
 
-	[TestMethod("Для свойства коллекции должны быть добавлены необходимые модули проверки")]
+	[TestMethod(DisplayName = "Для свойства коллекции должны быть добавлены необходимые модули проверки")]
 	public void SetDataStringRuleForEach1()
 	{
 		// Arrange.
@@ -59,7 +59,7 @@ internal class ValidationToolsTests
 		validator.CheckPropertyValidators();
 	}
 
-	[TestMethod("Для свойства коллекции должен использоваться предоставленный экземпляр " + nameof(DataStringValidator))]
+	[TestMethod(DisplayName = "Для свойства коллекции должен использоваться предоставленный экземпляр " + nameof(DataStringValidator))]
 	public void SetDataStringRuleForEach2()
 	{
 		// Arrange.

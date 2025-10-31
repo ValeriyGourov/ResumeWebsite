@@ -10,7 +10,7 @@ public class JavaScriptModuleBaseTests
 {
 	private const string _importIdentifier = "import";
 
-	[TestMethod("Вызов метода модуля JavaScript с именем, совпадающим с названием метода класса, должен возвращать ожидаемое значение")]
+	[TestMethod(DisplayName = "Вызов метода модуля JavaScript с именем, совпадающим с названием метода класса, должен возвращать ожидаемое значение")]
 	[TestProperty(TestProperties.MethodName, "InvokeAsync")]
 	public async Task InvokeAsync1()
 	{
@@ -45,7 +45,7 @@ public class JavaScriptModuleBaseTests
 		_ = actual.Should().Be(expected);
 	}
 
-	[TestMethod("Вызов метода модуля JavaScript с явно указанным именем должен возвращать ожидаемое значение")]
+	[TestMethod(DisplayName = "Вызов метода модуля JavaScript с явно указанным именем должен возвращать ожидаемое значение")]
 	[TestProperty(TestProperties.MethodName, "InvokeAsync")]
 	public async Task InvokeAsync2()
 	{
@@ -84,7 +84,7 @@ public class JavaScriptModuleBaseTests
 		_ = actual.Should().Be(expected);
 	}
 
-	[TestMethod("Вызов метода модуля JavaScript с именем, совпадающим с названием метода класса, должен вызывать метод без возврата значения")]
+	[TestMethod(DisplayName = "Вызов метода модуля JavaScript с именем, совпадающим с названием метода класса, должен вызывать метод без возврата значения")]
 	[TestProperty(TestProperties.MethodName, "InvokeVoidAsync")]
 	public async Task InvokeVoidAsync1()
 	{
@@ -120,7 +120,7 @@ public class JavaScriptModuleBaseTests
 		jsObjectReferenceMock.Verify();
 	}
 
-	[TestMethod("Вызов метода модуля JavaScript с явно указанным именем должен вызывать метод без возврата значения")]
+	[TestMethod(DisplayName = "Вызов метода модуля JavaScript с явно указанным именем должен вызывать метод без возврата значения")]
 	[TestProperty(TestProperties.MethodName, "InvokeVoidAsync")]
 	public async Task InvokeVoidAsync2()
 	{
@@ -156,7 +156,7 @@ public class JavaScriptModuleBaseTests
 		jsObjectReferenceMock.Verify();
 	}
 
-	[TestMethod("При освобождении ресурсов экземпляра модуля должны освобождаться ресурсы внутренних объектов")]
+	[TestMethod(DisplayName = "При освобождении ресурсов экземпляра модуля должны освобождаться ресурсы внутренних объектов")]
 	[TestProperty(TestProperties.MethodName, nameof(TestJavaScriptModule.DisposeAsync))]
 	public async Task DisposeAsync1()
 	{
@@ -191,7 +191,7 @@ public class JavaScriptModuleBaseTests
 		jsObjectReferenceMock.Verify();
 	}
 
-	[TestMethod("При освобождении ресурсов внутренних объектов исключения должны игнорироваться")]
+	[TestMethod(DisplayName = "При освобождении ресурсов внутренних объектов исключения должны игнорироваться")]
 	[TestProperty(TestProperties.MethodName, nameof(TestJavaScriptModule.DisposeAsync))]
 	public async Task DisposeAsync2()
 	{

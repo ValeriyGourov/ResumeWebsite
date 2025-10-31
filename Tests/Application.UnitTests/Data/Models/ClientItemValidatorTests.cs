@@ -46,7 +46,7 @@ internal class ClientItemValidatorTests : ModelValidatorTestsBase<ClientItem, Cl
 			NotEmptyValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		ClientItem value,

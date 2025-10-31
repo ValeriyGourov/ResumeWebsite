@@ -9,7 +9,7 @@ namespace Extensions.UnitTests.ObjectPool;
 [TestClass]
 internal class ObjectPoolLeaseTests
 {
-	[TestMethod("При освобождении экземпляра арендатора его арендованное значение должно быть возвращено в пул")]
+	[TestMethod(DisplayName = "При освобождении экземпляра арендатора его арендованное значение должно быть возвращено в пул")]
 	public void Dispose1()
 	{
 		// Arrange.
@@ -25,7 +25,7 @@ internal class ObjectPoolLeaseTests
 		pool.IsReturned.Should().BeTrue();
 	}
 
-	[TestMethod("В пределах области using экземпляр аренды должен вернуть значение")]
+	[TestMethod(DisplayName = "В пределах области using экземпляр аренды должен вернуть значение")]
 	public void Value1()
 	{
 		// Arrange.
@@ -42,7 +42,7 @@ internal class ObjectPoolLeaseTests
 		act.Should().NotThrow<ObjectDisposedException>();
 	}
 
-	[TestMethod("После освобождения экземпляра аренды получение его значения должно выбросить исключение")]
+	[TestMethod(DisplayName = "После освобождения экземпляра аренды получение его значения должно выбросить исключение")]
 	public void Value2()
 	{
 		// Arrange.

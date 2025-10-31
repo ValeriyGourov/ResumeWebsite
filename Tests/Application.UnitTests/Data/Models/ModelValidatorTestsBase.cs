@@ -36,7 +36,7 @@ internal abstract class ModelValidatorTestsBase<TModel, TValidator>
 	: ModelValidatorTestsBase
 	where TValidator : AbstractValidator<TModel>, new()
 {
-	[TestMethod("При корректном значении ошибок проверки быть не должно")]
+	[TestMethod(DisplayName = "При корректном значении ошибок проверки быть не должно")]
 	public void ValidateWithValidValue()
 	{
 		// Arrange.

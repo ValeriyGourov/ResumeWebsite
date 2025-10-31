@@ -44,7 +44,7 @@ internal class TitleElementValidatorTests : ModelValidatorTestsBase<TitleElement
 			NotEmptyValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		TitleElement value,

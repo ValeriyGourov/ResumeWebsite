@@ -14,7 +14,7 @@ internal class DataStringValidatorTests
 {
 	private static readonly Fixture _fixture = new();
 
-	[TestMethod("При корректном значении ошибок проверки быть не должно")]
+	[TestMethod(DisplayName = "При корректном значении ошибок проверки быть не должно")]
 	public void Validate1()
 	{
 		// Arrange.
@@ -40,7 +40,7 @@ internal class DataStringValidatorTests
 		yield return (new DataString(en, string.Empty), item => item.Ru);
 	}
 
-	[TestMethod("При недопустимом значении проверка должна завершиться ошибкой")]
+	[TestMethod(DisplayName = "При недопустимом значении проверка должна завершиться ошибкой")]
 	[DynamicData(nameof(Validate2TestData))]
 	public void Validate2(DataString value, Expression<Func<DataString, string>> property)
 	{

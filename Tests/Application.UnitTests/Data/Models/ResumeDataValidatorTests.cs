@@ -234,7 +234,7 @@ internal class ResumeDataValidatorTests : ModelValidatorTestsBase<ResumeData, Re
 			NotNullValidatorName);
 	}
 
-	[TestMethod(ValidateWithIncorrectDataDisplayName)]
+	[TestMethod(DisplayName = ValidateWithIncorrectDataDisplayName)]
 	[DynamicData(nameof(ValidateWithInvalidValueTestData))]
 	public override void ValidateWithInvalidValue(
 		ResumeData value,

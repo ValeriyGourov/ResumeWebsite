@@ -13,7 +13,7 @@ internal class StringBuilderPoolTests
 {
 	private static readonly Fixture _fixture = new();
 
-	[TestMethod("Экземпляры StringBuilder не должны возвращаться в пул если их вместимость превыщает допустимую")]
+	[TestMethod(DisplayName = "Экземпляры StringBuilder не должны возвращаться в пул если их вместимость превыщает допустимую")]
 	public void Return1()
 	{
 		// Arrange.
@@ -32,7 +32,7 @@ internal class StringBuilderPoolTests
 		_ = stringBuilder1.Should().NotBeSameAs(stringBuilder2);
 	}
 
-	[TestMethod("Должна возвращаться сформированная строка")]
+	[TestMethod(DisplayName = "Должна возвращаться сформированная строка")]
 	public void BuildString1()
 	{
 		// Arrange.
