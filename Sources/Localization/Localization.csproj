@@ -6,7 +6,6 @@
 		<PackageReference Include="Microsoft.AspNetCore.Localization" />
 		<PackageReference Include="Microsoft.Extensions.Localization" />
 		<PackageReference Include="Microsoft.VisualStudio.Threading" />
-		<PackageReference Include="System.Globalization" />
 	</ItemGroup>
 
 	<ItemGroup>

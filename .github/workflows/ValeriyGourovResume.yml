@@ -7,7 +7,7 @@ env:
   AZURE_WEBAPP_NAME: ValeriyGourovResume
   AZURE_WEBAPP_PACKAGE_PATH: Sources\Application\published
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 9.0.x
+  DOTNET_CORE_VERSION: 10.0.x
   APP_DIRECTORY: Sources\Application
 jobs:
   build:
