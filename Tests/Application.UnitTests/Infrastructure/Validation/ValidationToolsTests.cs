@@ -1,4 +1,5 @@
 ﻿#pragma warning disable CA1515
+#pragma warning disable CS8620 // TODO: Удалить после исправления ошибки анализатора: https://github.com/dotnet/roslyn/issues/80024
 
 using Application.Data.Models;
 using Application.Infrastructure.Validation;
@@ -87,30 +88,31 @@ static file class TestDataValidatorExtensions
 {
 	private static readonly Fixture _fixture = new();
 
-	public static void CheckPropertyValidators(this TestDataValidator validator)
-		=> validator.CreateDescriptor().Rules
-			.Should()
-			.ContainSingle(rules
-				=> rules.Components.Any(static component => component.Validator is NotNullValidator<TestData, DataString>)
-				&& rules.Components.Any(static component
-					=> component.Validator is ChildValidatorAdaptorType
-					&& ((ChildValidatorAdaptorType)component.Validator).ValidatorType == typeof(DataStringValidator)));
-
-	public static void CheckProvidedValidator(
-		this TestDataValidator validator,
-		DataStringValidator dataStringValidator)
+	extension(TestDataValidator validator)
 	{
-		DataString value = _fixture.Create<DataString>();
-		IEnumerable<DataString> collection = _fixture.CreateMany<DataString>();
-		ValidationContext<TestData> context = new(new TestData(value, value, collection));
+		public void CheckPropertyValidators()
+			=> validator.CreateDescriptor().Rules
+				.Should()
+				.ContainSingle(rules
+					=> rules.Components.Any(static component => component.Validator is NotNullValidator<TestData, DataString>)
+					&& rules.Components.Any(static component
+						=> component.Validator is ChildValidatorAdaptorType
+						&& ((ChildValidatorAdaptorType)component.Validator).ValidatorType == typeof(DataStringValidator)));
 
-		validator.CreateDescriptor().Rules
-			.Should()
-			.ContainSingle()
-			.Which.Components
-			.Should()
-			.Contain(component
-				=> component.Validator is ChildValidatorAdaptorType
-				&& ((ChildValidatorAdaptorType)component.Validator).GetValidator(context, value) == dataStringValidator);
+		public void CheckProvidedValidator(DataStringValidator dataStringValidator)
+		{
+			DataString value = _fixture.Create<DataString>();
+			IEnumerable<DataString> collection = _fixture.CreateMany<DataString>();
+			ValidationContext<TestData> context = new(new TestData(value, value, collection));
+
+			validator.CreateDescriptor().Rules
+				.Should()
+				.ContainSingle()
+				.Which.Components
+				.Should()
+				.Contain(component
+					=> component.Validator is ChildValidatorAdaptorType
+					&& ((ChildValidatorAdaptorType)component.Validator).GetValidator(context, value) == dataStringValidator);
+		}
 	}
 }

@@ -19,41 +19,41 @@ namespace Microsoft.Extensions.DependencyInjection;
 [ExcludeFromCodeCoverage]
 internal static class LoggingExtensions
 {
-	/// <summary>
-	/// Настройка параметров средства ведения журнала.
-	/// </summary>
-	/// <param name="hostApplicationBuilder">
-	/// <inheritdoc cref="IHostApplicationBuilder" path="/summary"/>
-	/// </param>
-	/// <returns>
-	/// Тот же экземпляр <see cref="IHostApplicationBuilder"/> для построения цепочки.
-	/// </returns>
-	/// <exception cref="InvalidOperationException">
-	/// Не настроены все необходимые службы.
-	/// </exception>
-	public static IHostApplicationBuilder ConfigureLogging(this IHostApplicationBuilder hostApplicationBuilder)
+	extension(IHostApplicationBuilder hostApplicationBuilder)
 	{
-		Guard.IsNotNull(hostApplicationBuilder);
+		/// <summary>
+		/// Настройка параметров средства ведения журнала.
+		/// </summary>
+		/// <returns>
+		/// Тот же экземпляр <see cref="IHostApplicationBuilder"/> для построения цепочки.
+		/// </returns>
+		/// <exception cref="InvalidOperationException">
+		/// Не настроены все необходимые службы.
+		/// </exception>
+		public IHostApplicationBuilder ConfigureLogging()
+		{
+			Guard.IsNotNull(hostApplicationBuilder);
 
-		// Bootstrap logger.
-		LoggerConfiguration loggerConfiguration = new();
-		ConfigureBasicEnrich(loggerConfiguration.Enrich);
-		ConfigureWriteTo(loggerConfiguration.WriteTo);
-		Log.Logger = loggerConfiguration.CreateBootstrapLogger();
+			// Bootstrap logger.
+			LoggerConfiguration loggerConfiguration = new();
+			ConfigureBasicEnrich(loggerConfiguration.Enrich);
+			ConfigureWriteTo(loggerConfiguration.WriteTo);
+			Log.Logger = loggerConfiguration.CreateBootstrapLogger();
 
-		// Final logger.
-		_ = hostApplicationBuilder.Services
-			.AddSerilog(static (services, loggerConfiguration) =>
-			{
-				ConfigureEnrich(loggerConfiguration.Enrich);
-				ConfigureWriteTo(loggerConfiguration.WriteTo);
+			// Final logger.
+			_ = hostApplicationBuilder.Services
+				.AddSerilog(static (services, loggerConfiguration) =>
+				{
+					ConfigureEnrich(loggerConfiguration.Enrich);
+					ConfigureWriteTo(loggerConfiguration.WriteTo);
 
-				_ = loggerConfiguration
-					.ReadFrom.Configuration(services.GetRequiredService<IConfiguration>())
-					.ReadFrom.Services(services);
-			});
+					_ = loggerConfiguration
+						.ReadFrom.Configuration(services.GetRequiredService<IConfiguration>())
+						.ReadFrom.Services(services);
+				});
 
-		return hostApplicationBuilder;
+			return hostApplicationBuilder;
+		}
 	}
 
 	/// <summary>
