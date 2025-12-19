@@ -117,16 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="PdfFileButtonText" xml:space="preserve">
-    <value>PDF file</value>
+  <data name="FailedToRejoin" xml:space="preserve">
+    <value>Не удалось повторно подключиться.</value>
   </data>
-  <data name="PdfFileButtonTitle" xml:space="preserve">
-    <value>Download as PDF file.</value>
+  <data name="FailedToResume" xml:space="preserve">
+    <value>Не удалось возобновить сеанс.</value>
   </data>
-  <data name="Reload" xml:space="preserve">
-    <value>Reload</value>
+  <data name="NewAttempts" xml:space="preserve">
+    <value>Не удалось повторно подключиться... попробуем снова через {0} сек.</value>
   </data>
-  <data name="UnhandledErrorOccurred" xml:space="preserve">
-    <value>An unhandled error has occurred.</value>
+  <data name="PleaseReload" xml:space="preserve">
+    <value>Пожалуйста, перезагрузите страницу.</value>
+  </data>
+  <data name="PleaseRetryOrReload" xml:space="preserve">
+    <value>Повторите попытку или перезагрузите страницу.</value>
+  </data>
+  <data name="RejoiningServer" xml:space="preserve">
+    <value>Восстановление связи с сервером...</value>
+  </data>
+  <data name="Resume" xml:space="preserve">
+    <value>Возобновить</value>
+  </data>
+  <data name="Retry" xml:space="preserve">
+    <value>Повторить попытку</value>
+  </data>
+  <data name="SessionPaused" xml:space="preserve">
+    <value>Сеанс был приостановлен сервером.</value>
   </data>
 </root>

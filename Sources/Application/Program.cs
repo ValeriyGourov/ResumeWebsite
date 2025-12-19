@@ -43,6 +43,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 _ = app.UseHttpsRedirection();
+_ = app.UseStatusCodePagesWithReExecute("/Not-Found", createScopeForStatusCodePages: true);
 _ = app.UseAntiforgery();
 
 _ = app.MapStaticAssets();

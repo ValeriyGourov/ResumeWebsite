@@ -1,9 +1,9 @@
-{
+﻿{
 	"iisSettings": {
 		"windowsAuthentication": false,
 		"anonymousAuthentication": true,
 		"iisExpress": {
-			"applicationUrl": "http://localhost:64931",
+			"applicationUrl": "http://resume-website.dev.localhost:64931",
 			"sslPort": 44357
 		}
 	},
@@ -19,7 +19,7 @@
 			"commandName": "Project",
 			"dotnetRunMessages": true,
 			"launchBrowser": true,
-			"applicationUrl": "https://localhost:7202;http://localhost:5202",
+			"applicationUrl": "https://resume-website.dev.localhost:7202;http://resume-website.dev.localhost:5202",
 			"environmentVariables": {
 				"ASPNETCORE_ENVIRONMENT": "Development"
 			}

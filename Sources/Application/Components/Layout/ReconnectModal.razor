@@ -1,0 +1,33 @@
+﻿@inject IStringLocalizer<ReconnectModal> Localizer
+
+<script type="module" src="@Assets["Components/Layout/ReconnectModal.razor.js"]"></script>
+
+<dialog id="components-reconnect-modal" data-nosnippet>
+	<div class="components-reconnect-container">
+		<div class="components-rejoining-animation" aria-hidden="true">
+			<div></div>
+			<div></div>
+		</div>
+		<p class="components-reconnect-first-attempt-visible">
+			@Localizer["RejoiningServer"]
+		</p>
+		<p class="components-reconnect-repeated-attempt-visible">
+			@(new MarkupString(Localizer["NewAttempts", @"<span id=""components-seconds-to-next-attempt""></span>"]))
+		</p>
+		<p class="components-reconnect-failed-visible">
+			@Localizer["FailedToRejoin"]<br />@Localizer["PleaseRetryOrReload"]
+		</p>
+		<button id="components-reconnect-button" class="components-reconnect-failed-visible">
+			@Localizer["Retry"]
+		</button>
+		<p class="components-pause-visible">
+			@Localizer["SessionPaused"]
+		</p>
+		<button id="components-resume-button" class="components-pause-visible">
+			@Localizer["Resume"]
+		</button>
+		<p class="components-resume-failed-visible">
+			@Localizer["FailedToResume"]<br />@Localizer["PleaseReload"]
+		</p>
+	</div>
+</dialog>
