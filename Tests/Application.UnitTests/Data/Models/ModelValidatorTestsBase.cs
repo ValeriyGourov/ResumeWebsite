@@ -16,12 +16,12 @@ internal abstract class ModelValidatorTestsBase
 	public const string ValidateWithIncorrectDataDisplayName = "При недопустимом значении проверка должна завершиться ошибкой";
 	public const string ValidateBaseClassDisplayName = "Должны вызываться проверки базового класса";
 
-	public const string NotNullValidatorName = nameof(NotNullValidator<object, object>);
-	public const string NotEmptyValidatorName = nameof(NotEmptyValidator<object, object>);
-	public const string PredicateValidatorName = nameof(PredicateValidator<object, object>);
-	public const string GreaterThanValidatorName = nameof(GreaterThanValidator<object, int>);
-	public const string GreaterThanOrEqualValidatorName = nameof(GreaterThanOrEqualValidator<object, int>);
-	public const string InclusiveBetweenValidatorName = nameof(InclusiveBetweenValidator<object, int>);
+	public const string NotNullValidatorName = nameof(NotNullValidator<,>);
+	public const string NotEmptyValidatorName = nameof(NotEmptyValidator<,>);
+	public const string PredicateValidatorName = nameof(PredicateValidator<,>);
+	public const string GreaterThanValidatorName = nameof(GreaterThanValidator<,>);
+	public const string GreaterThanOrEqualValidatorName = nameof(GreaterThanOrEqualValidator<,>);
+	public const string InclusiveBetweenValidatorName = nameof(InclusiveBetweenValidator<,>);
 
 	protected static Fixture Fixture { get; } = new();
 

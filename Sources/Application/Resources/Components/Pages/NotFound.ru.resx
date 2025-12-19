@@ -117,7 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddressNotFound" xml:space="preserve">
-    <value>Sorry, there's nothing at this address.</value>
+  <data name="PageNotFound" xml:space="preserve">
+    <value>Страница не найдена</value>
+  </data>
+  <data name="Sorry" xml:space="preserve">
+    <value>К сожалению, искомый контент не существует.</value>
   </data>
 </root>

@@ -25,25 +25,27 @@ internal static class ServiceCollectionExtensions
 		ReadCommentHandling = JsonCommentHandling.Skip
 	};
 
-	/// <summary>
-	/// Добавляет объект с данными резюме в коллекцию служб.
-	/// </summary>
-	/// <param name="services">Коллекция служб.</param>
-	/// <returns>
-	/// Коллекция служб, которая может быть использована для дальнейшей настройки конфигурации.
-	/// </returns>
-	public static IServiceCollection AddResumeData(this IServiceCollection services)
+	extension(IServiceCollection services)
 	{
-		Guard.IsNotNull(services);
+		/// <summary>
+		/// Добавляет объект с данными резюме в коллекцию служб.
+		/// </summary>
+		/// <returns>
+		/// Коллекция служб, которая может быть использована для дальнейшей настройки конфигурации.
+		/// </returns>
+		public IServiceCollection AddResumeData()
+		{
+			Guard.IsNotNull(services);
 
-		string json = File.ReadAllText(_resumeDataPath);
+			string json = File.ReadAllText(_resumeDataPath);
 
-		ResumeData resumeData = JsonSerializer.Deserialize<ResumeData>(json, _serializerOptions)
-			?? throw new InvalidOperationException("Не удалось прочитать данные резюме.");
+			ResumeData resumeData = JsonSerializer.Deserialize<ResumeData>(json, _serializerOptions)
+				?? throw new InvalidOperationException("Не удалось прочитать данные резюме.");
 
-		new ResumeDataValidator().ValidateAndThrow(resumeData);
-		_ = services.AddSingleton(resumeData);
+			new ResumeDataValidator().ValidateAndThrow(resumeData);
+			_ = services.AddSingleton(resumeData);
 
-		return services;
+			return services;
+		}
 	}
 }

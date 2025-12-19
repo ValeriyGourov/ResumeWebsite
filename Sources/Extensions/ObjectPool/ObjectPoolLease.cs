@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.ObjectPool;
+﻿#pragma warning disable CA1034 // TODO: Удалить после исправления ошибки анализатора: https://github.com/dotnet/roslyn-analyzers/issues/7765
+
+using Microsoft.Extensions.ObjectPool;
 
 namespace Extensions.ObjectPool;
 
@@ -66,17 +68,13 @@ public ref struct ObjectPoolLease<T>
 /// </summary>
 public static class ObjectPoolExtensions
 {
-	/// <summary>
-	/// Создает обёртку над арендуемым из пула объектов экземпляром <typeparamref name="T"/>.
-	/// </summary>
-	/// <typeparam name="T">
-	/// <inheritdoc cref="ObjectPoolLease{T}" path="/typeparam[@name='T']"/>
-	/// </typeparam>
-	/// <param name="pool">
-	/// <inheritdoc cref="ObjectPoolLease{T}.ObjectPoolLease(ObjectPool{T})" path="/param[@name='pool']"/>
-	/// </param>
-	/// <returns>Обёртка над арендованным значением.</returns>
-	public static ObjectPoolLease<T> Lease<T>(this ObjectPool<T> pool)
+	extension<T>(ObjectPool<T> pool)
 		where T : class
-		=> new(pool);
+	{
+		/// <summary>
+		/// Создает обёртку над арендуемым из пула объектов экземпляром <typeparamref name="T"/>.
+		/// </summary>
+		/// <returns>Обёртка над арендованным значением.</returns>
+		public ObjectPoolLease<T> Lease() => new(pool);
+	}
 }

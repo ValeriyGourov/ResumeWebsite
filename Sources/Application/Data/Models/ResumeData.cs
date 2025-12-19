@@ -1,4 +1,5 @@
 ﻿#pragma warning disable CA1515
+#pragma warning disable CS8620 // TODO: Удалить после исправления ошибки анализатора: https://github.com/dotnet/roslyn/issues/80024
 
 using Application.Infrastructure.Validation;
 

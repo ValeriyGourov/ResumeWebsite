@@ -123,4 +123,10 @@
   <data name="PdfFileButtonTitle" xml:space="preserve">
     <value>Скачать в виде файла PDF.</value>
   </data>
+  <data name="Reload" xml:space="preserve">
+    <value>Перезагрузить</value>
+  </data>
+  <data name="UnhandledErrorOccurred" xml:space="preserve">
+    <value>Произошла необработанная ошибка.</value>
+  </data>
 </root>

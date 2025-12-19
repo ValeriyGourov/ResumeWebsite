@@ -52,6 +52,6 @@ internal class DataStringValidatorTests
 
 		// Assert.
 		_ = result.ShouldHaveValidationErrorFor(property)
-			.WithErrorCode(nameof(NotEmptyValidator<object, object>));
+			.WithErrorCode(nameof(NotEmptyValidator<,>));
 	}
 }
