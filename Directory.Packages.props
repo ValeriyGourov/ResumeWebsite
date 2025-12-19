@@ -22,7 +22,7 @@
     <PackageVersion Include="Microsoft.VisualStudio.Threading" Version="17.14.15" />
     <PackageVersion Include="Moq" Version="4.20.72" />
     <PackageVersion Include="Moq.AutoMock" Version="3.6.1" />
-    <PackageVersion Include="QuestPDF" Version="2025.7.4" />
+    <PackageVersion Include="QuestPDF" Version="2025.12.0" />
     <PackageVersion Include="Serilog" Version="4.3.0" />
     <PackageVersion Include="Serilog.AspNetCore" Version="10.0.0" />
     <PackageVersion Include="Serilog.Exceptions" Version="8.4.0" />
@@ -38,10 +38,10 @@
     <GlobalPackageReference Include="AsyncFixer" Version="1.6.0" />
     <GlobalPackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15" />
     <GlobalPackageReference Include="ParallelHelper" Version="3.6.1" />
-    <GlobalPackageReference Include="Roslynator.Analyzers" Version="4.14.1" />
-    <GlobalPackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.14.1" />
-    <GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.14.1" />
+    <GlobalPackageReference Include="Roslynator.Analyzers" Version="4.15.0" />
+    <GlobalPackageReference Include="Roslynator.CodeAnalysis.Analyzers" Version="4.15.0" />
+    <GlobalPackageReference Include="Roslynator.Formatting.Analyzers" Version="4.15.0" />
     <GlobalPackageReference Include="SecurityCodeScan.VS2019" Version="5.6.7" />
-    <GlobalPackageReference Include="SonarAnalyzer.CSharp" Version="10.16.1.129956" />
+    <GlobalPackageReference Include="SonarAnalyzer.CSharp" Version="10.17.0.131074" />
   </ItemGroup>
 </Project>
