@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1515
-
-using System.Globalization;
+﻿using System.Globalization;
 
 using Application.Data.Models;
 

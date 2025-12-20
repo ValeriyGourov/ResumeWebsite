@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1515
-
-using Application.Data.Models;
+﻿using Application.Data.Models;
 using Application.Infrastructure.JavaScriptModules.Shared;
 using Application.Services.PdfGeneration;
 

@@ -1,0 +1,4 @@
+﻿is_global = true
+
+# TODO: Выяснить чем генерируются файлы, которые приводят к появлению предупреждения CA1515.
+dotnet_diagnostic.CA1515.severity = none
