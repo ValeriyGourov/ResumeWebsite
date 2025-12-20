@@ -23,7 +23,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration ${{ env.CONFIGURATION }} --no-restore
     - name: Tests
-      run: dotnet test --no-build
+      run: dotnet test --configuration ${{ env.CONFIGURATION }} --no-build
     - name: Publish
       run: dotnet publish "${{ env.APP_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     - name: Publish Artifacts
