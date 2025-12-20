@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1515
-
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 
 using Application.Data.Models;
 

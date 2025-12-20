@@ -1,6 +1,4 @@
-﻿#pragma warning disable CA1515
-
-using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Components;
 
 namespace Application.Components;
 
