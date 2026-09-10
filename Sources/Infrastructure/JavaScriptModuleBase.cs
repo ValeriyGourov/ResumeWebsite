@@ -211,7 +211,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 			{
 				// В данном случае игнорируем это исключение.
 
-				LogWarningResourceDesposingError(exception);
+				LogWarningResourceDisposingError(exception);
 			}
 		}
 
@@ -232,7 +232,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 	[LoggerMessage(
 		Level = LogLevel.Warning,
 		Message = "Ошибка освобождения ресурсов.")]
-	private partial void LogWarningResourceDesposingError(JSDisconnectedException exception);
+	private partial void LogWarningResourceDisposingError(JSDisconnectedException exception);
 
 	#endregion
 }
