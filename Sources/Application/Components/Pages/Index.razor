@@ -461,7 +461,7 @@
 
 @code
 {
-	private IEnumerable<MonthYearTimeLineItemSection> GetMonthYearTimeLineItemSections(Data.Models.MonthYearTimeLineItem timeLineItem)
+	private static IEnumerable<MonthYearTimeLineItemSection> GetMonthYearTimeLineItemSections(Data.Models.MonthYearTimeLineItem timeLineItem)
 		=> timeLineItem.Projects.Select(project => new MonthYearTimeLineItemSection(
 			project.Description.ToString(),
 			project.Details?.Select(details => details.ToString())));
