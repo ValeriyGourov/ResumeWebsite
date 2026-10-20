@@ -30,7 +30,7 @@ internal sealed partial class PdfGenerator(
 	static PdfGenerator()
 	{
 		QuestPDF.Settings.License = LicenseType.Community;
-		QuestPDF.Settings.UseEnvironmentFonts = false;
+		QuestPDF.Settings.UseSystemFonts = false;
 	}
 
 	public async ValueTask<Stream> GenerateAsync()

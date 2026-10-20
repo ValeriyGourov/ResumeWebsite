@@ -86,7 +86,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 		object?[]? args = null,
 		CancellationToken cancellationToken = default)
 	{
-		LogDebugInvokeData(new { identifier, args });
+		LogDebugInvokeData(identifier, args);
 
 		IJSObjectReference jsObjectReference = await GetJSObjectReferenceAsync(cancellationToken).ConfigureAwait(true);
 		await jsObjectReference
@@ -137,7 +137,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 		object?[]? args = null,
 		CancellationToken cancellationToken = default)
 	{
-		LogDebugInvokeData(new { identifier, args });
+		LogDebugInvokeData(identifier, args);
 
 		IJSObjectReference jsObjectReference = await GetJSObjectReferenceAsync(cancellationToken).ConfigureAwait(true);
 		return await jsObjectReference
@@ -211,7 +211,7 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 			{
 				// В данном случае игнорируем это исключение.
 
-				LogWarningResourceDesposingError(exception);
+				LogWarningResourceDisposingError(exception);
 			}
 		}
 
@@ -223,16 +223,20 @@ public abstract partial class JavaScriptModuleBase : IAsyncDisposable
 	[ExcludeFromCodeCoverage]
 	[LoggerMessage(
 		Level = LogLevel.Debug,
-		Message = "Данные вызова модуля: {@InvokeData}")]
-#pragma warning disable LOGGEN036
-	private partial void LogDebugInvokeData(object? invokeData);
-#pragma warning restore LOGGEN036
+		Message = "Данные вызова модуля: Args={@Args}")]
+	private partial void LogDebugInvokeData(object?[]? args);
+
+	[ExcludeFromCodeCoverage]
+	[LoggerMessage(
+		Level = LogLevel.Debug,
+		Message = "Данные вызова модуля: Identifier={Identifier}, Args={@Args}")]
+	private partial void LogDebugInvokeData(string identifier, object?[]? args);
 
 	[ExcludeFromCodeCoverage]
 	[LoggerMessage(
 		Level = LogLevel.Warning,
 		Message = "Ошибка освобождения ресурсов.")]
-	private partial void LogWarningResourceDesposingError(JSDisconnectedException exception);
+	private partial void LogWarningResourceDisposingError(JSDisconnectedException exception);
 
 	#endregion
 }

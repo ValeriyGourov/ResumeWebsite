@@ -1,5 +1,4 @@
 ﻿#pragma warning disable CA1515, CA1036
-#pragma warning disable CS8620 // TODO: Удалить после исправления ошибки анализатора: https://github.com/dotnet/roslyn/issues/80024
 
 using Application.Infrastructure.Validation;
 
@@ -14,7 +13,9 @@ namespace Application.Data.Models;
 /// <param name="Institution">Организация или учреждение, в котором происходило событие.</param>
 /// <param name="Position">Занимаемая позиция в организации или учреждении.</param>
 /// <param name="Location">Местоположение организации или учреждении.</param>
+#pragma warning disable S1210 // Переопределение "Equals" и операторов сравнения не нужно, так как потомки класса только сортируются в списках, а не в ручную.
 public abstract record TimeLineItemBase<T>(
+#pragma warning restore S1210
 	DataString Institution,
 	DataString Position,
 	DataString Location)
