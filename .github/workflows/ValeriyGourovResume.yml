@@ -7,17 +7,18 @@ env:
   AZURE_WEBAPP_NAME: ValeriyGourovResume
   AZURE_WEBAPP_PACKAGE_PATH: Sources\Application\published
   CONFIGURATION: Release
-  DOTNET_CORE_VERSION: 10.0.x
   APP_DIRECTORY: Sources\Application
+  ARTIFACT_NAME: WebApp
 jobs:
   build:
     runs-on: windows-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v7
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@v6
       with:
-        dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+        global-json-file: global.json
+    - run: echo '${{ steps.stepid.outputs.dotnet-version }}'
     - name: Restore
       run: dotnet restore
     - name: Build
@@ -27,23 +28,23 @@ jobs:
     - name: Publish
       run: dotnet publish "${{ env.APP_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     - name: Publish Artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
-        name: webapp
+        name: ${{ env.ARTIFACT_NAME }}
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
   deploy:
     runs-on: windows-latest
     needs: build
     steps:
     - name: Download artifact from build job
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v8
       with:
-        name: webapp
+        name: ${{ env.ARTIFACT_NAME }}
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
     - name: Azure Login
-      uses: azure/login@v2
+      uses: azure/login@v3
       with:
-        creds: ${{ secrets.ValeriyGourovResume_SPN }}
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
     - name: Deploy to Azure WebApp
       uses: azure/webapps-deploy@v2
       with:
